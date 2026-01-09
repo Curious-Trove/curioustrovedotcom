@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+
+# Specific search engine directives
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://curioustrove.com/sitemap.xml

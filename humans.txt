@@ -1,0 +1,11 @@
+/* humanstxt.org */
+
+/* TEAM */
+Designer: Curious Trove
+Contact: contact@curioustrove.com
+Location: Earth
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: Email Octopus, Unity WebGL
+Updated: 2026-01-09

@@ -3,24 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curious Trove - Coming Soon</title>
+  
+  <!-- Primary Meta Tags -->
+  <title>Curious Trove - Tools for Game Developers</title>
+  <meta name="title" content="Curious Trove - Tools for Game Developers" />
+  <meta name="description" content="Building innovative tools for game developers. Stay updated with live demos, development insights, and community-driven features." />
+  <meta name="keywords" content="game development, developer tools, game dev, indie games, software development" />
+  <meta name="author" content="Curious Trove" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://curioustrove.com/" />
+  <meta property="og:title" content="Curious Trove - Tools for Game Developers" />
+  <meta property="og:description" content="Building innovative tools for game developers. Stay updated with live demos, development insights, and community-driven features." />
+  <meta property="og:image" content="https://curioustrove.com/res/logo.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://curioustrove.com/" />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="res/logo.png" />
+  <link rel="apple-touch-icon" href="res/logo.png" />
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Curious Trove",
+    "url": "https://curioustrove.com",
+    "logo": "https://curioustrove.com/res/logo.png",
+    "description": "Building innovative tools for game developers",
+    "sameAs": [
+      "https://reddit.com/r/gamedev",
+      "https://twitter.com"
+    ]
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Curious Trove",
+    "url": "https://curioustrove.com",
+    "potentialAction": {
+      "@type": "SubscribeAction",
+      "target": "https://curioustrove.com/#newsletter"
+    }
+  }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Curious Trove</h1>
-    <h3>🐉✨</h3>
+    <div class="logo-container">
+      <img src="res/logo.png" alt="Curious Trove" class="logo" />
+      <h1>Curious Trove</h1>
+    </div>
+    <p class="tagline">Building tools for game developers</p>
   </header>
 
-  <div class="block">
-    <h2>Something is Cooking...</h2>
-    <p>
-      Building new tools for game developers. Stay tuned!
-    </p>
+  <!-- Newsletter Fixed Bottom Right -->
+  <div id="newsletter" class="newsletter-fixed">
+    <script async src="https://eocampaign1.com/form/47530224-eba2-11f0-b0fc-05430dd646c3.js" data-form="47530224-eba2-11f0-b0fc-05430dd646c3"></script>
   </div>
 
+  <main>
+    <!-- Live Demo Section -->
+    <section id="demo" class="demo-section">
+      <h2>[WIP] A Graph Tool</h2>
+      <div class="demo-placeholder">
+        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      </div>
+      <script>
+        var buildUrl = "res/demos/Build";
+        var loaderUrl = buildUrl + "/Test.loader.js";
+        var config = {
+          dataUrl: buildUrl + "/Test.data.gz",
+          frameworkUrl: buildUrl + "/Test.framework.js.gz",
+          codeUrl: buildUrl + "/Test.wasm.gz",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Hydra Unity",
+          productVersion: "0.1"
+        };
+
+      var canvas = document.querySelector("#unity-canvas");
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {})};
+        document.body.appendChild(script);
+    </script>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+      <h2>📝 Development Blog</h2>
+      
+      <!-- Blog Post 1 - Template -->
+      <article class="blog-post">
+        <h3 class="post-title">Welcome to Curious Trove</h3>
+        <p class="post-date">January 9, 2026</p>
+        <div class="post-content">
+          <p>
+            Hey everyone! I'm starting this journey to build useful tools for game developers. 
+            This page will document the progress, share demos, and keep you updated on what's coming next.
+          </p>
+          <p>
+            Follow along as I build in public and share everything I learn along the way.
+          </p>
+        </div>
+      </article>
+
+      <!-- Add more blog posts here following the same structure -->
+      <!-- 
+      <article class="blog-post">
+        <h3 class="post-title">Your Post Title</h3>
+        <p class="post-date">Date</p>
+        <div class="post-content">
+          <p>Your content here...</p>
+        </div>
+      </article>
+      -->
+      
+    </section>
+  </main>
+
   <footer>
-    👀
+    <p>&copy; 2026 Curious Trove</p>
   </footer>
 </body>
 </html>
