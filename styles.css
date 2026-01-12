@@ -58,7 +58,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 90px;
 }
 
 .nav-brand {
@@ -70,13 +70,13 @@ header {
 }
 
 .logo {
-  height: 45px;
+  height: 55px;
   width: auto;
   display: block;
 }
 
 .brand-name {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--primary-dark);
   letter-spacing: 0;
@@ -93,10 +93,10 @@ header {
 .nav-link {
   color: var(--primary-dark);
   text-decoration: none;
-  padding: 8px 14px;
+  padding: 10px 18px;
   border-radius: 0;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   border: 1px solid transparent;
 }
 
@@ -108,8 +108,10 @@ header {
 .nav-cta {
   background: var(--primary-accent);
   color: var(--white);
-  padding: 8px 18px;
+  padding: 10px 24px;
   border: 1px solid var(--primary-accent);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .nav-cta:hover {
@@ -212,7 +214,7 @@ footer {
 /* Hero Section */
 .hero-section {
   text-align: center;
-  padding: 80px 40px;
+  padding: 60px 40px;
   background: var(--light-gray);
   border-radius: 0;
   margin-bottom: 40px;
@@ -220,14 +222,14 @@ footer {
 }
 
 .hero-section h1 {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 800;
   margin-bottom: 20px;
   color: var(--primary-dark);
 }
 
 .hero-section p {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--dark-text);
   margin-bottom: 10px;
   line-height: 1.6;
@@ -349,7 +351,7 @@ footer {
 /* Product Hero */
 .product-hero {
   text-align: center;
-  padding: 60px 40px;
+  padding: 50px 40px;
   background: var(--light-gray);
   margin-bottom: 40px;
   border-radius: 0;
@@ -357,21 +359,21 @@ footer {
 }
 
 .product-hero h1 {
-  font-size: 52px;
+  font-size: 44px;
   font-weight: 800;
   margin-bottom: 15px;
   color: var(--primary-dark);
 }
 
 .product-subtitle {
-  font-size: 24px;
+  font-size: 20px;
   color: var(--primary-accent);
   margin-bottom: 15px;
   font-weight: 600;
 }
 
 .product-description {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--dark-text);
   margin-bottom: 25px;
   max-width: 600px;
