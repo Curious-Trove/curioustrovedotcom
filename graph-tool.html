@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Graph Tool - Visualization & Design - Curious Trove</title>
+  <meta name="title" content="Graph Tool - Visualization & Design - Curious Trove" />
+  <meta name="description" content="Graph Tool: Interactive graph visualization and manipulation. Create complex systems and data structures visually for game development." />
+  <meta name="keywords" content="graph visualization, data structure tool, game development, graph editor" />
+  <meta name="author" content="Curious Trove" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://curioustrove.com/graph-tool.html" />
+  <meta property="og:title" content="Graph Tool - Visualization & Design" />
+  <meta property="og:description" content="Interactive graph visualization and manipulation for game developers." />
+  <meta property="og:image" content="https://curioustrove.com/res/logo.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://curioustrove.com/graph-tool.html" />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="res/logo.png" />
+  <link rel="apple-touch-icon" href="res/logo.png" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script async src="https://eocampaign1.com/form/3262d2d4-ef9b-11f0-bbb6-25f2b5267f47.js" data-form="3262d2d4-ef9b-11f0-bbb6-25f2b5267f47"></script>
+  
+</head>
+<body>
+  <div id="navbar-container"></div>
+  
+  <script>
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+  </script>
+
+  <main>
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+      <h1>Graph Tool</h1>
+      <p class="product-subtitle">Interactive graph visualization and manipulation</p>
+      <p class="product-description">Create complex systems and data structures visually. Perfect for game developers building interconnected systems.</p>
+      <div class="status-badge">🚀 In Development</div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+      <h2>Live Demo</h2>
+      <div class="demo-placeholder">
+        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      </div>
+      <script>
+        var buildUrl = "res/demos/Build";
+        var loaderUrl = buildUrl + "/Test.loader.js";
+        var config = {
+          dataUrl: buildUrl + "/Test.data",
+          frameworkUrl: buildUrl + "/Test.framework.js",
+          codeUrl: buildUrl + "/Test.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Hydra Unity",
+          productVersion: "0.1"
+        };
+
+        var canvas = document.querySelector("#unity-canvas");
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {})
+        };
+        document.body.appendChild(script);
+      </script>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <h2>Features</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>🎨 Visual Node Editor</h3>
+          <p>Drag-and-drop interface for creating and connecting nodes intuitively.</p>
+        </div>
+        <div class="feature-item">
+          <h3>📊 Advanced Visualization</h3>
+          <p>Automatic layout algorithms and customizable visual styles for clarity.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🔄 Real-time Feedback</h3>
+          <p>Instantly see how changes affect your graph structure.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases-section">
+      <h2>Use Cases</h2>
+      <ul>
+        <li>Quest and dialogue system design</li>
+        <li>Game state machines and flow graphs</li>
+        <li>Behavior tree visualization</li>
+        <li>Level progression planning</li>
+        <li>Narrative branching and storylines</li>
+      </ul>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <h2>Stay Updated</h2>
+      <p>Be the first to know when Graph Tool launches. Subscribe to our newsletter.</p>
+      <a href="#newsletter" class="cta-button">Subscribe Now</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Curious Trove</p>
+  </footer>
+</body>
+</html>

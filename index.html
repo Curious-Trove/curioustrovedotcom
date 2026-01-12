@@ -30,6 +30,8 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
   
+  <script async src="https://eocampaign1.com/form/3262d2d4-ef9b-11f0-bbb6-25f2b5267f47.js" data-form="3262d2d4-ef9b-11f0-bbb6-25f2b5267f47"></script>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -60,78 +62,50 @@
   </script>
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <img src="res/logo.png" alt="Curious Trove" class="logo" />
-      <h1>Curious Trove</h1>
-    </div>
-    <p class="tagline">Building tools for game developers</p>
-  </header>
-
-  <!-- Newsletter Fixed Bottom Right -->
-  <div id="newsletter" class="newsletter-fixed">
-    <script async src="https://eocampaign1.com/form/47530224-eba2-11f0-b0fc-05430dd646c3.js" data-form="47530224-eba2-11f0-b0fc-05430dd646c3"></script>
-  </div>
+  <div id="navbar-container"></div>
+  
+  <script>
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+  </script>
 
   <main>
-    <!-- Live Demo Section -->
-    <section id="demo" class="demo-section">
-      <h2>[WIP] A Graph Tool</h2>
-      <div class="demo-placeholder">
-        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Building Tools for Game Developers</h1>
+        <p>Innovative solutions to simplify your development workflow. Explore our projects and join the community.</p>
+        <div class="hero-buttons">
+          <a href="hydra.html" class="hero-btn primary">Explore Hydra</a>
+          <a href="graph-tool.html" class="hero-btn secondary">View Graph Tool</a>
+        </div>
       </div>
-      <script>
-        var buildUrl = "res/demos/Build";
-        var loaderUrl = buildUrl + "/Test.loader.js";
-        var config = {
-          dataUrl: buildUrl + "/Test.data",
-          frameworkUrl: buildUrl + "/Test.framework.js",
-          codeUrl: buildUrl + "/Test.wasm",
-          streamingAssetsUrl: "StreamingAssets",
-          companyName: "DefaultCompany",
-          productName: "Hydra Unity",
-          productVersion: "0.1"
-        };
-
-      var canvas = document.querySelector("#unity-canvas");
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {})};
-        document.body.appendChild(script);
-    </script>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog-section">
-      <h2>📝 Development Blog</h2>
+    <!-- Products Overview -->
+    <section class="products-section">
+      <h2>Featured Projects</h2>
       
-      <!-- Blog Post 1 - Template -->
-      <article class="blog-post">
-        <h3 class="post-title">Welcome to Curious Trove</h3>
-        <p class="post-date">January 9, 2026</p>
-        <div class="post-content">
-          <p>
-            Hey everyone! I'm starting this journey to build useful tools for game developers. 
-            This page will document the progress, share demos, and keep you updated on what's coming next.
-          </p>
-          <p>
-            Follow along as I build in public and share everything I learn along the way.
-          </p>
+      <div class="products-grid">
+        <div class="product-card">
+          <h3>Hydra</h3>
+          <p>A powerful suite of tools for game developers. Streamline your workflow with intelligent automation and seamless integration.</p>
+          <a href="hydra.html" class="card-link">Learn More →</a>
         </div>
-      </article>
+        
+        <div class="product-card">
+          <h3>Graph Tool</h3>
+          <p>Interactive graph visualization and manipulation. Perfect for creating complex systems and data structures visually.</p>
+          <a href="graph-tool.html" class="card-link">Learn More →</a>
+        </div>
+      </div>
+    </section>
 
-      <!-- Add more blog posts here following the same structure -->
-      <!-- 
-      <article class="blog-post">
-        <h3 class="post-title">Your Post Title</h3>
-        <p class="post-date">Date</p>
-        <div class="post-content">
-          <p>Your content here...</p>
-        </div>
-      </article>
-      -->
-      
+    <!-- Blog Preview -->
+    <section class="blog-preview-section">
+      <h2>Latest from the Devlog</h2>
+      <p><a href="blog.html">Read all posts →</a></p>
     </section>
   </main>
 
