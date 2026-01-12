@@ -1,25 +1,26 @@
 /* ===================================
-   COLOR THEME - Curious Trove
+   COLOR THEME - Curious Trove (Brand Colors)
    =================================== */
 :root {
-  /* Primary Logo Colors */
-  --deep-indigo: #261974;
-  --dark-purple: #271978;
-  --rich-violet: #5535C8;
-  --bright-lavender: #764EE7;
-  --very-dark-blue: #201563;
+  /* Brand Colors */
+  --lucky-point: #23186c;             /* Deep purple - darkest */
+  --persian-pink: #f587c5;            /* Bright pink - accent */
+  --purple-heart: #6440d8;            /* Vibrant purple - primary */
+  --kimberly: #84749c;                /* Gray-purple - secondary */
   
-  /* Complementary Colors */
-  --light-lavender: #9B7EF5;
-  --pale-purple: #E8DEFF;
-  --accent-warm: #FF6B9D;
-  --accent-gold: #FFB84D;
+  /* Primary Colors */
+  --primary-dark: #23186c;            /* Lucky Point - main dark */
+  --primary: #6440d8;                 /* Purple Heart - main color */
+  --primary-accent: #f587c5;          /* Persian Pink - bright accent */
+  --primary-light: #F5F5F5;
   
   /* Neutral Colors */
   --white: #FFFFFF;
-  --light-gray: #F5F5F7;
-  --medium-gray: #666666;
-  --dark-text: #1A1A1A;
+  --light-gray: #F5F3F9;              /* Light off-white with purple tint */
+  --medium-gray: #84749c;             /* Kimberly - medium gray */
+  --dark-text: #23186c;               /* Lucky Point for dark text */
+  --border-color: #E5D9F0;            /* Light purple border */
+  --border-accent: #6440d8;           /* Purple border accent */
 }
 
 /* Base Styles */
@@ -30,7 +31,7 @@
 }
 
 body {
-  font-family: 'Verdana', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   background: var(--light-gray);
   color: var(--dark-text);
   line-height: 1.6;
@@ -39,11 +40,11 @@ body {
 /* Header & Navigation */
 header {
   background: var(--white);
-  box-shadow: 0 2px 12px rgba(38, 25, 116, 0.12);
+  border-bottom: 3px solid var(--primary);
   position: sticky;
   top: 0;
   z-index: 999;
-  border-bottom: 2px solid var(--rich-violet);
+  box-shadow: 0 2px 8px rgba(35, 24, 108, 0.1);
 }
 
 .navbar {
@@ -57,66 +58,64 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 70px;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   text-decoration: none;
-  color: var(--very-dark-blue);
+  color: var(--primary-dark);
 }
 
 .logo {
-  height: 50px;
+  height: 45px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 1px 2px rgba(38, 25, 116, 0.1));
 }
 
 .brand-name {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--deep-indigo) 0%, var(--rich-violet) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.3px;
+  color: var(--primary-dark);
+  letter-spacing: 0;
   margin: 0;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 10px;
+  gap: 0;
   align-items: center;
 }
 
 .nav-link {
-  color: var(--dark-text);
+  color: var(--primary-dark);
   text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 0;
   font-weight: 500;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  font-size: 14px;
+  border: 1px solid transparent;
 }
 
 .nav-link:hover {
-  background: var(--pale-purple);
-  color: var(--rich-violet);
+  text-decoration: underline;
+  color: var(--primary-accent);
 }
 
 .nav-cta {
-  background: linear-gradient(135deg, var(--rich-violet) 0%, var(--bright-lavender) 100%);
+  background: var(--primary-accent);
   color: var(--white);
-  padding: 10px 22px;
+  padding: 8px 18px;
+  border: 1px solid var(--primary-accent);
 }
 
 .nav-cta:hover {
-  background: linear-gradient(135deg, var(--bright-lavender) 0%, var(--light-lavender) 100%);
-  box-shadow: 0 4px 12px rgba(85, 53, 200, 0.3);
+  background: #23186c;
+  border-color: #23186c;
+  text-decoration: none;
 }
 
 /* Main Container */
@@ -129,28 +128,29 @@ main {
 /* Sections */
 section {
   background: var(--white);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 40px;
   margin-bottom: 40px;
-  box-shadow: 0 2px 8px rgba(38, 25, 116, 0.1);
+  border: 1px solid var(--border-color);
 }
 
 section h2 {
   font-size: 28px;
   margin-bottom: 20px;
-  color: var(--rich-violet);
+  color: var(--primary-dark);
   text-align: center;
+  font-weight: 700;
 }
 
 /* Demo Section */
 .demo-section {
-  border: 3px solid var(--bright-lavender);
+  border: 2px solid var(--primary);
 }
 
 .demo-placeholder {
-  background: var(--pale-purple);
-  border: 2px dashed var(--light-lavender);
-  border-radius: 8px;
+  background: var(--light-gray);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
   padding: 60px 20px;
   text-align: center;
   color: var(--medium-gray);
@@ -159,12 +159,12 @@ section h2 {
 
 /* Blog Section */
 .blog-section {
-  border-top: 4px solid var(--rich-violet);
+  border-top: none;
 }
 
 .blog-post {
   padding: 30px 0;
-  border-bottom: 1px solid var(--pale-purple);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .blog-post:last-child {
@@ -173,14 +173,16 @@ section h2 {
 
 .post-title {
   font-size: 24px;
-  color: var(--very-dark-blue);
-  margin-bottom: 5px;
+  color: var(--primary-dark);
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .post-date {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--medium-gray);
   margin-bottom: 15px;
+  font-weight: 500;
 }
 
 .post-content p {
@@ -200,6 +202,7 @@ footer {
   padding: 30px 20px;
   color: var(--medium-gray);
   font-size: 14px;
+  border-top: 1px solid var(--border-color);
 }
 
 /* ===================================
@@ -210,20 +213,17 @@ footer {
 .hero-section {
   text-align: center;
   padding: 80px 40px;
-  background: linear-gradient(135deg, var(--pale-purple) 0%, var(--white) 100%);
+  background: var(--light-gray);
   border-radius: 0;
   margin-bottom: 40px;
-  box-shadow: none;
+  border: 2px solid var(--primary);
 }
 
 .hero-section h1 {
   font-size: 56px;
   font-weight: 800;
   margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--deep-indigo) 0%, var(--rich-violet) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-dark);
 }
 
 .hero-section p {
@@ -242,35 +242,36 @@ footer {
 }
 
 .hero-btn {
-  padding: 16px 32px;
-  font-size: 16px;
+  padding: 14px 28px;
+  font-size: 15px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 0;
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
-  border: none;
+  border: 2px solid var(--primary-dark);
 }
 
 .hero-btn.primary {
-  background: linear-gradient(135deg, var(--rich-violet) 0%, var(--bright-lavender) 100%);
+  background: var(--primary-accent);
   color: var(--white);
-  box-shadow: 0 4px 16px rgba(85, 53, 200, 0.3);
+  border: 2px solid var(--primary-accent);
 }
 
 .hero-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(85, 53, 200, 0.4);
+  background: #23186c;
+  border-color: #23186c;
+  text-decoration: underline;
 }
 
 .hero-btn.secondary {
   background: var(--white);
-  color: var(--rich-violet);
-  border: 2px solid var(--rich-violet);
+  color: var(--primary-dark);
+  border: 2px solid var(--primary-dark);
 }
 
 .hero-btn.secondary:hover {
-  background: var(--pale-purple);
+  background: var(--light-gray);
+  text-decoration: underline;
 }
 
 /* Products Section */
@@ -287,24 +288,21 @@ footer {
 
 .product-card {
   background: var(--white);
-  border: 2px solid var(--light-lavender);
-  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 0;
   padding: 40px;
   text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(38, 25, 116, 0.08);
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(85, 53, 200, 0.15);
-  border-color: var(--bright-lavender);
+  border: 2px solid var(--primary-accent);
 }
 
 .product-card h3 {
   font-size: 24px;
-  color: var(--rich-violet);
+  color: var(--primary-dark);
   margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .product-card p {
@@ -315,33 +313,33 @@ footer {
 }
 
 .card-link {
-  color: var(--rich-violet);
-  text-decoration: none;
+  color: var(--primary-accent);
+  text-decoration: underline;
   font-weight: 600;
-  transition: color 0.3s ease;
 }
 
 .card-link:hover {
-  color: var(--bright-lavender);
+  color: #23186c;
 }
 
 /* Blog Preview */
 .blog-preview-section {
   text-align: center;
   padding: 40px;
-  background: var(--pale-purple);
-  border-radius: 12px;
+  background: var(--light-gray);
+  border-radius: 0;
+  border: 2px solid var(--primary);
 }
 
 .blog-preview-section a {
-  color: var(--rich-violet);
+  color: var(--primary-accent);
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 18px;
 }
 
 .blog-preview-section a:hover {
-  text-decoration: underline;
+  color: #23186c;
 }
 
 /* ===================================
@@ -352,22 +350,22 @@ footer {
 .product-hero {
   text-align: center;
   padding: 60px 40px;
-  background: linear-gradient(135deg, var(--pale-purple) 0%, var(--white) 100%);
+  background: var(--light-gray);
   margin-bottom: 40px;
   border-radius: 0;
-  box-shadow: none;
+  border: 2px solid var(--primary);
 }
 
 .product-hero h1 {
   font-size: 52px;
   font-weight: 800;
   margin-bottom: 15px;
-  color: var(--very-dark-blue);
+  color: var(--primary-dark);
 }
 
 .product-subtitle {
   font-size: 24px;
-  color: var(--rich-violet);
+  color: var(--primary-accent);
   margin-bottom: 15px;
   font-weight: 600;
 }
@@ -384,11 +382,12 @@ footer {
 .status-badge {
   display: inline-block;
   padding: 10px 20px;
-  background: var(--accent-warm);
+  background: var(--primary-accent);
   color: var(--white);
-  border-radius: 20px;
+  border-radius: 0;
   font-weight: 600;
   font-size: 14px;
+  border: 2px solid var(--primary-accent);
 }
 
 /* Features Section */
@@ -405,15 +404,16 @@ footer {
 
 .feature-item {
   padding: 30px;
-  background: var(--pale-purple);
-  border-radius: 12px;
-  border-left: 4px solid var(--rich-violet);
+  background: var(--light-gray);
+  border-radius: 0;
+  border-left: 4px solid var(--primary-accent);
 }
 
 .feature-item h3 {
   font-size: 20px;
-  color: var(--very-dark-blue);
+  color: var(--primary-dark);
   margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .feature-item p {
@@ -424,10 +424,11 @@ footer {
 
 /* Use Cases Section */
 .use-cases-section {
-  background: var(--pale-purple);
+  background: var(--light-gray);
   padding: 50px;
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 40px;
+  border: 2px solid var(--primary);
 }
 
 .use-cases-section h2 {
@@ -453,7 +454,7 @@ footer {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--rich-violet);
+  color: var(--primary-accent);
   font-weight: bold;
   font-size: 20px;
 }
@@ -462,16 +463,18 @@ footer {
 .cta-section {
   text-align: center;
   padding: 50px;
-  background: linear-gradient(135deg, var(--rich-violet) 0%, var(--bright-lavender) 100%);
-  border-radius: 12px;
+  background: var(--primary-accent);
+  border-radius: 0;
   color: var(--white);
   margin-bottom: 40px;
+  border: 2px solid var(--primary-accent);
 }
 
 .cta-section h2 {
   color: var(--white);
   font-size: 36px;
   margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .cta-section p {
@@ -482,25 +485,27 @@ footer {
 
 .cta-button {
   display: inline-block;
-  padding: 16px 32px;
-  background: var(--accent-warm);
-  color: var(--white);
+  padding: 14px 28px;
+  background: var(--white);
+  color: var(--primary-accent);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-weight: 600;
-  transition: all 0.3s ease;
+  border: 2px solid var(--white);
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+  background: transparent;
+  color: var(--white);
+  text-decoration: underline;
 }
 
 /* Blog Styles */
 .blog-section h1 {
   font-size: 48px;
   margin-bottom: 10px;
-  color: var(--rich-violet);
+  color: var(--primary-dark);
+  font-weight: 800;
 }
 
 .section-subtitle {
@@ -521,7 +526,7 @@ footer {
   .nav-menu {
     width: 100%;
     justify-content: center;
-    gap: 5px;
+    gap: 0;
   }
   
   .nav-link {
