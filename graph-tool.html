@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>Graph Tool - Game Dev Editor - Curious Trove</title>
+  <meta name="title" content="Graph Tool - Game Dev Editor - Curious Trove" />
+  <meta name="description" content="Graph Tool: Build quest trees, state machines, dialogue graphs, and more visually. No coding required. Coming soon." />
+  <meta name="keywords" content="graph visualization, data structure tool, game development, graph editor" />
+  <meta name="author" content="Curious Trove" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://curioustrove.com/graph-tool.html" />
+  <meta property="og:title" content="Graph Tool - Visualization & Design" />
+  <meta property="og:description" content="Interactive graph visualization and manipulation for game developers." />
+  <meta property="og:image" content="https://curioustrove.com/res/logo.png" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://curioustrove.com/graph-tool.html" />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="res/logo.png" />
+  <link rel="apple-touch-icon" href="res/logo.png" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script async src="https://eocampaign1.com/form/3262d2d4-ef9b-11f0-bbb6-25f2b5267f47.js" data-form="3262d2d4-ef9b-11f0-bbb6-25f2b5267f47"></script>
+
+</head>
+<body>
+  <div id="navbar-container"></div>
+  
+  <script>
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+  </script>
+
+  <main>
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+      <h1>Graph Tool</h1>
+      <p class="product-subtitle">Graph Node UI for Unity UI Toolkit</p>
+      <p class="product-description">Build complex graph UIs that also work at runtime.</p>
+      <div class="status-badge">🚀 In Development</div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo-section">
+      <h2>Live Demo</h2>
+      <p>Not much for now but you can spawn nodes with right click or space and connect them.</p>
+      <div class="demo-placeholder">
+        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      </div>
+      <script>
+        document.addEventListener("mousedown", function(e) {
+        if (e.button) {
+            e.preventDefault();
+        }}, { passive: false });
+        var buildUrl = "res/demos/Build";
+        var loaderUrl = buildUrl + "/Test.loader.js";
+        var config = {
+          dataUrl: buildUrl + "/Test.data",
+          frameworkUrl: buildUrl + "/Test.framework.js",
+          codeUrl: buildUrl + "/Test.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Hydra Unity",
+          productVersion: "0.1"
+        };
+
+        var canvas = document.querySelector("#unity-canvas");
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {})
+        };
+        document.body.appendChild(script);
+      </script>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <h2>How It Works</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>🎨 Low dependencies to Unity</h3>
+          <p>Minimal reliance on Unity-specific features and APIs.</p>
+        </div>
+        <div class="feature-item">
+          <h3>📊 Flexibility</h3>
+          <p>Implement custom graph elements.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🔄 Customization</h3>
+          <p>Use the power of Unity UI Toolkit to tailor your graph UI appearance.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2026 Curious Trove</p>
+  </footer>
+</body>
+</html>
