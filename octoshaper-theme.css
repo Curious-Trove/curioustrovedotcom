@@ -1,0 +1,60 @@
+/* OctoShaper Theme Colors */
+:root {
+  --octoshaper-sunlight: #FFD93D;
+  --octoshaper-golden: #FFB200;
+  --octoshaper-amber: #FF8400;
+  --octoshaper-rust: #E07A00;
+}
+
+/* Product Hero Section */
+.product-hero {
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.08) 0%, rgba(255, 132, 0, 0.08) 100%) !important;
+  border-color: var(--octoshaper-golden) !important;
+}
+
+.product-hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.product-hero h1 {
+  color: #23186c !important;
+  margin: 0 !important;
+}
+
+.product-logo {
+  max-width: 150px;
+  height: auto;
+  display: block;
+}
+
+.product-subtitle {
+  color: var(--octoshaper-amber) !important;
+}
+
+.status-badge {
+  background: var(--octoshaper-golden) !important;
+  color: var(--octoshaper-rust) !important;
+  border-color: var(--octoshaper-golden) !important;
+}
+
+/* Features Section */
+.features-section {
+  border-color: var(--octoshaper-golden) !important;
+}
+
+.features-section h2 {
+  color: var(--octoshaper-rust) !important;
+}
+
+.feature-item {
+  border-left: 4px solid var(--octoshaper-golden);
+  padding-left: 20px;
+}
+
+.feature-item h3 {
+  color: var(--octoshaper-amber) !important;
+}
