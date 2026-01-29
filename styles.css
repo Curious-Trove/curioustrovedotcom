@@ -7,25 +7,17 @@
    COLOR THEME - Curious Trove (Brand Colors)
    =================================== */
 :root {
-  /* Brand Colors */
-  --lucky-point: #23186c;             /* Deep purple - darkest */
-  --persian-pink: #f587c5;            /* Bright pink - accent */
-  --purple-heart: #6440d8;            /* Vibrant purple - primary */
-  --kimberly: #84749c;                /* Gray-purple - secondary */
-  
   /* Primary Colors */
-  --primary-dark: #8A74D8;            /* Lucky Point - main dark */
-  --primary: #8A74D8;                 /* Purple Heart - main color */
-  --primary-accent: #f587c5;          /* Persian Pink - bright accent */
-  --primary-light: #F5F5F5;
+  --primary-dark: #8A74D8;
+  --primary: #8A74D8;
+  --primary-accent: #f587c5;
   
   /* Neutral Colors */
   --white: #FFFFFF;
-  --light-gray: #F5F3F9;              /* Light off-white with purple tint */
-  --medium-gray: #84749c;             /* Kimberly - medium gray */
-  --dark-text: #23186c;               /* Lucky Point for dark text */
-  --border-color: #E5D9F0;            /* Light purple border */
-  --border-accent: #6440d8;           /* Purple border accent */
+  --light-gray: #F5F3F9;
+  --medium-gray: #84749c;
+  --dark-text: #23186c;
+  --border-color: #E5D9F0;
 }
 
 /* Base Styles */
@@ -473,83 +465,9 @@ footer {
   font-size: 15px;
 }
 
-/* Use Cases Section */
-.use-cases-section {
-  background: var(--light-gray);
-  padding: 50px;
-  border-radius: 0;
-  margin-bottom: 40px;
-  border: 2px solid var(--primary);
-}
 
-.use-cases-section h2 {
-  margin-bottom: 30px;
-}
 
-.use-cases-section ul {
-  list-style: none;
-  columns: 2;
-  column-gap: 40px;
-}
 
-.use-cases-section li {
-  margin-bottom: 20px;
-  padding-left: 30px;
-  position: relative;
-  color: var(--dark-text);
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.use-cases-section li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--primary-accent);
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* CTA Section */
-.cta-section {
-  text-align: center;
-  padding: 50px;
-  background: var(--primary-accent);
-  border-radius: 0;
-  color: var(--white);
-  margin-bottom: 40px;
-  border: 2px solid var(--primary-accent);
-}
-
-.cta-section h2 {
-  color: var(--white);
-  font-size: 36px;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.cta-section p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 14px 28px;
-  background: var(--white);
-  color: var(--primary-accent);
-  text-decoration: none;
-  border-radius: 0;
-  font-weight: 600;
-  border: 2px solid var(--white);
-}
-
-.cta-button:hover {
-  background: transparent;
-  color: var(--white);
-  text-decoration: underline;
-}
 
 /* Blog Styles */
 .blog-section h1 {
