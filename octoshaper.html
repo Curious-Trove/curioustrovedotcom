@@ -17,18 +17,17 @@
   <meta property="og:url" content="https://curioustrove.com/octoshaper.html" />
   <meta property="og:title" content="OctoShaper - Unity Procedural Generation Tool" />
   <meta property="og:description" content="Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback." />
-  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.png" />
+  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
   
   <!-- Canonical URL -->
   <link rel="canonical" href="https://curioustrove.com/octoshaper.html" />
   
   <!-- Icons -->
-  <link rel="icon" type="image/png" href="res/octoshaper-logo.png" />
-  <link rel="apple-touch-icon" href="res/octoshaper-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="res/octoshaper-logo.svg" />
+  <link rel="apple-touch-icon" href="res/octoshaper-logo.svg" />
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="octoshaper-theme.css" />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -38,7 +37,7 @@
     "name": "OctoShaper",
     "description": "Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback.",
     "url": "https://curioustrove.com/octoshaper.html",
-    "image": "https://curioustrove.com/res/octoshaper-logo.png",
+    "image": "https://curioustrove.com/res/octoshaper-logo.svg",
     "applicationCategory": "GameApplication",
     "operatingSystem": "Web, Windows, macOS, Linux",
     "offers": {
@@ -78,12 +77,82 @@
       .then(html => document.getElementById('navbar-container').innerHTML = html);
   </script>
 
-  <main>
+  <!-- Grid Background Canvas -->
+  <canvas id="grid-background"></canvas>
+  
+  <script>
+    // Generate procedural grid background
+    const canvas = document.getElementById('grid-background');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawGrid();
+    }
+    
+    function drawGrid() {
+      // Colors from the node graph tool
+      const backgroundColor = '#262628';
+      const gridColor = '#333333';
+      const largeGridColor = '#404040';
+      const smallGridSize = 20;
+      const largeGridSize = 100;
+      
+      // Fill background
+      ctx.fillStyle = backgroundColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Draw small grid
+      ctx.strokeStyle = gridColor;
+      ctx.lineWidth = 0.5;
+      
+      for (let x = 0; x < canvas.width; x += smallGridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      
+      for (let y = 0; y < canvas.height; y += smallGridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+      
+      // Draw large grid
+      ctx.strokeStyle = largeGridColor;
+      ctx.lineWidth = 1;
+      
+      for (let x = 0; x < canvas.width; x += largeGridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      
+      for (let y = 0; y < canvas.height; y += largeGridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+    }
+    
+    // Draw grid on load and resize
+    window.addEventListener('resize', resizeCanvas);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', resizeCanvas);
+    } else {
+      resizeCanvas();
+    }
+  </script>
     <!-- Product Hero Section -->
     <section class="product-hero">
       <div class="product-hero-header">
-        <img src="res/octoshaper-logo.png" alt="OctoShaper Logo" class="product-logo" />
-        <h1>OctoShaper</h1>
+        <img src="res/octoshaper-logo.svg" alt="OctoShaper Logo" class="product-logo" />
+        <h1><span class="octo">Octo</span><span class="shaper">Shaper</span></h1>
       </div>
       <p class="product-subtitle">Node-based procedural generation for Unity games</p>
       <div class="status-badge">🚀 Coming Soon</div>

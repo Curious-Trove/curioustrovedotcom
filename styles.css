@@ -14,8 +14,8 @@
   --kimberly: #84749c;                /* Gray-purple - secondary */
   
   /* Primary Colors */
-  --primary-dark: #23186c;            /* Lucky Point - main dark */
-  --primary: #6440d8;                 /* Purple Heart - main color */
+  --primary-dark: #8A74D8;            /* Lucky Point - main dark */
+  --primary: #8A74D8;                 /* Purple Heart - main color */
   --primary-accent: #f587c5;          /* Persian Pink - bright accent */
   --primary-light: #F5F5F5;
   
@@ -135,7 +135,6 @@ main {
 
 /* Sections */
 section {
-  background: var(--white);
   border-radius: 0;
   padding: 40px;
   margin-bottom: 40px;
@@ -379,17 +378,40 @@ footer {
 .product-hero {
   text-align: center;
   padding: 50px 40px;
-  background: var(--light-gray);
   margin-bottom: 40px;
   border-radius: 0;
   border: 2px solid var(--primary);
 }
 
+.product-hero-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.product-logo {
+  height: 80px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
 .product-hero h1 {
   font-size: 44px;
   font-weight: 800;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   color: var(--primary-dark);
+}
+
+.product-hero h1 .octo {
+  color: var(--white);
+}
+
+.product-hero h1 .shaper {
+  color: var(--primary);
 }
 
 .product-subtitle {
@@ -543,6 +565,16 @@ footer {
   margin-bottom: 50px;
 }
 
+#grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {  
   .nav-container {
@@ -581,5 +613,21 @@ footer {
   
   main {
     padding: 20px 15px;
+  }
+  
+  .product-hero {
+    padding: 30px 20px;
+  }
+  
+  .product-hero-header {
+    gap: 15px;
+  }
+  
+  .product-logo {
+    height: 60px;
+  }
+  
+  .product-hero h1 {
+    font-size: 32px;
   }
 }
