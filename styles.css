@@ -9,14 +9,14 @@
 :root {
   /* Primary Colors */
   --primary-dark: #8A74D8;
-  --primary: #8A74D8;
-  --primary-accent: #f587c5;
+  --primary: #c0b0e7;
+  --primary-accent: #00c89f;
   
   /* Neutral Colors */
   --white: #FFFFFF;
   --light-gray: #F5F3F9;
   --medium-gray: #84749c;
-  --dark-text: #23186c;
+  --dark-text: #494454;
   --border-color: #E5D9F0;
 }
 
@@ -56,7 +56,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 65px;
 }
 
 .nav-brand {
