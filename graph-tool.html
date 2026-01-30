@@ -47,40 +47,6 @@
       <div class="status-badge">🚀 In Development</div>
     </section>
 
-    <!-- Demo Section -->
-    <section id="demo" class="demo-section">
-      <h2>Live Demo</h2>
-      <p>Not much for now but you can spawn nodes with right click or space and connect them.</p>
-      <div class="demo-placeholder">
-        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-      </div>
-      <script>
-        document.addEventListener("mousedown", function(e) {
-        if (e.button) {
-            e.preventDefault();
-        }}, { passive: false });
-        var buildUrl = "res/demos/Build";
-        var loaderUrl = buildUrl + "/Test.loader.js";
-        var config = {
-          dataUrl: buildUrl + "/Test.data",
-          frameworkUrl: buildUrl + "/Test.framework.js",
-          codeUrl: buildUrl + "/Test.wasm",
-          streamingAssetsUrl: "StreamingAssets",
-          companyName: "DefaultCompany",
-          productName: "OctoShaper Unity",
-          productVersion: "0.1"
-        };
-
-        var canvas = document.querySelector("#unity-canvas");
-        var script = document.createElement("script");
-        script.src = loaderUrl;
-        script.onload = () => {
-          createUnityInstance(canvas, config, (progress) => {})
-        };
-        document.body.appendChild(script);
-      </script>
-    </section>
-
     <!-- Features Section -->
     <section class="features-section">
       <h2>How It Works</h2>
