@@ -422,6 +422,14 @@ footer {
   margin-right: auto;
 }
 
+.product-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 .status-badge {
   display: inline-block;
   padding: 10px 20px;
@@ -431,6 +439,36 @@ footer {
   font-weight: 600;
   font-size: 14px;
   border: 2px solid var(--primary-accent);
+}
+
+/* Itch.io Button */
+.itch-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: var(--white);
+  color: var(--primary-dark);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border: 2px solid var(--primary-dark);
+  transition: all 0.2s ease;
+}
+
+.itch-button:hover {
+  background: var(--primary-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.itch-button img {
+  filter: none;
+  transition: filter 0.2s ease;
+}
+
+.itch-button:hover img {
+  filter: brightness(0) invert(1);
 }
 
 /* Features Section */
