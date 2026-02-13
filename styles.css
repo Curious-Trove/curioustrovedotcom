@@ -441,12 +441,33 @@ footer {
   border: 2px solid var(--primary-accent);
 }
 
+.newsletter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: var(--primary-accent);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  border: 2px solid var(--white);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.newsletter-button:hover {
+  background: var(--white);
+  color: var(--primary-accent);
+  text-decoration: none;
+}
+
 /* Itch.io Button */
 .itch-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 9px 20px;
   background: var(--white);
   color: var(--primary-dark);
   text-decoration: none;
@@ -469,6 +490,59 @@ footer {
 
 .itch-button:hover img {
   filter: brightness(0) invert(1);
+}
+
+/* Video Demo Section */
+.video-demo-section {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.video-demo-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.video-demo-header h2 {
+  margin-bottom: 0;
+}
+
+.wip-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--primary-accent);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 0;
+  border: 2px solid var(--primary-accent);
+}
+
+.video-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #000;
+  border: 3px solid var(--primary);
+  border-radius: 0;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-caption {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--medium-gray);
+  font-style: italic;
 }
 
 /* Features Section */

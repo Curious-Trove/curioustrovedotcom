@@ -67,6 +67,15 @@
     }
   }
   </script>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '2108920');
+  </script>
+  <!-- End MailerLite Universal -->
 </head>
 <body>
   <div id="navbar-container"></div>
@@ -156,12 +165,27 @@
       </div>
       <p class="product-subtitle">Node-based procedural generation for Unity games</p>
       <div class="product-actions">
-        <div class="status-badge">🚀 Coming Soon</div>
+          <button class="newsletter-button ml-onclick-form" onclick="ml('show', 'nfkYWN', true)">🔔 Join Waitlist</button>
         <a href="https://curioustrove.itch.io/octoshaper" target="_blank" rel="noopener noreferrer" class="itch-button">
           <img src="https://static.itch.io/images/itchio-textless-black.svg" alt="itch.io" width="20" height="20" />
           View on itch.io
         </a>
       </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo-section">
+      <div class="video-demo-header">
+        <h2>See It In Action</h2>
+        <span class="wip-badge">Work in Progress</span>
+      </div>
+      <div class="video-container">
+        <video controls autoplay muted loop playsinline>
+          <source src="res/demos/forest-demo.mov" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="video-caption">Procedural forest generation demo - Early development</p>
     </section>
 
     <!-- Features Section -->
