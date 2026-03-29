@@ -60,20 +60,7 @@
   </script>
 </head>
 <body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
-  <!-- BEGIN: Header -->
-  <header class="bg-[#6b42b1] text-white">
-    <div class="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight hover:opacity-90 transition-opacity">
-        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/20 p-1" src="res/logo.svg"/>
-        Curious Trove
-      </a>
-      <nav class="flex items-center gap-8 text-sm font-medium">
-        <a class="hover:text-white/80 transition-colors" href="octoshaper.html">OctoShaper</a>
-        <a class="bg-white/20 px-4 py-2 rounded-md hover:bg-white/30 transition-colors" href="blog.html">Devlog</a>
-      </nav>
-    </div>
-  </header>
-  <!-- END: Header -->
+  <div id="navbar-container"></div>
 
   <!-- BEGIN: Main Content -->
   <main class="flex-grow bg-grid-pattern pb-20">
@@ -195,15 +182,7 @@
   </main>
   <!-- END: Main Content -->
 
-  <!-- BEGIN: Footer -->
-  <footer class="bg-[#6b42b1] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
-    <div class="max-w-[1400px] mx-auto px-6 flex justify-center items-center gap-6">
-      <span>© 2026 Curious Trove</span>
-      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Privacy Policy</a>
-      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Terms of Service</a>
-      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Contact</a>
-    </div>
-  </footer>
-  <!-- END: Footer -->
+  <div id="footer-container"></div>
+  <script src="js/components.js"></script>
 </body>
 </html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Getting Started with OctoShaper - Curious Trove</title>
+  <meta name="description" content="Learn the basics of OctoShaper and create your first procedural building in Unity." />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="../res/octoshaper-logo-outline.svg" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#6d42a6',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <!-- BEGIN: Main Content -->
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <article class="max-w-[900px] mx-auto px-6 py-16">
+      <!-- Tutorial Header -->
+      <div class="mb-8">
+        <div class="flex items-center gap-2 mb-4">
+          <a href="../octoshaper.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-md">Beginner</span>
+          <span class="text-sm text-brand-gray">⏱️ 15 min</span>
+        </div>
+        <h1 class="text-5xl font-extrabold text-[#6b42b1] mb-4 tracking-tight">Getting Started with OctoShaper</h1>
+        <p class="text-xl text-brand-gray leading-relaxed">Learn the basics of OctoShaper and create your first procedural building in Unity.</p>
+      </div>
+
+      <!-- Tutorial Content -->
+      <div class="bg-white rounded-xl p-8 shadow-lg border-2 border-brand-border prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+        <p class="mb-6">Welcome to OctoShaper! In this tutorial, you'll learn how to set up OctoShaper in your Unity project and create your first procedural building. By the end, you'll understand the core concepts of node-based procedural generation.</p>
+
+        <h2 class="text-3xl font-bold mb-4 mt-8">Prerequisites</h2>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Unity 2021.3 or later installed</li>
+          <li>Basic understanding of Unity Editor</li>
+          <li>OctoShaper package downloaded</li>
+        </ul>
+
+        <h2 class="text-3xl font-bold mb-4 mt-8">Step 1: Installation</h2>
+        <p class="mb-4">First, let's install OctoShaper in your Unity project:</p>
+        <ol class="list-decimal pl-6 mb-6 space-y-2">
+          <li>Open your Unity project</li>
+          <li>Go to <strong>Window → Package Manager</strong></li>
+          <li>Click the <strong>+</strong> button and select <strong>Add package from disk</strong></li>
+          <li>Navigate to the OctoShaper package and select <code>package.json</code></li>
+        </ol>
+
+        <h2 class="text-3xl font-bold mb-4 mt-8">Step 2: Creating Your First Node Graph</h2>
+        <p class="mb-4">Now let's create a simple procedural building:</p>
+        <ol class="list-decimal pl-6 mb-6 space-y-2">
+          <li>Right-click in the Project window</li>
+          <li>Select <strong>Create → OctoShaper → Node Graph</strong></li>
+          <li>Name it "MyFirstBuilding"</li>
+          <li>Double-click to open the Node Graph Editor</li>
+        </ol>
+
+        <h2 class="text-3xl font-bold mb-4 mt-8">Step 3: Adding Nodes</h2>
+        <p class="mb-4">Let's add some basic nodes to create a simple building structure:</p>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Right-click in the graph and select <strong>Add Node → Primitives → Box</strong></li>
+          <li>Add a <strong>Transform</strong> node to position the box</li>
+          <li>Add an <strong>Output</strong> node to preview the result</li>
+          <li>Connect the nodes by clicking and dragging from output to input ports</li>
+        </ul>
+
+        <h2 class="text-3xl font-bold mb-4 mt-8">Next Steps</h2>
+        <p class="mb-4">Congratulations! You've created your first procedural building with OctoShaper. Here are some ideas to explore next:</p>
+        <ul class="list-disc pl-6 mb-6 space-y-2">
+          <li>Experiment with different primitive shapes</li>
+          <li>Add randomization to create variations</li>
+          <li>Try the Array node to create repeated patterns</li>
+          <li>Explore the Material nodes to add colors and textures</li>
+        </ul>
+
+        <div class="bg-[#f4f0fa] border-2 border-[#6b42b1]/20 rounded-lg p-6 mt-8">
+          <h3 class="text-xl font-bold mb-2">Need Help?</h3>
+          <p class="text-sm text-brand-gray mb-4">If you run into any issues, check out our documentation or join our community.</p>
+          <div class="flex gap-3">
+            <a href="../octoshaper.html" class="bg-[#6b42b1] hover:bg-[#5a358c] text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors">Back to OctoShaper</a>
+            <a href="../blog.html" class="bg-white hover:bg-gray-50 text-[#6b42b1] font-bold py-2 px-4 rounded-lg text-sm border-2 border-[#6b42b1]/20 transition-colors">Read More Tutorials</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+  <!-- END: Main Content -->
+
+  <div id="footer-container"></div>
+  
+  <script>
+    // Adjust component paths for tutorial subdirectory
+    fetch('../components/navbar.html')
+      .then(response => response.text())
+      .then(html => {
+        const navbarContainer = document.getElementById('navbar-container');
+        if (navbarContainer) {
+          // Adjust relative paths in navbar
+          html = html.replace(/href="(?!http)([^"]+)"/g, 'href="../$1"');
+          html = html.replace(/src="(?!http)([^"]+)"/g, 'src="../$1"');
+          navbarContainer.innerHTML = html;
+        }
+      });
+
+    fetch('../components/footer.html')
+      .then(response => response.text())
+      .then(html => {
+        const footerContainer = document.getElementById('footer-container');
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      });
+  </script>
+</body>
+</html>
