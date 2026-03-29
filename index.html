@@ -27,8 +27,38 @@
   <link rel="icon" type="image/svg+xml" href="res/logo.svg" />
   <link rel="apple-touch-icon" href="res/logo.svg" />
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#6d42a6',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
   
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -59,50 +89,100 @@
   }
   </script>
 </head>
-<body>
-  <div id="navbar-container"></div>
-  
-  <script>
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('navbar-container').innerHTML = html);
-  </script>
+<body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+  <header class="bg-[#6b42b1] text-white">
+    <div class="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight hover:opacity-90 transition-opacity">
+        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/20 p-1" src="res/logo.svg"/>
+        Curious Trove
+      </a>
+      <nav class="flex items-center gap-8 text-sm font-medium">
+        <a class="hover:text-white/80 transition-colors" href="octoshaper.html">OctoShaper</a>
+        <a class="hover:text-white/80 transition-colors" href="blog.html">Devlog</a>
+      </nav>
+    </div>
+  </header>
+  <!-- END: Header -->
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <h1>Tools for Game Devs</h1>
-        <p>By indies, for indies. Check out what we're working on.</p>
-        <div class="hero-buttons">
-          <a href="octoshaper.html" class="hero-btn primary">Explore OctoShaper</a>
-        </div>
+  <!-- BEGIN: Main Content -->
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <!-- BEGIN: Hero Section -->
+    <section class="max-w-[1400px] mx-auto px-6 pt-24 pb-16 text-center">
+      <h1 class="text-6xl font-extrabold text-[#6b42b1] mb-4 tracking-tight">Tools for Game Devs</h1>
+      <p class="text-2xl text-brand-dark max-w-3xl mx-auto mb-10 leading-relaxed">
+        By indies, for indies. Check out what we're working on.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="octoshaper.html" class="bg-[#8ce2b8] hover:bg-[#76cca1] text-[#1e5a3c] font-bold py-4 px-8 rounded-lg text-lg transition-colors shadow-sm">
+          Explore OctoShaper
+        </a>
       </div>
     </section>
+    <!-- END: Hero Section -->
 
-    <!-- Products Overview -->
-    <section class="products-section">
-      <h2>What We're Making</h2>
+    <!-- BEGIN: Products Section -->
+    <section class="max-w-[1400px] mx-auto px-6 mb-20">
+      <h2 class="text-4xl font-bold mb-8 text-center">What We're Making</h2>
       
-      <div class="products-grid">
-        <div class="product-card">
-          <h3>OctoShaper</h3>
-          <p>Node based procedural generation for games. Releasing mid 2026.</p>
-          <a href="octoshaper.html" class="card-link">Check it out →</a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- OctoShaper Card -->
+        <div class="bg-white border-2 border-[#8ce2b8] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="flex items-center gap-4 mb-4">
+            <img src="res/octoshaper-logo.svg" alt="OctoShaper" class="w-16 h-16"/>
+            <h3 class="text-3xl font-bold text-[#6b42b1]">OctoShaper</h3>
+          </div>
+          <p class="text-lg text-brand-gray mb-6 leading-relaxed">
+            Node based procedural generation for games. Releasing mid 2026.
+          </p>
+          <a href="octoshaper.html" class="inline-flex items-center text-[#6b42b1] font-bold text-lg hover:text-[#5a358c] transition-colors">
+            Check it out 
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Placeholder for future projects -->
+        <div class="bg-[#f4f0fa] border-2 border-[#6b42b1]/20 rounded-xl p-8 shadow-lg flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-4">🚀</div>
+            <h3 class="text-2xl font-bold text-brand-gray mb-2">More Coming Soon</h3>
+            <p class="text-brand-gray">We're always building something new</p>
+          </div>
         </div>
       </div>
     </section>
+    <!-- END: Products Section -->
 
-    <!-- Blog Preview -->
-    <section class="blog-preview-section">
-      <h2>Latest from the Devlog</h2>
-      <p>Building in public. Come see what we're up to.</p>
-      <p><a href="blog.html">Read all posts →</a></p>
+    <!-- BEGIN: Blog Preview Section -->
+    <section class="max-w-[1400px] mx-auto px-6 mb-20">
+      <div class="bg-white border-2 border-brand-border rounded-xl p-12 shadow-lg text-center">
+        <h2 class="text-4xl font-bold mb-4">Latest from the Devlog</h2>
+        <p class="text-xl text-brand-gray mb-6 leading-relaxed">
+          Building in public. Come see what we're up to.
+        </p>
+        <a href="blog.html" class="inline-flex items-center text-[#6b42b1] font-bold text-lg hover:text-[#5a358c] transition-colors">
+          Read all posts
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
     </section>
+    <!-- END: Blog Preview Section -->
   </main>
+  <!-- END: Main Content -->
 
-  <footer>
-    <p>&copy; 2026 Curious Trove</p>
+  <!-- BEGIN: Footer -->
+  <footer class="bg-[#6b42b1] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+    <div class="max-w-[1400px] mx-auto px-6 flex justify-center items-center gap-6">
+      <span>© 2026 Curious Trove</span>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Privacy Policy</a>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Terms of Service</a>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Contact</a>
+    </div>
   </footer>
+  <!-- END: Footer -->
 </body>
 </html>

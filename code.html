@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OctoShaper - Curious Trove</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#6d42a6',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+<!-- BEGIN: Header -->
+<header class="bg-[#6b42b1] text-white">
+<div class="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
+<div class="flex items-center gap-2 font-bold text-xl tracking-tight">
+<img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/20 p-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS4qmUH5IppwwD-WGRGF-V8dY8NI-71oa3eMp7PF2naoqbVlCeA_egTd1dNcGUoxBe3ZwtPHNyUqGdQFJ8qWGLNtip0t2X7_slvii-CJLgzb5IOTZWZH7Vgg0F8_1nXqBfkfwrgBxGZXTHalmcd3zO4T6qI1Rx5ZHnZz9Gfk5VM5ngG04ZzuBm9CNKQuybrwksv8hc4j1CVvAdAd986wMVCtlHrfpXNNv6MJCpaRqPyZ6sG9gCHyq5AMGx2PhlQVFFwnbk36ySa-I"/>
+        Curious Trove
+      </div>
+<nav class="flex items-center gap-8 text-sm font-medium">
+<a class="bg-white/20 px-4 py-2 rounded-md hover:bg-white/30 transition-colors" href="#">OctoShaper</a>
+<a class="hover:text-white/80 transition-colors" href="#">Devlog</a>
+<a class="hover:text-white/80 transition-colors" href="#">v0.1.0</a>
+</nav>
+</div>
+</header>
+<!-- END: Header -->
+<!-- BEGIN: Main Content -->
+<main class="flex-grow bg-grid-pattern pb-20">
+<!-- BEGIN: Hero Section -->
+<section class="max-w-[1400px] mx-auto px-6 pt-16 pb-12 text-center">
+<div class="flex justify-center items-center gap-4 mb-4">
+<img alt="OctoShaper Character" class="w-24 h-24" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAi8tWqr9jlzfYI_VlxEhBJffaZo0Ul2Mi3gGj8KnqOxmADNAyvCehA47jJIrO07s4YMHN4cxY02ZubgeT26KVTagJT3z4xQwNTd4KxGf5XG6N3GRcYSAqqZR3_PNfm-2OpJAGivU8bu4osnwW_7-4Pb3fH_rZ6ze4bQOi3Qf6ulLXU9XFSytKSHjwMo2CEXEbI4sGuaMbuR0SZmgeSGCvCFzMnHHQWXDYGU0SM_SZU6JeKqNB2wqAAClrYhJMVKrH9z9TEj2x8uA"/>
+<div class="text-left">
+<div class="flex items-center gap-3">
+<h1 class="text-[#6b42b1] text-5xl font-extrabold tracking-tight">OctoShaper</h1>
+<span class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-2 py-1 rounded-md">v0.1.0 Beta</span>
+</div>
+<h2 class="text-[#4cd29b] text-3xl font-bold mt-1 tracking-tight">Professional Indie V3</h2>
+</div>
+</div>
+<p class="text-xl text-brand-dark max-w-2xl mx-auto mb-8 leading-snug">
+        Node-based procedural generation for Unity games.<br/>
+        Build faster, iterate quicker.
+      </p>
+<div class="flex justify-center gap-4">
+<a class="bg-[#8ce2b8] hover:bg-[#76cca1] text-[#1e5a3c] font-bold py-3 px-6 rounded-lg flex items-center gap-2 transition-colors shadow-sm" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
+          Join Waitlist
+        </a>
+<a class="bg-[#f4f0fa] hover:bg-[#e8e0f5] text-[#6b42b1] font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-[#6b42b1]/20 transition-colors shadow-sm" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+          View on itch.io
+        </a>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Main Grid Layout -->
+<div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- BEGIN: Left Column (Technical Overview & Features) -->
+<section>
+<h3 class="text-3xl font-bold mb-6 border-b-4 border-brand-dark inline-block pb-1">Technical Overview &amp; Features</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+<!-- Feature Card 1 -->
+<div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm flex flex-col">
+<h4 class="bg-[#6b42b1] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3 self-start">Runtime &amp; Editor Support</h4>
+<div class="bg-gray-800 rounded-lg overflow-hidden mb-3 border border-gray-700 aspect-video relative">
+<img alt="Unity Editor Screenshot" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9MMcGULhLO7QQ3GOh2rDwGW5xjykhIniUrf0rNsetovUpXgtua4oqjbOGk_PBcBCpDyEEX9jZYUOR9vdVXYu85723gOcP0FXcl48jyicvZL7NZ0wBUQ-ReMwfZFBFOFMxUbuPbJIxz7B8hQia8Fb5pzoclaDhu_qWny2x-tMDk3vAEnEmcQSnRBPa5wBt3-6Y59SzFHn21hgbqExu4LQUgdy9OSCaaCGjM_kL2Pk86KZ2SisdYuRsS40CqXQm9MBGbI5dsC71DI8"/>
+</div>
+<p class="text-sm font-medium leading-relaxed mt-auto">Seamlessly works at both runtime and within the Unity Editor. See changes in real-time.</p>
+</div>
+<!-- Feature Card 2 -->
+<div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm flex flex-col">
+<h4 class="bg-[#6b42b1] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3 self-start">Realtime Procedural Generation</h4>
+<div class="bg-gray-800 rounded-lg overflow-hidden mb-3 border border-gray-700 aspect-video relative">
+<img alt="Procedural Terrain Generation" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi_RrAziSjPmBB5OX_nijcy1-2bBqINbpsD_hPMTfk9239JEF32OyrcYBrWW7JvJ_LZumNLhlHBvqUK_U5_tPcxDa0jLhRtgiFDiRUhKldWrT5IzkzwqThPPbJfPdmkd1t_R8CKbYj3nqEJx3XHmbVNC4v4K7lvKK8Rf4Vb1XsxCFPajOyz-tHhQF2ZP-xZF5XlWbl12kYW2zhs52NeGq3Y1002SJh9Ar_XUiQc5IFouLRwa7zMbKzLHdzh4B0vQ6e4wFIYjwa1Hk"/>
+<span class="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">GIF</span>
+</div>
+<p class="text-sm font-medium leading-relaxed mt-auto">Instantly visualize changes as you tweak parameters and add nodes. Instant feedback loop.</p>
+</div>
+</div>
+<!-- Feature Card 3 (Full Width) -->
+<div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm flex items-center gap-6">
+<div class="w-1/2 bg-gray-800 rounded-lg overflow-hidden border border-gray-700 aspect-video relative">
+<img alt="Node Graph Interface" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLBMgtkZKkn3GDGeUa2tpkgQYW-phVpJQy-B8tiYg_EJASHsfmKSd42voQOKnCkss5x1bowudz4piDhMO8H_DTqajl63u9dM4mxKd3XBgfWFMUGqPfBJEM2QdVCxEIsdOFVpjFLGHhFQaAPBhl4t0ui0PbQO6G1AmrtqALKAlDZMih9dMO5-fPZWoOJjTJlcUQVUwJ7xQvjWZi_LB53zuDH0KxhmzhABg4qyIDxQQAALj_tl3WbWaaLidKP96z7oldk78CAvMfKGA"/>
+</div>
+<div class="w-1/2">
+<h4 class="text-xl font-bold mb-2">Deep Engine Integration</h4>
+<p class="text-sm font-medium leading-relaxed">Functions as a native Unity tool. Like Houdini or Blender nodes, but directly inside your game engine.</p>
+</div>
+</div>
+</section>
+<!-- END: Left Column -->
+<!-- BEGIN: Right Column (Project Showcase) -->
+<section>
+<h3 class="text-3xl font-bold mb-6 border-b-4 border-brand-dark inline-block pb-1">Project Showcase</h3>
+<div class="flex flex-col gap-6">
+<!-- Showcase Item 1 -->
+<div class="rounded-xl overflow-hidden border-2 border-[#8ce2b8] shadow-md relative group">
+<img alt="Procedural City Generation" class="w-full aspect-[21/9] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwYYke6aicXBJuSqPjU-ctqOTV3qmwMo1mP4wktOgcnHeMdgt3XXrtossL-ZAW-pOa9hWlvZlpKe8Ztr7anCjS_K4DiNZZ1vu0eixl0JppyQWLOjPpMDXiHF51Y2qMnana1xkI2z2zQSLcMlPFONwvF2iaBDchjkZcuy9VFRjzeyCNVZNL7xT0ZOjmLmcujxRVSIWPN3mPBsehgPqMWrNXdlDaiv7LiBP4xai4bjLlGZrGxqpU3FMm1CcDsRxg8MVAI250vImujus"/>
+<div class="absolute bottom-0 left-0 w-full bg-black/70 text-white text-center py-2 font-medium backdrop-blur-sm">
+              Procedural City Generation
+            </div>
+</div>
+<!-- Showcase Item 2 -->
+<div class="rounded-xl overflow-hidden border-2 border-[#8ce2b8] shadow-md relative group">
+<img alt="Advanced Node Graph System" class="w-full aspect-[21/9] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAnRDxDUWNpSAwXYgT8airU6Bp9D2yh51Kgm68w7PMOhLeQW48i2WvXmko2u5jogj1du3IXOgX7qBlvUFL8tq77KPXxwHiAgl0DiPVwvrTEGde0k51Fc5Xv5uNs6LMYWt0AMeXcPgwHJFYs62lAeNWGeZpXv7BY-4v9ki4weywHvV4Tuc3JlxzIUHyKvjPKSlg4r8zJiJYhyb1LvGBqwX3ZcJ2LHMw4vhDgpYfuPlwId6OVpy9OItY5NYg6u5JgTYwmCMr9E-NL3I"/>
+<div class="absolute bottom-0 left-0 w-full bg-black/70 text-white text-center py-2 font-medium backdrop-blur-sm">
+              Advanced Node Graph System
+            </div>
+</div>
+<!-- Indie Focus Banner -->
+<div class="flex items-center gap-6 mt-4 p-4">
+<img alt="Indie Robot Mascot" class="w-20 h-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB288-6iaXRXOzINlobiFB_7kCu6XzpsXe5PnDePvJzLwCSz1MJX2DqCMggG5dU5r6qkRoDoU2QbQ7zOR_5WYAgmVdUWgI7rKSW3GhTDBV4gMqKhfSbb_HBorN1YzmkVCKbNsPnO-c9o1fm0yibNcy4-P4hQE-g1Qtrd81QdO2lQbHbC6OuyCNERfO_VqGXGdj7f2H2q3YOUcV2de_MDCltEupQwiAxBI6vxTBk5V_EGHGLtb6OwcWwRLT_PAwUdyKFIg-cy-dhDRc"/>
+<div>
+<h4 class="text-2xl font-bold mb-1">Indie Developer Focus</h4>
+<p class="text-brand-dark font-medium leading-relaxed text-sm">Designed by indies, for indies. OctoShaper empowers small teams to create large-scale content without a massive budget.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Right Column -->
+</div>
+<!-- END: Main Grid Layout -->
+</main>
+<!-- END: Main Content -->
+<!-- BEGIN: Footer -->
+<footer class="bg-[#6b42b1] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+<div class="max-w-[1400px] mx-auto px-6 flex justify-center items-center gap-6">
+<span>© 2028 Curious Trove</span>
+<a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Contact</a>
+<a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Discord</a>
+<a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Twitter</a>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

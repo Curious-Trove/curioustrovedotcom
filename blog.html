@@ -26,82 +26,160 @@
   <link rel="icon" type="image/svg+xml" href="res/logo.svg" />
   <link rel="apple-touch-icon" href="res/logo.svg" />
   
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div id="navbar-container"></div>
-  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
   <script>
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('navbar-container').innerHTML = html);
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#6d42a6',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
   </script>
+</head>
+<body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+  <header class="bg-[#6b42b1] text-white">
+    <div class="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight hover:opacity-90 transition-opacity">
+        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/20 p-1" src="res/logo.svg"/>
+        Curious Trove
+      </a>
+      <nav class="flex items-center gap-8 text-sm font-medium">
+        <a class="hover:text-white/80 transition-colors" href="octoshaper.html">OctoShaper</a>
+        <a class="bg-white/20 px-4 py-2 rounded-md hover:bg-white/30 transition-colors" href="blog.html">Devlog</a>
+      </nav>
+    </div>
+  </header>
+  <!-- END: Header -->
 
-  <main>
-    <!-- Blog Section -->
-    <section class="blog-section">
-      <h1>📝 The Devlog</h1>
-      <p class="section-subtitle">Sharing progress, challenges, and insights on the development of our tools.</p>
+  <!-- BEGIN: Main Content -->
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <!-- BEGIN: Blog Header -->
+    <section class="max-w-[900px] mx-auto px-6 pt-16 pb-12 text-center">
+      <h1 class="text-5xl font-extrabold text-[#6b42b1] mb-4 tracking-tight">📝 The Devlog</h1>
+      <p class="text-xl text-brand-gray max-w-2xl mx-auto leading-relaxed">
+        Sharing progress, challenges, and insights on the development of our tools.
+      </p>
+    </section>
+    <!-- END: Blog Header -->
 
-    <article class="blog-post">
-          <h2 class="post-title">Improved performance a lot for my PCG tool</h2>
-          <a href="octoshaper.html" class="post-category">OctoShaper</a>
-          <p class="post-date">March 20, 2026</p>
-          <div class="post-content">
-            <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
+    <!-- BEGIN: Blog Posts -->
+    <section class="max-w-[900px] mx-auto px-6 space-y-8">
+      <!-- Blog Post 1 -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3">
+          <a href="octoshaper.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <span class="text-sm text-brand-gray">March 20, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Improved performance a lot for my PCG tool</h2>
+        <div class="post-content">
+          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
             <a href="https://www.reddit.com/r/Unity3D/comments/1s58hu0/improved_performance_a_lot_for_my_pcg_tool/">Improved performance a lot for my PCG tool</a><br> by
             <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
             <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-            </blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-          </div>
-    </article>
+          </blockquote>
+          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+        </div>
+      </article>
 
-    <article class="blog-post">
-          <h2 class="post-title">Realtime visualisations and parameter configs</h2>
-          <a href="octoshaper.html" class="post-category">OctoShaper</a>
-          <p class="post-date">February 13, 2026</p>
-          <div class="post-content">
-            <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="568">
+      <!-- Blog Post 2 -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3">
+          <a href="octoshaper.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <span class="text-sm text-brand-gray">February 13, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Realtime visualisations and parameter configs</h2>
+        <div class="post-content">
+          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="568">
             <a href="https://www.reddit.com/r/Unity3D/comments/1r3nzn9/realtime_visualisations_of_procedural_objects/">Realtime visualisations of procedural objects</a><br> by
             <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
             <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-            </blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-          </div>
-    </article>
-
-    <article class="blog-post">
-          <h2 class="post-title">Parameters and search</h2>
-          <a href="octoshaper.html" class="post-category">OctoShaper</a>
-          <p class="post-date">January 30, 2026</p>
-          <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="608"><a href="https://www.reddit.com/r/Unity3D/comments/1qr1k4n/parameters_and_search_for_my_pcg_tool/">Parameters and search for my PCG tool</a><br> by<a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in<a href="https://www.reddit.com/r/Unity3D/">Unity3D</a></blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-          </div>
-    </article>
-
-    <article class="blog-post">
-          <h2 class="post-title">Designing with UI Toolkit</h2>
-          <a href="graph-tool.html" class="post-category">Graph Tool</a>
-          <p class="post-date">January 16, 2026</p>
-          <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="660"><a href="https://www.reddit.com/r/Unity3D/comments/1qee8wa/ui_toolkit_is_really_powerful/">UI Toolkit is really powerful</a><br> by<a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in<a href="https://www.reddit.com/r/Unity3D/">Unity3D</a></blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+          </blockquote>
+          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
         </div>
-    </article>
+      </article>
 
-
-      <article class="blog-post">
-          <h2 class="post-title">Stress Testing Nodes</h2>
-          <a href="graph-tool.html" class="post-category">Graph Tool</a>
-          <p class="post-date">January 12, 2026</p>
-          <div class="post-content">
-            <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="461"><a href="https://www.reddit.com/r/Unity3D/comments/1q8addb/custom_graph_ui_library/">Custom Graph UI library</a><br> by<a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in<a href="https://www.reddit.com/r/Unity3D/">Unity3D</a></blockquote><script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-          </div>
-    </article>
-
-      <article class="blog-post">
-        <h2 class="post-title">Welcome to Curious Trove</h2>
-        <p class="post-date">January 9, 2026</p>
+      <!-- Blog Post 3 -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3">
+          <a href="octoshaper.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <span class="text-sm text-brand-gray">January 30, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Parameters and search</h2>
         <div class="post-content">
+          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="608">
+            <a href="https://www.reddit.com/r/Unity3D/comments/1qr1k4n/parameters_and_search_for_my_pcg_tool/">Parameters and search for my PCG tool</a><br> by
+            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
+            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
+          </blockquote>
+          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+        </div>
+      </article>
+
+      <!-- Blog Post 4 -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3">
+          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#6b42b1] text-xs font-bold px-3 py-1 rounded-md border border-[#6b42b1]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
+          <span class="text-sm text-brand-gray">January 16, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Designing with UI Toolkit</h2>
+        <div class="post-content">
+          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="660">
+            <a href="https://www.reddit.com/r/Unity3D/comments/1qee8wa/ui_toolkit_is_really_powerful/">UI Toolkit is really powerful</a><br> by
+            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
+            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
+          </blockquote>
+          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+        </div>
+      </article>
+
+      <!-- Blog Post 5 -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3">
+          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#6b42b1] text-xs font-bold px-3 py-1 rounded-md border border-[#6b42b1]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
+          <span class="text-sm text-brand-gray">January 12, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Stress Testing Nodes</h2>
+        <div class="post-content">
+          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="461">
+            <a href="https://www.reddit.com/r/Unity3D/comments/1q8addb/custom_graph_ui_library/">Custom Graph UI library</a><br> by
+            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
+            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
+          </blockquote>
+          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
+        </div>
+      </article>
+
+      <!-- Welcome Post -->
+      <article class="bg-[#f4f0fa] border-2 border-[#6b42b1]/20 rounded-xl p-8 shadow-lg">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-sm text-brand-gray">January 9, 2026</span>
+        </div>
+        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Welcome to Curious Trove</h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
           <p>
             Hey! Welcome. I'm Paul, the solo dev behind Curious Trove.
             This is where I'll be posting updates about the tools I'm building for game developers.
@@ -113,10 +191,19 @@
         </div>
       </article>
     </section>
+    <!-- END: Blog Posts -->
   </main>
+  <!-- END: Main Content -->
 
-  <footer>
-    <p>&copy; 2026 Curious Trove</p>
+  <!-- BEGIN: Footer -->
+  <footer class="bg-[#6b42b1] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+    <div class="max-w-[1400px] mx-auto px-6 flex justify-center items-center gap-6">
+      <span>© 2026 Curious Trove</span>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Privacy Policy</a>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Terms of Service</a>
+      <a class="hover:text-white transition-colors underline decoration-white/30 underline-offset-2" href="#">Contact</a>
+    </div>
   </footer>
+  <!-- END: Footer -->
 </body>
 </html>
