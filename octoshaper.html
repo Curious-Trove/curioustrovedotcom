@@ -40,7 +40,7 @@
         extend: {
           colors: {
             brand: {
-              purple: '#6d42a6',
+              purple: '#8a74d8ff',
               purpleHover: '#5a358c',
               purpleLight: '#f4f0fa',
               green: '#8ce2b8',
@@ -106,24 +106,37 @@
       ml('account', '2108920');
   </script>
   <!-- End MailerLite Universal -->
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KFD9CB6Z');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFD9CB6Z"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
   <div id="navbar-container"></div>
 
   <!-- BEGIN: Main Content -->
   <main class="flex-grow bg-grid-pattern pb-20">
     <!-- BEGIN: Hero Section -->
-    <section class="max-w-[1400px] mx-auto px-6 pt-16 pb-12 text-center">
-      <div class="flex justify-center items-center gap-4 mb-4">
-        <img alt="OctoShaper Character" class="w-24 h-24" src="res/octoshaper-logo.svg"/>
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 pt-16 pb-12 text-center">
+      <div class="flex justify-center items-center gap-2 sm:gap-3 md:gap-4 mb-4">
+        <img alt="OctoShaper Character" class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24" src="res/octoshaper-logo.svg"/>
         <div class="text-left">
-          <div class="flex items-center gap-3">
-            <h1 class="text-[#6b42b1] text-5xl font-extrabold tracking-tight">OctoShaper</h1>
-            <span class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-2 py-1 rounded-md">v0.1.0 Beta</span>
+          <div class="flex items-center gap-2 sm:gap-2.5 md:gap-3">
+            <h1 class="text-[#8a74d8ff] text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">OctoShaper</h1>
+            <span class="bg-[#8ce2b8] text-[#1e5a3c] text-xs sm:text-xs font-bold px-2 sm:px-2 py-1 sm:py-1 rounded-md whitespace-nowrap">v0.1.0 Beta</span>
           </div>
         </div>
       </div>
-      <p class="text-xl text-brand-dark max-w-2xl mx-auto mb-8 leading-snug">
+      <p class="text-xl text-brand-dark max-w-2xl font-bold mx-auto mb-8 leading-snug">
         Node-based procedural generation for Unity games.<br/>
         Build faster, iterate quicker.
       </p>
@@ -132,7 +145,7 @@
           <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
           Join Waitlist
         </button>
-        <a class="bg-[#f4f0fa] hover:bg-[#e8e0f5] text-[#6b42b1] font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-[#6b42b1]/20 transition-colors shadow-sm" href="https://curioustrove.itch.io/octoshaper" target="_blank" rel="noopener noreferrer">
+        <a class="bg-[#f4f0fa] hover:bg-[#e8e0f5] text-[#8a74d8ff] font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-[#8a74d8ff]/20 transition-colors shadow-sm" href="https://curioustrove.itch.io/octoshaper" target="_blank" rel="noopener noreferrer">
           <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
           View on itch.io
         </a>
@@ -164,19 +177,19 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Feature Card 1 -->
           <div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm">
-            <h4 class="bg-[#6b42b1] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Runtime & Editor Support</h4>
+            <h4 class="bg-[#8a74d8ff] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Runtime & Editor Support</h4>
             <p class="text-sm font-medium leading-relaxed">Seamlessly works at both runtime and within the Unity Editor. See changes in real-time.</p>
           </div>
           
           <!-- Feature Card 2 -->
           <div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm">
-            <h4 class="bg-[#6b42b1] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Realtime Procedural Generation</h4>
+            <h4 class="bg-[#8a74d8ff] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Realtime Procedural Generation</h4>
             <p class="text-sm font-medium leading-relaxed">Instantly visualize changes as you tweak parameters and add nodes. Instant feedback loop.</p>
           </div>
           
           <!-- Feature Card 3 -->
           <div class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-xl p-4 shadow-sm">
-            <h4 class="bg-[#6b42b1] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Deep Engine Integration</h4>
+            <h4 class="bg-[#8a74d8ff] text-white text-sm font-bold px-3 py-1 rounded-md inline-block mb-3">Deep Engine Integration</h4>
             <p class="text-sm font-medium leading-relaxed">Functions as a native Unity tool. Like Houdini or Blender nodes, but directly inside your game engine.</p>
           </div>
         </div>

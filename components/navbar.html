@@ -1,30 +1,14 @@
 <!-- BEGIN: Header -->
-<header class="bg-[#6b42b1] text-white">
-  <div class="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight hover:opacity-90 transition-opacity">
-      <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/20 p-1" src="res/logo.svg"/>
-      Curious Trove
+<header class="bg-[#8a74d8ff] text-white">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-1.5 sm:gap-2 font-bold text-base sm:text-xl tracking-tight hover:opacity-90 transition-opacity">
+      <img alt="Curious Trove Logo" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 p-1" src="res/logo.svg"/>
+      <span class="truncate">Curious Trove</span>
     </a>
-    <nav class="flex items-center gap-8 text-sm font-medium">
-      <a class="hover:text-white/80 transition-colors nav-link" href="octoshaper.html" data-page="octoshaper">OctoShaper</a>
-      <a class="hover:text-white/80 transition-colors nav-link" href="blog.html" data-page="blog">Devlog</a>
+    <nav class="flex items-center gap-3 sm:gap-8 text-sm sm:text-base font-bold">
+      <a class="hover:text-white/80 transition-colors nav-link whitespace-nowrap" href="octoshaper.html" data-page="octoshaper">OctoShaper</a>
+      <a class="hover:text-white/80 transition-colors nav-link whitespace-nowrap" href="blog.html" data-page="blog">Devlog</a>
     </nav>
   </div>
 </header>
 <!-- END: Header -->
-
-<script>
-  // Highlight active page in navbar
-  (function() {
-    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-      const linkPage = link.getAttribute('data-page');
-      if (linkPage === currentPage) {
-        link.classList.remove('hover:text-white/80');
-        link.classList.add('bg-white/20', 'px-4', 'py-2', 'rounded-md', 'hover:bg-white/30');
-      }
-    });
-  })();
-</script>

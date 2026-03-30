@@ -48,7 +48,7 @@
 
     return `
       <div class="bg-white border-2 border-brand-border rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-        <div class="aspect-video bg-gradient-to-br from-[#6b42b1] to-[#8ce2b8] relative flex items-center justify-center">
+        <div class="aspect-video bg-gradient-to-br from-[#8a74d8ff] to-[#8ce2b8] relative flex items-center justify-center">
           ${thumbnailContent}
         </div>
         <div class="p-6">
@@ -58,7 +58,7 @@
           </div>
           <h3 class="text-xl font-bold text-brand-dark mb-2">${tutorial.title}</h3>
           <p class="text-sm text-brand-gray mb-4 leading-relaxed">${tutorial.description}</p>
-          <a href="${tutorial.url}" class="inline-flex items-center text-[#6b42b1] font-bold text-sm hover:text-[#5a358c] transition-colors">
+          <a href="${tutorial.url}" class="inline-flex items-center text-[#8a74d8ff] font-bold text-sm hover:text-[#5a358c] transition-colors">
             Start Tutorial
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
