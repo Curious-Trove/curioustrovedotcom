@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Node Catalog</title>
+  <meta name="description" content="Metadata-backed catalog of OctoShaper nodes generated from the exported node metadata list." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1380px] mx-auto px-6 pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8 lg:max-h-[calc(100vh-2rem)] lg:overflow-y-auto">
+          <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+          <div id="octoshaper-version-panel"></div>
+          <nav class="space-y-2 text-sm font-bold">
+            <a href="index.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Documentation Home</a>
+            <a href="installation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Installation</a>
+            <a href="sync-vs-async.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a>
+            <a href="procedural-prefab.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a>
+            <a href="elements.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Elements</a>
+            <a href="node-graph-basics.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a>
+            <a href="runtime-generation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a>
+            <div class="rounded-2xl border border-[#8a74d8ff]/20 bg-[#faf7fd] p-2">
+              <a href="nodes.html" class="block rounded-xl px-4 py-3 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20" aria-expanded="true">
+                <span class="flex items-center justify-between gap-3">
+                  <span>
+                    <span class="block">Node Catalog</span>
+                    <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+                  </span>
+                  <svg class="w-4 h-4 text-[#8a74d8ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </span>
+              </a>
+              <div class="mt-2 px-2">
+                <p class="px-2 pb-2 text-[11px] font-extrabold uppercase tracking-[0.16em] text-brand-gray">Node Types</p>
+                <div id="node-sidebar-submenu" class="space-y-1 lg:max-h-[min(46vh,24rem)] lg:overflow-y-auto pr-1">
+                  <div class="px-2 py-2 text-sm text-brand-gray">Loading node types...</div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </aside>
+
+        <div class="space-y-8 min-w-0">
+          <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+            <div class="mb-6">
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Reference Index</p>
+              <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-3">OctoShaper Nodes</h1>
+              <div id="octoshaper-version-inline" class="inline-flex mb-4 rounded-full border border-[#8a74d8ff]/20 bg-[#f4f0fa] px-3 py-1 text-sm font-bold text-[#8a74d8ff]">Loading version...</div>
+              <p class="text-lg text-brand-gray leading-relaxed max-w-4xl">This page is organized as a developer reference: categories first, then compact node entries with signatures, input and output types, and attribute side effects. The content is rendered directly from <span class="font-bold text-brand-dark">octoshaper/docs/node-metadata/node-catalog.json</span>, so the index tracks the exported tool surface automatically.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-4">
+              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl px-5 py-4">
+                <p class="text-xs font-bold uppercase tracking-[0.14em] text-brand-gray mb-2">Catalog Summary</p>
+                <p class="text-brand-gray leading-relaxed">Browse the categories below, use the sidebar node types to jump between sections, or filter the list by execution mode.</p>
+              </div>
+              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl px-5 py-4">
+                <p class="text-xs font-bold uppercase tracking-[0.14em] text-brand-gray mb-2">Coverage</p>
+                <p class="text-brand-dark font-bold"><span id="node-summary-total">-</span> nodes across <span id="node-summary-categories">-</span> categories, including <span id="node-summary-async">-</span> async nodes.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white border border-brand-border rounded-3xl p-6 shadow-sm">
+            <div class="grid grid-cols-1 gap-5">
+              <label class="block">
+                <span class="block text-sm font-bold text-brand-dark mb-2">Search nodes</span>
+                <input id="node-search-input" type="search" placeholder="Search by name, method, category, or attribute" class="w-full rounded-2xl border border-brand-border bg-[#fcfcfc] px-4 py-3 text-brand-dark placeholder:text-brand-gray focus:outline-none focus:ring-2 focus:ring-[#8a74d8ff]/30" />
+              </label>
+              <div>
+                <span class="block text-sm font-bold text-brand-dark mb-3">Filter by execution</span>
+                <div id="node-async-filter" class="flex flex-wrap gap-3">
+                  <div class="text-brand-gray">Loading execution filters...</div>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-3 mt-5 flex-wrap">
+              <p class="text-sm text-brand-gray font-medium">Every section and entry below is generated from the metadata exporter output.</p>
+              <p id="node-results-count" class="text-sm font-bold text-brand-dark">Loading nodes...</p>
+            </div>
+          </article>
+
+          <div id="node-catalog-list" class="space-y-6">
+            <div class="bg-white border border-brand-border rounded-3xl p-8 text-brand-gray shadow-sm">Loading node catalog...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+  <script src="../../js/octoshaper-node-catalog.js"></script>
+</body>
+</html>

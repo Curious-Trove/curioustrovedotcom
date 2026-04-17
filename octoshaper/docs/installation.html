@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Installation</title>
+  <meta name="description" content="How to install OctoShaper into a Unity project and verify the editor and execution pipeline are ready." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+          <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+          <div id="octoshaper-version-panel"></div>
+          <nav class="space-y-2 text-sm font-bold">
+            <a href="index.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Documentation Home</a>
+            <a href="installation.html" class="block rounded-xl px-4 py-3 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Installation</a>
+            <a href="sync-vs-async.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a>
+            <a href="procedural-prefab.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a>
+            <a href="elements.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Elements</a>
+            <a href="node-graph-basics.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a>
+            <a href="runtime-generation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a>
+            <a href="nodes.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">
+              <span class="flex items-center justify-between gap-3">
+                <span>
+                  <span class="block">Node Catalog</span>
+                  <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+                </span>
+                <svg class="w-4 h-4 text-brand-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+          </nav>
+        </aside>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Guide</span>
+            <span class="text-sm font-medium text-brand-gray">Setup</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Installation</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">The goal of installation is simple: get the package into Unity, make sure the editor compiles cleanly, and confirm you can create and execute a graph before you start building real content.</p>
+
+          <div class="space-y-10">
+            <section class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
+              <h2 class="text-2xl font-extrabold mb-3">What you need first</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>A Unity project on a recent LTS editor branch.</li>
+                <li>The OctoShaper package or release payload for your current build.</li>
+                <li>The Unity Collections package, which OctoShaper depends on through its package manifest.</li>
+              </ul>
+            </section>
+
+            <section class="p-0 border-0 mb-0">
+              <h2 class="text-2xl font-extrabold mb-3">Import checklist</h2>
+              <div class="bg-white border border-brand-border rounded-2xl p-6">
+                <ol class="space-y-3 text-brand-gray leading-relaxed list-decimal pl-5">
+                  <li>Add OctoShaper to the project using the release package, local package checkout, or the distribution method supplied with your build.</li>
+                  <li>Let Unity finish importing and confirm the Console is clear of OctoShaper compile errors.</li>
+                  <li>Create a new graph asset through <span class="font-bold text-brand-dark">Assets &gt; Create &gt; OctoShaper &gt; Procedural Graph</span>.</li>
+                  <li>Open the graph asset and confirm the graph editor, sidebar tools, and node search all appear normally.</li>
+                  <li>If you plan to execute graphs through the generated path, run <span class="font-bold text-brand-dark">Tools &gt; OctoShaper &gt; Generate Graph Code</span> after editing your graphs.</li>
+                </ol>
+              </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-6">
+                <h2 class="text-2xl font-extrabold mb-3">First validation pass</h2>
+                <p class="text-brand-gray leading-relaxed mb-4">A clean import is not enough. Make one small graph and confirm the full loop works.</p>
+                <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                  <li>Create a graph asset and save it.</li>
+                  <li>Add a few nodes and connect them through the main ElementSet flow.</li>
+                  <li>Attach a <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> to a scene object and assign the graph.</li>
+                  <li>Trigger generation and verify the result appears in the scene or preview workflow you expect.</li>
+                </ul>
+              </div>
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6">
+                <h2 class="text-2xl font-extrabold mb-3">Common issues</h2>
+                <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                  <li>If generated execution fails, regenerate graph code so the strict executor registry matches your current graphs.</li>
+                  <li>If runtime results are missing, check that the graph main output resolves to an <span class="font-bold text-brand-dark">ElementSet</span>.</li>
+                  <li>If the editor opens but regeneration never happens, make sure your graph is actually assigned to a <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> or importer workflow.</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+</body>
+</html>

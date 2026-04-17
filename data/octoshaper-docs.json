@@ -1,0 +1,65 @@
+[
+  {
+    "slug": "installation",
+    "title": "Installation",
+    "category": "Setup",
+    "summary": "Import OctoShaper into a Unity project, validate the editor setup, and confirm your first graph can execute cleanly.",
+    "status": "Guide",
+    "readTime": "4 min read",
+    "url": "installation.html"
+  },
+  {
+    "slug": "sync-vs-async",
+    "title": "Sync vs Async",
+    "category": "Concepts",
+    "summary": "Learn how OctoShaper's sync and async execution paths differ, and what stays the same between them.",
+    "status": "Concept",
+    "readTime": "4 min read",
+    "url": "sync-vs-async.html"
+  },
+  {
+    "slug": "procedural-prefab",
+    "title": "Procedural Prefab",
+    "category": "Concepts",
+    "summary": "Understand how procedural prefabs import reusable GameObject hierarchies from a graph and configuration.",
+    "status": "Workflow",
+    "readTime": "4 min read",
+    "url": "procedural-prefab.html"
+  },
+  {
+    "slug": "elements",
+    "title": "Elements",
+    "category": "Concepts",
+    "summary": "See how ElementSet data, rows, and attributes form the core data model that flows through OctoShaper graphs.",
+    "status": "Concept",
+    "readTime": "5 min read",
+    "url": "elements.html"
+  },
+  {
+    "slug": "node-graph-basics",
+    "title": "Node Graph Basics",
+    "category": "Core Concepts",
+    "summary": "Get oriented with ProceduralGraph assets, ports, links, parameters, and the main ElementSet boundary.",
+    "status": "Guide",
+    "readTime": "6 min read",
+    "url": "node-graph-basics.html"
+  },
+  {
+    "slug": "runtime-generation",
+    "title": "Runtime Generation",
+    "category": "Runtime",
+    "summary": "Run OctoShaper graphs in play mode, understand the generated executor path, and choose the right runtime surface.",
+    "status": "Workflow",
+    "readTime": "5 min read",
+    "url": "runtime-generation.html"
+  },
+  {
+    "slug": "nodes",
+    "title": "Node Catalog",
+    "category": "Reference",
+    "summary": "Metadata-backed reference pages generated from the exported OctoShaper node catalog.",
+    "status": "Live Data",
+    "readTime": "Auto-generated",
+    "url": "nodes.html"
+  }
+]

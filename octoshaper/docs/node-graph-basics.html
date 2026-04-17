@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Node Graph Basics</title>
+  <meta name="description" content="Learn the core structure of OctoShaper graph assets, nodes, links, parameters, and outputs." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+          <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+          <div id="octoshaper-version-panel"></div>
+          <nav class="space-y-2 text-sm font-bold">
+            <a href="index.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Documentation Home</a>
+            <a href="installation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Installation</a>
+            <a href="sync-vs-async.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a>
+            <a href="procedural-prefab.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a>
+            <a href="elements.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Elements</a>
+            <a href="node-graph-basics.html" class="block rounded-xl px-4 py-3 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Node Graph Basics</a>
+            <a href="runtime-generation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a>
+            <a href="nodes.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">
+              <span class="flex items-center justify-between gap-3">
+                <span>
+                  <span class="block">Node Catalog</span>
+                  <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+                </span>
+                <svg class="w-4 h-4 text-brand-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+          </nav>
+        </aside>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Guide</span>
+            <span class="text-sm font-medium text-brand-gray">Core Concepts</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Node Graph Basics</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">A <span class="font-bold text-brand-dark">ProceduralGraph</span> asset is the authored source of procedural logic in OctoShaper. It stores nodes, links, constants, parameters, required main-input attributes, and references to subgraphs.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+            <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
+              <h2 class="text-xl font-extrabold mb-3">The graph boundary</h2>
+              <ul class="space-y-2 text-brand-gray leading-relaxed">
+                <li>Main input and main output are always ElementSet-based.</li>
+                <li>Main-input requirements describe which attributes the graph expects up front.</li>
+                <li>Main output is the dataset that downstream runtime or import workflows consume.</li>
+              </ul>
+            </div>
+            <div class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-6">
+              <h2 class="text-xl font-extrabold mb-3">What a node does</h2>
+              <p class="text-brand-gray leading-relaxed">Nodes are operations. They read inputs, produce outputs, and express dependencies through links. Some nodes generate new elements, some reshape data, and others convert the graph result into something Unity can instantiate or inspect.</p>
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <section class="bg-white border border-brand-border rounded-2xl p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Ports, links, and execution</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>Ports define the type of data that can enter or leave a node.</li>
+                <li>Links connect compatible output and input ports.</li>
+                <li>The graph executor walks the graph according to those dependencies rather than a hand-authored script order.</li>
+              </ul>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Parameters are the user-facing controls</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Parameters are the stable surface that lets designers, importer settings, or runtime systems steer a graph without rewiring it. In Unity, those values are carried through <span class="font-bold text-brand-dark">ProceduralConfiguration</span> overrides.</p>
+              <p class="text-brand-gray leading-relaxed">A good rule is to expose parameters for the values you expect to tweak often, and keep the rest of the graph structure focused on reusable logic.</p>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">A practical authoring loop</h2>
+              <ol class="space-y-3 text-brand-gray leading-relaxed list-decimal pl-5">
+                <li>Create or open a graph asset.</li>
+                <li>Build the core ElementSet flow from main input to main output.</li>
+                <li>Expose parameters for the values you want to control from outside the graph.</li>
+                <li>Test the graph through a scene executor, a procedural prefab import, or both.</li>
+              </ol>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+</body>
+</html>

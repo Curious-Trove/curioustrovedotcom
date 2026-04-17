@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Elements</title>
+  <meta name="description" content="Learn how ElementSet data and attributes flow through OctoShaper graphs." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+          <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+          <div id="octoshaper-version-panel"></div>
+          <nav class="space-y-2 text-sm font-bold">
+            <a href="index.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Documentation Home</a>
+            <a href="installation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Installation</a>
+            <a href="sync-vs-async.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a>
+            <a href="procedural-prefab.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a>
+            <a href="elements.html" class="block rounded-xl px-4 py-3 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Elements</a>
+            <a href="node-graph-basics.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a>
+            <a href="runtime-generation.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a>
+            <a href="nodes.html" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">
+              <span class="flex items-center justify-between gap-3">
+                <span>
+                  <span class="block">Node Catalog</span>
+                  <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+                </span>
+                <svg class="w-4 h-4 text-brand-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+          </nav>
+        </aside>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Concept</span>
+            <span class="text-sm font-medium text-brand-gray">Data Model</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">What Are Elements?</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">In OctoShaper, procedural data moves through graphs as an <span class="font-bold text-brand-dark">ElementSet</span>. Think of it as a row-based dataset: each element is one row, and each attribute is a named column stored across all rows.</p>
+
+          <div class="space-y-8">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
+                <h2 class="text-2xl font-extrabold mb-3">An element is not just one thing</h2>
+                <p class="text-brand-gray leading-relaxed mb-4">Depending on the graph, one element might represent a point in space, a spawn candidate, a placed prefab, a spline sample, or any other unit of procedural work.</p>
+                <p class="text-brand-gray leading-relaxed">What matters is that OctoShaper treats it as a row of related values that nodes can read, filter, extend, or transform.</p>
+              </div>
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6">
+                <h2 class="text-2xl font-extrabold mb-3">Attributes are the payload</h2>
+                <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                  <li>Attributes are stored by name and type.</li>
+                  <li>Nodes can create new attributes or overwrite existing ones.</li>
+                  <li>ProceduralConfiguration and graph requirements define which values the graph expects to see at the boundary.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-6">
+              <h2 class="text-2xl font-extrabold mb-3">How ElementSet flows through a graph</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>The main graph input and main graph output are both ElementSet-based.</li>
+                <li>Generator nodes usually create rows or expand a dataset.</li>
+                <li>Modifier nodes typically add attributes, transform values, or remove rows.</li>
+                <li>Instancing and visualization workflows consume the resulting ElementSet to build Unity-side output.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Why this matters</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Once you understand ElementSet, the rest of OctoShaper becomes easier to read. Node signatures make more sense, graph outputs become easier to inspect, and it is clearer why the tool favors attributes and element collections over ad-hoc arrays of unrelated data.</p>
+              <p class="text-brand-gray leading-relaxed">When a graph is difficult to debug, one of the fastest ways to reason about it is to ask: how many elements are flowing here, and which attributes should exist on them right now?</p>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+</body>
+</html>

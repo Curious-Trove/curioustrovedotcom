@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-29X6THKH2J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-29X6THKH2J');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>OctoShaper - Unity Procedural Generation Tool for Games</title>
+  <meta name="title" content="OctoShaper - Unity Procedural Generation Tool for Games" />
+  <meta name="description" content="OctoShaper: Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback." />
+  <meta name="keywords" content="procedural generation, Unity, game development, developer tools, octoshaper, unity procedural generation, game dev tools" />
+  <meta name="author" content="Curious Trove" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://curioustrove.com/octoshaper/" />
+  <meta property="og:title" content="OctoShaper - Unity Procedural Generation Tool" />
+  <meta property="og:description" content="Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback." />
+  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://curioustrove.com/octoshaper/" />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="../res/octoshaper-logo-outline.svg" />
+  <link rel="apple-touch-icon" href="../res/octoshaper-logo-outline.svg" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "OctoShaper",
+    "description": "Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback.",
+    "url": "https://curioustrove.com/octoshaper/",
+    "image": "https://curioustrove.com/res/octoshaper-logo.svg",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS",
+    "softwareVersion": "0.0.1",
+    "creator": {
+      "@type": "Organization",
+      "name": "Curious Trove",
+      "url": "https://curioustrove.com"
+    },
+    "featureList": [
+      "Node-based procedural generation",
+      "Works at runtime and in editor",
+      "Real-time feedback",
+      "Integrated into Unity workflows",
+      "Procedural prefab import workflow"
+    ]
+  }
+  </script>
+  <!-- MailerLite Universal -->
+  <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '2108920');
+  </script>
+  <!-- End MailerLite Universal -->
+  
+</head>
+<body data-base-path="../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <!-- BEGIN: Main Content -->
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <!-- BEGIN: Hero Section -->
+    <section class="max-w-[1400px] mx-auto px-4 sm:px-6 pt-14 pb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-[1.02fr_0.98fr] gap-8 items-start">
+        <div class="pt-2">
+          <div class="flex items-center gap-3 mb-5">
+            <img alt="OctoShaper Character" class="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20" src="../res/octoshaper-logo.svg"/>
+            <div class="flex items-center gap-3 flex-wrap">
+              <h1 class="text-[#8a74d8ff] text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">OctoShaper</h1>
+              <span class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1.5 rounded-md whitespace-nowrap">Beta</span>
+            </div>
+          </div>
+
+          <p class="text-2xl sm:text-3xl text-brand-dark max-w-3xl font-extrabold leading-tight mb-4">
+            Node-based procedural generation for Unity.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mb-8">
+            <button class="bg-[#8ce2b8] hover:bg-[#76cca1] text-[#1e5a3c] font-bold py-3 px-6 rounded-lg flex items-center gap-2 transition-colors shadow-sm ml-onclick-form" onclick="ml('show', 'nfkYWN', true)">
+              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
+              Join Waitlist
+            </button>
+            <a class="bg-white hover:bg-[#f8f9fa] text-brand-dark font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-brand-border transition-colors shadow-sm" href="docs/index.html">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5 4.462 5 2 6.79 2 9v11c0-2.21 2.462-4 5.5-4 1.746 0 3.332.477 4.5 1.253m0-11C13.168 5.477 14.754 5 16.5 5 19.538 5 22 6.79 22 9v11c0-2.21-2.462-4-5.5-4-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+              Read Docs
+            </a>
+            <a class="bg-[#f4f0fa] hover:bg-[#e8e0f5] text-[#8a74d8ff] font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-[#8a74d8ff]/20 transition-colors shadow-sm" href="https://curioustrove.itch.io/octoshaper" target="_blank" rel="noopener noreferrer">
+              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+              View on itch.io
+            </a>
+          </div>
+
+          <div class="mb-3 flex items-center gap-3 flex-wrap">
+            <p class="text-sm font-bold text-brand-dark">Core capabilities</p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
+            <a href="#feature-runtime-editor" class="group bg-white border-2 border-[#8ce2b8] rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Runtime + editor</p>
+            </a>
+            <a href="#feature-realtime" class="group bg-white border-2 border-brand-border rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Realtime visuals</p>
+            </a>
+            <a href="#feature-dependencies" class="group bg-white border-2 border-brand-border rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Unity-native workflow</p>
+            </a>
+            <a href="#feature-lightweight" class="group bg-[#f8f9fa] border-2 border-brand-border rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Lean setup</p>
+            </a>
+            <a href="#feature-fast" class="group bg-white border-2 border-brand-border rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Responsive iteration</p>
+            </a>
+            <a href="#feature-prefabs" class="group bg-[#f4f0fa] border-2 border-[#8a74d8ff]/20 rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Procedural prefabs</p>
+            </a>
+            <a href="#feature-execution" class="group bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-2xl p-4 shadow-sm hover:-translate-y-1 transition-transform">
+              <p class="text-sm font-extrabold text-brand-dark mb-2">Async or sync execution</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-5">
+          <div class="bg-white border-2 border-[#8ce2b8] rounded-[1.75rem] p-5 shadow-lg">
+            <div class="flex items-center justify-between gap-3 mb-4">
+              <div>
+                <h2 class="text-2xl font-extrabold">One graph, infinite content.</h2>
+              </div>
+              <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Realtime</span>
+            </div>
+            <video class="w-full rounded-2xl border-2 border-white shadow-sm" controls autoplay muted loop playsinline>
+              <source src="../res/demos/castle-with-graph.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: Hero Section -->
+
+    <!-- BEGIN: Use Cases Section -->
+    <section class="max-w-[1400px] mx-auto px-6 mb-14">
+      <div class="max-w-4xl mb-8">
+        <h2 class="text-4xl font-extrabold tracking-tight mb-3">What you can build with it.</h2>
+        <p class="text-lg text-brand-gray leading-relaxed">OctoShaper is aimed at graph-driven environment building, organic systems, reusable placement workflows, and runtime variation that still fits a Unity-native production pipeline.</p>
+      </div>
+
+        <article class="bg-white border-2 border-[#8ce2b8] rounded-2xl p-7 shadow-sm">
+          <div class="flex flex-wrap items-center gap-3 mb-4">
+            <span class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md">Featured Use Case</span>
+            <span class="text-sm text-brand-gray font-medium">One graph driving a visible, production-shaped result</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] gap-6 items-center">
+            <div>
+              <h3 class="text-3xl font-extrabold mb-3">Procedural structures with immediate feedback.</h3>
+              <p class="text-brand-gray font-medium leading-relaxed mb-5">A strong fit for modular buildings, repeatable kits, and graph-controlled variation where designers want to see the structure change as parameters move.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">Environment</span>
+                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">Runtime</span>
+                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">High variation</span>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-[#f4f0fa] via-white to-[#eafaf1] border-2 border-brand-border rounded-2xl p-5 min-h-[260px] flex flex-col justify-between">
+              <video class="w-full rounded-2xl border-2 border-white/70 shadow-sm" autoplay muted loop playsinline>
+                <source src="../res/demos/buildings-demo-1.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </article>
+
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5 mt-6 mb-6">
+        <article class="bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-2xl p-5 shadow-sm">
+          <div class="rounded-xl overflow-hidden border-2 border-white shadow-sm mb-4 bg-white">
+            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
+              <source src="../res/demos/castle-demo.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <span class="inline-block bg-white text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Environment</span>
+          <h3 class="text-xl font-extrabold mt-4 mb-3">Large-scale structure</h3>
+          <p class="text-sm font-medium text-brand-gray leading-relaxed">Good for buildings, modular kits, or anything where controlled variation matters more than one-off handcrafting.</p>
+        </article>
+
+        <article class="bg-white border-2 border-brand-border rounded-2xl p-5 shadow-sm">
+          <div class="rounded-xl overflow-hidden border-2 border-[#f4f0fa] shadow-sm mb-4 bg-[#f4f0fa]">
+            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
+              <source src="../res/demos/vines-demo.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <span class="inline-block bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Organic</span>
+          <h3 class="text-xl font-extrabold mt-4 mb-3">Growth & branching</h3>
+          <p class="text-sm font-medium text-brand-gray leading-relaxed">Useful for vines, roots, crystals, and other systems where you want growth rules instead of hand-placing every branch.</p>
+        </article>
+
+        <article class="bg-white border-2 border-brand-border rounded-2xl p-5 shadow-sm">
+          <div class="rounded-xl overflow-hidden border-2 border-brand-border shadow-sm mb-4 bg-[#fcfcfc]">
+            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
+              <source src="../res/demos/rocks-demo.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <span class="inline-block bg-[#fcfcfc] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Placement</span>
+          <h3 class="text-xl font-extrabold mt-4 mb-3">Scattering & sampling</h3>
+          <p class="text-sm font-medium text-brand-gray leading-relaxed">A practical workflow for terrain dressing, mesh-driven sampling, and dense prop distribution from reusable graph logic.</p>
+        </article>
+
+        <article class="bg-[#f8f9fa] border-2 border-brand-border rounded-2xl p-5 shadow-sm">
+          <div class="rounded-xl overflow-hidden border-2 border-white shadow-sm mb-4 bg-white">
+            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
+              <source src="../res/demos/buildings-demo-1.mov" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <span class="inline-block bg-white text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Runtime</span>
+          <h3 class="text-xl font-extrabold mt-4 mb-3">Live variation in-game</h3>
+          <p class="text-sm font-medium text-brand-gray leading-relaxed">Use the same graph logic during play mode when you need spawning, variation, or regeneration to react to runtime state.</p>
+        </article>
+      </div>
+    </section>
+    <!-- END: Use Cases Section -->
+
+    <!-- BEGIN: Feature Details Section -->
+    <section class="max-w-[1400px] mx-auto px-6 mb-14">
+      <div class="max-w-4xl mb-8">
+        <h2 class="text-4xl font-extrabold tracking-tight mb-3">What that means in practice.</h2>
+        <p class="text-lg text-brand-gray leading-relaxed">The top-level promise is simple. These details explain the parts of the workflow that matter when deciding whether OctoShaper fits your project.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        <article id="feature-runtime-editor" class="scroll-mt-24 bg-white border-2 border-[#8ce2b8] rounded-2xl p-6 shadow-sm">
+          <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Runtime + editor</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">One graph model for both contexts.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">Author and preview systems in the editor, then use the same procedural logic during gameplay when the project calls for runtime generation.</p>
+          <p class="mt-4"><a class="inline-flex items-center gap-2 text-sm font-bold text-[#1e5a3c] hover:text-brand-dark" href="docs/runtime-generation.html">Read the runtime generation docs <span aria-hidden="true">&rarr;</span></a></p>
+        </article>
+
+        <article id="feature-realtime" class="scroll-mt-24 bg-white border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <span class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Realtime visuals</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">See the result while building.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">Immediate visual feedback makes graph editing easier to reason about and keeps iteration loops short while shaping content.</p>
+        </article>
+
+        <article id="feature-dependencies" class="scroll-mt-24 bg-white border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <span class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Unity-native workflow</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">Stay inside the engine.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">OctoShaper is designed to be useful inside Unity itself, without asking your day-to-day workflow to revolve around a separate DCC or offline procedural authoring stack.</p>
+        </article>
+
+        <article id="feature-lightweight" class="scroll-mt-24 bg-[#f8f9fa] border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <span class="bg-white text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Lean setup</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">Small footprint, less friction.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">The emphasis is on easier adoption and lower process overhead, so small teams can keep the tool in active use instead of treating it like a heavyweight pipeline commitment.</p>
+        </article>
+
+        <article id="feature-fast" class="scroll-mt-24 bg-white border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <span class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Responsive iteration</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">Responsive enough for real iteration.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">The goal is short iteration loops: change parameters, inspect the result, and keep moving without procedural authoring turning into a long feedback cycle.</p>
+        </article>
+
+        <article id="feature-prefabs" class="scroll-mt-24 bg-[#f4f0fa] border-2 border-[#8a74d8ff]/20 rounded-2xl p-6 shadow-sm">
+          <span class="bg-white text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Procedural prefabs</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">Package reusable procedural setups.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">Procedural prefabs make it easier to carry graph-driven assets across scenes and projects without rebuilding the setup each time.</p>
+          <p class="mt-4"><a class="inline-flex items-center gap-2 text-sm font-bold text-[#8a74d8ff] hover:text-brand-dark" href="docs/procedural-prefab.html">Read what procedural prefabs are <span aria-hidden="true">&rarr;</span></a></p>
+        </article>
+
+        <article id="feature-execution" class="scroll-mt-24 bg-[#eafaf1] border-2 border-[#8ce2b8] rounded-2xl p-6 shadow-sm">
+          <span class="bg-white text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Async or sync</span>
+          <h3 class="text-2xl font-extrabold mt-4 mb-3">Choose the execution mode that fits the workflow.</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">Some graphs need deterministic immediate execution. Others benefit from asynchronous work to keep the experience responsive. Supporting both gives the tool more room to fit different use cases without forcing one operating model everywhere.</p>
+          <p class="mt-4"><a class="inline-flex items-center gap-2 text-sm font-bold text-[#1e5a3c] hover:text-brand-dark" href="docs/sync-vs-async.html">Read about sync vs async execution <span aria-hidden="true">&rarr;</span></a></p>
+        </article>
+      </div>
+    </section>
+    <!-- END: Feature Details Section -->
+  </main>
+  <!-- END: Main Content -->
+
+  <div id="footer-container"></div>
+  <script src="../js/load-layout.js"></script>
+</body>
+</html>
