@@ -127,21 +127,37 @@
             Node-based procedural generation for Unity.
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-8">
-            <button class="bg-[#8ce2b8] hover:bg-[#76cca1] text-[#1e5a3c] font-bold py-3 px-6 rounded-lg flex items-center gap-2 transition-colors shadow-sm ml-onclick-form" onclick="ml('show', 'nfkYWN', true)">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>
-              Join Waitlist
-            </button>
-            <a class="bg-white hover:bg-[#f8f9fa] text-brand-dark font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-brand-border transition-colors shadow-sm" href="docs/index.html">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5 4.462 5 2 6.79 2 9v11c0-2.21 2.462-4 5.5-4 1.746 0 3.332.477 4.5 1.253m0-11C13.168 5.477 14.754 5 16.5 5 19.538 5 22 6.79 22 9v11c0-2.21-2.462-4-5.5-4-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-              Read Docs
-            </a>
-            <a class="bg-[#f4f0fa] hover:bg-[#e8e0f5] text-[#8a74d8ff] font-bold py-3 px-6 rounded-lg flex items-center gap-2 border-2 border-[#8a74d8ff]/20 transition-colors shadow-sm" href="https://curioustrove.itch.io/octoshaper" target="_blank" rel="noopener noreferrer">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
-              View on itch.io
-            </a>
+          <div class="mb-8 max-w-3xl rounded-[1.75rem] border-2 border-[#8ce2b8] bg-gradient-to-br from-[#eafaf1] via-white to-[#f4f0fa] p-5 shadow-lg">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-5">
+              <div>
+                <p class="text-xs font-extrabold uppercase tracking-[0.24em] text-[#8a74d8ff]">Download the beta</p>
+                <h2 class="text-2xl font-extrabold text-brand-dark">Download the free OctoShaper beta</h2>
+              </div>
+              <p class="text-sm font-medium text-brand-gray">The fastest path to the current playable build and future updates.</p>
+            </div>
+            <div class="flex flex-col gap-4 rounded-2xl border-2 border-white bg-white/90 p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  id="octoshaper-download-button"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8ce2b8] px-6 py-4 text-base font-extrabold text-[#1e5a3c] shadow-sm transition-colors hover:bg-[#76cca1] focus:outline-none focus:ring-4 focus:ring-[#8ce2b8]/40"
+                  href="https://curioustrove.itch.io/octoshaper"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+                  Download
+                </a>
+                <a
+                  class="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#8a74d8ff]/20 bg-[#f4f0fa] px-5 py-4 text-base font-bold text-[#8a74d8ff] shadow-sm transition-colors hover:bg-[#e8e0f5] focus:outline-none focus:ring-4 focus:ring-[#8a74d8ff]/20"
+                  href="https://curioustrove.itch.io/octoshaper/community"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V10a2 2 0 00-2-2h-4m-4 12H7m10 0v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6m10 0H7m0 0H2V10a2 2 0 012-2h4m3-4h2a2 2 0 012 2v2H9V6a2 2 0 012-2z" />
+                  </svg>
+                  Community
+                </a>
+              </div>
+            </div>
           </div>
 
           <div class="mb-3 flex items-center gap-3 flex-wrap">
@@ -334,6 +350,19 @@
   <!-- END: Main Content -->
 
   <div id="footer-container"></div>
+  <script src="https://static.itch.io/api.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buyButton = document.getElementById('octoshaper-download-button');
+
+      if (buyButton && window.Itch && typeof window.Itch.attachBuyButton === 'function') {
+        window.Itch.attachBuyButton(buyButton, {
+          user: 'curioustrove',
+          game: 'octoshaper'
+        });
+      }
+    });
+  </script>
   <script src="../js/load-layout.js"></script>
 </body>
 </html>
