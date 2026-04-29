@@ -6,11 +6,84 @@
   <title>OctoShaper Docs - Runtime Generation</title>
   <meta name="description" content="Understand how OctoShaper executes graphs at runtime in Unity and how generated executors fit into the workflow." />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style data-purpose="custom-fonts">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
     body {
       font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="code-highlighting">
+    pre[class*="language-"] {
+      margin: 0;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      overflow: auto;
+      font-size: 0.925rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    code[class*="language-"] {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    div.code-toolbar {
+      position: relative;
+    }
+
+    div.code-toolbar > .toolbar {
+      top: 0.85rem;
+      right: 0.85rem;
+      opacity: 1;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8f9fa;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button:hover {
+      background: rgba(140, 226, 184, 0.18);
+      border-color: rgba(140, 226, 184, 0.55);
+      color: #ffffff;
+    }
+  </style>
+  <style data-purpose="doc-crosslinks">
+    .doc-crosslink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.12rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(138, 116, 216, 0.12);
+      background: rgba(244, 240, 250, 0.9);
+      color: #8a74d8ff;
+      font-size: 0.63rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: super;
+      text-decoration: none;
+      transform: translateY(-0.2em);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .doc-crosslink:hover {
+      background: #8a74d8ff;
+      border-color: #8a74d8ff;
+      color: #ffffff;
     }
   </style>
   <script>
@@ -38,7 +111,7 @@
   <div id="navbar-container"></div>
 
   <main class="flex-grow bg-grid-pattern pb-20">
-    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+    <section class="max-w-[1280px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
         <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
           <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
@@ -65,45 +138,165 @@
           </nav>
         </aside>
 
-        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
             <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Workflow</span>
             <span class="text-sm font-medium text-brand-gray">Runtime</span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Runtime Generation</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Runtime generation lets you execute the same authored graph logic during play mode and turn the resulting ElementSet into live Unity objects. The standard entry point for that workflow is the <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Runtime generation lets you execute the same authored graph logic during play mode and turn the resulting ElementSet into live Unity objects<a href="elements.html" class="doc-crosslink" title="Learn more about Elements">?</a>. The main runtime surface is the <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component, which now supports explicit generation, sync and async execution, and parameter changes from code before the first run. If you want the graph-side structure behind that API, see Node Graph Basics<a href="node-graph-basics.html" class="doc-crosslink" title="Learn more about Node Graph Basics">?</a>.</p>
 
           <div class="space-y-8">
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
-                <h2 class="text-2xl font-extrabold mb-3">What happens at runtime</h2>
-                <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                  <li>An execution context is created with OctoShaper's default runtime services.</li>
-                  <li>A graph executor is created for the selected graph.</li>
-                  <li>The graph runs with the current ProceduralConfiguration overrides.</li>
-                  <li>The main output ElementSet is passed to the Unity instancing path to spawn scene objects.</li>
-                </ul>
+            <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Quick Start</p>
+              <h2 class="text-2xl font-extrabold mb-3">Typical runtime workflow</h2>
+              <ol class="space-y-3 text-brand-gray leading-relaxed list-decimal pl-5">
+                <li>Assign a <span class="font-bold text-brand-dark">ProceduralGraph</span> to a <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span>.</li>
+                <li>Decide whether the component should auto-run when enabled with <span class="font-bold text-brand-dark">Generate On Enable</span>.</li>
+                <li>Set parameter overrides from code before generation if gameplay needs to control the graph.</li>
+                <li>Call <span class="font-bold text-brand-dark">Generate()</span>, <span class="font-bold text-brand-dark">GenerateSync()</span>, or <span class="font-bold text-brand-dark">GenerateAsync()</span> depending on how you want the caller to behave. The tradeoff is explained in Sync vs Async<a href="sync-vs-async.html" class="doc-crosslink" title="Learn more about Sync vs Async">?</a>.</li>
+              </ol>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Manual generation from a component</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Disable <span class="font-bold text-brand-dark">Generate On Enable</span> when you want gameplay code to decide exactly when the graph executes. That gives you a clean setup phase for parameter overrides before the first generation.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mb-4">
+                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+using CuriousTrove.OctoShaper;
+using UnityEngine;
+
+public sealed class RuntimeExecutorDriver : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraphExecutor executor;
+
+    private void Start()
+    {
+        executor.GenerateOnEnable = false;
+        executor.ExecuteAsAsync = false;
+
+        executor.SetParameterOverride("Count", 12);
+        executor.SetParameterOverride("Radius", 4.5f);
+
+        executor.GenerateSync();
+    }
+
+    public void RegenerateNow()
+    {
+        executor.SetParameterOverride("Count", 24);
+        executor.Generate();
+    }
+
+    public async Task RegenerateAsync()
+    {
+        executor.ExecuteAsAsync = true;
+        executor.SetParameterOverride("Count", 32);
+        await executor.GenerateAsync();
+    }
+}</code></pre>
               </div>
-              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6">
-                <h2 class="text-2xl font-extrabold mb-3">Why generated execution matters</h2>
-                <p class="text-brand-gray leading-relaxed mb-4">The default runtime bootstrap uses the strict generated executor path. That keeps runtime execution aligned with generated graph code rather than relying on editor-only conveniences.</p>
-                <p class="text-brand-gray leading-relaxed">If the generated registry is missing or stale, regenerate graph code before expecting runtime execution to succeed.</p>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li><span class="font-bold text-brand-dark">Generate()</span> respects the current runtime mode. In play mode it uses the async queue when <span class="font-bold text-brand-dark">Execute As Async</span> is enabled; otherwise it runs synchronously.</li>
+                <li><span class="font-bold text-brand-dark">GenerateSync()</span> is the explicit immediate path.</li>
+                <li><span class="font-bold text-brand-dark">GenerateAsync()</span> is the explicit awaited path.</li>
+                <li>Use the <span class="font-bold text-brand-dark">Generate*</span> methods as the public execution API on the component.</li>
+              </ul>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Changing parameter values from code</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The executor exposes thin parameter helpers so callers do not need to reach into the underlying configuration object for common runtime workflows.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">Available helpers</h3>
+                  <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                    <li><span class="font-bold text-brand-dark">SetParameterOverride(Guid, object)</span></li>
+                    <li><span class="font-bold text-brand-dark">SetParameterOverride(string, object)</span></li>
+                    <li><span class="font-bold text-brand-dark">TrySetParameterOverride(string, object)</span></li>
+                    <li><span class="font-bold text-brand-dark">RemoveParameterOverride(Guid)</span> and <span class="font-bold text-brand-dark">RemoveParameterOverride(string)</span></li>
+                    <li><span class="font-bold text-brand-dark">ClearParameterOverrides()</span></li>
+                  </ul>
+                </div>
+                <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">When to use which</h3>
+                  <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                    <li>Use name-based helpers when gameplay code knows the authored parameter names.</li>
+                    <li>Use Guid-based helpers when you already cached the parameter id.</li>
+                    <li>Use <span class="font-bold text-brand-dark">TrySetParameterOverride</span> when a missing parameter should not throw.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mt-5">
+                <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper;
+using UnityEngine;
+
+public sealed class RuntimeParameterExample : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraphExecutor executor;
+
+    public void ApplyGameplayState(int count, float width)
+    {
+        executor.SetParameterOverride("Count", count);
+        executor.SetParameterOverride("Width", width);
+        executor.GenerateSync();
+    }
+
+    public void ResetToDefaults()
+    {
+        executor.ClearParameterOverrides();
+        executor.GenerateSync();
+    }
+}</code></pre>
               </div>
             </section>
 
-            <section class="bg-white border border-brand-border rounded-2xl p-6">
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Direct graph execution without a component</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">If you need runtime execution without scene instancing, the supported bootstrap path is still small and explicit. This is useful when you want to inspect the main output yourself or feed it into your own systems. If you want the imported-asset version instead, see Procedural Prefab<a href="procedural-prefab.html" class="doc-crosslink" title="Learn more about Procedural Prefab">?</a>.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
+                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+using CuriousTrove.OctoShaper;
+using CuriousTrove.OctoShaper.Core.Data;
+using UnityEngine;
+
+public sealed class RuntimeGenerationExample : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraph graph;
+
+    public async Task&lt;ElementSet&gt; GenerateAsync(int count)
+    {
+        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        var executor = OctoShaperRuntime.CreateExecutor(graph);
+        var configuration = new ProceduralConfiguration();
+        var mainInput = ElementSet.CreateImplicitSingle();
+
+        configuration.SetParameterOverride(graph.Parameters[0].Id, count);
+
+        await executor.ExecuteAsync(
+            context,
+            mainInput,
+            configuration);
+
+        return (ElementSet)context.GetMainOutputValue();
+    }
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">Choosing the right runtime surface</h2>
               <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
                 <li>Use <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> when you want live scene generation from a component.</li>
+                <li>Use direct bootstrap through <span class="font-bold text-brand-dark">OctoShaperRuntime.CreateExecutionContext(...)</span> and <span class="font-bold text-brand-dark">OctoShaperRuntime.CreateExecutor(...)</span> when you want full control over the output without the default instancing behavior.</li>
                 <li>Use a <span class="font-bold text-brand-dark">procedural prefab</span> when you want an imported asset that regenerates from graph inputs.</li>
-                <li>Use synchronous execution for immediate deterministic results, or enable async execution at runtime when the graph's node implementations benefit from it.</li>
               </ul>
             </section>
 
             <section>
               <h2 class="text-2xl font-extrabold mb-3">Practical guidance</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">Keep the runtime graph boundary clean: main input in, main output out, and parameter overrides controlling the parts of the graph that need to react to gameplay. If you expect the runtime path to be robust, treat graph code generation as part of your normal authoring cycle rather than a final cleanup step.</p>
-              <p class="text-brand-gray leading-relaxed">When something goes wrong at runtime, the first things to check are generated graph code, the main output type, and whether the graph depends on editor-only assumptions that do not exist in play mode.</p>
+              <p class="text-brand-gray leading-relaxed mb-4">If you want to drive generation from gameplay code, start by turning off <span class="font-bold text-brand-dark">Generate On Enable</span>. That keeps the executor idle until you have applied the right parameter overrides and chosen whether the call should be sync or async.</p>
+              <p class="text-brand-gray leading-relaxed mb-4">Treat generated graph code as part of the runtime contract. If runtime execution fails unexpectedly, the first things to check are whether graph code was regenerated, whether the main output is actually an <span class="font-bold text-brand-dark">ElementSet</span>, and whether the graph depends on editor-only assumptions.</p>
+              <p class="text-brand-gray leading-relaxed">For reusable gameplay systems, prefer wrapping your parameter names in your own code instead of scattering string literals across the project. That keeps runtime parameter control explicit and easier to refactor later.</p>
             </section>
           </div>
         </article>
@@ -112,6 +305,11 @@
   </main>
 
   <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   <script src="../../js/load-layout.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>

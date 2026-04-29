@@ -6,11 +6,84 @@
   <title>OctoShaper Docs - Sync vs Async</title>
   <meta name="description" content="Understand how synchronous and asynchronous execution work in OctoShaper graphs and when to use each mode." />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style data-purpose="custom-fonts">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
     body {
       font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="code-highlighting">
+    pre[class*="language-"] {
+      margin: 0;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      overflow: auto;
+      font-size: 0.925rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    code[class*="language-"] {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    div.code-toolbar {
+      position: relative;
+    }
+
+    div.code-toolbar > .toolbar {
+      top: 0.85rem;
+      right: 0.85rem;
+      opacity: 1;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8f9fa;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button:hover {
+      background: rgba(140, 226, 184, 0.18);
+      border-color: rgba(140, 226, 184, 0.55);
+      color: #ffffff;
+    }
+  </style>
+  <style data-purpose="doc-crosslinks">
+    .doc-crosslink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.12rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(138, 116, 216, 0.12);
+      background: rgba(244, 240, 250, 0.9);
+      color: #8a74d8ff;
+      font-size: 0.63rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: super;
+      text-decoration: none;
+      transform: translateY(-0.2em);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .doc-crosslink:hover {
+      background: #8a74d8ff;
+      border-color: #8a74d8ff;
+      color: #ffffff;
     }
   </style>
   <script>
@@ -38,7 +111,7 @@
   <div id="navbar-container"></div>
 
   <main class="flex-grow bg-grid-pattern pb-20">
-    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+    <section class="max-w-[1280px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
         <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
           <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
@@ -65,17 +138,26 @@
           </nav>
         </aside>
 
-        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
             <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Concept</span>
             <span class="text-sm font-medium text-brand-gray">Execution</span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Sync vs Async: What Changes?</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">OctoShaper exposes both synchronous and asynchronous graph execution. The graph still runs in dependency order either way, but async-capable node methods can be awaited instead of forcing every step to complete immediately on the same call stack.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">OctoShaper exposes both synchronous and asynchronous graph execution. The graph still runs in dependency order either way, but async-capable node methods can be awaited instead of forcing every step to complete immediately on the same call stack. For the actual Unity-facing runtime API, see Runtime Generation<a href="runtime-generation.html" class="doc-crosslink" title="Learn more about Runtime Generation">?</a>.</p>
 
           <div class="space-y-8">
+            <section class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5 sm:p-6">
+                <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Execution Comparison</p>
+                <h2 class="text-2xl font-extrabold mb-4">Sync and async side by side</h2>
+                <figure class="overflow-hidden rounded-2xl border border-brand-border bg-black shadow-sm">
+                  <img src="../../res/docs/async-vs-sync.gif" alt="Animated side-by-side comparison of the same OctoShaper graph running in synchronous and asynchronous execution modes." class="w-full h-auto" loading="lazy" />
+                </figure>
+                <p class="text-brand-gray leading-relaxed mt-4">The graph behavior stays structurally identical, but the runtime path on the right shows how the async toggle changes the caller experience instead of the graph topology.</p>
+            </section>
+
             <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
+              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5 sm:p-6">
                 <h2 class="text-2xl font-extrabold mb-3">Synchronous execution</h2>
                 <p class="text-brand-gray leading-relaxed mb-4">Use sync execution when you want immediate, deterministic completion before the next step in your workflow continues.</p>
                 <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
@@ -84,7 +166,7 @@
                   <li>If a graph contains async-capable nodes, the sync path waits for them to finish before continuing.</li>
                 </ul>
               </div>
-              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6">
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5 sm:p-6">
                 <h2 class="text-2xl font-extrabold mb-3">Asynchronous execution</h2>
                 <p class="text-brand-gray leading-relaxed mb-4">Use async execution when node implementations naturally perform asynchronous work and you want the caller to await completion instead of blocking immediately.</p>
                 <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
@@ -95,7 +177,7 @@
               </div>
             </section>
 
-            <section class="bg-white border border-brand-border rounded-2xl p-6">
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">What stays the same</h2>
               <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
                 <li>The graph structure does not change. Nodes still run according to their dependencies.</li>
@@ -104,9 +186,44 @@
               </ul>
             </section>
 
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">API shape</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The graph executor exposes both sync and async entry points. The execution context and configuration are the same either way; the difference is whether the caller blocks immediately or awaits completion. If the graph data model itself feels abstract here, Elements<a href="elements.html" class="doc-crosslink" title="Learn more about Elements">?</a> and Node Graph Basics<a href="node-graph-basics.html" class="doc-crosslink" title="Learn more about Node Graph Basics">?</a> cover that layer.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
+                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+using CuriousTrove.OctoShaper;
+using CuriousTrove.OctoShaper.Core.Data;
+using UnityEngine;
+
+public sealed class GraphExecutionExample : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraph graph;
+
+    public void RunSync()
+    {
+        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        var executor = OctoShaperRuntime.CreateExecutor(graph);
+
+        executor.Execute(context, ElementSet.CreateImplicitSingle(), new ProceduralConfiguration());
+    }
+
+    public async Task RunAsync()
+    {
+        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        var executor = OctoShaperRuntime.CreateExecutor(graph);
+
+        await executor.ExecuteAsync(
+            context,
+            ElementSet.CreateImplicitSingle(),
+            new ProceduralConfiguration());
+    }
+}</code></pre>
+              </div>
+            </section>
+
             <section>
               <h2 class="text-2xl font-extrabold mb-3">Where you see this in Unity</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">The <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component exposes an <span class="font-bold text-brand-dark">Execute as async</span> option for runtime use. When that toggle is enabled during play mode, regeneration requests are queued through the async execution path instead of forcing an immediate synchronous run.</p>
+              <p class="text-brand-gray leading-relaxed mb-4">The <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component exposes an <span class="font-bold text-brand-dark">Execute as async</span> option for runtime use. When that toggle is enabled during play mode, regeneration requests are queued through the async execution path instead of forcing an immediate synchronous run. The full component workflow is documented in Runtime Generation<a href="runtime-generation.html" class="doc-crosslink" title="Learn more about Runtime Generation">?</a>.</p>
               <p class="text-brand-gray leading-relaxed">For most editor workflows, synchronous execution remains the easier default. Reach for async when the runtime behavior of the graph or its services makes waiting explicitly the better fit.</p>
             </section>
           </div>
@@ -116,6 +233,11 @@
   </main>
 
   <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   <script src="../../js/load-layout.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>

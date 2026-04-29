@@ -6,11 +6,84 @@
   <title>OctoShaper Docs - Elements</title>
   <meta name="description" content="Learn how ElementSet data and attributes flow through OctoShaper graphs." />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style data-purpose="custom-fonts">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
     body {
       font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="code-highlighting">
+    pre[class*="language-"] {
+      margin: 0;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      overflow: auto;
+      font-size: 0.925rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    code[class*="language-"] {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    div.code-toolbar {
+      position: relative;
+    }
+
+    div.code-toolbar > .toolbar {
+      top: 0.85rem;
+      right: 0.85rem;
+      opacity: 1;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8f9fa;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button:hover {
+      background: rgba(140, 226, 184, 0.18);
+      border-color: rgba(140, 226, 184, 0.55);
+      color: #ffffff;
+    }
+  </style>
+  <style data-purpose="doc-crosslinks">
+    .doc-crosslink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.12rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(138, 116, 216, 0.12);
+      background: rgba(244, 240, 250, 0.9);
+      color: #8a74d8ff;
+      font-size: 0.63rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: super;
+      text-decoration: none;
+      transform: translateY(-0.2em);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .doc-crosslink:hover {
+      background: #8a74d8ff;
+      border-color: #8a74d8ff;
+      color: #ffffff;
     }
   </style>
   <script>
@@ -38,7 +111,7 @@
   <div id="navbar-container"></div>
 
   <main class="flex-grow bg-grid-pattern pb-20">
-    <section class="max-w-[1280px] mx-auto px-6 pt-14 pb-10">
+    <section class="max-w-[1280px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
         <aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
           <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
@@ -65,45 +138,92 @@
           </nav>
         </aside>
 
-        <article class="bg-white border border-brand-border rounded-3xl p-8 md:p-10 shadow-sm">
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
             <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Concept</span>
             <span class="text-sm font-medium text-brand-gray">Data Model</span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">What Are Elements?</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">In OctoShaper, procedural data moves through graphs as an <span class="font-bold text-brand-dark">ElementSet</span>. Think of it as a row-based dataset: each element is one row, and each attribute is a named column stored across all rows.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">In OctoShaper, procedural data moves through graphs as an <span class="font-bold text-brand-dark">ElementSet</span>. The easiest way to read it is as a procedural spreadsheet: each element is one row, each attribute is one named column, and each node changes the table rather than dealing with one isolated object at a time. If you want to see where that table sits in the overall graph model, jump to Node Graph Basics<a href="node-graph-basics.html" class="doc-crosslink" title="Learn more about Node Graph Basics">?</a>.</p>
 
           <div class="space-y-8">
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-6">
-                <h2 class="text-2xl font-extrabold mb-3">An element is not just one thing</h2>
-                <p class="text-brand-gray leading-relaxed mb-4">Depending on the graph, one element might represent a point in space, a spawn candidate, a placed prefab, a spline sample, or any other unit of procedural work.</p>
-                <p class="text-brand-gray leading-relaxed">What matters is that OctoShaper treats it as a row of related values that nodes can read, filter, extend, or transform.</p>
+            <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Mental Model</p>
+              <h2 class="text-2xl font-extrabold mb-4">Read an ElementSet like a procedural spreadsheet</h2>
+              <div class="overflow-hidden rounded-2xl border border-brand-border bg-white shadow-sm">
+                <div class="grid grid-cols-[90px_repeat(4,minmax(0,1fr))] text-sm">
+                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Row</div>
+                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Position</div>
+                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Scale</div>
+                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Color</div>
+                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Prefab</div>
+
+                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">0</div>
+                  <div class="border-t border-brand-border px-4 py-3">(0, 0, 0)</div>
+                  <div class="border-t border-brand-border px-4 py-3">1.0</div>
+                  <div class="border-t border-brand-border px-4 py-3">Green</div>
+                  <div class="border-t border-brand-border px-4 py-3">Rock_A</div>
+
+                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">1</div>
+                  <div class="border-t border-brand-border px-4 py-3">(2, 0, 0)</div>
+                  <div class="border-t border-brand-border px-4 py-3">1.4</div>
+                  <div class="border-t border-brand-border px-4 py-3">Green</div>
+                  <div class="border-t border-brand-border px-4 py-3">Rock_A</div>
+
+                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">2</div>
+                  <div class="border-t border-brand-border px-4 py-3">(4, 0, 0)</div>
+                  <div class="border-t border-brand-border px-4 py-3">0.8</div>
+                  <div class="border-t border-brand-border px-4 py-3">Brown</div>
+                  <div class="border-t border-brand-border px-4 py-3">Rock_B</div>
+                </div>
               </div>
-              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6">
+              <p class="text-brand-gray leading-relaxed mt-4">A graph is usually not thinking about one rock, one spline point, or one spawn target. It is thinking about a whole table of elements and deciding which rows to add, remove, or enrich.</p>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5 sm:p-6">
+                <h2 class="text-2xl font-extrabold mb-3">An element is one unit of procedural work</h2>
+                <p class="text-brand-gray leading-relaxed mb-4">Depending on the graph, one element might represent a point in space, a potential building piece, a placed prefab, a spline sample, or a candidate in a scatter pass.</p>
+                <p class="text-brand-gray leading-relaxed">The important part is not the label. The important part is that each row keeps all the values for that one unit together while the graph processes the whole collection.</p>
+              </div>
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5 sm:p-6">
                 <h2 class="text-2xl font-extrabold mb-3">Attributes are the payload</h2>
                 <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                  <li>Attributes are stored by name and type.</li>
-                  <li>Nodes can create new attributes or overwrite existing ones.</li>
-                  <li>ProceduralConfiguration and graph requirements define which values the graph expects to see at the boundary.</li>
+                  <li>Attributes are stored by name and type across the full set.</li>
+                  <li>Some attributes are geometric, such as position, rotation, or scale.</li>
+                  <li>Some are semantic, such as prefab choice, biome tag, mask weight, or any custom value your graph produces.</li>
+                  <li>Nodes can create new attributes, overwrite existing ones, or use them to decide which rows survive.</li>
                 </ul>
               </div>
             </section>
 
-            <section class="bg-white border border-brand-border rounded-2xl p-6">
-              <h2 class="text-2xl font-extrabold mb-3">How ElementSet flows through a graph</h2>
-              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                <li>The main graph input and main graph output are both ElementSet-based.</li>
-                <li>Generator nodes usually create rows or expand a dataset.</li>
-                <li>Modifier nodes typically add attributes, transform values, or remove rows.</li>
-                <li>Instancing and visualization workflows consume the resulting ElementSet to build Unity-side output.</li>
-              </ul>
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">What nodes usually do to the table</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Generate</p>
+                  <p class="text-brand-gray leading-relaxed">Create rows or expand the current set. A generator might turn one input row into many output rows.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Modify</p>
+                  <p class="text-brand-gray leading-relaxed">Add attributes, transform values, or derive new columns from existing data.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Filter</p>
+                  <p class="text-brand-gray leading-relaxed">Remove rows that no longer match the procedural rule you want to keep.</p>
+                </div>
+              </div>
+              <p class="text-brand-gray leading-relaxed mt-5">By the time the graph reaches main output, the ElementSet is the final table that runtime instancing, visualization, or import workflows consume. Those consumers are covered in Runtime Generation<a href="runtime-generation.html" class="doc-crosslink" title="Learn more about Runtime Generation">?</a> and Procedural Prefab<a href="procedural-prefab.html" class="doc-crosslink" title="Learn more about Procedural Prefab">?</a>.</p>
             </section>
 
-            <section>
-              <h2 class="text-2xl font-extrabold mb-3">Why this matters</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">Once you understand ElementSet, the rest of OctoShaper becomes easier to read. Node signatures make more sense, graph outputs become easier to inspect, and it is clearer why the tool favors attributes and element collections over ad-hoc arrays of unrelated data.</p>
-              <p class="text-brand-gray leading-relaxed">When a graph is difficult to debug, one of the fastest ways to reason about it is to ask: how many elements are flowing here, and which attributes should exist on them right now?</p>
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">How this appears at the graph boundary</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>The main graph input is an ElementSet coming into the graph.</li>
+                <li>The main graph output is an ElementSet leaving the graph.</li>
+                <li>Main-input requirements describe which attributes must already exist on incoming rows.</li>
+                <li>Parameters do not replace ElementSet data. They steer how the graph transforms that data<a href="node-graph-basics.html" class="doc-crosslink" title="Learn more about Node Graph Basics">?</a>.</li>
+              </ul>
             </section>
           </div>
         </article>
@@ -112,6 +232,11 @@
   </main>
 
   <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   <script src="../../js/load-layout.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>
