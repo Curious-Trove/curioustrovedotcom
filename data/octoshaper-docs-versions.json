@@ -1,7 +1,7 @@
 [
   {
-    "version": "0.0.1",
-    "label": "v0.0.1",
+    "version": "0.0.1-beta",
+    "label": "v0.0.1-beta",
     "catalogPath": "octoshaper/docs/node-metadata/node-catalog.json",
     "default": true
   }
