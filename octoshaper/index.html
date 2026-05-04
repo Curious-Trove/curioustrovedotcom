@@ -75,23 +75,79 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "OctoShaper",
-    "description": "Node-based procedural generation tool for Unity. Create dynamic game content with real-time feedback.",
+    "alternateName": "OctoShaper Beta",
+    "description": "OctoShaper is a node-based procedural generation tool for Unity for building procedural environments, modular structures, and runtime content with realtime feedback.",
     "url": "https://curioustrove.com/octoshaper/",
     "image": "https://curioustrove.com/res/octoshaper-logo.svg",
     "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "Procedural Generation Tool for Unity",
     "operatingSystem": "Windows, macOS",
-    "softwareVersion": "0.0.1",
+    "softwareVersion": "0.0.1-beta",
+    "isAccessibleForFree": true,
+    "downloadUrl": "https://curioustrove.itch.io/octoshaper",
+    "installUrl": "https://curioustrove.com/octoshaper/docs/installation.html",
+    "softwareHelp": {
+      "@type": "CreativeWork",
+      "name": "OctoShaper documentation",
+      "url": "https://curioustrove.com/octoshaper/docs/index.html"
+    },
     "creator": {
       "@type": "Organization",
       "name": "Curious Trove",
       "url": "https://curioustrove.com"
     },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "https://curioustrove.itch.io/octoshaper"
+    },
+    "keywords": [
+      "procedural generation tool for Unity",
+      "Unity procedural generation",
+      "node-based procedural generation",
+      "Unity PCG",
+      "game development tool"
+    ],
     "featureList": [
       "Node-based procedural generation",
       "Works at runtime and in editor",
       "Real-time feedback",
       "Integrated into Unity workflows",
       "Procedural prefab import workflow"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is OctoShaper?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OctoShaper is a node-based procedural generation tool for Unity. It helps game developers build and iterate on procedural content in the Unity editor and at runtime."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is OctoShaper for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OctoShaper is for Unity developers building procedural environments, modular structures, reusable placement workflows, and runtime variation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I download OctoShaper and read the docs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The public beta download is on itch.io at curioustrove.itch.io/octoshaper, and the documentation is at curioustrove.com/octoshaper/docs/index.html."
+        }
+      }
     ]
   }
   </script>
@@ -156,6 +212,27 @@
                   </svg>
                   Community
                 </a>
+              </div>
+            </div>
+            <div class="mt-4 rounded-2xl border-2 border-white bg-white/80 p-4 shadow-sm">
+              <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+                <p class="text-sm font-extrabold uppercase tracking-[0.18em] text-[#8a74d8ff]">Beta announcement video</p>
+                <a
+                  class="text-sm font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors"
+                  href="../blog.html">
+                  View the devlog post
+                </a>
+              </div>
+              <div class="aspect-video overflow-hidden rounded-2xl border-2 border-white shadow-sm bg-black">
+                <iframe
+                  class="h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/TOsD8Wy5qA0"
+                  title="OctoShaper beta announcement"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen>
+                </iframe>
               </div>
             </div>
           </div>
