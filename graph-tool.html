@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-29X6THKH2J"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-29X6THKH2J');
-  </script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6f9f2b9b-4c22-45eb-adf7-b4a9e27facfd"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,49 +27,81 @@
   <!-- Icons -->
   <link rel="icon" type="image/svg+xml" href="res/logo.svg" />
   <link rel="apple-touch-icon" href="res/logo.svg" />
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div id="navbar-container"></div>
-  
-  <script>
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('navbar-container').innerHTML = html);
-  </script>
 
-  <main>
-    <!-- Product Hero Section -->
-    <section class="product-hero">
-      <h1>Graph Tool</h1>
-      <p class="product-subtitle">Graph Node UI for Unity UI Toolkit</p>
-      <p class="product-description">A Curious Trove R&amp;D project exploring graph interfaces that can be authored in the editor and still function at runtime.</p>
-      <div class="status-badge">Active R&amp;D</div>
+  <!-- Agent Discovery -->
+  <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              purpleHover: '#5a358c',
+              purpleLight: '#f4f0fa',
+              green: '#8ce2b8',
+              greenHover: '#76cca1',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              lightGray: '#f8f9fa',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+  
+</head>
+<body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <!-- BEGIN: Main Content -->
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1400px] mx-auto px-6 pt-24 pb-16 text-center">
+      <h1 class="text-5xl sm:text-6xl font-extrabold text-[#8a74d8ff] mb-4 tracking-tight">Graph Tool</h1>
+      <p class="text-2xl text-brand-dark max-w-3xl mx-auto mb-6 font-extrabold leading-tight">
+        Graph Node UI for Unity UI Toolkit
+      </p>
+      <p class="text-brand-gray max-w-2xl mx-auto mb-6 font-medium leading-relaxed">
+        A Curious Trove R&D project exploring graph interfaces that can be authored in the editor and still function at runtime.
+      </p>
+      <span class="inline-block bg-[#f4f0fa] text-[#8a74d8ff] text-sm font-bold px-4 py-2 rounded-lg border border-[#8a74d8ff]/20">Active R&D</span>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section">
-      <h2>Current Direction</h2>
-      <div class="features-list">
-        <div class="feature-item">
-          <h3>Editor and runtime overlap</h3>
-          <p>The goal is a graph UI foundation that does not fall apart once you leave editor-only tooling.</p>
+    <section class="max-w-[1400px] mx-auto px-6 mb-14">
+      <h2 class="text-4xl font-extrabold tracking-tight mb-8 text-center">Current Direction</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-white border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <h3 class="text-2xl font-extrabold mb-3">Editor and runtime overlap</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">The goal is a graph UI foundation that does not fall apart once you leave editor-only tooling.</p>
         </div>
-        <div class="feature-item">
-          <h3>Custom graph surfaces</h3>
-          <p>The toolkit is aimed at teams that need their own nodes, ports, inspectors, and interaction patterns rather than a fixed one-size-fits-all graph window.</p>
+        <div class="bg-white border-2 border-brand-border rounded-2xl p-6 shadow-sm">
+          <h3 class="text-2xl font-extrabold mb-3">Custom graph surfaces</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">The toolkit is aimed at teams that need their own nodes, ports, inspectors, and interaction patterns rather than a fixed one-size-fits-all graph window.</p>
         </div>
-        <div class="feature-item">
-          <h3>Not publicly released yet</h3>
-          <p>This page is intentionally a status page, not a launch page. Release details will appear here once the product scope is stable enough for broader use.</p>
+        <div class="bg-[#f4f0fa] border-2 border-[#8a74d8ff]/20 rounded-2xl p-6 shadow-sm">
+          <h3 class="text-2xl font-extrabold mb-3">Not publicly released yet</h3>
+          <p class="text-brand-gray font-medium leading-relaxed">This page is intentionally a status page, not a launch page. Release details will appear here once the product scope is stable enough for broader use.</p>
         </div>
       </div>
     </section>
   </main>
-  <footer>
-    <p>&copy; 2026 Curious Trove</p>
-  </footer>
+  <!-- END: Main Content -->
+
+  <div id="footer-container"></div>
+  <script src="js/components.js"></script>
 </body>
 </html>

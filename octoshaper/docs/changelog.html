@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Changelog</title>
+  <meta name="description" content="Release history and changelog for OctoShaper, the Unity procedural generation toolkit from Curious Trove." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="changelog-content">
+    #changelog-content h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #8a74d8ff;
+      margin-bottom: 0.75rem;
+    }
+    #changelog-content h1:first-child {
+      display: none;
+    }
+    #changelog-content h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #8a74d8ff;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    #changelog-content h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    #changelog-content ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #4a4a4a;
+      line-height: 1.75;
+    }
+    #changelog-content ul li {
+      margin-bottom: 0.35rem;
+    }
+    #changelog-content code {
+      background: #f8f9fa;
+      color: #8a74d8ff;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.375rem;
+      font-size: 0.9em;
+      font-weight: 600;
+      border: 1px solid #e5e7eb;
+    }
+    #changelog-content p {
+      color: #4a4a4a;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    #changelog-content > p:first-of-type {
+      display: none;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <div id="octoshaper-docs-sidebar-container"></div>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Reference</span>
+            <span class="text-sm font-medium text-brand-gray">History</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Changelog</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Track what changed between releases of OctoShaper.</p>
+          <div id="changelog-content" class="text-brand-gray">
+            <p class="text-brand-gray">Loading changelog...</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+  <script>
+    (function() {
+      const container = document.getElementById('changelog-content');
+      if (!container) return;
+
+      fetch('changelog/CHANGELOG.md')
+        .then(function(response) {
+          if (!response.ok) throw new Error('Failed to load changelog');
+          return response.text();
+        })
+        .then(function(md) {
+          container.innerHTML = marked.parse(md);
+        })
+        .catch(function(error) {
+          console.error('Error loading changelog:', error);
+          container.innerHTML = '<p class="text-brand-gray">The changelog is not available right now.</p>';
+        });
+    })();
+  </script>
+</body>
+</html>

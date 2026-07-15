@@ -9,7 +9,14 @@
   AddType application/javascript .js
   AddType application/wasm .wasm
   AddType application/gzip .gz
+  AddType text/markdown .md
+  AddType application/linkset+json .linkset+json
 </IfModule>
+
+# Set Content-Type for well-known files without extensions
+<Files "api-catalog">
+  ForceType application/linkset+json
+</Files>
 
 # Cache headers
 <IfModule mod_expires.c>

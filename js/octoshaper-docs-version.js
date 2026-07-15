@@ -1,11 +1,13 @@
 (function() {
-  const namespace = window.OctoShaperNodeCatalogData;
-  const versionPanel = document.getElementById('octoshaper-version-panel');
-  const versionInline = document.getElementById('octoshaper-version-inline');
+  var namespace = window.OctoShaperNodeCatalogData;
 
-  if (!namespace) {
-    return;
-  }
+  function init() {
+    var versionPanel = document.getElementById('octoshaper-version-panel');
+    var versionInline = document.getElementById('octoshaper-version-inline');
+
+    if (!namespace) {
+      return;
+    }
 
   function updateSidebarLinks(version) {
     document.querySelectorAll('aside nav a[href]').forEach(link => {
@@ -73,4 +75,11 @@
     .catch(error => {
       console.error('Error loading docs version UI:', error);
     });
+  }
+
+  if (document.getElementById('octoshaper-version-panel')) {
+    init();
+  } else {
+    window.addEventListener('octoshaper-sidebar-ready', init, { once: true });
+  }
 })();

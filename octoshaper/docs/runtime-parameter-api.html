@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Runtime Parameters</title>
+  <meta name="description" content="Use the parameter override API on ProceduralGraphExecutor and ProceduralConfiguration to control OctoShaper graph execution from code at runtime." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="code-highlighting">
+    pre[class*="language-"] {
+      margin: 0;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      overflow: auto;
+      font-size: 0.925rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    code[class*="language-"] {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    div.code-toolbar {
+      position: relative;
+    }
+
+    div.code-toolbar > .toolbar {
+      top: 0.85rem;
+      right: 0.85rem;
+      opacity: 1;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8f9fa;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button:hover {
+      background: rgba(140, 226, 184, 0.18);
+      border-color: rgba(140, 226, 184, 0.55);
+      color: #ffffff;
+    }
+  </style>
+  <style data-purpose="doc-crosslinks">
+    .doc-crosslink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.12rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(138, 116, 216, 0.12);
+      background: rgba(244, 240, 250, 0.9);
+      color: #8a74d8ff;
+      font-size: 0.63rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: super;
+      text-decoration: none;
+      transform: translateY(-0.2em);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .doc-crosslink:hover {
+      background: #8a74d8ff;
+      border-color: #8a74d8ff;
+      color: #ffffff;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <div id="octoshaper-docs-sidebar-container"></div>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">API</span>
+            <span class="text-sm font-medium text-brand-gray">Runtime</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Runtime Parameters</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">OctoShaper graphs expose parameters that control node inputs at graph level. At runtime, you can override these parameters through the <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component or directly on a <span class="font-bold text-brand-dark">ProceduralConfiguration</span>. This page covers the complete parameter override API and best practices for driving graphs from gameplay code.</p>
+
+          <div class="space-y-8">
+            <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Quick Start</p>
+              <h2 class="text-2xl font-extrabold mb-3">Basic parameter override</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Set overrides by parameter name before calling a generate method. Overrides apply to the next generation only and do not mutate the graph asset.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
+                <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper;
+using UnityEngine;
+
+public sealed class RuntimeParameterExample : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraphExecutor executor;
+
+    public void ApplyGameplayState(int count, float width)
+    {
+        executor.SetParameterOverride("Count", count);
+        executor.SetParameterOverride("Width", width);
+        executor.GenerateSync();
+    }
+
+    public void ResetToDefaults()
+    {
+        executor.ClearParameterOverrides();
+        executor.GenerateSync();
+    }
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Executor-level parameter API</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> wraps parameter overrides on its internal <code>ProceduralConfiguration</code>. These methods are the preferred surface for runtime gameplay code.</p>
+              <div class="grid grid-cols-1 gap-5">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(Guid parameterId, object value)</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Overrides a graph parameter by its unique Guid. Use this when you have already cached the parameter id from the graph asset.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(string parameterName, object value)</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Overrides a graph parameter by its authored name. This is the most common surface for runtime code because parameter names are human-readable and stable across graph edits. The value must be type-compatible with the parameter's declared type.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">TrySetParameterOverride(string parameterName, object value)</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Same as <code>SetParameterOverride(string, object)</code> but returns <code>false</code> instead of throwing when the parameter name is not found. Use this when you want graceful fallback for optional parameters.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">ClearParameterOverrides()</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Removes all parameter overrides, restoring the graph's default parameter values for the next generation. The graph asset itself is never modified.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Working with ProceduralConfiguration directly</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">When using the low-level runtime API (without a <code>ProceduralGraphExecutor</code> component), create a <code>ProceduralConfiguration</code> and set overrides on it directly. Pass it to the executor's <code>ExecuteAsync</code> method.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mb-4">
+                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+using CuriousTrove.OctoShaper;
+using CuriousTrove.OctoShaper.Core.Data;
+using UnityEngine;
+
+public sealed class DirectParameterExample : MonoBehaviour
+{
+    [SerializeField] private ProceduralGraph graph;
+
+    public async Task&lt;ElementSet&gt; GenerateWithParameters(int count)
+    {
+        var configuration = new ProceduralConfiguration();
+
+        // Set overrides before execution.
+        configuration.SetParameterOverride(
+            graph.Parameters[0].Id,
+            count);
+
+        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        var executor = OctoShaperRuntime.CreateExecutor(graph);
+
+        await executor.ExecuteAsync(
+            context,
+            ElementSet.CreateImplicitSingle(),
+            configuration);
+
+        return (ElementSet)context.GetMainOutputValue();
+    }
+}</code></pre>
+              </div>
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
+                <p class="text-sm text-brand-gray leading-relaxed"><span class="font-bold text-brand-dark">Note:</span> The <code>ProceduralConfiguration</code> also exposes <code>TrySetParameter&lt;T&gt;(string, T)</code> which is a generic-typed variant of the string-based override, useful when you want compile-time type checking for the override value.</p>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Configuration-level API (ProceduralConfiguration)</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">These methods live on <code>ProceduralConfiguration</code> and are used indirectly through the executor. They are also available when you construct a configuration manually.</p>
+              <div class="grid grid-cols-1 gap-5">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(Guid parameterId, object value)</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Sets an override on the configuration by parameter Guid. The executor delegates to this method.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">TrySetParameter&lt;T&gt;(string parameterName, T value)</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Generic-typed override by name. Returns <code>true</code> if the parameter exists and the type matches; <code>false</code> otherwise. This is the preferred surface for direct configuration manipulation because it validates the type at compile time.</p>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">ClearOverrides()</h3>
+                  <p class="text-brand-gray leading-relaxed text-sm">Removes all overrides from the configuration. The executor's <code>ClearParameterOverrides()</code> delegates to this.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Best practices</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li><span class="font-bold text-brand-dark">Use name-based overrides for gameplay code.</span> Parameter names are stable across most graph edits, whereas Guid-based ids require caching from the graph asset.</li>
+                <li><span class="font-bold text-brand-dark">Wrap parameter names in constants or a dedicated class.</span> Avoid scattering string literals across your project. A central <code>GraphParameters</code> static class makes refactoring safer.</li>
+                <li><span class="font-bold text-brand-dark">Set overrides before the first generation.</span> Overrides only take effect on the next call to a generate method. Setting them after generation has no immediate effect.</li>
+                <li><span class="font-bold text-brand-dark">Overrides do not mutate the graph asset.</span> The original graph retains its default parameter values. Overrides live only on the configuration/executor.</li>
+                <li><span class="font-bold text-brand-dark">Use TrySetParameterOverride for optional parameters.</span> When a parameter may or may not exist (e.g., different graph versions), the <code>Try</code> variant avoids runtime exceptions.</li>
+              </ul>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+</body>
+</html>

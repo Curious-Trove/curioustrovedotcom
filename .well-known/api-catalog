@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://curioustrove.com/",
+      "service-doc": [
+        {"href": "https://curioustrove.com/octoshaper/docs/", "title": "OctoShaper Documentation"}
+      ],
+      "describedby": [
+        {"href": "https://curioustrove.com/sitemap.xml", "type": "application/xml"}
+      ]
+    },
+    {
+      "anchor": "https://curioustrove.com/octoshaper/",
+      "service-doc": [
+        {"href": "https://curioustrove.com/octoshaper/docs/", "title": "OctoShaper Documentation"}
+      ]
+    }
+  ]
+}

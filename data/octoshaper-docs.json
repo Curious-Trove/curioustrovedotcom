@@ -54,6 +54,33 @@
     "url": "runtime-generation.html"
   },
   {
+    "slug": "gameobject-callbacks",
+    "title": "GameObject Callbacks",
+    "category": "API",
+    "summary": "Use IUnityInstanceSpawnReceiver to react to spawned GameObjects and understand the UnityInstanceSpawnContext.",
+    "status": "API",
+    "readTime": "4 min read",
+    "url": "gameobject-callbacks.html"
+  },
+  {
+    "slug": "runtime-parameter-api",
+    "title": "Runtime Parameters",
+    "category": "API",
+    "summary": "Override graph parameters from code using the ProceduralGraphExecutor and ProceduralConfiguration APIs.",
+    "status": "API",
+    "readTime": "4 min read",
+    "url": "runtime-parameter-api.html"
+  },
+  {
+    "slug": "changelog",
+    "title": "Changelog",
+    "category": "Reference",
+    "summary": "Release history and version changes for OctoShaper.",
+    "status": "History",
+    "readTime": "2 min read",
+    "url": "changelog.html"
+  },
+  {
     "slug": "nodes",
     "title": "Node Catalog",
     "category": "Reference",

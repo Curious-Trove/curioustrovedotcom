@@ -1,0 +1,46 @@
+<aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+  <div id="octoshaper-version-panel"></div>
+  <nav class="space-y-2 text-sm font-bold">
+    <a href="index.html" data-sidebar-page="index" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
+    <a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Installation</a>
+    <a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a>
+    <a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a>
+    <a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Elements</a>
+    <a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a>
+    <a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a>
+    <a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a>
+    <a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a>
+    <a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a>
+    <a href="nodes.html" data-sidebar-page="nodes-collapsed" class="block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">
+      <span class="flex items-center justify-between gap-3">
+        <span>
+          <span class="block">Node Catalog</span>
+          <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+        </span>
+        <svg class="w-4 h-4 text-brand-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </span>
+    </a>
+    <div data-sidebar-group="nodes-expanded" class="rounded-2xl border border-[#8a74d8ff]/20 bg-[#faf7fd] p-2 hidden">
+      <a href="nodes.html" class="block rounded-xl px-4 py-3 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20" aria-expanded="true">
+        <span class="flex items-center justify-between gap-3">
+          <span>
+            <span class="block">Node Catalog</span>
+            <span class="block text-xs font-semibold text-brand-gray">Browse by node type</span>
+          </span>
+          <svg class="w-4 h-4 text-[#8a74d8ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </span>
+      </a>
+      <div class="mt-2 px-2">
+        <p class="px-2 pb-2 text-[11px] font-extrabold uppercase tracking-[0.16em] text-brand-gray">Node Types</p>
+        <div id="node-sidebar-submenu" class="space-y-1 lg:max-h-[min(46vh,24rem)] lg:overflow-y-auto pr-1">
+          <div class="px-2 py-2 text-sm text-brand-gray">Loading node types...</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</aside>

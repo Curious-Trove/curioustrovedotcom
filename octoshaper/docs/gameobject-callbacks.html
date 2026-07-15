@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - GameObject Callbacks</title>
+  <meta name="description" content="Use IUnityInstanceSpawnReceiver to react to spawned GameObjects from OctoShaper instancing and understand the UnityInstanceSpawnContext." />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+  <style data-purpose="code-highlighting">
+    pre[class*="language-"] {
+      margin: 0;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      overflow: auto;
+      font-size: 0.925rem;
+      line-height: 1.7;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    code[class*="language-"] {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    div.code-toolbar {
+      position: relative;
+    }
+
+    div.code-toolbar > .toolbar {
+      top: 0.85rem;
+      right: 0.85rem;
+      opacity: 1;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8f9fa;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 9999px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: none;
+    }
+
+    div.code-toolbar > .toolbar .toolbar-item > button:hover {
+      background: rgba(140, 226, 184, 0.18);
+      border-color: rgba(140, 226, 184, 0.55);
+      color: #ffffff;
+    }
+  </style>
+  <style data-purpose="doc-crosslinks">
+    .doc-crosslink {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
+      margin-left: 0.12rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(138, 116, 216, 0.12);
+      background: rgba(244, 240, 250, 0.9);
+      color: #8a74d8ff;
+      font-size: 0.63rem;
+      font-weight: 800;
+      line-height: 1;
+      vertical-align: super;
+      text-decoration: none;
+      transform: translateY(-0.2em);
+      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+    }
+
+    .doc-crosslink:hover {
+      background: #8a74d8ff;
+      border-color: #8a74d8ff;
+      color: #ffffff;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff',
+              green: '#8ce2b8',
+              dark: '#1e1e1e',
+              gray: '#4a4a4a',
+              border: '#e5e7eb'
+            }
+          },
+          backgroundImage: {
+            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <div id="navbar-container"></div>
+
+  <main class="flex-grow bg-grid-pattern pb-20">
+    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <div id="octoshaper-docs-sidebar-container"></div>
+
+        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">API</span>
+            <span class="text-sm font-medium text-brand-gray">Runtime</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">GameObject Callbacks</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">When OctoShaper spawns GameObjects during instancing, prefab hierarchies can receive a notification through the <span class="font-bold text-brand-dark">IUnityInstanceSpawnReceiver</span> interface. This is the primary API for reacting to newly instantiated objects with full context about their origin, position in the element set, and instancing source.</p>
+
+          <div class="space-y-8">
+            <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Quick Start</p>
+              <h2 class="text-2xl font-extrabold mb-3">Implementing a spawn receiver</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Attach a MonoBehaviour that implements the interface to any GameObject in the prefab hierarchy. OctoShaper calls it automatically after spawning.</p>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
+                <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper.Instancing;
+using UnityEngine;
+
+public sealed class OnSpawnInitializer : MonoBehaviour, IUnityInstanceSpawnReceiver
+{
+    public void OnUnityInstanceSpawned(UnityInstanceSpawnContext context)
+    {
+        Debug.Log($"Spawned row {context.RowIndex} " +
+                  $"(parent: {context.ParentRowIndex}, " +
+                  $"sibling: {context.SiblingIndex}) " +
+                  $"from source {context.Source}");
+    }
+}</code></pre>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">UnityInstanceSpawnContext</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The context struct carries all the information a spawned instance needs to initialize itself.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">Identity fields</h3>
+                  <ul class="space-y-2 text-brand-gray leading-relaxed list-disc pl-5 text-sm">
+                    <li><span class="font-bold text-brand-dark">Instance</span> &mdash; the spawned GameObject</li>
+                    <li><span class="font-bold text-brand-dark">Graph</span> &mdash; the ProceduralGraph that produced this element</li>
+                    <li><span class="font-bold text-brand-dark">GraphId</span> &mdash; the graph's unique identifier string</li>
+                    <li><span class="font-bold text-brand-dark">Owner</span> &mdash; the object that triggered the spawn (e.g., the ProceduralGraphExecutor)</li>
+                    <li><span class="font-bold text-brand-dark">Source</span> &mdash; <code>UnityInstantiationSource</code> enum indicating what triggered instantiation</li>
+                  </ul>
+                </div>
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-3">Row and placement fields</h3>
+                  <ul class="space-y-2 text-brand-gray leading-relaxed list-disc pl-5 text-sm">
+                    <li><span class="font-bold text-brand-dark">RowIndex</span> &mdash; the zero-based index of this element in the ElementSet</li>
+                    <li><span class="font-bold text-brand-dark">ParentRowIndex</span> &mdash; the parent element's row index (or -1 for root rows)</li>
+                    <li><span class="font-bold text-brand-dark">SiblingIndex</span> &mdash; the birth order among siblings under the same parent</li>
+                    <li><span class="font-bold text-brand-dark">SpawnKind</span> &mdash; <code>UnityInstanceSpawnKind</code> enum: whether this is a new row, a hierarchy child, etc.</li>
+                    <li><span class="font-bold text-brand-dark">Prefab</span> &mdash; the <code>PrefabReference</code> that produced this instance</li>
+                    <li><span class="font-bold text-brand-dark">PrimitiveType</span> &mdash; the Unity <code>PrimitiveType</code> if a primitive was spawned</li>
+                    <li><span class="font-bold text-brand-dark">Scene</span> &mdash; the scene the instance lives in</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Receiver invocation rules</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">OctoShaper discovers receivers on every spawned root and walks the instance hierarchy:</p>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>Receivers are found with <span class="font-bold text-brand-dark">GetComponentsInChildren&lt;IUnityInstanceSpawnReceiver&gt;(true)</span> on each spawned root.</li>
+                <li>A receiver is only invoked when its transform belongs to the same spawned root hierarchy (not a nested sub-prefab instantiated separately).</li>
+                <li>Receivers are called <span class="font-bold text-brand-dark">after</span> the instance is fully set up (position, rotation, scale, parent) but <span class="font-bold text-brand-dark">before</span> the instance is reparented under the executor's transform.</li>
+                <li>Exceptions thrown inside <span class="font-bold text-brand-dark">OnUnityInstanceSpawned</span> are caught and logged, so they do not break the instancing loop.</li>
+              </ul>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Toggling spawn callbacks</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The <span class="font-bold text-brand-dark">GameObjectInstancingStrategy</span> exposes a <span class="font-bold text-brand-dark">Notify Spawn Receivers</span> toggle in the Unity inspector. When disabled, no <code>IUnityInstanceSpawnReceiver</code> callbacks are broadcast during instancing, which can save CPU time when spawned hierarchies do not need per-instance initialization.</p>
+              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
+                <p class="text-sm text-brand-gray leading-relaxed"><span class="font-bold text-brand-dark">Best practice:</span> Turn this toggle off when your prefabs have no spawn receiver components. If you toggle it off and later add receivers to a prefab, remember to re-enable it.</p>
+              </div>
+            </section>
+
+            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
+              <h2 class="text-2xl font-extrabold mb-3">Practical patterns</h2>
+              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mb-4">
+                <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper.Instancing;
+using UnityEngine;
+
+public sealed class RowIndexLabel : MonoBehaviour, IUnityInstanceSpawnReceiver
+{
+    public void OnUnityInstanceSpawned(UnityInstanceSpawnContext context)
+    {
+        // Only apply to root-level elements, not hierarchy children.
+        if (context.SpawnKind != UnityInstanceSpawnKind.Row)
+        {
+            return;
+        }
+
+        // Use the row index to pick a material variant.
+        var renderer = GetComponent&lt;MeshRenderer&gt;();
+        if (renderer != null &amp;&amp; context.RowIndex % 2 == 0)
+        {
+            renderer.material.color = Color.cyan;
+        }
+    }
+}</code></pre>
+              </div>
+              <p class="text-brand-gray leading-relaxed">The <span class="font-bold text-brand-dark">SpawnKind</span> field lets you distinguish root rows from hierarchy children. Combined with <span class="font-bold text-brand-dark">RowIndex</span> and <span class="font-bold text-brand-dark">ParentRowIndex</span>, you can implement parent-aware initialization logic entirely inside the spawned prefab, without any external manager scripts.</p>
+            </section>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <script src="../../js/load-layout.js"></script>
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+</body>
+</html>

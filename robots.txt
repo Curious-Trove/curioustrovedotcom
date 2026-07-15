@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /private/
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Specific search engine directives
 User-agent: Googlebot
