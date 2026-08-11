@@ -5,31 +5,40 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- Primary Meta Tags -->
   <title>Development Blog - Curious Trove</title>
   <meta name="title" content="Development Blog - Curious Trove" />
-  <meta name="description" content="Development insights, updates, and progress reports from the Curious Trove team." />
-  <meta name="keywords" content="game development, devlog, development blog, indie games" />
+  <meta name="description" content="Development insights, updates, and progress reports from the Curious Trove team, including the OctoShaper Unity procedural generation tool." />
+  <meta name="keywords" content="game development, devlog, development blog, indie games, OctoShaper, procedural generation, Unity" />
   <meta name="author" content="Curious Trove" />
   <meta name="robots" content="index, follow" />
-  
+  <meta name="language" content="English" />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://curioustrove.com/blog.html" />
   <meta property="og:title" content="Development Blog - Curious Trove" />
-  <meta property="og:description" content="Development insights, updates, and progress reports from the Curious Trove team." />
+  <meta property="og:description" content="Development insights, updates, and progress reports from the Curious Trove team, including the OctoShaper Unity procedural generation tool." />
   <meta property="og:image" content="https://curioustrove.com/res/logo.svg" />
-  
+  <meta property="og:site_name" content="Curious Trove" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Development Blog - Curious Trove" />
+  <meta name="twitter:description" content="Development insights, updates, and progress reports from the Curious Trove team, including the OctoShaper Unity procedural generation tool." />
+  <meta name="twitter:image" content="https://curioustrove.com/res/logo.svg" />
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://curioustrove.com/blog.html" />
-  
+
   <!-- Icons -->
   <link rel="icon" type="image/svg+xml" href="res/logo.svg" />
   <link rel="apple-touch-icon" href="res/logo.svg" />
 
   <!-- Agent Discovery -->
   <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
+  <link rel="describedby" type="application/xml" href="/sitemap.xml" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -45,7 +54,7 @@
         extend: {
           colors: {
             brand: {
-              purple: '#6d42a6',
+              purple: '#8a74d8ff',
               purpleHover: '#5a358c',
               purpleLight: '#f4f0fa',
               green: '#8ce2b8',
@@ -63,7 +72,88 @@
       }
     }
   </script>
-  
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "The Devlog - Curious Trove",
+    "url": "https://curioustrove.com/blog.html",
+    "description": "Development insights, updates, and progress reports from the Curious Trove team.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Curious Trove",
+      "url": "https://curioustrove.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://curioustrove.com/res/logo.svg"
+      }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "OctoShaper v1.0.0 is now available on the Unity Asset Store",
+        "url": "https://curioustrove.com/blog/octoshaper-v1-0-release.html",
+        "datePublished": "2026-08-11"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "OctoShaper beta announcement video",
+        "url": "https://curioustrove.com/blog/octoshaper-beta-announcement.html",
+        "datePublished": "2026-05-04"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Procedural vines using iterative growth",
+        "url": "https://curioustrove.com/blog/procedural-vines-iterative-growth.html",
+        "datePublished": "2026-04-10"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Surface sampling with triangulation",
+        "url": "https://curioustrove.com/blog/surface-sampling-triangulation.html",
+        "datePublished": "2026-04-03"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Improved performance a lot for my PCG tool",
+        "url": "https://curioustrove.com/blog/improved-pcg-performance.html",
+        "datePublished": "2026-03-20"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Realtime visualisations and parameter configs",
+        "url": "https://curioustrove.com/blog/realtime-visualisations-parameter-configs.html",
+        "datePublished": "2026-02-13"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Parameters and search",
+        "url": "https://curioustrove.com/blog/parameters-and-search.html",
+        "datePublished": "2026-01-30"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Designing with UI Toolkit",
+        "url": "https://curioustrove.com/blog/designing-with-ui-toolkit.html",
+        "datePublished": "2026-01-16"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Stress Testing Nodes",
+        "url": "https://curioustrove.com/blog/stress-testing-nodes.html",
+        "datePublished": "2026-01-12"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Welcome to Curious Trove",
+        "url": "https://curioustrove.com/blog/welcome-to-curious-trove.html",
+        "datePublished": "2026-01-09"
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
   <div id="navbar-container"></div>
@@ -81,173 +171,191 @@
 
     <!-- BEGIN: Blog Posts -->
     <section class="max-w-[900px] mx-auto px-6 space-y-8">
-      <!-- Blog Post 1 -->
+      <!-- Blog Post: Release -->
+      <article class="bg-white border-2 border-[#8ce2b8] rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-08-11" class="text-sm text-brand-gray">August 11, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/octoshaper-v1-0-release.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">OctoShaper v1.0.0 is now available on the Unity Asset Store</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            The first official release of OctoShaper is live on the Unity Asset Store. Node-based procedural generation for Unity with realtime feedback, one-time purchase, and no subscription.
+          </p>
+          <p>
+            <a href="blog/octoshaper-v1-0-release.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Beta -->
       <article class="bg-white border-2 border-[#8a74d8ff]/20 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
         <div class="flex items-center gap-3 mb-3 flex-wrap">
           <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">May 4, 2026</span>
+          <time datetime="2026-05-04" class="text-sm text-brand-gray">May 4, 2026</time>
         </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">OctoShaper beta announcement video</h2>
-        <div class="post-content space-y-5 text-brand-gray leading-relaxed">
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/octoshaper-beta-announcement.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">OctoShaper beta announcement video</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
           <p>
             After 6 months of work, the OctoShaper beta is live. This video is the clearest overview of the current tool.
           </p>
           <p>
-            I will share more updates on the YouTube channel, so don't hesitate to subscribe if you want to see more!
-          </p>
-          <div class="aspect-video overflow-hidden rounded-2xl border-2 border-[#8a74d8ff]/20 shadow-sm bg-black">
-            <iframe
-              class="h-full w-full"
-              src="https://www.youtube-nocookie.com/embed/TOsD8Wy5qA0"
-              title="OctoShaper beta announcement"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <p>
-            If you want to try it, head over to the OctoShaper page for the current beta build, docs, and future updates.
-          </p>
-          <p>
-            <a href="octoshaper/index.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Open the OctoShaper page</a>
+            <a href="blog/octoshaper-beta-announcement.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
           </p>
         </div>
       </article>
 
-      <!-- Blog Post -1 -->
+      <!-- Blog Post: Vines -->
       <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
           <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">April 10, 2026</span>
+          <time datetime="2026-04-10" class="text-sm text-brand-gray">April 10, 2026</time>
         </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Procedural vines using iterative growth</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1shonmw/procedural_vines_using_iterative_growth/">Procedural vines using iterative growth</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 0 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">April 3, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Surface sampling with triangulation</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1sbgr2y/surface_sampling_with_triangulation/">Surface sampling with triangulation</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 1 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">March 20, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Improved performance a lot for my PCG tool</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="740">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1s58hu0/improved_performance_a_lot_for_my_pcg_tool/">Improved performance a lot for my PCG tool</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 2 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">February 13, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Realtime visualisations and parameter configs</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="568">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1r3nzn9/realtime_visualisations_of_procedural_objects/">Realtime visualisations of procedural objects</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 3 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
-          <span class="text-sm text-brand-gray">January 30, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Parameters and search</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="608">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1qr1k4n/parameters_and_search_for_my_pcg_tool/">Parameters and search for my PCG tool</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 4 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
-          <span class="text-sm text-brand-gray">January 16, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Designing with UI Toolkit</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="660">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1qee8wa/ui_toolkit_is_really_powerful/">UI Toolkit is really powerful</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Blog Post 5 -->
-      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-        <div class="flex items-center gap-3 mb-3">
-          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
-          <span class="text-sm text-brand-gray">January 12, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Stress Testing Nodes</h2>
-        <div class="post-content">
-          <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="461">
-            <a href="https://www.reddit.com/r/Unity3D/comments/1q8addb/custom_graph_ui_library/">Custom Graph UI library</a><br> by
-            <a href="https://www.reddit.com/user/Marvluss/">u/Marvluss</a> in
-            <a href="https://www.reddit.com/r/Unity3D/">Unity3D</a>
-          </blockquote>
-          <script async="" src="https://embed.reddit.com/widgets.js" charset="UTF-8"></script>
-        </div>
-      </article>
-
-      <!-- Welcome Post -->
-      <article class="bg-[#f4f0fa] border-2 border-[#8a74d8ff]/20 rounded-xl p-8 shadow-lg">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="text-sm text-brand-gray">January 9, 2026</span>
-        </div>
-        <h2 class="text-2xl font-bold mb-4 text-brand-dark">Welcome to Curious Trove</h2>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/procedural-vines-iterative-growth.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Procedural vines using iterative growth</a>
+        </h2>
         <div class="post-content space-y-4 text-brand-gray leading-relaxed">
           <p>
-            Hey! Welcome. I'm Paul, the solo dev behind Curious Trove.
-            This is where I'll be posting updates about the tools I'm building for game developers.
-            I've been working on tools for private clients for a while, and now I'm excited to share my work with the wider game dev community.
+            Growing procedural vines with iterative growth rules, and how growth systems replace hand-placed branching.
           </p>
           <p>
-            You'll find updates on my current projects, insights into the development process, and maybe even some behind-the-scenes looks at how these tools come together.
+            <a href="blog/procedural-vines-iterative-growth.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Surface sampling -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-04-03" class="text-sm text-brand-gray">April 3, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/surface-sampling-triangulation.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Surface sampling with triangulation</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Sampling points off mesh surfaces with triangulation — a practical route to mesh-driven prop distribution and terrain dressing.
+          </p>
+          <p>
+            <a href="blog/surface-sampling-triangulation.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Performance -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-03-20" class="text-sm text-brand-gray">March 20, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/improved-pcg-performance.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Improved performance a lot for my PCG tool</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            A major performance pass on the OctoShaper graph engine, keeping iteration loops responsive.
+          </p>
+          <p>
+            <a href="blog/improved-pcg-performance.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Realtime visualisations -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-02-13" class="text-sm text-brand-gray">February 13, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/realtime-visualisations-parameter-configs.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Realtime visualisations and parameter configs</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Realtime visualisations of procedural objects and the parameter configs that drive them.
+          </p>
+          <p>
+            <a href="blog/realtime-visualisations-parameter-configs.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Parameters and search -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-01-30" class="text-sm text-brand-gray">January 30, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/parameters-and-search.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Parameters and search</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Parameter handling and node search for the PCG tool — the ergonomics that make a node graph pleasant to work with as it grows.
+          </p>
+          <p>
+            <a href="blog/parameters-and-search.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: UI Toolkit -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
+          <time datetime="2026-01-16" class="text-sm text-brand-gray">January 16, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/designing-with-ui-toolkit.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Designing with UI Toolkit</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Designing graph tool interfaces with Unity UI Toolkit, and why it's a powerful fit for editor tooling.
+          </p>
+          <p>
+            <a href="blog/designing-with-ui-toolkit.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Stress Testing -->
+      <article class="bg-white border-2 border-brand-border rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="graph-tool.html" class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20 hover:bg-[#e8e0f5] transition-colors">Graph Tool</a>
+          <time datetime="2026-01-12" class="text-sm text-brand-gray">January 12, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/stress-testing-nodes.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Stress Testing Nodes</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Stress testing the custom graph UI library, pushing node counts to find where the graph tool holds up.
+          </p>
+          <p>
+            <a href="blog/stress-testing-nodes.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
+          </p>
+        </div>
+      </article>
+
+      <!-- Blog Post: Welcome -->
+      <article class="bg-[#f4f0fa] border-2 border-[#8a74d8ff]/20 rounded-xl p-8 shadow-lg">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <time datetime="2026-01-09" class="text-sm text-brand-gray">January 9, 2026</time>
+        </div>
+        <h2 class="text-2xl font-bold mb-4">
+          <a href="blog/welcome-to-curious-trove.html" class="text-brand-dark hover:text-[#8a74d8ff] transition-colors">Welcome to Curious Trove</a>
+        </h2>
+        <div class="post-content space-y-4 text-brand-gray leading-relaxed">
+          <p>
+            Welcome! I'm Paul, the solo dev behind Curious Trove, building tools for game developers and sharing the process in public.
+          </p>
+          <p>
+            <a href="blog/welcome-to-curious-trove.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Read more <span aria-hidden="true">&rarr;</span></a>
           </p>
         </div>
       </article>

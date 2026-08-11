@@ -8,9 +8,75 @@
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/</loc>
-    <lastmod>2026-02-02</lastmod>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/octoshaper-v1-0-release.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/octoshaper-beta-announcement.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/procedural-vines-iterative-growth.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/surface-sampling-triangulation.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/improved-pcg-performance.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/realtime-visualisations-parameter-configs.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/parameters-and-search.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/designing-with-ui-toolkit.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/stress-testing-nodes.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/blog/welcome-to-curious-trove.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/index.html</loc>
