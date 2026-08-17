@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://curioustrove.com/</loc>
-    <lastmod>2026-02-02</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -80,50 +80,68 @@
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/index.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/installation.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/sync-vs-async.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/procedural-prefab.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/elements.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/node-graph-basics.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/runtime-generation.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/nodes.html</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>2026-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/gameobject-callbacks.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/runtime-parameter-api.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/changelog.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
