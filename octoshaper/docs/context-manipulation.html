@@ -3,77 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OctoShaper Docs - Changelog</title>
-  <meta name="description" content="Release history and changelog for OctoShaper, the Unity procedural generation toolkit from Curious Trove." />
-  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/changelog.html" />
+  <title>OctoShaper Docs - Context Manipulation</title>
+  <meta name="description" content="Manipulate compatible OctoShaper graph values in the Unity Scene view and inspect graph output with contextual gizmos." />
+  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/context-manipulation.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="OctoShaper Changelog" />
-  <meta property="og:description" content="Release history and changelog for OctoShaper, the Unity procedural generation toolkit from Curious Trove." />
-  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/changelog.html" />
+  <meta property="og:title" content="Context Manipulation in OctoShaper" />
+  <meta property="og:description" content="Manipulate compatible OctoShaper graph values in the Unity Scene view and inspect graph output with contextual gizmos." />
+  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/context-manipulation.html" />
   <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
-
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style data-purpose="custom-fonts">
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-    body {
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
-  <style data-purpose="changelog-content">
-    #changelog-content h1 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #8a74d8ff;
-      margin-bottom: 0.75rem;
-    }
-    #changelog-content h1:first-child {
-      display: none;
-    }
-    #changelog-content h2 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #8a74d8ff;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #e5e7eb;
-    }
-    #changelog-content h3 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #1e1e1e;
-      margin-top: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    #changelog-content ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      margin-bottom: 1rem;
-      color: #4a4a4a;
-      line-height: 1.75;
-    }
-    #changelog-content ul li {
-      margin-bottom: 0.35rem;
-    }
-    #changelog-content code {
-      background: #f8f9fa;
-      color: #8a74d8ff;
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.375rem;
-      font-size: 0.9em;
-      font-weight: 600;
-      border: 1px solid #e5e7eb;
-    }
-    #changelog-content p {
-      color: #4a4a4a;
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-    #changelog-content > p:first-of-type {
-      display: none;
-    }
+    body { font-family: 'Montserrat', sans-serif; }
   </style>
   <script>
     tailwind.config = {
@@ -81,15 +23,8 @@
         extend: {
           colors: {
             brand: {
-              purple: '#8a74d8ff',
-              green: '#8ce2b8',
-              dark: '#1e1e1e',
-              gray: '#4a4a4a',
-              border: '#e5e7eb'
+              purple: '#8a74d8ff', green: '#8ce2b8', dark: '#1e1e1e', gray: '#4a4a4a', border: '#e5e7eb'
             }
-          },
-          backgroundImage: {
-            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
           }
         }
       }
@@ -134,9 +69,9 @@
 <!-- END: Header -->
 
 
-  <main class="flex-grow bg-grid-pattern pb-20">
-    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
-      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+  <main class="flex-grow pb-20">
+    <section class="docs-shell max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="docs-layout grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
         <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
   <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
   <div id="octoshaper-version-panel"></div>
@@ -157,39 +92,83 @@
     <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
     <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Context Manipulation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
-<details class="docs-sidebar-category" open><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
   </nav>
 </aside>
 </div>
 
-        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+        <article class="docs-article bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
-            <span class="bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Reference</span>
-            <span class="text-sm font-medium text-brand-gray">History</span>
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Editor Guide</span>
+            <span class="text-sm font-medium text-brand-gray">Scene view</span>
           </div>
-          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Changelog</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Track what changed between releases of OctoShaper.</p>
-          <div id="changelog-content" class="text-brand-gray">
-            <!-- CHANGELOG_CONTENT_START -->
-<h1>Changelog</h1>
-<p>All notable changes to OctoShaper.</p>
-<h2>[0.0.1-beta] — 2026-05-01</h2>
-<h3>Added</h3>
-<ul>
-<li>Core graph execution engine</li>
-<li>Editor integration via Unity Package Manager</li>
-<li>Basic node type catalog (initial set of fundamental nodes)</li>
-</ul>
-
-              <!-- CHANGELOG_CONTENT_END -->
-          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Context Manipulation</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Some graph values are easier to understand and edit in the scene than as fields in the graph. OctoShaper&#039;s Scene view context provides visual manipulators for compatible values, alongside read-only gizmos for inspecting a node&#039;s output.</p>
+          <div class="docs-markdown"><h2 id="open-the-octoshaper-tool-context">Open the OctoShaper tool context</h2>
+<ol>
+<li>Open a graph in the OctoShaper editor, or select a GameObject with a <code>ProceduralGraphExecutor</code>.</li>
+<li>In the Scene view toolbar, open the tool-context menu and choose <strong>OctoShaper</strong>.</li>
+<li>Choose the manipulation tool appropriate for the value you want to edit, then use its handles in the scene.</li>
+</ol>
+<figure>
+  <video autoplay muted loop playsinline preload="metadata" aria-label="Unity Scene view tool context menu with OctoShaper selected">
+    <source src="../../res/docs/context-manipulation-tool-context.mov" type="video/quicktime">
+    Your browser does not support embedded video playback.
+  </video>
+  <figcaption>The OctoShaper context groups the Scene view tools supplied for graph-value manipulation.</figcaption>
+</figure>
+<h2 id="know-which-graph-receives-the-edit">Know which graph receives the edit</h2>
+<p>When the OctoShaper editor is open, its current graph and configuration provide the editing context. Otherwise, the tools use the selected <code>ProceduralGraphExecutor</code>.</p>
+<blockquote>
+<p><strong>Configuration first, graph default second</strong></p>
+<p>If an active configuration is available, moving a handle writes a parameter override to that configuration. Without one, it changes the parameter's default value in the graph asset.</p>
+</blockquote>
+<h2 id="manipulate-values-in-context">Manipulate values in context</h2>
+<p>A manipulator decides which compatible graph values it can display and how they can be edited. Its handles stay connected to the underlying parameter, so changes made in the Scene view are reflected in the same graph or configuration value you would edit numerically.</p>
+<blockquote>
+<p><strong>Example: shaping a spline</strong></p>
+<p>The spline manipulator draws the path, anchors, Bezier controls, and their relationships directly in the scene. It illustrates the general principle: the manipulator presents a visual editing surface, while the parameter remains the source of truth.</p>
+</blockquote>
+<figure>
+  <video autoplay muted loop playsinline preload="metadata" aria-label="Spline anchors and Bezier handles displayed with the OctoShaper spline tool">
+    <source src="../../res/docs/context-manipulation-spline-handles.mov" type="video/quicktime">
+    Your browser does not support embedded video playback.
+  </video>
+  <figcaption>A spline is one example of a graph value presented through an in-scene manipulation surface.</figcaption>
+</figure>
+<p>For the spline data type itself, continue with <a href="working-with-splines.html">Working with Splines</a>.</p>
+<h2 id="editable-handles-and-output-gizmos-are-different">Editable handles and output gizmos are different</h2>
+<p><strong>Parameter manipulators</strong> write back to compatible values. Use them when authoring graph inputs that benefit from direct visual editing.</p>
+<p><strong>Output gizmos</strong> are read-only. A selected node can display bounds, positions, rotations, scales, and triangle information from its ElementSet output. These markers explain the data without editing it.</p>
+<figure>
+  <video autoplay muted loop playsinline preload="metadata" aria-label="Selected OctoShaper node with pinned gizmo badge and read-only output markers in Scene view">
+    <source src="../../res/docs/context-manipulation-output-gizmos.mov" type="video/quicktime">
+    Your browser does not support embedded video playback.
+  </video>
+  <figcaption>Output gizmos expose the selected node's spatial data without turning those results into editable parameters.</figcaption>
+</figure>
+<h2 id="pin-the-context-you-need">Pin the context you need</h2>
+<p><strong>Pin scene preview</strong> keeps a node's realized visual result in the scene while you work elsewhere in the graph. <strong>Pin gizmos</strong> keeps that node's diagnostic markers and bounds visible instead. The two controls are independent, so you can keep either form of context—or both—while selecting another node.</p>
+<figure>
+  <video autoplay muted loop playsinline preload="metadata" aria-label="Comparison of pinned scene preview and pinned gizmo visualization in OctoShaper">
+    <source src="../../res/docs/context-manipulation-preview-vs-gizmos.mov" type="video/quicktime">
+    Your browser does not support embedded video playback.
+  </video>
+  <figcaption>A scene preview shows the realized output; gizmos reveal the spatial data used to understand it.</figcaption>
+</figure></div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="node-graph-basics.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Node Graph Basics</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="working-with-splines.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Working with Splines</span></a></nav>
         </article>
+
+        <aside class="docs-toc" aria-label="On this page">
+          <p class="docs-toc__title">On this page</p>
+          <nav><a href="#open-the-octoshaper-tool-context">Open the OctoShaper tool context</a><a href="#know-which-graph-receives-the-edit">Know which graph receives the edit</a><a href="#manipulate-values-in-context">Manipulate values in context</a><a href="#editable-handles-and-output-gizmos-are-different">Editable handles and output gizmos are different</a><a href="#pin-the-context-you-need">Pin the context you need</a></nav>
+        </aside>
       </div>
     </section>
   </main>
@@ -219,6 +198,7 @@
   </div>
 </footer>
 <!-- END: Footer -->
+
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>
   <script src="../../js/octoshaper-docs-engine.js"></script>

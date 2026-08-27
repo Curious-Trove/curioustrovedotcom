@@ -112,14 +112,78 @@
       }
     }
   </script>
+  <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
 </head>
-<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
-  <div id="navbar-container"></div>
+<body data-base-path="../../" data-active-page="octoshaper" class="docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+<header class="relative z-20 w-full border-b border-[#5a358c]/45 bg-[#8a74d8ff] shadow-[0_3px_0_rgba(90,53,140,0.12)]">
+  <div class="w-full px-4 sm:px-6">
+    <input type="checkbox" id="nav-toggle" class="hidden peer/nav"/>
+    <div class="grid min-h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-3">
+      <a href="../../index.html" class="justify-self-start flex items-center gap-2 font-semibold text-base sm:text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
+        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/15 p-1" src="../../res/logo.svg"/>
+        <span>Curious Trove</span>
+      </a>
+
+      <nav id="nav" class="hidden lg:flex items-center justify-center gap-1 justify-self-center">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+
+      <label for="nav-toggle" class="justify-self-end lg:hidden cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
+        <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </label>
+    </div>
+    <div class="hidden peer-checked/nav:block lg:hidden border-t border-white/10 pb-3 pt-2">
+      <nav class="flex flex-col gap-1">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- END: Header -->
+
 
   <main class="flex-grow bg-grid-pattern pb-20">
     <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
-        <div id="octoshaper-docs-sidebar-container"></div>
+        <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+  <div id="octoshaper-version-panel"></div>
+  <div class="docs-engine-control">
+    <span class="docs-engine-control__label">Engine</span>
+    <div class="docs-engine-switch" role="group" aria-label="Choose documentation engine">
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="unity" aria-pressed="true">
+        <span class="docs-engine-choice__icon docs-engine-choice__icon--unity"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+        <span>Unity</span>
+      </button>
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="godot" aria-pressed="false">
+        <span class="docs-engine-choice__icon"><img src="../../res/godot-icon.png" alt="" /></span>
+        <span>Godot</span>
+      </button>
+    </div>
+  </div>
+  <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
+    <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
+    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Runtime Generation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
+  </nav>
+</aside>
+</div>
 
         <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
@@ -127,18 +191,34 @@
             <span class="text-sm font-medium text-brand-gray">Runtime</span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Runtime Generation</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Runtime generation lets you execute the same authored graph logic during play mode and turn the resulting ElementSet into live Unity objects<a href="elements.html" class="doc-crosslink" title="Learn more about Elements">?</a>. The main runtime surface is the <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component, which now supports explicit generation, sync and async execution, and parameter changes from code before the first run. If you want the graph-side structure behind that API, see Node Graph Basics<a href="node-graph-basics.html" class="doc-crosslink" title="Learn more about Node Graph Basics">?</a>.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Use runtime generation when a scene needs to execute a graph during play mode. <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> is the high-level component for producing live Unity objects; the lower-level API returns graph output for your own systems.</p>
 
           <div class="space-y-8">
             <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
               <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Quick Start</p>
               <h2 class="text-2xl font-extrabold mb-3">Typical runtime workflow</h2>
-              <ol class="space-y-3 text-brand-gray leading-relaxed list-decimal pl-5">
-                <li>Assign a <span class="font-bold text-brand-dark">ProceduralGraph</span> to a <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span>.</li>
-                <li>Decide whether the component should auto-run when enabled with <span class="font-bold text-brand-dark">Generate On Enable</span>.</li>
-                <li>Set parameter overrides from code before generation if gameplay needs to control the graph.</li>
-                <li>Call <span class="font-bold text-brand-dark">Generate()</span>, <span class="font-bold text-brand-dark">GenerateSync()</span>, or <span class="font-bold text-brand-dark">GenerateAsync()</span> depending on how you want the caller to behave. The tradeoff is explained in Sync vs Async<a href="sync-vs-async.html" class="doc-crosslink" title="Learn more about Sync vs Async">?</a>.</li>
-              </ol>
+              <div class="docs-flow docs-flow--four">
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Assign</span>
+                  <span class="docs-flow__title">ProceduralGraph</span>
+                  <span class="docs-flow__copy">Reference the authored graph on the component.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--accent">
+                  <span class="docs-flow__label">Configure</span>
+                  <span class="docs-flow__title">Parameters + mode</span>
+                  <span class="docs-flow__copy">Apply overrides and choose automatic, sync, or async execution.</span>
+                </div>
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Generate</span>
+                  <span class="docs-flow__title">Execute the graph</span>
+                  <span class="docs-flow__copy">Call GenerateSync or await GenerateAsync.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--result">
+                  <span class="docs-flow__label">Publish</span>
+                  <span class="docs-flow__title">Live scene result</span>
+                  <span class="docs-flow__copy">The configured instancing strategy consumes the main output.</span>
+                </div>
+              </div>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
@@ -167,7 +247,7 @@ public sealed class RuntimeExecutorDriver : MonoBehaviour
     public void RegenerateNow()
     {
         executor.SetParameterOverride("Count", 24);
-        executor.Generate();
+        executor.GenerateSync();
     }
 
     public async Task RegenerateAsync()
@@ -179,65 +259,18 @@ public sealed class RuntimeExecutorDriver : MonoBehaviour
 }</code></pre>
               </div>
               <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                <li><span class="font-bold text-brand-dark">Generate()</span> respects the current runtime mode. In play mode it uses the async queue when <span class="font-bold text-brand-dark">Execute As Async</span> is enabled; otherwise it runs synchronously.</li>
                 <li><span class="font-bold text-brand-dark">GenerateSync()</span> is the explicit immediate path.</li>
                 <li><span class="font-bold text-brand-dark">GenerateAsync()</span> is the explicit awaited path.</li>
-                <li>Use the <span class="font-bold text-brand-dark">Generate*</span> methods as the public execution API on the component.</li>
+                <li>See <a href="runtime-parameter-api.html">Runtime Parameters</a> for the complete override API and <a href="sync-vs-async.html">Sync vs Async</a> for execution tradeoffs.</li>
               </ul>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
-              <h2 class="text-2xl font-extrabold mb-3">Changing parameter values from code</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">The executor exposes thin parameter helpers so callers do not need to reach into the underlying configuration object for common runtime workflows.</p>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">Available helpers</h3>
-                  <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                    <li><span class="font-bold text-brand-dark">SetParameterOverride(Guid, object)</span></li>
-                    <li><span class="font-bold text-brand-dark">SetParameterOverride(string, object)</span></li>
-                    <li><span class="font-bold text-brand-dark">TrySetParameterOverride(string, object)</span></li>
-                    <li><span class="font-bold text-brand-dark">RemoveParameterOverride(Guid)</span> and <span class="font-bold text-brand-dark">RemoveParameterOverride(string)</span></li>
-                    <li><span class="font-bold text-brand-dark">ClearParameterOverrides()</span></li>
-                  </ul>
-                </div>
-                <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">When to use which</h3>
-                  <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                    <li>Use name-based helpers when gameplay code knows the authored parameter names.</li>
-                    <li>Use Guid-based helpers when you already cached the parameter id.</li>
-                    <li>Use <span class="font-bold text-brand-dark">TrySetParameterOverride</span> when a missing parameter should not throw.</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mt-5">
-                <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper;
-using UnityEngine;
-
-public sealed class RuntimeParameterExample : MonoBehaviour
-{
-    [SerializeField] private ProceduralGraphExecutor executor;
-
-    public void ApplyGameplayState(int count, float width)
-    {
-        executor.SetParameterOverride("Count", count);
-        executor.SetParameterOverride("Width", width);
-        executor.GenerateSync();
-    }
-
-    public void ResetToDefaults()
-    {
-        executor.ClearParameterOverrides();
-        executor.GenerateSync();
-    }
-}</code></pre>
-              </div>
-            </section>
-
-            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">Direct graph execution without a component</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">If you need runtime execution without scene instancing, the supported bootstrap path is still small and explicit. This is useful when you want to inspect the main output yourself or feed it into your own systems. If you want the imported-asset version instead, see Procedural Prefab<a href="procedural-prefab.html" class="doc-crosslink" title="Learn more about Procedural Prefab">?</a>.</p>
+              <p class="text-brand-gray leading-relaxed mb-4">Use the bootstrap API when you need the main output without the component's scene-instancing behavior.</p>
               <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
-                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+                <pre class="language-csharp"><code class="language-csharp">using System;
+using System.Threading.Tasks;
 using CuriousTrove.OctoShaper;
 using CuriousTrove.OctoShaper.Core.Data;
 using UnityEngine;
@@ -246,55 +279,96 @@ public sealed class RuntimeGenerationExample : MonoBehaviour
 {
     [SerializeField] private ProceduralGraph graph;
 
-    public async Task&lt;ElementSet&gt; GenerateAsync(int count)
+    public async Task&lt;ElementSet&gt; GenerateAsync(Guid countParameterId, int count)
     {
-        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        using var context = OctoShaperRuntime.CreateExecutionContext(graph);
         var executor = OctoShaperRuntime.CreateExecutor(graph);
         var configuration = new ProceduralConfiguration();
-        var mainInput = ElementSet.CreateImplicitSingle();
 
-        configuration.SetParameterOverride(graph.Parameters[0].Id, count);
+        configuration.SetParameterOverride(countParameterId, count);
 
         await executor.ExecuteAsync(
             context,
-            mainInput,
             configuration);
 
-        return (ElementSet)context.GetMainOutputValue();
+        var output = (ElementSet)context.GetSlotValue(graph.MainOutputSlotId);
+        return (ElementSet)output.Clone();
     }
 }</code></pre>
               </div>
+              <p class="text-sm text-brand-gray leading-relaxed mt-4">The context is disposed when the method exits. The returned clone belongs to the caller and should also be disposed when it is no longer needed.</p>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">Choosing the right runtime surface</h2>
-              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                <li>Use <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> when you want live scene generation from a component.</li>
-                <li>Use direct bootstrap through <span class="font-bold text-brand-dark">OctoShaperRuntime.CreateExecutionContext(...)</span> and <span class="font-bold text-brand-dark">OctoShaperRuntime.CreateExecutor(...)</span> when you want full control over the output without the default instancing behavior.</li>
-                <li>Use a <span class="font-bold text-brand-dark">procedural prefab</span> when you want an imported asset that regenerates from graph inputs.</li>
-              </ul>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-brand-gray mb-2">Live objects</p>
+                  <h3 class="font-extrabold text-brand-dark mb-2">ProceduralGraphExecutor</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Use the component when a scene needs generated instances and regeneration.</p>
+                </div>
+                <div class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-brand-gray mb-2">Raw output</p>
+                  <h3 class="font-extrabold text-brand-dark mb-2">Direct bootstrap</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Create the context and executor yourself when another system will consume the result.</p>
+                </div>
+                <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-brand-gray mb-2">Imported asset</p>
+                  <h3 class="font-extrabold text-brand-dark mb-2">Procedural prefab</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Use <a href="procedural-prefab.html">import-time generation</a> when the result should live in the project rather than regenerate in play mode.</p>
+                </div>
+              </div>
             </section>
 
             <section>
-              <h2 class="text-2xl font-extrabold mb-3">Practical guidance</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">If you want to drive generation from gameplay code, start by turning off <span class="font-bold text-brand-dark">Generate On Enable</span>. That keeps the executor idle until you have applied the right parameter overrides and chosen whether the call should be sync or async.</p>
-              <p class="text-brand-gray leading-relaxed mb-4">Treat generated graph code as part of the runtime contract. If runtime execution fails unexpectedly, the first things to check are whether graph code was regenerated, whether the main output is actually an <span class="font-bold text-brand-dark">ElementSet</span>, and whether the graph depends on editor-only assumptions.</p>
-              <p class="text-brand-gray leading-relaxed">For reusable gameplay systems, prefer wrapping your parameter names in your own code instead of scattering string literals across the project. That keeps runtime parameter control explicit and easier to refactor later.</p>
+              <h2 class="text-2xl font-extrabold mb-3">Before running a graph in play mode</h2>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li>Regenerate graph code after changing the authored graph.</li>
+                <li>Confirm the main output is the data type your chosen consumer expects.</li>
+                <li>Remove dependencies on editor-only state from graphs intended for runtime use.</li>
+              </ul>
             </section>
           </div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="gpu-accelerated-grass.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">GPU-Accelerated Grass</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="gameobject-callbacks.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">GameObject Callbacks</span></a></nav>
         </article>
       </div>
     </section>
   </main>
 
-  <div id="footer-container"></div>
+  <!-- BEGIN: Footer -->
+<footer class="bg-[#8a74d8ff] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+  <div class="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-center">
+    <span>© 2026 Curious Trove</span>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
+      </svg>
+      <span>YouTube</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="mailto:contact@curioustrove.com" aria-label="Email">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <span>Email</span>
+    </a>
+  </div>
+</footer>
+<!-- END: Footer -->
+
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-  <script src="../../js/load-layout.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>
+  <script src="../../js/octoshaper-docs-engine.js"></script>
+  <script src="../../js/octoshaper-docs.js"></script>
 </body>
 </html>

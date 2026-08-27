@@ -1,7 +1,6 @@
 (function() {
   const namespace = window.OctoShaperNodeCatalogData;
   const asyncFilter = document.getElementById('node-async-filter');
-  const sidebarSubmenu = document.getElementById('node-sidebar-submenu');
   const searchInput = document.getElementById('node-search-input');
   const resultsCount = document.getElementById('node-results-count');
   const summaryTotal = document.getElementById('node-summary-total');
@@ -21,21 +20,6 @@
   }
 
   function renderFilters(catalog) {
-    if (sidebarSubmenu) {
-      const versionQuery = catalog.versionInfo?.version
-        ? `?${namespace.versionParamName}=${encodeURIComponent(catalog.versionInfo.version)}`
-        : '';
-
-      sidebarSubmenu.innerHTML = catalog.categoriesByName.map(category => `
-        <a href="nodes.html${versionQuery}#category-${namespace.slugify(category)}" class="block rounded-lg px-3 py-2 text-sm font-bold text-brand-dark transition-colors" style="background-color: ${getCategoryTheme(catalog, category).backgroundSoft}; border-left: 3px solid ${getCategoryTheme(catalog, category).border};">
-          <span class="flex items-center gap-2">
-            <span class="h-2.5 w-2.5 rounded-full" style="background-color: ${getCategoryTheme(catalog, category).accent};"></span>
-            <span>${category}</span>
-          </span>
-        </a>
-      `).join('');
-    }
-
     if (asyncFilter) {
       const options = [
         { value: '', label: 'All nodes' },

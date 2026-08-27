@@ -112,14 +112,78 @@
       }
     }
   </script>
+  <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
 </head>
-<body data-base-path="../../" data-active-page="octoshaper" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
-  <div id="navbar-container"></div>
+<body data-base-path="../../" data-active-page="octoshaper" class="docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+<header class="relative z-20 w-full border-b border-[#5a358c]/45 bg-[#8a74d8ff] shadow-[0_3px_0_rgba(90,53,140,0.12)]">
+  <div class="w-full px-4 sm:px-6">
+    <input type="checkbox" id="nav-toggle" class="hidden peer/nav"/>
+    <div class="grid min-h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-3">
+      <a href="../../index.html" class="justify-self-start flex items-center gap-2 font-semibold text-base sm:text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
+        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/15 p-1" src="../../res/logo.svg"/>
+        <span>Curious Trove</span>
+      </a>
+
+      <nav id="nav" class="hidden lg:flex items-center justify-center gap-1 justify-self-center">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+
+      <label for="nav-toggle" class="justify-self-end lg:hidden cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
+        <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </label>
+    </div>
+    <div class="hidden peer-checked/nav:block lg:hidden border-t border-white/10 pb-3 pt-2">
+      <nav class="flex flex-col gap-1">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- END: Header -->
+
 
   <main class="flex-grow bg-grid-pattern pb-20">
     <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
       <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
-        <div id="octoshaper-docs-sidebar-container"></div>
+        <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+  <div id="octoshaper-version-panel"></div>
+  <div class="docs-engine-control">
+    <span class="docs-engine-control__label">Engine</span>
+    <div class="docs-engine-switch" role="group" aria-label="Choose documentation engine">
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="unity" aria-pressed="true">
+        <span class="docs-engine-choice__icon docs-engine-choice__icon--unity"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+        <span>Unity</span>
+      </button>
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="godot" aria-pressed="false">
+        <span class="docs-engine-choice__icon"><img src="../../res/godot-icon.png" alt="" /></span>
+        <span>Godot</span>
+      </button>
+    </div>
+  </div>
+  <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
+    <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
+    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Runtime Parameters</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
+  </nav>
+</aside>
+</div>
 
         <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
@@ -127,13 +191,13 @@
             <span class="text-sm font-medium text-brand-gray">Runtime</span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Runtime Parameters</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">OctoShaper graphs expose parameters that control node inputs at graph level. At runtime, you can override these parameters through the <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> component or directly on a <span class="font-bold text-brand-dark">ProceduralConfiguration</span>. This page covers the complete parameter override API and best practices for driving graphs from gameplay code.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Runtime overrides let gameplay change exposed graph parameters without editing the graph asset. Use <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> for component-driven generation or <span class="font-bold text-brand-dark">ProceduralConfiguration</span> with the direct execution API.</p>
 
           <div class="space-y-8">
             <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
               <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Quick Start</p>
               <h2 class="text-2xl font-extrabold mb-3">Basic parameter override</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">Set overrides by parameter name before calling a generate method. Overrides apply to the next generation only and do not mutate the graph asset.</p>
+              <p class="text-brand-gray leading-relaxed mb-4">Set overrides before generating. They remain on the executor's configuration until removed or cleared, and never change the defaults stored in the graph asset.</p>
               <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm">
                 <pre class="language-csharp"><code class="language-csharp">using CuriousTrove.OctoShaper;
 using UnityEngine;
@@ -156,27 +220,49 @@ public sealed class RuntimeParameterExample : MonoBehaviour
     }
 }</code></pre>
               </div>
+              <div class="docs-flow docs-flow--four mt-5">
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Authored</span>
+                  <span class="docs-flow__title">Graph default</span>
+                  <span class="docs-flow__copy">The value saved with the parameter.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--accent">
+                  <span class="docs-flow__label">Runtime</span>
+                  <span class="docs-flow__title">Configuration override</span>
+                  <span class="docs-flow__copy">A name or Guid selects the parameter.</span>
+                </div>
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Execute</span>
+                  <span class="docs-flow__title">Generate again</span>
+                  <span class="docs-flow__copy">The executor resolves the effective value.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--result">
+                  <span class="docs-flow__label">Effective value</span>
+                  <span class="docs-flow__title">Override wins</span>
+                  <span class="docs-flow__copy">Clearing it reveals the graph default again.</span>
+                </div>
+              </div>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">Executor-level parameter API</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">The <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span> wraps parameter overrides on its internal <code>ProceduralConfiguration</code>. These methods are the preferred surface for runtime gameplay code.</p>
-              <div class="grid grid-cols-1 gap-5">
+              <p class="text-brand-gray leading-relaxed mb-4">Gameplay code should normally use the helpers on <span class="font-bold text-brand-dark">ProceduralGraphExecutor</span>.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(Guid parameterId, object value)</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Overrides a graph parameter by its unique Guid. Use this when you have already cached the parameter id from the graph asset.</p>
+                  <h3 class="text-lg font-extrabold mb-3">Set an override</h3>
+                  <ul class="space-y-2 text-sm text-brand-gray leading-relaxed list-disc pl-5">
+                    <li><code>SetParameterOverride(string, object)</code> throws when the name is missing.</li>
+                    <li><code>TrySetParameterOverride(string, object)</code> returns <code>false</code> instead.</li>
+                    <li><code>SetParameterOverride(Guid, object)</code> avoids name lookup when you already have the id.</li>
+                  </ul>
                 </div>
                 <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(string parameterName, object value)</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Overrides a graph parameter by its authored name. This is the most common surface for runtime code because parameter names are human-readable and stable across graph edits. The value must be type-compatible with the parameter's declared type.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">TrySetParameterOverride(string parameterName, object value)</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Same as <code>SetParameterOverride(string, object)</code> but returns <code>false</code> instead of throwing when the parameter name is not found. Use this when you want graceful fallback for optional parameters.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">ClearParameterOverrides()</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Removes all parameter overrides, restoring the graph's default parameter values for the next generation. The graph asset itself is never modified.</p>
+                  <h3 class="text-lg font-extrabold mb-3">Remove overrides</h3>
+                  <ul class="space-y-2 text-sm text-brand-gray leading-relaxed list-disc pl-5">
+                    <li><code>RemoveParameterOverride(string)</code> and <code>RemoveParameterOverride(Guid)</code> restore one default.</li>
+                    <li><code>ClearParameterOverrides()</code> restores every graph default.</li>
+                    <li>Call a generate method after changing overrides to publish a new result.</li>
+                  </ul>
                 </div>
               </div>
             </section>
@@ -185,7 +271,8 @@ public sealed class RuntimeParameterExample : MonoBehaviour
               <h2 class="text-2xl font-extrabold mb-3">Working with ProceduralConfiguration directly</h2>
               <p class="text-brand-gray leading-relaxed mb-4">When using the low-level runtime API (without a <code>ProceduralGraphExecutor</code> component), create a <code>ProceduralConfiguration</code> and set overrides on it directly. Pass it to the executor's <code>ExecuteAsync</code> method.</p>
               <div class="rounded-2xl overflow-hidden border border-black/10 shadow-sm mb-4">
-                <pre class="language-csharp"><code class="language-csharp">using System.Threading.Tasks;
+                <pre class="language-csharp"><code class="language-csharp">using System;
+using System.Threading.Tasks;
 using CuriousTrove.OctoShaper;
 using CuriousTrove.OctoShaper.Core.Data;
 using UnityEngine;
@@ -194,75 +281,93 @@ public sealed class DirectParameterExample : MonoBehaviour
 {
     [SerializeField] private ProceduralGraph graph;
 
-    public async Task&lt;ElementSet&gt; GenerateWithParameters(int count)
+    public async Task&lt;ElementSet&gt; GenerateWithParameters(Guid countParameterId, int count)
     {
         var configuration = new ProceduralConfiguration();
 
         // Set overrides before execution.
         configuration.SetParameterOverride(
-            graph.Parameters[0].Id,
+            countParameterId,
             count);
 
-        var context = OctoShaperRuntime.CreateExecutionContext(graph);
+        using var context = OctoShaperRuntime.CreateExecutionContext(graph);
         var executor = OctoShaperRuntime.CreateExecutor(graph);
 
         await executor.ExecuteAsync(
             context,
-            ElementSet.CreateImplicitSingle(),
             configuration);
 
-        return (ElementSet)context.GetMainOutputValue();
+        var output = (ElementSet)context.GetSlotValue(graph.MainOutputSlotId);
+        return (ElementSet)output.Clone();
     }
 }</code></pre>
               </div>
               <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5">
-                <p class="text-sm text-brand-gray leading-relaxed"><span class="font-bold text-brand-dark">Note:</span> The <code>ProceduralConfiguration</code> also exposes <code>TrySetParameter&lt;T&gt;(string, T)</code> which is a generic-typed variant of the string-based override, useful when you want compile-time type checking for the override value.</p>
+                <p class="text-sm text-brand-gray leading-relaxed"><span class="font-bold text-brand-dark">Two ownership details:</span> a new configuration uses the parameter Guid because it does not yet have a graph reference for name lookup. The returned ElementSet is cloned before the context is disposed and becomes the caller's responsibility to dispose.</p>
               </div>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
-              <h2 class="text-2xl font-extrabold mb-3">Configuration-level API (ProceduralConfiguration)</h2>
-              <p class="text-brand-gray leading-relaxed mb-4">These methods live on <code>ProceduralConfiguration</code> and are used indirectly through the executor. They are also available when you construct a configuration manually.</p>
-              <div class="grid grid-cols-1 gap-5">
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">SetParameterOverride(Guid parameterId, object value)</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Sets an override on the configuration by parameter Guid. The executor delegates to this method.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">TrySetParameter&lt;T&gt;(string parameterName, T value)</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Generic-typed override by name. Returns <code>true</code> if the parameter exists and the type matches; <code>false</code> otherwise. This is the preferred surface for direct configuration manipulation because it validates the type at compile time.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <h3 class="text-lg font-extrabold mb-3">ClearOverrides()</h3>
-                  <p class="text-brand-gray leading-relaxed text-sm">Removes all overrides from the configuration. The executor's <code>ClearParameterOverrides()</code> delegates to this.</p>
-                </div>
-              </div>
+              <h2 class="text-2xl font-extrabold mb-3">Configuration-level API</h2>
+              <p class="text-brand-gray leading-relaxed mb-4"><code>ProceduralConfiguration</code> is the storage layer used by the executor and the direct API.</p>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li><code>SetParameterOverride(Guid, object)</code> and <code>SetParameter&lt;T&gt;(Guid, T)</code> set values by id.</li>
+                <li>Once the configuration is associated with a graph, <code>SetParameter&lt;T&gt;(string, T)</code> and <code>TrySetParameter&lt;T&gt;(string, T)</code> can resolve authored names.</li>
+                <li><code>GetParameter&lt;T&gt;</code> and <code>TryGetParameter&lt;T&gt;</code> return the effective value: override first, graph default otherwise.</li>
+                <li><code>RemoveParameterOverride(Guid)</code> removes one override; <code>ClearOverrides()</code> removes all of them.</li>
+              </ul>
             </section>
 
             <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
               <h2 class="text-2xl font-extrabold mb-3">Best practices</h2>
               <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                <li><span class="font-bold text-brand-dark">Use name-based overrides for gameplay code.</span> Parameter names are stable across most graph edits, whereas Guid-based ids require caching from the graph asset.</li>
-                <li><span class="font-bold text-brand-dark">Wrap parameter names in constants or a dedicated class.</span> Avoid scattering string literals across your project. A central <code>GraphParameters</code> static class makes refactoring safer.</li>
-                <li><span class="font-bold text-brand-dark">Set overrides before the first generation.</span> Overrides only take effect on the next call to a generate method. Setting them after generation has no immediate effect.</li>
-                <li><span class="font-bold text-brand-dark">Overrides do not mutate the graph asset.</span> The original graph retains its default parameter values. Overrides live only on the configuration/executor.</li>
-                <li><span class="font-bold text-brand-dark">Use TrySetParameterOverride for optional parameters.</span> When a parameter may or may not exist (e.g., different graph versions), the <code>Try</code> variant avoids runtime exceptions.</li>
+                <li><span class="font-bold text-brand-dark">Prefer names at gameplay boundaries.</span> Wrap them in constants instead of scattering string literals.</li>
+                <li><span class="font-bold text-brand-dark">Use Guids in infrastructure.</span> Cache ids when code already works directly with graph metadata.</li>
+                <li><span class="font-bold text-brand-dark">Use the Try variant for optional controls.</span> It makes graph-version differences an explicit branch instead of an exception.</li>
+                <li><span class="font-bold text-brand-dark">Regenerate after changing values.</span> Updating the configuration does not republish the existing output.</li>
               </ul>
             </section>
           </div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="gameobject-callbacks.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">GameObject Callbacks</span></a></nav>
         </article>
       </div>
     </section>
   </main>
 
-  <div id="footer-container"></div>
+  <!-- BEGIN: Footer -->
+<footer class="bg-[#8a74d8ff] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+  <div class="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-center">
+    <span>© 2026 Curious Trove</span>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
+      </svg>
+      <span>YouTube</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="mailto:contact@curioustrove.com" aria-label="Email">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <span>Email</span>
+    </a>
+  </div>
+</footer>
+<!-- END: Footer -->
+
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-  <script src="../../js/load-layout.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
   <script src="../../js/octoshaper-docs-version.js"></script>
+  <script src="../../js/octoshaper-docs-engine.js"></script>
+  <script src="../../js/octoshaper-docs.js"></script>
 </body>
 </html>

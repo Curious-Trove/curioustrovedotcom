@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OctoShaper Docs - Working with Splines</title>
+  <meta name="description" content="Author, sample, distribute along, query, and procedurally grow splines in OctoShaper for Unity." />
+  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/working-with-splines.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Working with Splines in OctoShaper" />
+  <meta property="og:description" content="Learn the spline data type and choose the right OctoShaper spline nodes for sampling, distribution, queries, and growth." />
+  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/working-with-splines.html" />
+  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Montserrat', sans-serif; }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8a74d8ff', green: '#8ce2b8', dark: '#1e1e1e', gray: '#4a4a4a', border: '#e5e7eb'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
+</head>
+<body data-base-path="../../" data-active-page="octoshaper" class="docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+<header class="relative z-20 w-full border-b border-[#5a358c]/45 bg-[#8a74d8ff] shadow-[0_3px_0_rgba(90,53,140,0.12)]">
+  <div class="w-full px-4 sm:px-6">
+    <input type="checkbox" id="nav-toggle" class="hidden peer/nav"/>
+    <div class="grid min-h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-3">
+      <a href="../../index.html" class="justify-self-start flex items-center gap-2 font-semibold text-base sm:text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
+        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/15 p-1" src="../../res/logo.svg"/>
+        <span>Curious Trove</span>
+      </a>
+
+      <nav id="nav" class="hidden lg:flex items-center justify-center gap-1 justify-self-center">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+
+      <label for="nav-toggle" class="justify-self-end lg:hidden cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
+        <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </label>
+    </div>
+    <div class="hidden peer-checked/nav:block lg:hidden border-t border-white/10 pb-3 pt-2">
+      <nav class="flex flex-col gap-1">
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/docs/index.html">Documentation</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
+        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<!-- END: Header -->
+
+
+  <main class="flex-grow pb-20">
+    <section class="docs-shell max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="docs-layout grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+  <div id="octoshaper-version-panel"></div>
+  <div class="docs-engine-control">
+    <span class="docs-engine-control__label">Engine</span>
+    <div class="docs-engine-switch" role="group" aria-label="Choose documentation engine">
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="unity" aria-pressed="true">
+        <span class="docs-engine-choice__icon docs-engine-choice__icon--unity"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+        <span>Unity</span>
+      </button>
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="godot" aria-pressed="false">
+        <span class="docs-engine-choice__icon"><img src="../../res/godot-icon.png" alt="" /></span>
+        <span>Godot</span>
+      </button>
+    </div>
+  </div>
+  <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
+    <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
+    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Splines</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
+  </nav>
+</aside>
+</div>
+
+        <article class="docs-article bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Data Type Guide</span>
+            <span class="text-sm font-medium text-brand-gray">Splines</span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Working with Splines</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">A spline is an authored or generated path that other nodes can sample, measure, turn into rows, or use as a boundary. This guide follows the same structure as the other data-type guides: understand the value, author it, choose a manipulator, and inspect the attributes it produces.</p>
+
+          <div class="space-y-10">
+            <section>
+              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Common workflow</p>
+              <h2 class="text-2xl font-extrabold mb-3">Treat the spline as data, not as the final object</h2>
+              <div class="docs-flow docs-flow--four">
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Author</span>
+                  <span class="docs-flow__title">Points + interpolation</span>
+                  <span class="docs-flow__copy">Define an open or closed linear or Bezier path.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--accent">
+                  <span class="docs-flow__label">Sample</span>
+                  <span class="docs-flow__title">Position + frame</span>
+                  <span class="docs-flow__copy">Read one location or expand the path into many rows.</span>
+                </div>
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Manipulate</span>
+                  <span class="docs-flow__title">Query + orient</span>
+                  <span class="docs-flow__copy">Measure distance, test containment, or align rotations.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--result">
+                  <span class="docs-flow__label">Realize</span>
+                  <span class="docs-flow__title">Use the rows</span>
+                  <span class="docs-flow__copy">Place prefabs, build strands, filter points, or feed another graph stage.</span>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">What a spline stores</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-2">Points</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Linear splines connect each point directly. Bezier splines use anchors and handles to describe curved segments.</p>
+                </div>
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-2">Open or closed</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">An open path has two ends. A closed path loops from its last segment back to its first.</p>
+                </div>
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-2">Normalized position</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed"><code>t</code> runs from 0 to 1 across the path. It describes progress through the spline, not a distance in world units.</p>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Author a spline parameter</h2>
+              <ol class="space-y-3 text-brand-gray leading-relaxed list-decimal pl-5">
+                <li>Add a graph parameter and set its type to <span class="font-bold text-brand-dark">Spline</span>.</li>
+                <li>Choose <span class="font-bold text-brand-dark">Linear</span> for corners and straight segments, or <span class="font-bold text-brand-dark">Bezier</span> for a smooth path controlled by anchors and handles.</li>
+                <li>Enable <span class="font-bold text-brand-dark">Closed</span> when the path represents a loop or an area boundary.</li>
+                <li>Add points or Bezier segments in the value editor, then switch the Scene view tool context to <span class="font-bold text-brand-dark">OctoShaper</span> and choose the Spline tool.</li>
+              </ol>
+              <p class="text-brand-gray leading-relaxed mt-4">The tool displays every spline parameter in the active graph. Dragging an anchor or Bezier handle updates the active configuration override when one is available; otherwise it updates the parameter's graph default. See <a href="context-manipulation.html" class="text-[#8a74d8ff] font-bold">Context Manipulation</a> for the complete Scene view workflow.</p>
+              <div class="mt-5 rounded-2xl border border-[#f0d58c] bg-[#fff8e7] p-5">
+                <p class="font-extrabold text-brand-dark mb-2">Bezier layouts have a structure</p>
+                <p class="text-sm text-brand-gray leading-relaxed">An open Bezier chain uses an anchor followed by two handles and the next anchor. A closed chain repeats groups of three control points. The editor adds complete segments for you and warns when the layout is incomplete; an invalid Bezier layout is evaluated as a linear spline.</p>
+              </div>
+              <figure class="overflow-hidden rounded-2xl border border-brand-border bg-[#f8f9fa] shadow-sm mt-5">
+                <img src="../../res/docs/spline-editor-scene-view.png" alt="Spline parameter editor beside Scene view Bezier anchors and handles" class="w-full h-auto" loading="lazy" />
+                <figcaption class="px-4 py-3 text-sm text-brand-gray leading-relaxed">The Spline tool keeps numeric parameter data and Scene view anchors synchronized.</figcaption>
+              </figure>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Choose a sampling node</h2>
+              <div class="overflow-x-auto rounded-2xl border border-brand-border">
+                <table class="w-full min-w-[900px] text-left text-sm">
+                  <thead class="bg-[#f4f0fa] text-brand-dark">
+                    <tr>
+                      <th class="px-4 py-3 font-extrabold">Node</th>
+                      <th class="px-4 py-3 font-extrabold">Result</th>
+                      <th class="px-4 py-3 font-extrabold">Use it when</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-brand-border text-brand-gray">
+                    <tr><td class="px-4 py-4"><a href="nodes.html#sample-spline-samplespline" class="text-[#8a74d8ff] font-bold">Sample Spline</a></td><td class="px-4 py-4">One position at a normalized <code>t</code>.</td><td class="px-4 py-4">Another value or node needs a single point on the path.</td></tr>
+                    <tr><td class="px-4 py-4"><a href="nodes.html#sample-spline-frame-samplesplineframe" class="text-[#8a74d8ff] font-bold">Sample Spline Frame</a></td><td class="px-4 py-4">One row with position, tangent, normal, and optional aligned rotation.</td><td class="px-4 py-4">An object needs both a location and an orientation on the path.</td></tr>
+                    <tr><td class="px-4 py-4"><a href="nodes.html#distribute-points-on-spline-distributepointsonspline" class="text-[#8a74d8ff] font-bold">Distribute Points On Spline</a></td><td class="px-4 py-4">A chosen number of rows for every incoming row.</td><td class="px-4 py-4">The count matters more than exact world-space spacing.</td></tr>
+                    <tr><td class="px-4 py-4"><a href="nodes.html#distribute-points-on-spline-by-distance-distributepointsonsplinebydistance" class="text-[#8a74d8ff] font-bold">Distribute Points On Spline By Distance</a></td><td class="px-4 py-4">Rows placed at approximately fixed world-space intervals.</td><td class="px-4 py-4">Fences, lights, supports, or repeated details need consistent spacing.</td></tr>
+                    <tr><td class="px-4 py-4"><a href="nodes.html#sample-spline-corners-samplesplinecorners" class="text-[#8a74d8ff] font-bold">Sample Spline Corners</a></td><td class="px-4 py-4">Rows where the path changes direction beyond an angle threshold.</td><td class="px-4 py-4">Corners need posts, joins, decorations, or special logic.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Count and distance answer different questions</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-brand-gray mb-2">By count</p>
+                  <h3 class="text-lg font-extrabold mb-2">“Give me 12 samples”</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">The normalized path is divided into a fixed number of samples. A longer spline spreads those samples farther apart. On Bezier curves, equal changes in <code>t</code> are not guaranteed to cover equal world-space distances.</p>
+                </div>
+                <div class="border border-[#8ce2b8] bg-[#eafaf1] rounded-2xl p-5">
+                  <p class="text-xs font-extrabold uppercase tracking-[0.14em] text-brand-gray mb-2">By distance</p>
+                  <h3 class="text-lg font-extrabold mb-2">“Place one every 2 metres”</h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">The spline is measured and sampled at regular world-space intervals. Longer paths naturally produce more rows, which is usually the desired behavior for repeated physical details.</p>
+                </div>
+              </div>
+              <figure class="overflow-hidden rounded-2xl border border-brand-border bg-[#f8f9fa] shadow-sm mt-5">
+                <video class="w-full h-auto" autoplay muted loop playsinline preload="metadata" aria-label="Same spline sampled by a fixed count and by fixed world-space distance">
+                  <source src="../../res/docs/spline-count-vs-distance.mov" type="video/quicktime" />
+                  Your browser does not support embedded video playback.
+                </video>
+                <figcaption class="px-4 py-3 text-sm text-brand-gray leading-relaxed">Count-based sampling fixes the number of results; distance-based sampling keeps their physical spacing consistent.</figcaption>
+              </figure>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Use tangent, normal, and rotation</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">Distribution and frame-sampling nodes can provide more than a position:</p>
+              <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
+                <li><span class="font-bold text-brand-dark">tangent</span> points along the path.</li>
+                <li><span class="font-bold text-brand-dark">normal</span> provides a stable perpendicular direction based on the selected normal orientation.</li>
+                <li><span class="font-bold text-brand-dark">rotation</span> can be aligned to the spline so downstream prefab or rendering nodes inherit the path direction.</li>
+                <li><span class="font-bold text-brand-dark">sourceRowIndex</span> and <span class="font-bold text-brand-dark">localIndex</span> identify which input row produced a sample and its order along that path.</li>
+              </ul>
+              <p class="text-brand-gray leading-relaxed mt-4">Use the normal-orientation input to choose the reference side of the frame. If objects appear rolled or flipped relative to the intended surface, inspect the tangent and normal before adding corrective rotations downstream.</p>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Query points against a spline</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-2"><a href="nodes.html#distance-to-spline-distancetospline" class="text-[#8a74d8ff]">Distance To Spline</a></h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Measures each query row against the path and writes whether a match was found, the distance, the closest position, and the closest normalized <code>t</code>. Use those attributes for masks, falloffs, snapping, or selection.</p>
+                </div>
+                <div class="border border-brand-border rounded-2xl p-5">
+                  <h3 class="text-lg font-extrabold mb-2"><a href="nodes.html#point-in-closed-spline-pointinclosedspline" class="text-[#8a74d8ff]">Point In Closed Spline</a></h3>
+                  <p class="text-sm text-brand-gray leading-relaxed">Tests positions against a closed boundary projected onto Unity's horizontal XZ plane and writes a boolean attribute. Use that attribute with filtering nodes to keep points inside or outside the area.</p>
+                </div>
+              </div>
+              <p class="text-sm text-brand-gray leading-relaxed mt-5">Both operations approximate the curve using samples. Increase the sample count when tight curves need more accuracy, but avoid raising it blindly across large datasets.</p>
+            </section>
+
+            <section>
+              <h2 class="text-2xl font-extrabold mb-3">Grow a path procedurally</h2>
+              <p class="text-brand-gray leading-relaxed mb-4">The spline toolset also supports paths that emerge from simulation-like growth rather than manual control points.</p>
+              <div class="docs-flow">
+                <div class="docs-flow__step">
+                  <span class="docs-flow__label">Seeds</span>
+                  <span class="docs-flow__title">Starting rows</span>
+                  <span class="docs-flow__copy">Positions and initial directions establish each strand.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--accent">
+                  <span class="docs-flow__label">Grow</span>
+                  <span class="docs-flow__title">Grow Strands</span>
+                  <span class="docs-flow__copy">Gravity, surface cling, obstacle avoidance, and randomness produce ordered steps.</span>
+                </div>
+                <div class="docs-flow__step docs-flow__step--result">
+                  <span class="docs-flow__label">Convert</span>
+                  <span class="docs-flow__title">Build Spline From Strands</span>
+                  <span class="docs-flow__copy">Select one strand ID and turn its ordered rows into a linear spline.</span>
+                </div>
+              </div>
+              <p class="text-brand-gray leading-relaxed mt-4"><a href="nodes.html#grow-strands-growstrands" class="text-[#8a74d8ff] font-bold">Grow Strands</a> produces the position, direction, surface, blocked, alive, source-row, and step-index attributes needed to inspect the growth. <a href="nodes.html#build-spline-from-strands-buildsplinefromstrands" class="text-[#8a74d8ff] font-bold">Build Spline From Strands</a> then converts one selected strand into a spline for later sampling. <a href="nodes.html#slide-direction-on-surface-slidedirectiononsurface" class="text-[#8a74d8ff] font-bold">Slide Direction On Surface</a> is available when a custom growth graph needs to project a preferred direction along a contacted surface.</p>
+              <figure class="overflow-hidden rounded-2xl border border-brand-border bg-[#f8f9fa] shadow-sm mt-5">
+                <video class="w-full h-auto" autoplay muted loop playsinline preload="metadata" aria-label="Grow Strands and Build Spline From Strands graph beside resulting Scene view path">
+                  <source src="../../res/docs/spline-growth-pipeline.mov" type="video/quicktime" />
+                  Your browser does not support embedded video playback.
+                </video>
+                <figcaption class="px-4 py-3 text-sm text-brand-gray leading-relaxed">A generated strand can be converted into the same spline data type used by the sampling and query nodes.</figcaption>
+              </figure>
+            </section>
+          </div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="context-manipulation.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Context Manipulation</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="rendering-and-instancing-modes.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Rendering and Instancing Modes</span></a></nav>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- BEGIN: Footer -->
+<footer class="bg-[#8a74d8ff] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
+  <div class="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-center">
+    <span>© 2026 Curious Trove</span>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
+      </svg>
+      <span>YouTube</span>
+    </a>
+    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="mailto:contact@curioustrove.com" aria-label="Email">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <span>Email</span>
+    </a>
+  </div>
+</footer>
+<!-- END: Footer -->
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-version.js"></script>
+  <script src="../../js/octoshaper-docs-engine.js"></script>
+  <script src="../../js/octoshaper-docs.js"></script>
+</body>
+</html>

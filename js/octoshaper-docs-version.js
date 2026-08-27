@@ -45,14 +45,13 @@
     }
 
     versionPanel.innerHTML = `
-      <div class="rounded-2xl border border-brand-border bg-[#f8f9fa] p-4 mb-4">
-        <p class="text-[11px] font-extrabold uppercase tracking-[0.16em] text-brand-gray mb-2">Docs Version</p>
-        <label class="block">
-          <span class="block text-sm font-bold text-brand-dark mb-2">Current version</span>
-          <select id="octoshaper-version-select" class="w-full rounded-xl border border-brand-border bg-white px-3 py-2 text-sm font-bold text-brand-dark focus:outline-none focus:ring-2 focus:ring-[#8a74d8ff]/30" ${entries.length <= 1 ? 'disabled' : ''}>
+      <div class="docs-version-control">
+        <label for="octoshaper-version-select" class="docs-version-control__label">Version</label>
+        <div class="docs-version-control__field">
+          <select id="octoshaper-version-select" class="docs-version-control__select focus:outline-none focus:ring-2 focus:ring-[#8a74d8ff]/30" ${entries.length <= 1 ? 'disabled' : ''}>
             ${entries.map(entry => `<option value="${entry.version}" ${entry.version === activeEntry.version ? 'selected' : ''}>${entry.label || `v${entry.version}`}</option>`).join('')}
           </select>
-        </label>
+        </div>
       </div>
     `;
 

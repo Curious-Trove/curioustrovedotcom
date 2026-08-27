@@ -7,12 +7,6 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://curioustrove.com/octoshaper/</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://curioustrove.com/blog.html</loc>
     <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -80,7 +74,7 @@
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/index.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -115,16 +109,40 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://curioustrove.com/octoshaper/docs/runtime-generation.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://curioustrove.com/octoshaper/docs/context-manipulation.html</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://curioustrove.com/octoshaper/docs/nodes.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://curioustrove.com/octoshaper/docs/working-with-splines.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/rendering-and-instancing-modes.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/creating-custom-nodes.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/gpu-accelerated-grass.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/runtime-generation.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://curioustrove.com/octoshaper/docs/gameobject-callbacks.html</loc>
@@ -143,5 +161,23 @@
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/docs/nodes.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/unity/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://curioustrove.com/octoshaper/godot/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

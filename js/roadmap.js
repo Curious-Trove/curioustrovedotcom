@@ -55,14 +55,14 @@
 
   var themes = {
     green: {
-      cardBg: 'bg-gradient-to-b from-white to-[#eafaf1]',
-      cardBorder: 'border-[#8ce2b8]',
-      iconBg: 'bg-black',
-      badgeBg: 'bg-[#eafaf1]',
-      badgeText: 'text-[#1e5a3c]',
-      badgeBorder: 'border-[#8ce2b8]',
-      dotBg: 'bg-[#8ce2b8]',
-      ringBorder: 'border-[#8ce2b8]/30'
+      cardBg: 'unity-roadmap-card',
+      cardBorder: 'unity-roadmap-card',
+      iconBg: 'unity-roadmap-icon',
+      badgeBg: 'unity-roadmap-badge',
+      badgeText: 'unity-roadmap-badge',
+      badgeBorder: 'unity-roadmap-badge',
+      dotBg: 'unity-roadmap-dot',
+      ringBorder: 'unity-roadmap-ring'
     },
     neutral: {
       cardBg: 'bg-gradient-to-b from-white to-[#f8f9fa]',
@@ -85,14 +85,14 @@
       ringBorder: 'border-[#8a74d8ff]/30'
     },
     godot: {
-      cardBg: 'bg-gradient-to-b from-white to-[#f4f0fa]',
-      cardBorder: 'border-[#8a74d8ff]/20',
-      iconBg: 'bg-gradient-to-br from-[#8a74d8ff] to-[#5a358c]',
-      badgeBg: 'bg-[#f4f0fa]',
-      badgeText: 'text-[#8a74d8ff]',
-      badgeBorder: 'border-[#8a74d8ff]/20',
-      dotBg: 'bg-[#8a74d8ff]',
-      ringBorder: 'border-[#8a74d8ff]/30'
+      cardBg: 'godot-roadmap-card',
+      cardBorder: 'godot-roadmap-card',
+      iconBg: 'godot-roadmap-icon',
+      badgeBg: 'godot-roadmap-badge',
+      badgeText: 'godot-roadmap-badge',
+      badgeBorder: 'godot-roadmap-badge',
+      dotBg: 'godot-roadmap-dot',
+      ringBorder: 'godot-roadmap-ring'
     }
   };
 
@@ -114,7 +114,7 @@
 
   function desktopCard(item) {
     var t = themes[item.theme];
-    return '<article class="' + t.cardBg + ' border-2 ' + t.cardBorder + ' rounded-2xl p-5 shadow-md">' +
+    return '<article class="roadmap-card ' + t.cardBg + ' border-2 ' + t.cardBorder + ' rounded-2xl p-5 shadow-md">' +
       '<div class="flex items-center gap-3 mb-4">' +
         iconHtml(item.icon, 'w-11 h-11', t.iconBg, false) +
         '<span class="' + t.badgeBg + ' ' + t.badgeText + ' text-xs font-bold px-3 py-1 rounded-md border ' + t.badgeBorder + '">' + item.date + '</span>' +
@@ -147,7 +147,7 @@
     return '<div class="relative">' +
       '<div class="absolute -left-[2.15rem] top-3 w-[22px] h-[22px] rounded-full ' + t.dotBg + ' border-[3px] border-white shadow-md"></div>' +
       outerRing +
-      '<article class="' + t.cardBg + ' border-2 ' + t.cardBorder + ' rounded-2xl p-5 shadow-md">' +
+      '<article class="roadmap-card ' + t.cardBg + ' border-2 ' + t.cardBorder + ' rounded-2xl p-5 shadow-md">' +
         '<div class="flex items-center gap-3 mb-3">' +
           iconHtml(item.icon, 'w-10 h-10', t.iconBg, false) +
           '<span class="' + t.badgeBg + ' ' + t.badgeText + ' text-xs font-bold px-3 py-1 rounded-md border ' + t.badgeBorder + '">' + item.date + '</span>' +
