@@ -178,13 +178,27 @@
           <div id="changelog-content" class="text-brand-gray">
             <!-- CHANGELOG_CONTENT_START -->
 <h1>Changelog</h1>
-<p>All notable changes to OctoShaper.</p>
-<h2>[0.0.1-beta] — 2026-05-01</h2>
+<h2>[1.1.0] - 2026-08-27</h2>
 <h3>Added</h3>
 <ul>
-<li>Core graph execution engine</li>
-<li>Editor integration via Unity Package Manager</li>
-<li>Basic node type catalog (initial set of fundamental nodes)</li>
+<li>Add <code>Create Assembly Roots</code>, <code>Assign Parents</code>, and <code>Place Local Assembly</code> nodes for authoring reusable element hierarchies in local subgraph space and placing them as compound objects.</li>
+<li>Add local XZ rectangle and circle shape values with generic perimeter distribution and uniform interior sampling nodes.</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Mark the existing <code>Create Parent Element</code> and <code>Assign Parent Element</code> nodes as legacy while preserving their node IDs and serialized graph compatibility.</li>
+<li>Instantiate parented elements using their local transforms so locally authored assemblies retain their relative placement.</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Stabilize the graph save state, including across domain reloads, by updating it from authoring events instead of polling every editor frame, and notify open parent graphs directly after saving a subgraph instead of reacting to every asset import.</li>
+<li>Preserve fallback graph type IDs as aliases when canonical registrations replace them, preventing intermittent missing <code>ElementSet</code> type errors while restoring graph and subgraph editor windows.</li>
+<li>Remap <code>parentRowIndex</code> values when appending or merging element sets so each appended hierarchy continues to reference rows within its own merged range.</li>
+<li>Request a follow-up Unity script compilation after the initial import so the Getting Started window opens only after the source assemblies are available to AssemblyUpdater.</li>
+</ul>
+<h2>[1.0.0]</h2>
+<ul>
+<li>Initial release.</li>
 </ul>
 
               <!-- CHANGELOG_CONTENT_END -->

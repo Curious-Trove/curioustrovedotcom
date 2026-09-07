@@ -210,7 +210,7 @@
 
             <section>
               <h2 class="text-2xl font-extrabold mb-3">Hierarchy nodes are for GameObject output</h2>
-              <p class="text-brand-gray leading-relaxed mb-4"><a href="nodes.html#create-parent-element-createparentelement" class="text-[#8a74d8ff] font-bold">Create Parent Element</a> creates one row that can represent a parent object. <a href="nodes.html#assign-parent-element-assignparentelement" class="text-[#8a74d8ff] font-bold">Assign Parent Element</a> appends that parent and assigns the incoming rows beneath it with a stable sibling order.</p>
+              <p class="text-brand-gray leading-relaxed mb-4"><a href="nodes.html#create-assembly-roots-createassemblyroots" class="text-[#8a74d8ff] font-bold">Create Assembly Roots</a> creates one invisible hierarchy root for each placement element. <a href="nodes.html#assign-parents-assignparents" class="text-[#8a74d8ff] font-bold">Assign Parents</a> appends parent elements and attaches top-level children while preserving a stable hierarchy. Use <a href="nodes.html#place-local-assembly-placelocalassembly" class="text-[#8a74d8ff] font-bold">Place Local Assembly</a> to place an entire locally authored hierarchy at every placement transform.</p>
               <p class="text-brand-gray leading-relaxed">GPU-instanced rows do not have transforms in Unity's object hierarchy. Keep parent and child rows in the GameObject path; a GameObject child cannot be attached beneath a GPU-instanced parent.</p>
             </section>
 
