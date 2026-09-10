@@ -142,6 +142,22 @@
     }
   },
   {
+    "slug": "getting-started-attributes-and-subgraphs",
+    "title": "Getting Started with Attributes and Subgraphs",
+    "category": "Tutorials",
+    "summary": "Build a reusable point-cluster subgraph, pass per-element values into it, and instance varied results along a spline.",
+    "status": "Tutorial",
+    "readTime": "6 min read",
+    "url": "getting-started-attributes-and-subgraphs.html",
+    "cardMedia": {
+      "type": "youtube",
+      "videoId": "WlGwUR--STk",
+      "title": "Getting started - OctoShaper Tutorial"
+    },
+    "section": "Tutorials",
+    "lastmod": "2026-09-10"
+  },
+  {
     "slug": "runtime-generation",
     "title": "Runtime Generation",
     "category": "Runtime",

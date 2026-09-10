@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OctoShaper Docs - Context Manipulation</title>
-  <meta name="description" content="Manipulate compatible OctoShaper graph values in the Unity Scene view and inspect graph output with contextual gizmos." />
-  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/context-manipulation.html" />
+  <title>OctoShaper Docs - Getting Started with Attributes and Subgraphs</title>
+  <meta name="description" content="Learn OctoShaper&#039;s core graph workflow by building a reusable point-cluster subgraph driven by per-element radius attributes." />
+  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/getting-started-attributes-and-subgraphs.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Context Manipulation in OctoShaper" />
-  <meta property="og:description" content="Manipulate compatible OctoShaper graph values in the Unity Scene view and inspect graph output with contextual gizmos." />
-  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/context-manipulation.html" />
+  <meta property="og:title" content="Getting Started with Attributes and Subgraphs in OctoShaper" />
+  <meta property="og:description" content="Learn OctoShaper&#039;s core graph workflow by building a reusable point-cluster subgraph driven by per-element radius attributes." />
+  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/getting-started-attributes-and-subgraphs.html" />
   <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -92,9 +92,9 @@
     <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
     <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
-<details class="docs-sidebar-category" open><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Context Manipulation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Getting Started with Attributes and Subgraphs</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Getting Started with Attributes and Subgraphs</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
@@ -105,69 +105,66 @@
 
         <article class="docs-article bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
           <div class="flex items-center gap-3 flex-wrap mb-5">
-            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Editor Guide</span>
-            <span class="text-sm font-medium text-brand-gray">Scene view</span>
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Tutorial</span>
+            <span class="text-sm font-medium text-brand-gray">Core workflow</span>
           </div>
-          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Context Manipulation</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Some graph values are easier to understand and edit in the scene than as fields in the graph. OctoShaper&#039;s Scene view context provides visual manipulators for compatible values, alongside read-only gizmos for inspecting a node&#039;s output.</p>
-          <div class="docs-markdown"><h2 id="open-the-octoshaper-tool-context">Open the OctoShaper tool context</h2>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Getting Started with Attributes and Subgraphs</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Build a reusable point-cluster graph, then call it from a parent graph that places differently sized clusters along a spline. Along the way, you will use the ElementSet preview, constant-or-attribute bindings, pinned previews, and required subgraph attributes.</p>
+          <div class="docs-markdown"><h2 id="what-you-will-build">What you will build</h2>
+<p>The finished setup uses two graphs:</p>
 <ol>
-<li>Open a graph in the OctoShaper editor, or select a GameObject with a <code>ProceduralGraphExecutor</code>.</li>
-<li>In the Scene view toolbar, open the tool-context menu and choose <strong>OctoShaper</strong>.</li>
-<li>Choose the manipulation tool appropriate for the value you want to edit, then use its handles in the scene.</li>
+<li><strong>Tour</strong>, a reusable subgraph that expands every incoming element into a sphere-shaped point cluster. Its <code>radius</code> comes from an attribute, so each input row can produce a different result.</li>
+<li><strong>Main</strong>, a parent graph that distributes points along a spline, writes a random <code>radius</code> value to each row, and passes that ElementSet through Tour.</li>
 </ol>
-<figure>
-  <video autoplay muted loop playsinline preload="metadata" aria-label="Unity Scene view tool context menu with OctoShaper selected">
-    <source src="../../res/docs/context-manipulation-tool-context.mov" type="video/quicktime">
-    Your browser does not support embedded video playback.
-  </video>
-  <figcaption>The OctoShaper context groups the Scene view tools supplied for graph-value manipulation.</figcaption>
-</figure>
-<h2 id="know-which-graph-receives-the-edit">Know which graph receives the edit</h2>
-<p>When the OctoShaper editor is open, its current graph and configuration provide the editing context. Otherwise, the tools use the selected <code>ProceduralGraphExecutor</code>.</p>
-<blockquote>
-<p><strong>Configuration first, graph default second</strong></p>
-<p>If an active configuration is available, moving a handle writes a parameter override to that configuration. Without one, it changes the parameter's default value in the graph asset.</p>
-</blockquote>
-<h2 id="manipulate-values-in-context">Manipulate values in context</h2>
-<p>A manipulator decides which compatible graph values it can display and how they can be edited. Its handles stay connected to the underlying parameter, so changes made in the Scene view are reflected in the same graph or configuration value you would edit numerically.</p>
-<blockquote>
-<p><strong>Example: shaping a spline</strong></p>
-<p>The spline manipulator draws the path, anchors, Bezier controls, and their relationships directly in the scene. It illustrates the general principle: the manipulator presents a visual editing surface, while the parameter remains the source of truth.</p>
-</blockquote>
-<figure>
-  <video autoplay muted loop playsinline preload="metadata" aria-label="Spline anchors and Bezier handles displayed with the OctoShaper spline tool">
-    <source src="../../res/docs/context-manipulation-spline-handles.mov" type="video/quicktime">
-    Your browser does not support embedded video playback.
-  </video>
-  <figcaption>A spline is one example of a graph value presented through an in-scene manipulation surface.</figcaption>
-</figure>
-<p>For the spline data type itself, continue with <a href="working-with-splines.html">Working with Splines</a>.</p>
-<h2 id="editable-handles-and-output-gizmos-are-different">Editable handles and output gizmos are different</h2>
-<p><strong>Parameter manipulators</strong> write back to compatible values. Use them when authoring graph inputs that benefit from direct visual editing.</p>
-<p><strong>Output gizmos</strong> are read-only. A selected node can display bounds, positions, rotations, scales, and triangle information from its ElementSet output. These markers explain the data without editing it.</p>
-<figure>
-  <video autoplay muted loop playsinline preload="metadata" aria-label="Selected OctoShaper node with pinned gizmo badge and read-only output markers in Scene view">
-    <source src="../../res/docs/context-manipulation-output-gizmos.mov" type="video/quicktime">
-    Your browser does not support embedded video playback.
-  </video>
-  <figcaption>Output gizmos expose the selected node's spatial data without turning those results into editable parameters.</figcaption>
-</figure>
-<h2 id="pin-the-context-you-need">Pin the context you need</h2>
-<p><strong>Pin scene preview</strong> keeps a node's realized visual result in the scene while you work elsewhere in the graph. <strong>Pin gizmos</strong> keeps that node's diagnostic markers and bounds visible instead. The two controls are independent, so you can keep either form of context—or both—while selecting another node.</p>
-<figure>
-  <video autoplay muted loop playsinline preload="metadata" aria-label="Comparison of pinned scene preview and pinned gizmo visualization in OctoShaper">
-    <source src="../../res/docs/context-manipulation-preview-vs-gizmos.mov" type="video/quicktime">
-    Your browser does not support embedded video playback.
-  </video>
-  <figcaption>A scene preview shows the realized output; gizmos reveal the spatial data used to understand it.</figcaption>
-</figure></div>
-        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="node-graph-basics.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Node Graph Basics</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="working-with-splines.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Working with Splines</span></a></nav>
+<p>The key mental model is a spreadsheet: an <a href="elements.html">ElementSet</a> is the table, each element is a row, and attributes such as <code>position</code>, <code>localIndex</code>, and <code>radius</code> are columns. Graph settings and parameters are global controls; attributes can vary from row to row.</p>
+<p>You need OctoShaper installed and a simple cube prefab if you want to preview realized objects. Open <strong>Tools &gt; OctoShaper &gt; Getting Started</strong> for links to the documentation, support, settings, and demo importer. See <a href="installation.html">Installation</a> and <a href="node-graph-basics.html">Node Graph Basics</a> if you have not created a graph before.</p>
+<div style="aspect-ratio: 16 / 9; overflow: hidden; border-radius: 1rem; background: #000;">
+  <iframe src="https://www.youtube-nocookie.com/embed/WlGwUR--STk" title="Getting started - OctoShaper Tutorial" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; height: 100%; border: 0;"></iframe>
+</div>
+<p>The video is a companion to the complete workflow below.</p>
+<h2 id="1-create-the-point-cluster-graph">1. Create the point-cluster graph</h2>
+<p>Create a <strong>Procedural Graph</strong> asset and name it <strong>Tour</strong>. Open it, then connect the graph's main input through your nodes to its main output. A graph needs this connected path before it can return a useful ElementSet.</p>
+<p>Add <code>position</code> to the main input's required attributes. Select the input node and inspect its ElementSet preview: the editor represents the data as rows and named attribute columns.</p>
+<p>Add <a href="nodes.html#distribute-points-on-line-distributepointsonline">Distribute Points On Line</a>, followed by <a href="nodes.html#sample-points-in-sphere-per-element-samplepointsinsphereperelement">Sample Points In Sphere Per Element</a>. The line node provides useful columns including <code>position</code>, <code>localIndex</code>, and <code>sourceRowIndex</code>; the sphere node expands every incoming row into a cluster.</p>
+<p><a href="https://youtu.be/WlGwUR--STk?t=60">Video reference: reading the ElementSet preview at 1:00</a></p>
+<h2 id="2-drive-a-node-input-from-an-attribute">2. Drive a node input from an attribute</h2>
+<p>Start with a fixed sphere radius and sample count so you can see the basic shape. Then change the sphere node's <strong>Count</strong> binding from a constant to the <code>localIndex</code> attribute created by Distribute Points On Line.</p>
+<p>Each source row now supplies its own count. With line indices <code>0</code>, <code>1</code>, <code>2</code>, and <code>3</code>, later clusters contain progressively more points. This constant-or-attribute switch is fundamental: use a constant when every row should receive the same value, and an attribute when the value already lives in the ElementSet.</p>
+<p><a href="https://youtu.be/WlGwUR--STk?t=245">Video reference: switching Count to Local Index at 4:05</a></p>
+<h2 id="3-preview-the-right-stage-of-the-graph">3. Preview the right stage of the graph</h2>
+<p>Add <a href="nodes.html#spawn-prefab-creategameobject">Spawn Prefab</a>, assign a cube prefab, and connect it toward the main output. The graph can now show actual cube instances as well as its diagnostic point markers.</p>
+<p>Use the two pin modes deliberately:</p>
+<ul>
+<li><strong>Preview</strong> keeps a node's realized result visible, including spawned prefabs.</li>
+<li><strong>Gizmos</strong> keeps the read-only positions and other diagnostic markers visible.</li>
+</ul>
+<p>Pin the stage you want to compare before selecting another node. If a graph becomes expensive to update while you drag a value, disable real-time preview so it recomputes after the edit instead. <a href="context-manipulation.html">Context Manipulation</a> explains the difference between previews, gizmos, and editable Scene view handles in more detail.</p>
+<p><a href="https://youtu.be/WlGwUR--STk?t=390">Video reference: pinning graph stages and comparing preview modes at 6:30</a></p>
+<h2 id="4-make-radius-part-of-the-subgraph-contract">4. Make radius part of the subgraph contract</h2>
+<p>Return to Tour's main input and add a required float attribute named <code>radius</code>. On Sample Points In Sphere Per Element, change <strong>Radius</strong> from a constant to that attribute.</p>
+<p>Tour now has an explicit contract: every incoming row must contain <code>position</code> and <code>radius</code>. The graph keeps working on the same ElementSet structure, expanding its rows and carrying their attributes forward. Save the graph so it becomes available as a node in another graph.</p>
+<p>This distinction keeps tools reusable: use graph parameters for one global control, and required input attributes for values that must vary for every subgraph instance.</p>
+<p><a href="https://youtu.be/WlGwUR--STk?t=524">Video reference: exposing Radius as a required attribute at 8:44</a></p>
+<h2 id="5-instance-varied-clusters-along-a-spline">5. Instance varied clusters along a spline</h2>
+<p>Create a second graph named <strong>Main</strong> and add a spline parameter. Use Unity's OctoShaper spline tool to place at least two control points, then add <a href="nodes.html#distribute-points-on-spline-by-distance-distributepointsonsplinebydistance">Distribute Points On Spline By Distance</a> to generate rows along the path.</p>
+<p>Add the Tour subgraph after the spline distribution. If the connection is rejected, inspect Tour's input requirements: the parent data is missing <code>radius</code>. Insert <a href="nodes.html#set-random-float-attribute-setrandomfloatattribute">Set Random Float Attribute</a>, name the attribute <code>radius</code>, and use <strong>1</strong> and <strong>5</strong> as useful starting values for its minimum and maximum. Connect the resulting ElementSet to Tour, then connect Tour to the main output.</p>
+<p>Every spline sample now carries its own deterministic radius into the subgraph, producing a chain of differently sized point clusters. Change the random seed to explore another variation without rebuilding the graph.</p>
+<p><a href="https://youtu.be/WlGwUR--STk?t=771">Video reference: varying subgraph radius per spline point at 12:51</a></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li><strong>The subgraph will not connect:</strong> match the attribute name and type exactly. Tour requires a float attribute called <code>radius</code> before it runs.</li>
+<li><strong>Every cluster has the same size:</strong> confirm that Tour's Radius binding is set to the attribute, not a constant.</li>
+<li><strong>You see points but no cubes:</strong> pin Preview on the Spawn Prefab stage and make sure a prefab is assigned. Gizmos alone show diagnostic markers.</li>
+<li><strong>Editing feels slow:</strong> reduce point counts while authoring or turn off real-time preview until the graph is lighter.</li>
+</ul>
+<p>Use <a href="working-with-splines.html">Working with Splines</a> to refine the path, or browse the <a href="nodes.html">Node Catalog</a> for the exact inputs and attribute effects of every node used here.</p>
+</div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="gpu-accelerated-grass.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">GPU-Accelerated Grass</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="runtime-generation.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Runtime Generation</span></a></nav>
         </article>
 
         <aside class="docs-toc" aria-label="On this page">
           <p class="docs-toc__title">On this page</p>
-          <nav><a href="#open-the-octoshaper-tool-context">Open the OctoShaper tool context</a><a href="#know-which-graph-receives-the-edit">Know which graph receives the edit</a><a href="#manipulate-values-in-context">Manipulate values in context</a><a href="#editable-handles-and-output-gizmos-are-different">Editable handles and output gizmos are different</a><a href="#pin-the-context-you-need">Pin the context you need</a></nav>
+          <nav><a href="#what-you-will-build">What you will build</a><a href="#1-create-the-point-cluster-graph">1. Create the point-cluster graph</a><a href="#2-drive-a-node-input-from-an-attribute">2. Drive a node input from an attribute</a><a href="#3-preview-the-right-stage-of-the-graph">3. Preview the right stage of the graph</a><a href="#4-make-radius-part-of-the-subgraph-contract">4. Make radius part of the subgraph contract</a><a href="#5-instance-varied-clusters-along-a-spline">5. Instance varied clusters along a spline</a><a href="#troubleshooting">Troubleshooting</a></nav>
         </aside>
       </div>
     </section>
