@@ -13,12 +13,6 @@
       intro: 'Build, preview, and run graph-driven systems directly in your Unity project.',
       perks: ['No subscription', 'One-time purchase', 'Indie friendly'],
       useCasesTitle: 'What you can build',
-      nativeLabel: 'Unity-native workflow',
-      nativeTitle: 'Stay inside Unity.',
-      nativeCopy: 'OctoShaper is designed to be useful inside Unity itself, without asking your day-to-day workflow to revolve around a separate DCC or offline procedural authoring stack.',
-      reuseLabel: 'Procedural prefabs',
-      reuseTitle: 'Package reusable procedural setups.',
-      reuseCopy: 'Procedural prefabs make it easier to carry graph-driven assets across scenes and projects without rebuilding the setup each time.',
       bottomTitle: 'Ready to try it in your Unity project?',
       bottomCopy: 'One-time purchase. Lifetime license. No subscription.'
     },
@@ -27,12 +21,6 @@
       intro: 'Build, preview, and run graph-driven systems directly in your Godot project.',
       perks: ['No subscription', 'One-time purchase', 'Indie friendly'],
       useCasesTitle: 'What you will be able to build with Godot',
-      nativeLabel: 'Godot-native workflow',
-      nativeTitle: 'Stay inside Godot.',
-      nativeCopy: 'The Godot edition is being designed around familiar Godot concepts and editor workflows, so procedural authoring remains part of the engine rather than a separate pipeline.',
-      reuseLabel: 'Procedural scenes',
-      reuseTitle: 'Package reusable procedural scenes.',
-      reuseCopy: 'Reusable graph-driven scenes will make it easier to carry procedural setups across levels and projects without rebuilding the logic each time.',
       bottomTitle: 'Interested in OctoShaper for Godot?',
       bottomCopy: 'Follow the development and be first to hear when the Godot edition is ready.'
     }
@@ -82,12 +70,6 @@
       text('engine-perk-two', edition.perks[1]);
       text('engine-perk-three', edition.perks[2]);
       text('engine-use-cases-title', edition.useCasesTitle);
-      text('engine-native-label', edition.nativeLabel);
-      text('engine-native-title', edition.nativeTitle);
-      text('engine-native-copy', edition.nativeCopy);
-      text('engine-reuse-label', edition.reuseLabel);
-      text('engine-reuse-title', edition.reuseTitle);
-      text('engine-reuse-copy', edition.reuseCopy);
       text('engine-bottom-title', edition.bottomTitle);
       text('engine-bottom-copy', edition.bottomCopy);
 
@@ -136,5 +118,6 @@
     });
   });
 
-  render(document.body.dataset.engine === 'godot' ? 'godot' : 'unity', false);
+  // Each engine route is pre-rendered by scripts/build-site.mjs, so the initial
+  // state is already correct; render() only runs for in-page (button) toggles.
 }());

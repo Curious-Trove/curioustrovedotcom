@@ -3,160 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OctoShaper Docs - Elements</title>
-  <meta name="description" content="Learn how ElementSet data and attributes flow through OctoShaper graphs." />
+  <title>ElementSets and Attributes Explained – OctoShaper Docs</title>
+  <meta name="description" content="Learn what an OctoShaper ElementSet is, why its columnar layout makes procedural generation in Unity fast, and how nodes read and write attributes with Constant or Attribute inputs." />
   <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/elements.html" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="OctoShaper Elements" />
-  <meta property="og:description" content="Learn how ElementSet data and attributes flow through OctoShaper graphs." />
+  <meta property="og:site_name" content="Curious Trove" />
+  <meta property="og:title" content="Elements, ElementSets and Attributes in OctoShaper" />
+  <meta property="og:description" content="Learn what an OctoShaper ElementSet is, why its columnar layout makes procedural generation in Unity fast, and how nodes read and write attributes with Constant or Attribute inputs." />
   <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/elements.html" />
   <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
+  <meta property="article:modified_time" content="2026-09-30" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.css" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <style data-purpose="custom-fonts">
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-    body {
-      font-family: 'Montserrat', sans-serif;
-    }
-  </style>
-  <style data-purpose="code-highlighting">
-    pre[class*="language-"] {
-      margin: 0;
-      border-radius: 1rem;
-      padding: 1.25rem;
-      overflow: auto;
-      font-size: 0.925rem;
-      line-height: 1.7;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    }
-
-    code[class*="language-"] {
-      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-
-    div.code-toolbar {
-      position: relative;
-    }
-
-    div.code-toolbar > .toolbar {
-      top: 0.85rem;
-      right: 0.85rem;
-      opacity: 1;
-    }
-
-    div.code-toolbar > .toolbar .toolbar-item > button {
-      background: rgba(255, 255, 255, 0.08);
-      color: #f8f9fa;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 9999px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      box-shadow: none;
-    }
-
-    div.code-toolbar > .toolbar .toolbar-item > button:hover {
-      background: rgba(140, 226, 184, 0.18);
-      border-color: rgba(140, 226, 184, 0.55);
-      color: #ffffff;
-    }
-  </style>
-  <style data-purpose="doc-crosslinks">
-    .doc-crosslink {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1rem;
-      height: 1rem;
-      margin-left: 0.12rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(138, 116, 216, 0.12);
-      background: rgba(244, 240, 250, 0.9);
-      color: #8a74d8ff;
-      font-size: 0.63rem;
-      font-weight: 800;
-      line-height: 1;
-      vertical-align: super;
-      text-decoration: none;
-      transform: translateY(-0.2em);
-      transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-    }
-
-    .doc-crosslink:hover {
-      background: #8a74d8ff;
-      border-color: #8a74d8ff;
-      color: #ffffff;
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              purple: '#8a74d8ff',
-              green: '#8ce2b8',
-              dark: '#1e1e1e',
-              gray: '#4a4a4a',
-              border: '#e5e7eb'
-            }
-          },
-          backgroundImage: {
-            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
-          }
-        }
-      }
-    }
-  </script>
   <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
+  <link rel="stylesheet" href="../../css/octoshaper-explainers.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://curioustrove.com/octoshaper/docs/elements.html#article","headline":"Elements, ElementSets and Attributes","description":"Learn what an OctoShaper ElementSet is, why its columnar layout makes procedural generation in Unity fast, and how nodes read and write attributes with Constant or Attribute inputs.","url":"https://curioustrove.com/octoshaper/docs/elements.html","mainEntityOfPage":"https://curioustrove.com/octoshaper/docs/elements.html","inLanguage":"en","articleSection":"Core Concepts","dateModified":"2026-09-30","keywords":"OctoShaper ElementSet, procedural generation attributes, Unity procedural data, Burst columnar data","author":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/"},"publisher":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/","logo":{"@type":"ImageObject","url":"https://curioustrove.com/res/logo.svg"}},"about":{"@type":"SoftwareApplication","name":"OctoShaper","applicationCategory":"DeveloperApplication","operatingSystem":"Unity 2022.3+","softwareVersion":1.2},"image":"https://curioustrove.com/res/octoshaper-logo.svg"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Docs","item":"https://curioustrove.com/octoshaper/docs/"},{"@type":"ListItem","position":2,"name":"Core Concepts","item":"https://curioustrove.com/octoshaper/docs/#core-concepts"},{"@type":"ListItem","position":3,"name":"Elements, ElementSets and Attributes","item":"https://curioustrove.com/octoshaper/docs/elements.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an ElementSet in OctoShaper?","acceptedAnswer":{"@type":"Answer","text":"An ElementSet is the table that flows between nodes. Each row is one element (a point, prop, instance or mesh point) and each column is a named, typed attribute such as position, rotation, scale or tint."}},{"@type":"Question","name":"Why does OctoShaper store attributes in columns?","acceptedAnswer":{"@type":"Answer","text":"Keeping each attribute in its own packed column lets Burst-compiled jobs stream through the values quickly and split large sets across worker threads. A node only touches the columns it needs."}},{"@type":"Question","name":"What is the difference between a Constant and an Attribute input?","acceptedAnswer":{"@type":"Answer","text":"A Constant input gives every row the same value. An Attribute input makes each row read its own value from a named column, so one node can produce a different result per element."}},{"@type":"Question","name":"Why was my connection rejected?","acceptedAnswer":{"@type":"Answer","text":"The target node requires an attribute the incoming ElementSet does not declare, for example renderDefinition for material override nodes. Hover the port to see what is required, then add the missing attribute upstream."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="../../css/utilities.css" />
+  <link rel="stylesheet" href="../../css/site.css" />
+  <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('ct-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)})();</script>
 </head>
-<body data-base-path="../../" data-active-page="octoshaper" class="docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+<body data-base-path="../../" data-active-page="documentation" class="ct-tw docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
   <!-- BEGIN: Header -->
-<header class="relative z-20 w-full border-b border-[#5a358c]/45 bg-[#8a74d8ff] shadow-[0_3px_0_rgba(90,53,140,0.12)]">
-  <div class="w-full px-4 sm:px-6">
-    <input type="checkbox" id="nav-toggle" class="hidden peer/nav"/>
-    <div class="grid min-h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-3">
-      <a href="../../index.html" class="justify-self-start flex items-center gap-2 font-semibold text-base sm:text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
-        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/15 p-1" src="../../res/logo.svg"/>
-        <span>Curious Trove</span>
-      </a>
+<a class="ct-skip" href="#main">Skip to content</a>
+<header class="ct-nav">
+  <input type="checkbox" id="nav-toggle" class="ct-nav__toggle-input"/>
+  <div class="ct-nav__bar">
+    <a href="../../index.html" class="ct-nav__brand">
+      <img alt="" width="36" height="36" src="../../res/logo.svg"/>
+      <span>Curious Trove</span>
+    </a>
 
-      <nav id="nav" class="hidden lg:flex items-center justify-center gap-1 justify-self-center">
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
-      </nav>
+    <nav id="nav" class="ct-nav__links" aria-label="Main">
+      <a class="ct-nav__link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link is-active" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
+      <a class="ct-nav__link" href="../../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community <span class="ct-nav__ext" aria-hidden="true">↗</span></a>
+    </nav>
 
-      <label for="nav-toggle" class="justify-self-end lg:hidden cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
-        <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+    <div class="ct-nav__actions">
+      <button type="button" class="ct-theme-toggle" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="ct-theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ct-theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="ct-btn ct-btn--primary ct-btn--small ct-nav__cta" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar">Get OctoShaper</a>
+      <label for="nav-toggle" class="ct-nav__toggle" aria-label="Toggle navigation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/>
         </svg>
       </label>
     </div>
-    <div class="hidden peer-checked/nav:block lg:hidden border-t border-white/10 pb-3 pt-2">
-      <nav class="flex flex-col gap-1">
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../../blog.html" data-page="blog">Devlog</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
-      </nav>
-    </div>
+  </div>
+  <div class="ct-nav__mobile">
+    <nav aria-label="Main (mobile)">
+      <a class="ct-nav__link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link is-active" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
+      <a class="ct-nav__link" href="../../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community ↗</a>
+      <a class="ct-btn ct-btn--primary" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar-mobile">Get OctoShaper</a>
+    </nav>
   </div>
 </header>
 <!-- END: Header -->
 
 
-  <main class="flex-grow bg-grid-pattern pb-20">
-    <section class="max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
-      <div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+  <main id="main" class="flex-grow pb-20">
+    <section class="docs-shell max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="docs-layout grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
         <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
   <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
-  <div id="octoshaper-version-panel"></div>
   <div class="docs-engine-control">
     <span class="docs-engine-control__label">Engine</span>
     <div class="docs-engine-switch" role="group" aria-label="Choose documentation engine">
@@ -172,139 +89,290 @@
   </div>
   <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
     <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
-    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li></ul></details>
-<details class="docs-sidebar-category" open><summary>Core Concepts</summary><ul><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefab</a></li><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Elements</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li></ul></details>
+    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li><li><a href="samples.html" data-sidebar-page="samples" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Samples</a></li><li><a href="upgrading-to-1-2.html" data-sidebar-page="upgrading-to-1-2" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Upgrading to 1.2</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Core Concepts</summary><ul><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Elements, ElementSets and Attributes</a></li><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Building Content</summary><ul><li><a href="procedural-meshes.html" data-sidebar-page="procedural-meshes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Meshes</a></li><li><a href="colors-textures-and-materials.html" data-sidebar-page="colors-textures-and-materials" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Colors, Textures and Materials</a></li><li><a href="assemblies-and-hierarchies.html" data-sidebar-page="assemblies-and-hierarchies" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Assemblies and Placement</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="preview-stage.html" data-sidebar-page="preview-stage" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Preview Stage and Inspection</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li><li><a href="ai-integration.html" data-sidebar-page="ai-integration" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">AI Integration and Editor Automation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Getting Started with Attributes and Subgraphs</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Getting Started with Attributes and Subgraphs</a></li><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefabs</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li></ul></details>
   </nav>
 </aside>
 </div>
 
-        <article class="bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+        <article class="docs-article bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <nav class="ct-crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span aria-hidden="true">/</span><span>Core Concepts</span></nav>
           <div class="flex items-center gap-3 flex-wrap mb-5">
-            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Concept</span>
-            <span class="text-sm font-medium text-brand-gray">Data Model</span>
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Core Concept</span>
+            <span class="text-sm font-medium text-brand-gray">Data model</span>
+            <span class="docs-article__version" title="Written for this OctoShaper version">OctoShaper 1.2</span><span class="docs-article__updated">Updated <time datetime="2026-09-30">30 September 2026</time></span>
           </div>
-          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">What Are Elements?</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Procedural data moves through OctoShaper as an <span class="font-bold text-brand-dark">ElementSet</span>: elements are rows, attributes are named columns, and nodes transform the collection.</p>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Elements, ElementSets and Attributes</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Almost every wire in an OctoShaper graph carries an ElementSet, a table where each row is one element and each column is a named attribute. Once you picture that table, every node becomes easy to read. It adds rows, removes rows, or changes columns.</p>
+          <div class="docs-markdown"><h2 id="an-elementset-is-a-table">An ElementSet is a table</h2>
+<p>A graph is rarely thinking about one rock or one window. It works on a whole table of them and decides which rows to add, remove or enrich. That table is the <strong>ElementSet</strong>.</p>
+<figure class="ct-explainer ex-es" data-steps="4" data-interval="3600" data-step="4">
+  <div class="ct-explainer__head">
+    <figcaption class="ct-explainer__title"><span class="ct-explainer__kicker">Explainer</span>An ElementSet is a table</figcaption>
+    <button type="button" class="ct-explainer__toggle" hidden aria-pressed="false" aria-label="Pause animation"><span>Pause</span></button>
+  </div>
+  <div class="ct-explainer__stage" aria-hidden="true">
+    <div class="ex-es__grid">
+      <div class="ex-es__scene">
+        <span class="ex-label">Scene</span>
+        <svg viewBox="0 0 220 150" role="presentation">
+          <path class="ex-es__ground" d="M18 96 L110 50 L202 96 L110 142 Z"/>
+          <g class="ex-es__pt" style="--i:0; --tint:#14bfa0"><ellipse cx="62" cy="99" rx="9" ry="4"/><circle cx="62" cy="88" r="9"/></g>
+          <g class="ex-es__pt ex-es__pt--cut" style="--i:1; --tint:#5aa9ec"><ellipse cx="96" cy="76" rx="9" ry="4"/><circle cx="96" cy="65" r="9"/></g>
+          <g class="ex-es__pt" style="--i:2; --tint:#8a74d8"><ellipse cx="112" cy="104" rx="9" ry="4"/><circle cx="112" cy="93" r="9"/></g>
+          <g class="ex-es__pt ex-es__pt--cut" style="--i:3; --tint:#f5b83d"><ellipse cx="150" cy="84" rx="9" ry="4"/><circle cx="150" cy="73" r="9"/></g>
+          <g class="ex-es__pt" style="--i:4; --tint:#ff8a6b"><ellipse cx="140" cy="122" rx="9" ry="4"/><circle cx="140" cy="111" r="9"/></g>
+        </svg>
+      </div>
+      <div class="ex-es__table" role="presentation">
+        <div class="ex-es__row ex-es__row--head"><span>#</span><span class="ex-es__col-pos">position</span><span>rotation</span><span>scale</span><span>id</span><span class="ex-es__col-tint">tint</span></div>
+        <div class="ex-es__row" style="--i:0; --tint:#14bfa0"><span>0</span><span class="ex-es__col-pos">(-2, 0, 1)</span><span>0°</span><span>1.0</span><span>0</span><span class="ex-es__col-tint"><i></i></span></div>
+        <div class="ex-es__row ex-es__row--cut" style="--i:1; --tint:#5aa9ec"><span>1</span><span class="ex-es__col-pos">(-1, 0, 3)</span><span>45°</span><span>0.8</span><span>1</span><span class="ex-es__col-tint"><i></i></span></div>
+        <div class="ex-es__row" style="--i:2; --tint:#8a74d8"><span>2</span><span class="ex-es__col-pos">(0, 0, 0)</span><span>90°</span><span>1.2</span><span>2</span><span class="ex-es__col-tint"><i></i></span></div>
+        <div class="ex-es__row ex-es__row--cut" style="--i:3; --tint:#f5b83d"><span>3</span><span class="ex-es__col-pos">(2, 0, 2)</span><span>10°</span><span>0.9</span><span>3</span><span class="ex-es__col-tint"><i></i></span></div>
+        <div class="ex-es__row" style="--i:4; --tint:#ff8a6b"><span>4</span><span class="ex-es__col-pos">(1, 0, -2)</span><span>200°</span><span>1.1</span><span>4</span><span class="ex-es__col-tint"><i></i></span></div>
+        <p class="ex-es__note ex-es__note--add"><span class="ex-pill ex-pill--new">+ tint</span> written by a color node</p>
+        <p class="ex-es__note ex-es__note--cut">Filter kept 3 of 5 rows</p>
+      </div>
+    </div>
+  </div>
+  <ol class="ct-explainer__steps">
+    <li data-step="1"><button type="button"><b>One row per element.</b> Each point, prop or instance in the result is a row of the ElementSet.</button></li>
+    <li data-step="2"><button type="button"><b>One column per attribute.</b> <code>position</code>, <code>rotation</code>, <code>scale</code> and <code>id</code> are named columns every row shares.</button></li>
+    <li data-step="3"><button type="button"><b>Nodes add columns.</b> A color node writes a new <code>tint</code> column; later nodes can read it by name.</button></li>
+    <li data-step="4"><button type="button"><b>Nodes remove rows.</b> A filter drops rows, and every column shrinks with them.</button></li>
+  </ol>
+</figure>
+<p>An <em>element</em> can be a scatter point, a building piece, a spawned prefab, a spline sample or a vertex of a procedural mesh. The label doesn't matter. What matters is that each row keeps every value for that one element, and nodes process all rows together.</p>
+<h2 id="attributes-are-named-columns">Attributes are named columns</h2>
+<p>Every attribute has a <strong>name</strong> and a <strong>type</strong>. Nodes find columns by name, so the names are the contract between nodes.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Written by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position</code>, <code>rotation</code>, <code>scale</code></td>
+<td>Vector3, Quaternion, Vector3</td>
+<td>Distribution and spatial nodes, most generators</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Integer</td>
+<td>Generators; used for stable randomness</td>
+</tr>
+<tr>
+<td><code>sourceRowIndex</code>, <code>localIndex</code></td>
+<td>Integer</td>
+<td>Expanders: which input row a new row came from</td>
+</tr>
+<tr>
+<td><code>parentRowIndex</code></td>
+<td>Integer</td>
+<td><a href="assemblies-and-hierarchies.html">Assemblies and hierarchies</a></td>
+</tr>
+<tr>
+<td><code>prefab</code>, <code>renderDefinition</code></td>
+<td>Prefab, render data</td>
+<td><a href="rendering-and-instancing-modes.html">Rendering nodes</a></td>
+</tr>
+<tr>
+<td><code>mesh</code></td>
+<td>Mesh</td>
+<td><a href="procedural-meshes.html">Realize Meshes</a> and Assign Mesh</td>
+</tr>
+<tr>
+<td><code>tint</code>, <code>uv0</code></td>
+<td>Color, Vector2</td>
+<td><a href="colors-textures-and-materials.html">Color and texture nodes</a></td>
+</tr>
+<tr>
+<td>anything you name</td>
+<td>Float, Int, Bool, String, Vector3…</td>
+<td><code>Set … Attribute</code> nodes and nodes with a result name input</td>
+</tr>
+</tbody>
+</table>
+<p>You can create your own attributes freely. <code>height</code>, <code>biome</code> and <code>isEdge</code> are all fine names. Name inputs are shown in the <a href="nodes.html">node catalog</a> as <em>attribute-name inputs</em>.</p>
+<blockquote>
+<p><strong>Tip:</strong> Open <strong>Show Spreadsheet</strong> in the graph toolbar to see the table produced by the selected or pinned node. It is the fastest way to check that a column exists and holds the values you expect.</p>
+</blockquote>
+<figure class="ct-shot"><img src="../../res/docs/1.2/spreadsheet-view.png" alt="The ElementSet spreadsheet in the OctoShaper graph editor, listing rows and attribute columns for the selected node" loading="lazy" decoding="async" /><figcaption>Show Spreadsheet lists every row and column of the selected node&#039;s output.</figcaption></figure>
+<h2 id="why-columns-make-graphs-fast">Why columns make graphs fast</h2>
+<p>OctoShaper stores each attribute as its own packed column rather than as a list of objects. That layout is what lets heavy nodes run as Burst-compiled jobs over plain arrays.</p>
+<figure class="ct-explainer ex-col" data-steps="4" data-interval="3800" data-step="4">
+  <div class="ct-explainer__head">
+    <figcaption class="ct-explainer__title"><span class="ct-explainer__kicker">Explainer</span>Why columns make graphs fast</figcaption>
+    <button type="button" class="ct-explainer__toggle" hidden aria-pressed="false" aria-label="Pause animation"><span>Pause</span></button>
+  </div>
+  <div class="ct-explainer__stage" aria-hidden="true">
+    <div class="ex-col__lane ex-col__lane--objects">
+      <span class="ex-label">One object per element</span>
+      <div class="ex-col__objs"><div class="ex-col__obj" style="--i:0"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:1"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:2"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:3"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:4"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:5"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:6"><i class="p"></i><i class="r"></i><i class="s"></i></div><div class="ex-col__obj" style="--i:7"><i class="p"></i><i class="r"></i><i class="s"></i></div></div>
+    </div>
+    <div class="ex-col__lane ex-col__lane--columns">
+      <span class="ex-label">ElementSet: one packed column per attribute</span>
+      <div class="ex-col__strip ex-col__strip--p"><span class="ex-pill">position</span><div class="ex-col__cells"><i style="--i:0; --c:0; --h:0"></i><i style="--i:1; --c:0; --h:0"></i><i style="--i:2; --c:0; --h:0"></i><i style="--i:3; --c:0; --h:0"></i><i style="--i:4; --c:1; --h:0"></i><i style="--i:5; --c:1; --h:0"></i><i style="--i:6; --c:1; --h:1"></i><i style="--i:7; --c:1; --h:1"></i><i style="--i:8; --c:2; --h:1"></i><i style="--i:9; --c:2; --h:1"></i><i style="--i:10; --c:2; --h:1"></i><i style="--i:11; --c:2; --h:1"></i></div></div>
+      <div class="ex-col__strip ex-col__strip--r"><span class="ex-pill">rotation</span><div class="ex-col__cells"><i style="--i:0; --c:0; --h:0"></i><i style="--i:1; --c:0; --h:0"></i><i style="--i:2; --c:0; --h:0"></i><i style="--i:3; --c:0; --h:0"></i><i style="--i:4; --c:1; --h:0"></i><i style="--i:5; --c:1; --h:0"></i><i style="--i:6; --c:1; --h:1"></i><i style="--i:7; --c:1; --h:1"></i><i style="--i:8; --c:2; --h:1"></i><i style="--i:9; --c:2; --h:1"></i><i style="--i:10; --c:2; --h:1"></i><i style="--i:11; --c:2; --h:1"></i></div></div>
+      <div class="ex-col__strip ex-col__strip--s"><span class="ex-pill">scale</span><div class="ex-col__cells"><i style="--i:0; --c:0; --h:0"></i><i style="--i:1; --c:0; --h:0"></i><i style="--i:2; --c:0; --h:0"></i><i style="--i:3; --c:0; --h:0"></i><i style="--i:4; --c:1; --h:0"></i><i style="--i:5; --c:1; --h:0"></i><i style="--i:6; --c:1; --h:1"></i><i style="--i:7; --c:1; --h:1"></i><i style="--i:8; --c:2; --h:1"></i><i style="--i:9; --c:2; --h:1"></i><i style="--i:10; --c:2; --h:1"></i><i style="--i:11; --c:2; --h:1"></i></div></div>
+      <div class="ex-col__workers"><span>worker thread 1</span><span>worker thread 2</span></div>
+    </div>
+  </div>
+  <ol class="ct-explainer__steps">
+    <li data-step="1"><button type="button"><b>Objects scatter data.</b> When each element is its own object, updating every position means hopping from object to object.</button></li>
+    <li data-step="2"><button type="button"><b>Columns pack it.</b> An ElementSet keeps each attribute in its own column, so all positions sit side by side in memory.</button></li>
+    <li data-step="3"><button type="button"><b>Burst sweeps columns.</b> Heavy nodes run Burst-compiled jobs that stream through a column in wide, cache-friendly chunks.</button></li>
+    <li data-step="4"><button type="button"><b>Big sets split up.</b> Large columns are shared across worker threads, and columns a node doesn't use are never touched.</button></li>
+  </ol>
+</figure>
+<p>In practice this means:</p>
+<ul>
+<li><strong>Big counts stay cheap.</strong> Scattering tens of thousands of points is a sweep over a few arrays, not tens of thousands of objects.</li>
+<li><strong>Untouched columns are free.</strong> A node that only moves <code>position</code> never reads <code>tint</code> or <code>prefab</code>. Those columns are passed along as they are.</li>
+<li><strong>The expensive part is at the end.</strong> Creating GameObjects costs far more than computing rows. Prefer <a href="rendering-and-instancing-modes.html">GPU instancing</a> for large, purely visual populations.</li>
+</ul>
+<h2 id="constant-or-attribute-inputs">Constant or attribute inputs</h2>
+<p>Many node inputs show a <strong>Constant / Attribute</strong> switch. Their type ends in <em>Or Attribute</em> in the node catalog, for example <em>Float Or Attribute</em>.</p>
+<figure class="ct-explainer ex-bind" data-steps="3" data-interval="3800" data-step="3">
+  <div class="ct-explainer__head">
+    <figcaption class="ct-explainer__title"><span class="ct-explainer__kicker">Explainer</span>Constant or attribute?</figcaption>
+    <button type="button" class="ct-explainer__toggle" hidden aria-pressed="false" aria-label="Pause animation"><span>Pause</span></button>
+  </div>
+  <div class="ct-explainer__stage" aria-hidden="true">
+    <div class="ex-bind__grid">
+      <div class="ex-node ex-bind__node is-lit">
+        <span class="ex-node__cat" style="background:#ff66b3"></span>
+        Color Ramp Attribute
+        <div class="ex-bind__field">
+          <span class="ex-label">Position</span>
+          <div class="ex-bind__switch"><span class="ex-bind__opt ex-bind__opt--const">Constant</span><span class="ex-bind__opt ex-bind__opt--attr">Attribute</span></div>
+          <div class="ex-bind__value"><span class="ex-bind__v ex-bind__v--const">0.45</span><span class="ex-bind__v ex-bind__v--attr"><span class="ex-pill">height</span></span></div>
+        </div>
+        <div class="ex-bind__ramp"></div>
+        <div class="ex-bind__out"><span class="ex-label">Writes</span> <span class="ex-pill ex-pill--new">tint</span></div>
+      </div>
+      <div class="ex-bind__table">
+        <div class="ex-bind__row ex-bind__row--head"><span>height</span><span>tint</span></div>
+        <div class="ex-bind__row" style="--i:0; --v:0.1; --tint:#2fbfa0; --const:#9bcf6a"><span class="ex-bind__h"><b style="width:calc(var(--v) * 100%)"></b><em>0.10</em></span><span class="ex-bind__t"><i></i></span></div><div class="ex-bind__row" style="--i:1; --v:0.45; --tint:#9bcf6a; --const:#9bcf6a"><span class="ex-bind__h"><b style="width:calc(var(--v) * 100%)"></b><em>0.45</em></span><span class="ex-bind__t"><i></i></span></div><div class="ex-bind__row" style="--i:2; --v:0.8; --tint:#f5a24a; --const:#9bcf6a"><span class="ex-bind__h"><b style="width:calc(var(--v) * 100%)"></b><em>0.80</em></span><span class="ex-bind__t"><i></i></span></div><div class="ex-bind__row" style="--i:3; --v:0.3; --tint:#5fc49a; --const:#9bcf6a"><span class="ex-bind__h"><b style="width:calc(var(--v) * 100%)"></b><em>0.30</em></span><span class="ex-bind__t"><i></i></span></div><div class="ex-bind__row" style="--i:4; --v:0.95; --tint:#ff7a5c; --const:#9bcf6a"><span class="ex-bind__h"><b style="width:calc(var(--v) * 100%)"></b><em>0.95</em></span><span class="ex-bind__t"><i></i></span></div>
+      </div>
+    </div>
+  </div>
+  <ol class="ct-explainer__steps">
+    <li data-step="1"><button type="button"><b>Constant:</b> every row receives the same value, so every element gets the same color.</button></li>
+    <li data-step="2"><button type="button"><b>Attribute:</b> each row reads its own value from the <code>height</code> column instead.</button></li>
+    <li data-step="3"><button type="button"><b>Written back:</b> the result lands in a <code>tint</code> column that any later node can read by name.</button></li>
+  </ol>
+</figure>
+<ul>
+<li><strong>Constant:</strong> one value for every row. This is the default, and it is the fastest option.</li>
+<li><strong>Attribute:</strong> type a column name, and each row uses its own value. Missing or wrongly typed attributes produce an error that names the column.</li>
+</ul>
+<p>Nodes ending in <strong>Attribute</strong>, like <em>Color Ramp Attribute</em> or <em>Sample Texture Attribute</em>, evaluate per element and write their result into a named column. Downstream, select that name in another node's Attribute mode.</p>
+<h2 id="requirements-and-connections">Requirements and connections</h2>
+<p>Some nodes declare the attributes they <strong>require</strong> and the ones they <strong>write</strong>. The graph editor uses these contracts while you wire:</p>
+<ul>
+<li>Hover an ElementSet port to see required and available attributes.</li>
+<li>A rejected connection explains what is missing. For example, material override nodes need <code>renderDefinition</code>, which only a draw node adds.</li>
+<li>Fix it by adding the missing attribute upstream, or by connecting a different input.</li>
+</ul>
+<p>These checks describe declared contracts. A value can still be invalid at runtime, for example an empty mesh.</p>
+<h2 id="what-nodes-do-to-the-table">What nodes do to the table</h2>
+<p><strong>Generate:</strong> create rows or expand each row into many (Distribute Points In Grid, Expand Per Element, Box Mesh).</p>
+<p><strong>Modify:</strong> write or overwrite columns (Jitter Positions, Set Float Attribute, Color Ramp Attribute).</p>
+<p><strong>Filter and combine:</strong> drop rows (Filter, Take First N, Probabilistic Cull), split them (Split By Bool Attribute), or join tables with the built-in <strong>Merge</strong> node, which accepts any number of links.</p>
+<p><strong>Consume:</strong> turn rows into something Unity shows (Spawn Prefab, Draw Instanced, Add Box Collider).</p>
+<p>Mesh generators add one twist: their ElementSet also carries <strong>topology</strong>, meaning faces connect the rows. See <a href="procedural-meshes.html">Procedural meshes</a>.</p>
+<h2 id="where-to-go-next">Where to go next</h2>
+<ul>
+<li><a href="node-graph-basics.html">Node graph basics</a> covers Main Input, Main Output and parameters around the table.</li>
+<li><a href="rendering-and-instancing-modes.html">Rendering and instancing modes</a> explains how the final rows become objects or GPU instances.</li>
+<li>The <a href="nodes.html">node catalog</a> lists what every node requires and writes.</li>
+</ul>
 
-          <div class="space-y-8">
-            <section class="bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-5 sm:p-6">
-              <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-3">Mental Model</p>
-              <h2 class="text-2xl font-extrabold mb-4">Read an ElementSet like a procedural spreadsheet</h2>
-              <div class="overflow-x-auto rounded-2xl border border-brand-border bg-white shadow-sm">
-                <div class="grid min-w-[680px] grid-cols-[90px_repeat(4,minmax(0,1fr))] text-sm">
-                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Row</div>
-                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Position</div>
-                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Scale</div>
-                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Color</div>
-                  <div class="bg-[#1e1e1e] text-white font-extrabold px-4 py-3">Prefab</div>
-
-                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">0</div>
-                  <div class="border-t border-brand-border px-4 py-3">(0, 0, 0)</div>
-                  <div class="border-t border-brand-border px-4 py-3">1.0</div>
-                  <div class="border-t border-brand-border px-4 py-3">Green</div>
-                  <div class="border-t border-brand-border px-4 py-3">Rock_A</div>
-
-                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">1</div>
-                  <div class="border-t border-brand-border px-4 py-3">(2, 0, 0)</div>
-                  <div class="border-t border-brand-border px-4 py-3">1.4</div>
-                  <div class="border-t border-brand-border px-4 py-3">Green</div>
-                  <div class="border-t border-brand-border px-4 py-3">Rock_A</div>
-
-                  <div class="border-t border-brand-border bg-[#f8f9fa] font-bold px-4 py-3">2</div>
-                  <div class="border-t border-brand-border px-4 py-3">(4, 0, 0)</div>
-                  <div class="border-t border-brand-border px-4 py-3">0.8</div>
-                  <div class="border-t border-brand-border px-4 py-3">Brown</div>
-                  <div class="border-t border-brand-border px-4 py-3">Rock_B</div>
-                </div>
-              </div>
-              <p class="text-brand-gray leading-relaxed mt-4">A graph is usually not thinking about one rock, one spline point, or one spawn target. It is thinking about a whole table of elements and deciding which rows to add, remove, or enrich.</p>
-            </section>
-
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5 sm:p-6">
-                <h2 class="text-2xl font-extrabold mb-3">An element is one unit of procedural work</h2>
-                <p class="text-brand-gray leading-relaxed mb-4">Depending on the graph, one element might represent a point in space, a potential building piece, a placed prefab, a spline sample, or a candidate in a scatter pass.</p>
-                <p class="text-brand-gray leading-relaxed">The important part is not the label. The important part is that each row keeps all the values for that one unit together while the graph processes the whole collection.</p>
-              </div>
-              <div class="bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-5 sm:p-6">
-                <h2 class="text-2xl font-extrabold mb-3">Attributes are the payload</h2>
-                <ul class="space-y-3 text-brand-gray leading-relaxed list-disc pl-5">
-                  <li>Attributes are stored by name and type across the full set.</li>
-                  <li>Some attributes are geometric, such as position, rotation, or scale.</li>
-                  <li>Some are semantic, such as prefab choice, biome tag, mask weight, or any custom value your graph produces.</li>
-                  <li>Nodes can create new attributes, overwrite existing ones, or use them to decide which rows survive.</li>
-                </ul>
-              </div>
-            </section>
-
-            <section class="bg-white border border-brand-border rounded-2xl p-5 sm:p-6">
-              <h2 class="text-2xl font-extrabold mb-3">What nodes usually do to the table</h2>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Generate</p>
-                  <p class="text-brand-gray leading-relaxed">Create rows or expand the current set. A generator might turn one input row into many output rows.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Modify</p>
-                  <p class="text-brand-gray leading-relaxed">Add attributes, transform values, or derive new columns from existing data.</p>
-                </div>
-                <div class="bg-[#f8f9fa] border border-brand-border rounded-2xl p-5">
-                  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-2">Filter</p>
-                  <p class="text-brand-gray leading-relaxed">Remove rows that no longer match the procedural rule you want to keep.</p>
-                </div>
-              </div>
-              <p class="text-brand-gray leading-relaxed mt-5">By the time the graph reaches main output, the ElementSet is the final table that runtime instancing, visualization, or import workflows consume. Those consumers are covered in <a href="runtime-generation.html">Runtime Generation</a> and <a href="procedural-prefab.html">Procedural Prefab</a>.</p>
-            </section>
-
-            <p class="text-brand-gray leading-relaxed">To see how main input, parameters, and main output frame this data flow, continue with <a href="node-graph-basics.html">Node Graph Basics</a>.</p>
-          </div>
-        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="procedural-prefab.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Procedural Prefab</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="node-graph-basics.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Node Graph Basics</span></a></nav>
+          <section class="docs-faq" aria-labelledby="faq">
+            <h2 id="faq">Frequently asked questions</h2>
+            <details class="docs-faq__item"><summary>What is an ElementSet in OctoShaper?</summary><div>An ElementSet is the table that flows between nodes. Each row is one element (a point, prop, instance or mesh point) and each column is a named, typed attribute such as <code>position</code>, <code>rotation</code>, <code>scale</code> or <code>tint</code>.</div></details>
+            <details class="docs-faq__item"><summary>Why does OctoShaper store attributes in columns?</summary><div>Keeping each attribute in its own packed column lets Burst-compiled jobs stream through the values quickly and split large sets across worker threads. A node only touches the columns it needs.</div></details>
+            <details class="docs-faq__item"><summary>What is the difference between a Constant and an Attribute input?</summary><div>A Constant input gives every row the same value. An Attribute input makes each row read its own value from a named column, so one node can produce a different result per element.</div></details>
+            <details class="docs-faq__item"><summary>Why was my connection rejected?</summary><div>The target node requires an attribute the incoming ElementSet does not declare, for example <code>renderDefinition</code> for material override nodes. Hover the port to see what is required, then add the missing attribute upstream.</div></details>
+          </section></div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="upgrading-to-1-2.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Upgrading to 1.2</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="sync-vs-async.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Sync vs Async</span></a></nav>
         </article>
+
+        <aside class="docs-toc" aria-label="On this page">
+          <p class="docs-toc__title">On this page</p>
+          <nav><a href="#an-elementset-is-a-table">An ElementSet is a table</a><a href="#attributes-are-named-columns">Attributes are named columns</a><a href="#why-columns-make-graphs-fast">Why columns make graphs fast</a><a href="#constant-or-attribute-inputs">Constant or attribute inputs</a><a href="#requirements-and-connections">Requirements and connections</a><a href="#what-nodes-do-to-the-table">What nodes do to the table</a><a href="#where-to-go-next">Where to go next</a><a href="#faq">FAQ</a></nav>
+        </aside>
       </div>
     </section>
   </main>
 
   <!-- BEGIN: Footer -->
-<footer class="bg-[#8a74d8ff] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
-  <div class="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-center">
-    <span>© 2026 Curious Trove</span>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
-      </svg>
-      <span>Instagram</span>
-    </a>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
-      </svg>
-      <span>YouTube</span>
-    </a>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="mailto:contact@curioustrove.com" aria-label="Email">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-      <span>Email</span>
-    </a>
+<footer class="ct-footer">
+  <div class="ct-footer__inner">
+    <div class="ct-footer__brand">
+      <a class="ct-footer__logo" href="../../index.html">
+        <img src="../../res/logo.svg" alt="" width="44" height="44" loading="lazy"/>
+        <span>Curious Trove</span>
+      </a>
+      <p class="ct-footer__tagline">Friendly tools for game developers. By indies, for indies.</p>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">OctoShaper</p>
+      <ul class="ct-footer__list">
+        <li><a href="../../octoshaper/unity/index.html">For Unity</a></li>
+        <li><a href="../../octoshaper/godot/index.html">For Godot</a></li>
+        <li><a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer">Unity Asset Store</a></li>
+        <li><a href="../../octoshaper/docs/changelog.html">Changelog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Learn</p>
+      <ul class="ct-footer__list">
+        <li><a href="../../octoshaper/docs/index.html">Documentation</a></li>
+        <li><a href="../../octoshaper/docs/installation.html">Installation</a></li>
+        <li><a href="../../octoshaper/docs/nodes.html">Node catalog</a></li>
+        <li><a href="../../blog.html">Devlog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Say hi</p>
+      <ul class="ct-footer__list">
+        <li><a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/></svg>YouTube</a></li>
+        <li><a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/></svg>Instagram</a></li>
+        <li><a href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Community forum</a></li>
+        <li><a href="mailto:contact@curioustrove.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email us</a></li>
+      </ul>
+    </div>
   </div>
+
+  <div class="ct-footer__bottom">
+    <span>© 2026 Curious Trove</span>
+    <span class="ct-footer__made">Made with <span class="ct-footer__heart" aria-label="love">♥</span> and a lot of nodes</span>
+  </div>
+  <div class="ct-footer__wordmark" aria-hidden="true">curious trove</div>
 </footer>
 <!-- END: Footer -->
 
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
   <script src="../../js/octoshaper-node-catalog-data.js"></script>
-  <script src="../../js/octoshaper-docs-version.js"></script>
   <script src="../../js/octoshaper-docs-engine.js"></script>
   <script src="../../js/octoshaper-docs.js"></script>
+  <script src="../../js/octoshaper-explainers.js" defer></script>
+  <script src="../../js/site-motion.js" defer></script>
 </body>
 </html>

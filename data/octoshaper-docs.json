@@ -3,68 +3,164 @@
     "slug": "installation",
     "title": "Installation",
     "category": "Setup",
-    "summary": "Import OctoShaper into a Unity project, validate the editor setup, and confirm your first graph can execute cleanly.",
+    "summary": "Import OctoShaper, let the dependency installer finish, and check your render pipeline for the samples.",
     "status": "Guide",
     "readTime": "4 min read",
     "url": "installation.html",
     "cardMedia": {
       "type": "video",
-      "src": "../../res/docs/install-flow.mov",
-      "mimeType": "video/quicktime",
+      "src": "../../res/docs/install-flow.mp4",
+      "mimeType": "video/mp4",
       "title": "OctoShaper installation walkthrough"
-    }
+    },
+    "section": "Getting Started",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "samples",
+    "title": "Samples",
+    "category": "Setup",
+    "summary": "Import the bundled samples and use them as readable example graphs to open, tweak and copy from.",
+    "status": "Guide",
+    "readTime": "1 min read",
+    "url": "samples.html",
+    "section": "Getting Started",
+    "lastmod": "2026-10-05"
+  },
+  {
+    "slug": "upgrading-to-1-2",
+    "title": "Upgrading to 1.2",
+    "category": "Setup",
+    "summary": "A short checklist for moving a project to 1.2, and what changed for existing graphs and code.",
+    "status": "New in 1.2",
+    "readTime": "4 min read",
+    "url": "upgrading-to-1-2.html",
+    "section": "Getting Started",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "elements",
+    "title": "Elements, ElementSets and Attributes",
+    "category": "Concepts",
+    "summary": "How OctoShaper moves data through a graph: ElementSets are tables, attributes are columns, and nodes read and write them by name.",
+    "status": "Concept",
+    "readTime": "6 min read",
+    "url": "elements.html",
+    "section": "Core Concepts",
+    "lastmod": "2026-09-30"
   },
   {
     "slug": "sync-vs-async",
     "title": "Sync vs Async",
     "category": "Concepts",
-    "summary": "Learn how OctoShaper's sync and async execution paths differ, and what stays the same between them.",
+    "summary": "What changes when a graph runs asynchronously, in editor previews, on the executor and from code.",
     "status": "Concept",
-    "readTime": "4 min read",
+    "readTime": "5 min read",
     "url": "sync-vs-async.html",
     "cardMedia": {
       "type": "image",
       "src": "../../res/docs/async-vs-sync.gif",
       "alt": "Animated side-by-side comparison of synchronous and asynchronous OctoShaper execution"
-    }
+    },
+    "section": "Core Concepts",
+    "lastmod": "2026-09-30"
   },
   {
-    "slug": "procedural-prefab",
-    "title": "Procedural Prefab",
-    "category": "Concepts",
-    "summary": "Understand how procedural prefabs import reusable GameObject hierarchies from a graph and configuration.",
-    "status": "Workflow",
-    "readTime": "4 min read",
-    "url": "procedural-prefab.html",
+    "slug": "procedural-meshes",
+    "title": "Procedural Meshes",
+    "category": "Building",
+    "summary": "Generate, edit and render real meshes in a graph with primitives, bevels, booleans, spline sweeps and Realize Meshes.",
+    "status": "New in 1.2",
+    "readTime": "7 min read",
+    "url": "procedural-meshes.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.2/mesh-graph-overview.png",
+      "alt": "Procedural mesh graph in OctoShaper"
+    },
+    "section": "Building Content",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "colors-textures-and-materials",
+    "title": "Colors, Textures and Materials",
+    "category": "Building",
+    "summary": "Color ramps, texture sampling, height-map displacement, vertex colors and per-instance material overrides.",
+    "status": "New in 1.2",
+    "readTime": "8 min read",
+    "url": "colors-textures-and-materials.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.2/height-map-terrain.png",
+      "alt": "Height-map terrain colored by height"
+    },
+    "section": "Building Content",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "assemblies-and-hierarchies",
+    "title": "Assemblies and Placement",
+    "category": "Building",
+    "summary": "Author a prop once around the origin, then place it at every incoming transform with Local assembly or Place Local Assembly.",
+    "status": "Guide",
+    "readTime": "6 min read",
+    "url": "assemblies-and-hierarchies.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.2/place-local-assembly.png",
+      "alt": "Place Local Assembly placing copies of a prop"
+    },
+    "section": "Building Content",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "rendering-and-instancing-modes",
+    "title": "Rendering and Instancing Modes",
+    "category": "Rendering",
+    "summary": "Choose between real GameObjects, GPU-instanced draws and indirect draws for generated content, and mix them in one graph.",
+    "status": "Concept",
+    "readTime": "7 min read",
+    "url": "rendering-and-instancing-modes.html",
     "cardMedia": {
       "type": "video",
-      "src": "../../res/docs/procedural-prefabs.mov",
-      "mimeType": "video/quicktime",
-      "title": "OctoShaper procedural prefab import and reimport workflow"
-    }
-  },
-  {
-    "slug": "elements",
-    "title": "Elements",
-    "category": "Concepts",
-    "summary": "See how ElementSet data, rows, and attributes form the core data model that flows through OctoShaper graphs.",
-    "status": "Concept",
-    "readTime": "4 min read",
-    "url": "elements.html"
+      "src": "../../res/docs/rendering-modes-comparison.mp4",
+      "mimeType": "video/mp4",
+      "title": "Comparison of GameObject, Draw Instanced, and Draw Instanced Indirect realization"
+    },
+    "section": "Building Content",
+    "lastmod": "2026-09-30"
   },
   {
     "slug": "node-graph-basics",
     "title": "Node Graph Basics",
     "category": "Editor",
-    "summary": "Get oriented with ProceduralGraph assets, ports, links, parameters, and the main ElementSet boundary.",
+    "summary": "Create a graph, wire nodes from Main Input to Main Output, expose parameters and read port contracts.",
     "status": "Guide",
-    "readTime": "4 min read",
+    "readTime": "5 min read",
     "url": "node-graph-basics.html",
     "cardMedia": {
       "type": "image",
       "src": "../../res/docs/annotated-graph-window.png",
       "alt": "Annotated OctoShaper graph editor with graph settings, nodes, and the ElementSet debug panel"
-    }
+    },
+    "section": "Editor",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "preview-stage",
+    "title": "Preview Stage and Inspection",
+    "category": "Editor",
+    "summary": "Preview graphs in an isolated Scene view stage, inspect any node's table, and keep large graphs responsive.",
+    "status": "New in 1.2",
+    "readTime": "5 min read",
+    "url": "preview-stage.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.2/spreadsheet-pinned.png",
+      "alt": "Preview Stage with the spreadsheet"
+    },
+    "section": "Editor",
+    "lastmod": "2026-09-30"
   },
   {
     "slug": "context-manipulation",
@@ -76,12 +172,28 @@
     "url": "context-manipulation.html",
     "cardMedia": {
       "type": "video",
-      "src": "../../res/docs/context-manipulation-spline-handles.mov",
-      "mimeType": "video/quicktime",
+      "src": "../../res/docs/context-manipulation-spline-handles.mp4",
+      "mimeType": "video/mp4",
       "title": "Spline anchors and Bezier handles displayed through an OctoShaper Scene view manipulator"
     },
     "section": "Editor",
-    "lastmod": "2026-08-25"
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "ai-integration",
+    "title": "AI Integration and Editor Automation",
+    "category": "Editor",
+    "summary": "Let a coding agent build and refine OctoShaper graphs through the Unity 6 CLI and a bundled skill, or script the editor with JSON.",
+    "status": "New in 1.2",
+    "readTime": "5 min read",
+    "url": "ai-integration.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.2/ai-integration-menu.png",
+      "alt": "OctoShaper AI Integration menu"
+    },
+    "section": "Editor",
+    "lastmod": "2026-09-30"
   },
   {
     "slug": "working-with-splines",
@@ -95,50 +207,6 @@
       "type": "image",
       "src": "../../res/docs/spline-editor-scene-view.png",
       "alt": "Spline parameter editor beside Scene view Bezier anchors and handles"
-    }
-  },
-  {
-    "slug": "rendering-and-instancing-modes",
-    "title": "Rendering and Instancing Modes",
-    "category": "Rendering",
-    "summary": "Compare GameObject, GPU-instanced, and indirect rendering and choose the OctoShaper nodes that fit each result.",
-    "status": "Concept",
-    "readTime": "7 min read",
-    "url": "rendering-and-instancing-modes.html",
-    "cardMedia": {
-      "type": "video",
-      "src": "../../res/docs/rendering-modes-comparison.mov",
-      "mimeType": "video/quicktime",
-      "title": "Comparison of GameObject, Draw Instanced, and Draw Instanced Indirect realization"
-    }
-  },
-  {
-    "slug": "creating-custom-nodes",
-    "title": "Creating Custom Nodes",
-    "category": "Extending",
-    "summary": "Turn project-specific static C# methods into reusable OctoShaper nodes for Unity graphs and player builds.",
-    "status": "Guide",
-    "readTime": "6 min read",
-    "url": "creating-custom-nodes.html",
-    "cardMedia": {
-      "type": "video",
-      "src": "../../res/docs/custom-node-in-graph.mov",
-      "mimeType": "video/quicktime",
-      "title": "Custom Raise Height node visible in an OctoShaper graph"
-    }
-  },
-  {
-    "slug": "gpu-accelerated-grass",
-    "title": "GPU-Accelerated Grass",
-    "category": "Tutorials",
-    "summary": "Build natural billboard grass clusters and render them efficiently in Unity with GPU instanced indirect drawing.",
-    "status": "Tutorial",
-    "readTime": "5 min read",
-    "url": "gpu-accelerated-grass.html",
-    "cardMedia": {
-      "type": "youtube",
-      "videoId": "cKNg0Jow9II",
-      "title": "GPU Accelerated Grass in Unity - OctoShaper Tutorial"
     }
   },
   {
@@ -158,13 +226,61 @@
     "lastmod": "2026-09-10"
   },
   {
+    "slug": "gpu-accelerated-grass",
+    "title": "GPU-Accelerated Grass",
+    "category": "Tutorials",
+    "summary": "Build natural billboard grass clusters and render them efficiently in Unity with GPU instanced indirect drawing.",
+    "status": "Tutorial",
+    "readTime": "5 min read",
+    "url": "gpu-accelerated-grass.html",
+    "cardMedia": {
+      "type": "youtube",
+      "videoId": "cKNg0Jow9II",
+      "title": "GPU Accelerated Grass in Unity - OctoShaper Tutorial"
+    }
+  },
+  {
     "slug": "runtime-generation",
     "title": "Runtime Generation",
     "category": "Runtime",
-    "summary": "Run OctoShaper graphs in play mode, understand the generated executor path, and choose the right runtime surface.",
+    "summary": "Run graphs in play mode with the Procedural Graph Executor, or execute them from code for raw data.",
     "status": "Workflow",
-    "readTime": "5 min read",
-    "url": "runtime-generation.html"
+    "readTime": "6 min read",
+    "url": "runtime-generation.html",
+    "section": "Runtime",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "procedural-prefab",
+    "title": "Procedural Prefabs",
+    "category": "Concepts",
+    "summary": "Turn a graph and its settings into an imported asset that regenerates when its inputs change.",
+    "status": "Workflow",
+    "readTime": "4 min read",
+    "url": "procedural-prefab.html",
+    "cardMedia": {
+      "type": "video",
+      "src": "../../res/docs/procedural-prefabs.mp4",
+      "mimeType": "video/mp4",
+      "title": "OctoShaper procedural prefab import and reimport workflow"
+    },
+    "section": "Runtime",
+    "lastmod": "2026-09-30"
+  },
+  {
+    "slug": "creating-custom-nodes",
+    "title": "Creating Custom Nodes",
+    "category": "Extending",
+    "summary": "Turn project-specific static C# methods into reusable OctoShaper nodes for Unity graphs and player builds.",
+    "status": "Guide",
+    "readTime": "6 min read",
+    "url": "creating-custom-nodes.html",
+    "cardMedia": {
+      "type": "video",
+      "src": "../../res/docs/custom-node-in-graph.mp4",
+      "mimeType": "video/mp4",
+      "title": "Custom Raise Height node visible in an OctoShaper graph"
+    }
   },
   {
     "slug": "gameobject-callbacks",
@@ -185,15 +301,6 @@
     "url": "runtime-parameter-api.html"
   },
   {
-    "slug": "changelog",
-    "title": "Changelog",
-    "category": "Reference",
-    "summary": "Release history and version changes for OctoShaper.",
-    "status": "History",
-    "readTime": "2 min read",
-    "url": "changelog.html"
-  },
-  {
     "slug": "nodes",
     "title": "Node Catalog",
     "category": "Reference",
@@ -201,5 +308,14 @@
     "status": "Live Data",
     "readTime": "Auto-generated",
     "url": "nodes.html"
+  },
+  {
+    "slug": "changelog",
+    "title": "Changelog",
+    "category": "Reference",
+    "summary": "Release history and version changes for OctoShaper.",
+    "status": "History",
+    "readTime": "2 min read",
+    "url": "changelog.html"
   }
 ]

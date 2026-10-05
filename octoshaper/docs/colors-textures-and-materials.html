@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Procedural Colors, Height Maps and Material Overrides in Unity – OctoShaper</title>
+  <meta name="description" content="Color procedural content in Unity with OctoShaper 1.2. Build color ramps, sample textures, displace meshes with height maps, write vertex colors and override material colors, textures and floats per instance." />
+  <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Curious Trove" />
+  <meta property="og:title" content="Colors, Textures and Materials in OctoShaper" />
+  <meta property="og:description" content="Color procedural content in Unity with OctoShaper 1.2. Build color ramps, sample textures, displace meshes with height maps, write vertex colors and override material colors, textures and floats per instance." />
+  <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html" />
+  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
+  <meta property="article:modified_time" content="2026-09-30" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
+  <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
+  <link rel="stylesheet" href="../../css/octoshaper-explainers.css" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html#article","headline":"Colors, Textures and Materials","description":"Color procedural content in Unity with OctoShaper 1.2. Build color ramps, sample textures, displace meshes with height maps, write vertex colors and override material colors, textures and floats per instance.","url":"https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html","mainEntityOfPage":"https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html","inLanguage":"en","articleSection":"Building Content","dateModified":"2026-09-30","keywords":"procedural color Unity, height map displacement Unity, MaterialPropertyBlock procedural, per-instance material color Unity, OctoShaper color ramp","author":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/"},"publisher":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/","logo":{"@type":"ImageObject","url":"https://curioustrove.com/res/logo.svg"}},"about":{"@type":"SoftwareApplication","name":"OctoShaper","applicationCategory":"DeveloperApplication","operatingSystem":"Unity 2022.3+","softwareVersion":1.2},"image":"https://curioustrove.com/res/octoshaper-logo.svg"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Docs","item":"https://curioustrove.com/octoshaper/docs/"},{"@type":"ListItem","position":2,"name":"Building Content","item":"https://curioustrove.com/octoshaper/docs/#building-content"},{"@type":"ListItem","position":3,"name":"Colors, Textures and Materials","item":"https://curioustrove.com/octoshaper/docs/colors-textures-and-materials.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does Sample Texture report an error about my texture?","acceptedAnswer":{"@type":"Answer","text":"CPU sampling needs a **Texture2D** with **Read/Write enabled** in a format Texture2D.GetPixels supports. Crunched formats are rejected. RGBA32 is a safe choice."}},{"@type":"Question","name":"Do material overrides create new materials?","acceptedAnswer":{"@type":"Answer","text":"No. Overrides are applied per instance and the source material asset is never modified. Instances with identical overrides share a batch."}},{"@type":"Question","name":"Should I use tint or color for my attribute?","acceptedAnswer":{"@type":"Answer","text":"Use tint for Unity color attributes. color is the mesh vertex-color channel. **Set Vertex Color** converts a tint binding into it before realization."}},{"@type":"Question","name":"Why is my height map flat or noisy?","acceptedAnswer":{"@type":"Answer","text":"Import it with **sRGB disabled**, make the mesh subdivided enough to show detail, and check that Project UV From Position covers the 0–1 range. Midlevel sets which value causes no displacement."}}]}]}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="../../css/utilities.css" />
+  <link rel="stylesheet" href="../../css/site.css" />
+  <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('ct-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)})();</script>
+</head>
+<body data-base-path="../../" data-active-page="documentation" class="ct-tw docs-page bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+<a class="ct-skip" href="#main">Skip to content</a>
+<header class="ct-nav">
+  <input type="checkbox" id="nav-toggle" class="ct-nav__toggle-input"/>
+  <div class="ct-nav__bar">
+    <a href="../../index.html" class="ct-nav__brand">
+      <img alt="" width="36" height="36" src="../../res/logo.svg"/>
+      <span>Curious Trove</span>
+    </a>
+
+    <nav id="nav" class="ct-nav__links" aria-label="Main">
+      <a class="ct-nav__link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link is-active" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
+      <a class="ct-nav__link" href="../../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community <span class="ct-nav__ext" aria-hidden="true">↗</span></a>
+    </nav>
+
+    <div class="ct-nav__actions">
+      <button type="button" class="ct-theme-toggle" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="ct-theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ct-theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="ct-btn ct-btn--primary ct-btn--small ct-nav__cta" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar">Get OctoShaper</a>
+      <label for="nav-toggle" class="ct-nav__toggle" aria-label="Toggle navigation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/>
+        </svg>
+      </label>
+    </div>
+  </div>
+  <div class="ct-nav__mobile">
+    <nav aria-label="Main (mobile)">
+      <a class="ct-nav__link" href="../../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link is-active" href="../../octoshaper/docs/index.html" data-page="documentation" aria-current="page">Documentation</a>
+      <a class="ct-nav__link" href="../../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community ↗</a>
+      <a class="ct-btn ct-btn--primary" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar-mobile">Get OctoShaper</a>
+    </nav>
+  </div>
+</header>
+<!-- END: Header -->
+
+
+  <main id="main" class="flex-grow pb-20">
+    <section class="docs-shell max-w-[1380px] mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-10">
+      <div class="docs-layout grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
+        <div id="octoshaper-docs-sidebar-container"><aside class="bg-white border border-brand-border rounded-3xl p-6 h-fit shadow-sm lg:sticky lg:top-8">
+  <p class="text-xs font-extrabold uppercase tracking-[0.18em] text-brand-gray mb-4">OctoShaper Docs</p>
+  <div class="docs-engine-control">
+    <span class="docs-engine-control__label">Engine</span>
+    <div class="docs-engine-switch" role="group" aria-label="Choose documentation engine">
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="unity" aria-pressed="true">
+        <span class="docs-engine-choice__icon docs-engine-choice__icon--unity"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+        <span>Unity</span>
+      </button>
+      <button type="button" class="docs-engine-choice" data-docs-engine-choice="godot" aria-pressed="false">
+        <span class="docs-engine-choice__icon"><img src="../../res/godot-icon.png" alt="" /></span>
+        <span>Godot</span>
+      </button>
+    </div>
+  </div>
+  <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
+    <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
+    <details class="docs-sidebar-category"><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Installation</a></li><li><a href="samples.html" data-sidebar-page="samples" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Samples</a></li><li><a href="upgrading-to-1-2.html" data-sidebar-page="upgrading-to-1-2" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Upgrading to 1.2</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements, ElementSets and Attributes</a></li><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li></ul></details>
+<details class="docs-sidebar-category" open><summary>Building Content</summary><ul><li><a href="procedural-meshes.html" data-sidebar-page="procedural-meshes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Meshes</a></li><li><a href="colors-textures-and-materials.html" data-sidebar-page="colors-textures-and-materials" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Colors, Textures and Materials</a></li><li><a href="assemblies-and-hierarchies.html" data-sidebar-page="assemblies-and-hierarchies" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Assemblies and Placement</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="preview-stage.html" data-sidebar-page="preview-stage" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Preview Stage and Inspection</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li><li><a href="ai-integration.html" data-sidebar-page="ai-integration" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">AI Integration and Editor Automation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Getting Started with Attributes and Subgraphs</a></li><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefabs</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Extending</summary><ul><li><a href="creating-custom-nodes.html" data-sidebar-page="creating-custom-nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Creating Custom Nodes</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>API</summary><ul><li><a href="gameobject-callbacks.html" data-sidebar-page="gameobject-callbacks" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GameObject Callbacks</a></li><li><a href="runtime-parameter-api.html" data-sidebar-page="runtime-parameter-api" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Parameters</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Reference</summary><ul><li><a href="nodes.html" data-sidebar-page="nodes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Catalog</a></li><li><a href="changelog.html" data-sidebar-page="changelog" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Changelog</a></li></ul></details>
+  </nav>
+</aside>
+</div>
+
+        <article class="docs-article bg-white border border-brand-border rounded-3xl p-5 sm:p-6 md:p-10 shadow-sm">
+          <nav class="ct-crumbs" aria-label="Breadcrumb"><a href="index.html">Docs</a><span aria-hidden="true">/</span><span>Building Content</span></nav>
+          <div class="flex items-center gap-3 flex-wrap mb-5">
+            <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Guide</span>
+            <span class="text-sm font-medium text-brand-gray">Look and feel</span>
+            <span class="docs-article__version" title="Written for this OctoShaper version">OctoShaper 1.2</span><span class="docs-article__updated">Updated <time datetime="2026-09-30">30 September 2026</time></span>
+          </div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Colors, Textures and Materials</h1>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">The Colorful Update adds nodes that give generated content its look. You can compute colors per element, read and project textures, displace geometry with a height map, and vary material colors, textures and floats on every instance without touching the source material.</p>
+          <div class="docs-markdown"><h2 id="three-ways-to-add-color">Three ways to add color</h2>
+<table>
+<thead>
+<tr>
+<th>You want</th>
+<th>Use</th>
+<th>Works on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One color per instance</td>
+<td><strong>Set Material Color</strong> after a draw node</td>
+<td>Draw Instanced, Draw Instanced Indirect, procedural prefabs</td>
+</tr>
+<tr>
+<td>Colors varying across one mesh</td>
+<td><strong>Set Vertex Color</strong> before Realize Meshes</td>
+<td>Point-based meshes (the shader must read vertex colors)</td>
+</tr>
+<tr>
+<td>A texture on the material</td>
+<td><strong>Set Material Texture</strong> / <strong>Texture Transform</strong></td>
+<td>Any drawn mesh</td>
+</tr>
+</tbody>
+</table>
+<p>All three read colors from the graph, usually from a <code>tint</code> attribute you compute with the <strong>Colors</strong> nodes.</p>
+<h2 id="color-nodes">Color nodes</h2>
+<p>Every color node has a scalar version and an <strong>Attribute</strong> version that evaluates per element:</p>
+<ul>
+<li><strong>Create Color RGBA / HSV</strong>: build colors from components.</li>
+<li><strong>Blend Colors</strong>: Mix, Add, Subtract, Multiply, Screen, Overlay, Minimum or Maximum.</li>
+<li><strong>Color Channel</strong>: read R, G, B, A, luminance (Rec.709) or H, S, V.</li>
+<li><strong>Adjust</strong>: Set Color Alpha, Invert, Exposure, Saturation, Contrast, Clamp, sRGB ↔ Linear.</li>
+<li><strong>Color Ramp</strong>: evaluate a gradient at a 0–1 position.</li>
+</ul>
+<p>RGB can go above one for HDR. Adjustments don't clamp implicitly, so add <strong>Clamp Color</strong> when you need a 0–1 result.</p>
+<blockquote>
+<p><strong>Tip:</strong> To color by height, slope or noise, normalize that value to 0–1 and use <strong>Color Ramp Attribute</strong> with Position bound to the attribute. It writes <code>tint</code>, and you can blend or adjust <code>tint</code> in place afterwards.</p>
+</blockquote>
+<h2 id="height-map-to-terrain">Height map to terrain</h2>
+<figure class="ct-explainer ex-hm" data-steps="4" data-interval="3600" data-step="4">
+  <div class="ct-explainer__head">
+    <figcaption class="ct-explainer__title"><span class="ct-explainer__kicker">Explainer</span>Height map to colored terrain</figcaption>
+    <button type="button" class="ct-explainer__toggle" hidden aria-pressed="false" aria-label="Pause animation"><span>Pause</span></button>
+  </div>
+  <div class="ct-explainer__stage" aria-hidden="true">
+    <div class="ex-hm__grid">
+      <svg class="ex-hm__svg" viewBox="30 -20 280 200" role="presentation">
+        <g class="ex-hm__tex"><polygon points="170,26.5 185,34.0 170,41.5 155,34.0" fill="hsl(0 0% 18%)"/><polygon points="155,34.0 170,41.5 155,49.0 140,41.5" fill="hsl(0 0% 19%)"/><polygon points="185,34.0 200,41.5 185,49.0 170,41.5" fill="hsl(0 0% 19%)"/><polygon points="140,41.5 155,49.0 140,56.5 125,49.0" fill="hsl(0 0% 19%)"/><polygon points="170,41.5 185,49.0 170,56.5 155,49.0" fill="hsl(0 0% 21%)"/><polygon points="200,41.5 215,49.0 200,56.5 185,49.0" fill="hsl(0 0% 22%)"/><polygon points="125,49.0 140,56.5 125,64.0 110,56.5" fill="hsl(0 0% 20%)"/><polygon points="155,49.0 170,56.5 155,64.0 140,56.5" fill="hsl(0 0% 23%)"/><polygon points="185,49.0 200,56.5 185,64.0 170,56.5" fill="hsl(0 0% 27%)"/><polygon points="215,49.0 230,56.5 215,64.0 200,56.5" fill="hsl(0 0% 27%)"/><polygon points="110,56.5 125,64.0 110,71.5 95,64.0" fill="hsl(0 0% 21%)"/><polygon points="140,56.5 155,64.0 140,71.5 125,64.0" fill="hsl(0 0% 25%)"/><polygon points="170,56.5 185,64.0 170,71.5 155,64.0" fill="hsl(0 0% 33%)"/><polygon points="200,56.5 215,64.0 200,71.5 185,64.0" fill="hsl(0 0% 39%)"/><polygon points="230,56.5 245,64.0 230,71.5 215,64.0" fill="hsl(0 0% 33%)"/><polygon points="95,64.0 110,71.5 95,79.0 80,71.5" fill="hsl(0 0% 25%)"/><polygon points="125,64.0 140,71.5 125,79.0 110,71.5" fill="hsl(0 0% 29%)"/><polygon points="155,64.0 170,71.5 155,79.0 140,71.5" fill="hsl(0 0% 37%)"/><polygon points="185,64.0 200,71.5 185,79.0 170,71.5" fill="hsl(0 0% 52%)"/><polygon points="215,64.0 230,71.5 215,79.0 200,71.5" fill="hsl(0 0% 52%)"/><polygon points="245,64.0 260,71.5 245,79.0 230,71.5" fill="hsl(0 0% 35%)"/><polygon points="80,71.5 95,79.0 80,86.5 65,79.0" fill="hsl(0 0% 27%)"/><polygon points="110,71.5 125,79.0 110,86.5 95,79.0" fill="hsl(0 0% 39%)"/><polygon points="140,71.5 155,79.0 140,86.5 125,79.0" fill="hsl(0 0% 42%)"/><polygon points="170,71.5 185,79.0 170,86.5 155,79.0" fill="hsl(0 0% 59%)"/><polygon points="200,71.5 215,79.0 200,86.5 185,79.0" fill="hsl(0 0% 74%)"/><polygon points="230,71.5 245,79.0 230,86.5 215,79.0" fill="hsl(0 0% 58%)"/><polygon points="260,71.5 275,79.0 260,86.5 245,79.0" fill="hsl(0 0% 33%)"/><polygon points="65,79.0 80,86.5 65,94.0 50,86.5" fill="hsl(0 0% 25%)"/><polygon points="95,79.0 110,86.5 95,94.0 80,86.5" fill="hsl(0 0% 44%)"/><polygon points="125,79.0 140,86.5 125,94.0 110,86.5" fill="hsl(0 0% 52%)"/><polygon points="155,79.0 170,86.5 155,94.0 140,86.5" fill="hsl(0 0% 58%)"/><polygon points="185,79.0 200,86.5 185,94.0 170,86.5" fill="hsl(0 0% 84%)"/><polygon points="215,79.0 230,86.5 215,94.0 200,86.5" fill="hsl(0 0% 84%)"/><polygon points="245,79.0 260,86.5 245,94.0 230,86.5" fill="hsl(0 0% 52%)"/><polygon points="275,79.0 290,86.5 275,94.0 260,86.5" fill="hsl(0 0% 27%)"/><polygon points="50,86.5 65,94.0 50,101.5 35,94.0" fill="hsl(0 0% 20%)"/><polygon points="80,86.5 95,94.0 80,101.5 65,94.0" fill="hsl(0 0% 36%)"/><polygon points="110,86.5 125,94.0 110,101.5 95,94.0" fill="hsl(0 0% 57%)"/><polygon points="140,86.5 155,94.0 140,101.5 125,94.0" fill="hsl(0 0% 56%)"/><polygon points="170,86.5 185,94.0 170,101.5 155,94.0" fill="hsl(0 0% 76%)"/><polygon points="200,86.5 215,94.0 200,101.5 185,94.0" fill="hsl(0 0% 96%)"/><polygon points="230,86.5 245,94.0 230,101.5 215,94.0" fill="hsl(0 0% 74%)"/><polygon points="260,86.5 275,94.0 260,101.5 245,94.0" fill="hsl(0 0% 39%)"/><polygon points="290,86.5 305,94.0 290,101.5 275,94.0" fill="hsl(0 0% 22%)"/><polygon points="65,94.0 80,101.5 65,109.0 50,101.5" fill="hsl(0 0% 25%)"/><polygon points="95,94.0 110,101.5 95,109.0 80,101.5" fill="hsl(0 0% 44%)"/><polygon points="125,94.0 140,101.5 125,109.0 110,101.5" fill="hsl(0 0% 52%)"/><polygon points="155,94.0 170,101.5 155,109.0 140,101.5" fill="hsl(0 0% 58%)"/><polygon points="185,94.0 200,101.5 185,109.0 170,101.5" fill="hsl(0 0% 84%)"/><polygon points="215,94.0 230,101.5 215,109.0 200,101.5" fill="hsl(0 0% 84%)"/><polygon points="245,94.0 260,101.5 245,109.0 230,101.5" fill="hsl(0 0% 52%)"/><polygon points="275,94.0 290,101.5 275,109.0 260,101.5" fill="hsl(0 0% 27%)"/><polygon points="80,101.5 95,109.0 80,116.5 65,109.0" fill="hsl(0 0% 27%)"/><polygon points="110,101.5 125,109.0 110,116.5 95,109.0" fill="hsl(0 0% 39%)"/><polygon points="140,101.5 155,109.0 140,116.5 125,109.0" fill="hsl(0 0% 42%)"/><polygon points="170,101.5 185,109.0 170,116.5 155,109.0" fill="hsl(0 0% 59%)"/><polygon points="200,101.5 215,109.0 200,116.5 185,109.0" fill="hsl(0 0% 74%)"/><polygon points="230,101.5 245,109.0 230,116.5 215,109.0" fill="hsl(0 0% 58%)"/><polygon points="260,101.5 275,109.0 260,116.5 245,109.0" fill="hsl(0 0% 33%)"/><polygon points="95,109.0 110,116.5 95,124.0 80,116.5" fill="hsl(0 0% 25%)"/><polygon points="125,109.0 140,116.5 125,124.0 110,116.5" fill="hsl(0 0% 29%)"/><polygon points="155,109.0 170,116.5 155,124.0 140,116.5" fill="hsl(0 0% 37%)"/><polygon points="185,109.0 200,116.5 185,124.0 170,116.5" fill="hsl(0 0% 52%)"/><polygon points="215,109.0 230,116.5 215,124.0 200,116.5" fill="hsl(0 0% 52%)"/><polygon points="245,109.0 260,116.5 245,124.0 230,116.5" fill="hsl(0 0% 35%)"/><polygon points="110,116.5 125,124.0 110,131.5 95,124.0" fill="hsl(0 0% 21%)"/><polygon points="140,116.5 155,124.0 140,131.5 125,124.0" fill="hsl(0 0% 25%)"/><polygon points="170,116.5 185,124.0 170,131.5 155,124.0" fill="hsl(0 0% 33%)"/><polygon points="200,116.5 215,124.0 200,131.5 185,124.0" fill="hsl(0 0% 39%)"/><polygon points="230,116.5 245,124.0 230,131.5 215,124.0" fill="hsl(0 0% 33%)"/><polygon points="125,124.0 140,131.5 125,139.0 110,131.5" fill="hsl(0 0% 20%)"/><polygon points="155,124.0 170,131.5 155,139.0 140,131.5" fill="hsl(0 0% 23%)"/><polygon points="185,124.0 200,131.5 185,139.0 170,131.5" fill="hsl(0 0% 27%)"/><polygon points="215,124.0 230,131.5 215,139.0 200,131.5" fill="hsl(0 0% 27%)"/><polygon points="140,131.5 155,139.0 140,146.5 125,139.0" fill="hsl(0 0% 19%)"/><polygon points="170,131.5 185,139.0 170,146.5 155,139.0" fill="hsl(0 0% 21%)"/><polygon points="200,131.5 215,139.0 200,146.5 185,139.0" fill="hsl(0 0% 22%)"/><polygon points="155,139.0 170,146.5 155,154.0 140,146.5" fill="hsl(0 0% 19%)"/><polygon points="185,139.0 200,146.5 185,154.0 170,146.5" fill="hsl(0 0% 19%)"/><polygon points="170,146.5 185,154.0 170,161.5 155,154.0" fill="hsl(0 0% 18%)"/></g>
+        <g class="ex-hm__stems"><rect x="169.3" y="33.9" width="1.4" height="0.1" style="--d:0ms"/><rect x="154.3" y="41.2" width="1.4" height="0.3" style="--d:25ms"/><rect x="184.3" y="40.9" width="1.4" height="0.6" style="--d:25ms"/><rect x="139.3" y="48.5" width="1.4" height="0.5" style="--d:50ms"/><rect x="169.3" y="47.7" width="1.4" height="1.3" style="--d:50ms"/><rect x="199.3" y="47.2" width="1.4" height="1.8" style="--d:50ms"/><rect x="124.3" y="55.7" width="1.4" height="0.8" style="--d:75ms"/><rect x="154.3" y="54.3" width="1.4" height="2.2" style="--d:75ms"/><rect x="184.3" y="52.4" width="1.4" height="4.1" style="--d:75ms"/><rect x="214.3" y="52.4" width="1.4" height="4.1" style="--d:75ms"/><rect x="109.3" y="62.4" width="1.4" height="1.6" style="--d:100ms"/><rect x="139.3" y="60.9" width="1.4" height="3.1" style="--d:100ms"/><rect x="169.3" y="57.1" width="1.4" height="6.9" style="--d:100ms"/><rect x="199.3" y="54.5" width="1.4" height="9.5" style="--d:100ms"/><rect x="229.3" y="57.2" width="1.4" height="6.8" style="--d:100ms"/><rect x="94.3" y="68.2" width="1.4" height="3.3" style="--d:125ms"/><rect x="124.3" y="66.4" width="1.4" height="5.1" style="--d:125ms"/><rect x="154.3" y="62.7" width="1.4" height="8.8" style="--d:125ms"/><rect x="184.3" y="55.8" width="1.4" height="15.7" style="--d:125ms"/><rect x="214.3" y="55.9" width="1.4" height="15.6" style="--d:125ms"/><rect x="244.3" y="63.5" width="1.4" height="8.0" style="--d:125ms"/><rect x="79.3" y="74.7" width="1.4" height="4.3" style="--d:150ms"/><rect x="109.3" y="69.5" width="1.4" height="9.5" style="--d:150ms"/><rect x="139.3" y="68.0" width="1.4" height="11.0" style="--d:150ms"/><rect x="169.3" y="59.9" width="1.4" height="19.1" style="--d:150ms"/><rect x="199.3" y="53.2" width="1.4" height="25.8" style="--d:150ms"/><rect x="229.3" y="60.5" width="1.4" height="18.5" style="--d:150ms"/><rect x="259.3" y="72.2" width="1.4" height="6.8" style="--d:150ms"/><rect x="64.3" y="83.4" width="1.4" height="3.1" style="--d:175ms"/><rect x="94.3" y="74.5" width="1.4" height="12.0" style="--d:175ms"/><rect x="124.3" y="70.9" width="1.4" height="15.6" style="--d:175ms"/><rect x="154.3" y="67.8" width="1.4" height="18.7" style="--d:175ms"/><rect x="184.3" y="55.8" width="1.4" height="30.7" style="--d:175ms"/><rect x="214.3" y="56.0" width="1.4" height="30.5" style="--d:175ms"/><rect x="244.3" y="70.9" width="1.4" height="15.6" style="--d:175ms"/><rect x="274.3" y="82.4" width="1.4" height="4.1" style="--d:175ms"/><rect x="49.3" y="92.9" width="1.4" height="1.1" style="--d:200ms"/><rect x="79.3" y="85.6" width="1.4" height="8.4" style="--d:200ms"/><rect x="109.3" y="76.2" width="1.4" height="17.8" style="--d:200ms"/><rect x="139.3" y="76.3" width="1.4" height="17.7" style="--d:200ms"/><rect x="169.3" y="67.1" width="1.4" height="26.9" style="--d:200ms"/><rect x="199.3" y="58.0" width="1.4" height="36.0" style="--d:200ms"/><rect x="229.3" y="68.2" width="1.4" height="25.8" style="--d:200ms"/><rect x="259.3" y="84.5" width="1.4" height="9.5" style="--d:200ms"/><rect x="289.3" y="92.2" width="1.4" height="1.8" style="--d:200ms"/><rect x="64.3" y="98.4" width="1.4" height="3.1" style="--d:225ms"/><rect x="94.3" y="89.5" width="1.4" height="12.0" style="--d:225ms"/><rect x="124.3" y="85.9" width="1.4" height="15.6" style="--d:225ms"/><rect x="154.3" y="82.8" width="1.4" height="18.7" style="--d:225ms"/><rect x="184.3" y="70.8" width="1.4" height="30.7" style="--d:225ms"/><rect x="214.3" y="71.0" width="1.4" height="30.5" style="--d:225ms"/><rect x="244.3" y="85.9" width="1.4" height="15.6" style="--d:225ms"/><rect x="274.3" y="97.4" width="1.4" height="4.1" style="--d:225ms"/><rect x="79.3" y="104.7" width="1.4" height="4.3" style="--d:250ms"/><rect x="109.3" y="99.5" width="1.4" height="9.5" style="--d:250ms"/><rect x="139.3" y="98.0" width="1.4" height="11.0" style="--d:250ms"/><rect x="169.3" y="89.9" width="1.4" height="19.1" style="--d:250ms"/><rect x="199.3" y="83.2" width="1.4" height="25.8" style="--d:250ms"/><rect x="229.3" y="90.5" width="1.4" height="18.5" style="--d:250ms"/><rect x="259.3" y="102.2" width="1.4" height="6.8" style="--d:250ms"/><rect x="94.3" y="113.2" width="1.4" height="3.3" style="--d:275ms"/><rect x="124.3" y="111.4" width="1.4" height="5.1" style="--d:275ms"/><rect x="154.3" y="107.7" width="1.4" height="8.8" style="--d:275ms"/><rect x="184.3" y="100.8" width="1.4" height="15.7" style="--d:275ms"/><rect x="214.3" y="100.9" width="1.4" height="15.6" style="--d:275ms"/><rect x="244.3" y="108.5" width="1.4" height="8.0" style="--d:275ms"/><rect x="109.3" y="122.4" width="1.4" height="1.6" style="--d:300ms"/><rect x="139.3" y="120.9" width="1.4" height="3.1" style="--d:300ms"/><rect x="169.3" y="117.1" width="1.4" height="6.9" style="--d:300ms"/><rect x="199.3" y="114.5" width="1.4" height="9.5" style="--d:300ms"/><rect x="229.3" y="117.2" width="1.4" height="6.8" style="--d:300ms"/><rect x="124.3" y="130.7" width="1.4" height="0.8" style="--d:325ms"/><rect x="154.3" y="129.3" width="1.4" height="2.2" style="--d:325ms"/><rect x="184.3" y="127.4" width="1.4" height="4.1" style="--d:325ms"/><rect x="214.3" y="127.4" width="1.4" height="4.1" style="--d:325ms"/><rect x="139.3" y="138.5" width="1.4" height="0.5" style="--d:350ms"/><rect x="169.3" y="137.7" width="1.4" height="1.3" style="--d:350ms"/><rect x="199.3" y="137.2" width="1.4" height="1.8" style="--d:350ms"/><rect x="154.3" y="146.2" width="1.4" height="0.3" style="--d:375ms"/><rect x="184.3" y="145.9" width="1.4" height="0.6" style="--d:375ms"/><rect x="169.3" y="153.9" width="1.4" height="0.1" style="--d:400ms"/></g><g class="ex-hm__pts"><circle cx="170" cy="34.0" r="3.6" style="--h:-0.1px; --c:#30bfa0; --d:0ms"/><circle cx="155" cy="41.5" r="3.6" style="--h:-0.3px; --c:#31bf9f; --d:25ms"/><circle cx="185" cy="41.5" r="3.6" style="--h:-0.6px; --c:#33c09e; --d:25ms"/><circle cx="140" cy="49.0" r="3.6" style="--h:-0.5px; --c:#33c09e; --d:50ms"/><circle cx="170" cy="49.0" r="3.6" style="--h:-1.3px; --c:#39c09b; --d:50ms"/><circle cx="200" cy="49.0" r="3.6" style="--h:-1.8px; --c:#3cc199; --d:50ms"/><circle cx="125" cy="56.5" r="3.6" style="--h:-0.8px; --c:#35c09d; --d:75ms"/><circle cx="155" cy="56.5" r="3.6" style="--h:-2.2px; --c:#3fc198; --d:75ms"/><circle cx="185" cy="56.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:75ms"/><circle cx="215" cy="56.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:75ms"/><circle cx="110" cy="64.0" r="3.6" style="--h:-1.6px; --c:#3bc19a; --d:100ms"/><circle cx="140" cy="64.0" r="3.6" style="--h:-3.1px; --c:#46c294; --d:100ms"/><circle cx="170" cy="64.0" r="3.6" style="--h:-6.9px; --c:#63c786; --d:100ms"/><circle cx="200" cy="64.0" r="3.6" style="--h:-9.5px; --c:#76ca7c; --d:100ms"/><circle cx="230" cy="64.0" r="3.6" style="--h:-6.8px; --c:#62c787; --d:100ms"/><circle cx="95" cy="71.5" r="3.6" style="--h:-3.3px; --c:#48c394; --d:125ms"/><circle cx="125" cy="71.5" r="3.6" style="--h:-5.1px; --c:#56c58d; --d:125ms"/><circle cx="155" cy="71.5" r="3.6" style="--h:-8.8px; --c:#71c97f; --d:125ms"/><circle cx="185" cy="71.5" r="3.6" style="--h:-15.7px; --c:#a4ca67; --d:125ms"/><circle cx="215" cy="71.5" r="3.6" style="--h:-15.6px; --c:#a4cb67; --d:125ms"/><circle cx="245" cy="71.5" r="3.6" style="--h:-8.0px; --c:#6bc882; --d:125ms"/><circle cx="80" cy="79.0" r="3.6" style="--h:-4.3px; --c:#50c490; --d:150ms"/><circle cx="110" cy="79.0" r="3.6" style="--h:-9.5px; --c:#76ca7c; --d:150ms"/><circle cx="140" cy="79.0" r="3.6" style="--h:-11.0px; --c:#82cb77; --d:150ms"/><circle cx="170" cy="79.0" r="3.6" style="--h:-19.1px; --c:#bcbe5e; --d:150ms"/><circle cx="200" cy="79.0" r="3.6" style="--h:-25.8px; --c:#eca64d; --d:150ms"/><circle cx="230" cy="79.0" r="3.6" style="--h:-18.5px; --c:#b8c060; --d:150ms"/><circle cx="260" cy="79.0" r="3.6" style="--h:-6.8px; --c:#62c787; --d:150ms"/><circle cx="65" cy="86.5" r="3.6" style="--h:-3.1px; --c:#46c295; --d:175ms"/><circle cx="95" cy="86.5" r="3.6" style="--h:-12.0px; --c:#89cc73; --d:175ms"/><circle cx="125" cy="86.5" r="3.6" style="--h:-15.6px; --c:#a3cb67; --d:175ms"/><circle cx="155" cy="86.5" r="3.6" style="--h:-18.7px; --c:#b9c05f; --d:175ms"/><circle cx="185" cy="86.5" r="3.6" style="--h:-30.7px; --c:#f99251; --d:175ms"/><circle cx="215" cy="86.5" r="3.6" style="--h:-30.5px; --c:#f99351; --d:175ms"/><circle cx="245" cy="86.5" r="3.6" style="--h:-15.6px; --c:#a4cb67; --d:175ms"/><circle cx="275" cy="86.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:175ms"/><circle cx="50" cy="94.0" r="3.6" style="--h:-1.1px; --c:#37c09c; --d:200ms"/><circle cx="80" cy="94.0" r="3.6" style="--h:-8.4px; --c:#6ec881; --d:200ms"/><circle cx="110" cy="94.0" r="3.6" style="--h:-17.8px; --c:#b3c361; --d:200ms"/><circle cx="140" cy="94.0" r="3.6" style="--h:-17.7px; --c:#b2c362; --d:200ms"/><circle cx="170" cy="94.0" r="3.6" style="--h:-26.9px; --c:#f4a24a; --d:200ms"/><circle cx="200" cy="94.0" r="3.6" style="--h:-36.0px; --c:#ff7a5c; --d:200ms"/><circle cx="230" cy="94.0" r="3.6" style="--h:-25.8px; --c:#eca64d; --d:200ms"/><circle cx="260" cy="94.0" r="3.6" style="--h:-9.5px; --c:#76ca7c; --d:200ms"/><circle cx="290" cy="94.0" r="3.6" style="--h:-1.8px; --c:#3cc199; --d:200ms"/><circle cx="65" cy="101.5" r="3.6" style="--h:-3.1px; --c:#46c295; --d:225ms"/><circle cx="95" cy="101.5" r="3.6" style="--h:-12.0px; --c:#89cc73; --d:225ms"/><circle cx="125" cy="101.5" r="3.6" style="--h:-15.6px; --c:#a3cb67; --d:225ms"/><circle cx="155" cy="101.5" r="3.6" style="--h:-18.7px; --c:#b9c05f; --d:225ms"/><circle cx="185" cy="101.5" r="3.6" style="--h:-30.7px; --c:#f99251; --d:225ms"/><circle cx="215" cy="101.5" r="3.6" style="--h:-30.5px; --c:#f99351; --d:225ms"/><circle cx="245" cy="101.5" r="3.6" style="--h:-15.6px; --c:#a4cb67; --d:225ms"/><circle cx="275" cy="101.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:225ms"/><circle cx="80" cy="109.0" r="3.6" style="--h:-4.3px; --c:#50c490; --d:250ms"/><circle cx="110" cy="109.0" r="3.6" style="--h:-9.5px; --c:#76ca7c; --d:250ms"/><circle cx="140" cy="109.0" r="3.6" style="--h:-11.0px; --c:#82cb77; --d:250ms"/><circle cx="170" cy="109.0" r="3.6" style="--h:-19.1px; --c:#bcbe5e; --d:250ms"/><circle cx="200" cy="109.0" r="3.6" style="--h:-25.8px; --c:#eca64d; --d:250ms"/><circle cx="230" cy="109.0" r="3.6" style="--h:-18.5px; --c:#b8c060; --d:250ms"/><circle cx="260" cy="109.0" r="3.6" style="--h:-6.8px; --c:#62c787; --d:250ms"/><circle cx="95" cy="116.5" r="3.6" style="--h:-3.3px; --c:#48c394; --d:275ms"/><circle cx="125" cy="116.5" r="3.6" style="--h:-5.1px; --c:#56c58d; --d:275ms"/><circle cx="155" cy="116.5" r="3.6" style="--h:-8.8px; --c:#71c97f; --d:275ms"/><circle cx="185" cy="116.5" r="3.6" style="--h:-15.7px; --c:#a4ca67; --d:275ms"/><circle cx="215" cy="116.5" r="3.6" style="--h:-15.6px; --c:#a4cb67; --d:275ms"/><circle cx="245" cy="116.5" r="3.6" style="--h:-8.0px; --c:#6bc882; --d:275ms"/><circle cx="110" cy="124.0" r="3.6" style="--h:-1.6px; --c:#3bc19a; --d:300ms"/><circle cx="140" cy="124.0" r="3.6" style="--h:-3.1px; --c:#46c294; --d:300ms"/><circle cx="170" cy="124.0" r="3.6" style="--h:-6.9px; --c:#63c786; --d:300ms"/><circle cx="200" cy="124.0" r="3.6" style="--h:-9.5px; --c:#76ca7c; --d:300ms"/><circle cx="230" cy="124.0" r="3.6" style="--h:-6.8px; --c:#62c787; --d:300ms"/><circle cx="125" cy="131.5" r="3.6" style="--h:-0.8px; --c:#35c09d; --d:325ms"/><circle cx="155" cy="131.5" r="3.6" style="--h:-2.2px; --c:#3fc198; --d:325ms"/><circle cx="185" cy="131.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:325ms"/><circle cx="215" cy="131.5" r="3.6" style="--h:-4.1px; --c:#4ec491; --d:325ms"/><circle cx="140" cy="139.0" r="3.6" style="--h:-0.5px; --c:#33c09e; --d:350ms"/><circle cx="170" cy="139.0" r="3.6" style="--h:-1.3px; --c:#39c09b; --d:350ms"/><circle cx="200" cy="139.0" r="3.6" style="--h:-1.8px; --c:#3cc199; --d:350ms"/><circle cx="155" cy="146.5" r="3.6" style="--h:-0.3px; --c:#31bf9f; --d:375ms"/><circle cx="185" cy="146.5" r="3.6" style="--h:-0.6px; --c:#33c09e; --d:375ms"/><circle cx="170" cy="154.0" r="3.6" style="--h:-0.1px; --c:#30bfa0; --d:400ms"/></g>
+      </svg>
+      <div class="ex-hm__cols">
+        <span class="ex-label">Columns</span>
+        <span class="ex-pill">position</span>
+        <span class="ex-pill ex-hm__uv">uv0</span>
+        <span class="ex-pill ex-hm__tint">tint</span>
+      </div>
+    </div>
+  </div>
+  <ol class="ct-explainer__steps">
+    <li data-step="1"><button type="button"><b>Grid.</b> Plane Mesh creates a subdivided grid of points: enough rows to show detail.</button></li>
+    <li data-step="2"><button type="button"><b>Project UVs.</b> Project UV From Position maps each point onto the texture and writes <code>uv0</code>.</button></li>
+    <li data-step="3"><button type="button"><b>Displace.</b> Displace By Texture lifts each point by the brightness it samples.</button></li>
+    <li data-step="4"><button type="button"><b>Color.</b> Color Ramp Attribute turns height into <code>tint</code>, ready for vertex colors or material overrides.</button></li>
+  </ol>
+</figure>
+<ol>
+<li>Import the height texture with <strong>Read/Write enabled</strong> and <strong>sRGB disabled</strong>.</li>
+<li>Generate a subdivided point-based mesh, for example <strong>Plane Mesh</strong>.</li>
+<li>Add <strong>Project UV From Position</strong>. Set Position to <strong>Attribute</strong> <code>position</code>, choose <strong>XZ</strong>, set Scale to one over the map's world size, and adjust Offset to cover the 0–1 range. It writes <code>uv0</code>.</li>
+<li>Add <strong>Displace By Texture</strong>, pick the texture and bind UV to <strong>Attribute</strong> <code>uv0</code>. <strong>Strength</strong> sets the height and <strong>Midlevel</strong> is the value that causes no movement. The default zero Direction means local up.</li>
+<li>Recalculate normals, then <strong>Realize Meshes → Draw Instanced</strong> (Mesh: Attribute <code>mesh</code>).</li>
+</ol>
+<p>For a plane from −5 to +5, a Scale of 0.1 and an Offset of (0.5, 0.5) cover the whole texture. To keep heights as data instead of moving points, use <strong>Sample Texture Height</strong>, which writes <code>(channel − midlevel) × strength</code> into a float attribute.</p>
+<blockquote>
+<p><strong>Note:</strong> Displace before realizing. After Realize Meshes, displacement moves whole instances, not their vertices.</p>
+</blockquote>
+<figure class="ct-shot"><img src="../../res/docs/1.2/height-map-terrain.png" alt="Plane mesh displaced by a grayscale height map and colored by height in the OctoShaper Preview Stage, next to the Color Ramp Attribute and Set Vertex Color nodes" loading="lazy" decoding="async" /><figcaption>A Plane Mesh displaced by a height map, then colored with Color Ramp Attribute.</figcaption></figure>
+<h2 id="color-map-across-many-instances">Color map across many instances</h2>
+<ol>
+<li>Project positions into <code>uv0</code>, or build UVs from two floats with <strong>Create UV Attribute</strong>.</li>
+<li><strong>Sample Texture Attribute</strong> writes the sampled RGBA into <code>tint</code>.</li>
+<li>After <strong>Draw Instanced</strong>, add <strong>Set Material Color</strong> with Color set to <strong>Attribute</strong> <code>tint</code>.</li>
+</ol>
+<h2 id="material-overrides">Material overrides</h2>
+<figure class="ct-shot"><img src="../../res/docs/1.2/material-overrides.png" alt="A grid of identical instanced spheres, each with its own color and a shared stripe texture, driven by Set Material Color and Set Material Texture" loading="lazy" decoding="async" /><figcaption>One material, many looks: per-instance color plus a texture override.</figcaption></figure>
+<p><strong>Set Material Color</strong>, <strong>Set Material Texture</strong>, <strong>Set Material Float</strong> and <strong>Set Material Texture Transform</strong> live in <em>Rendering → Materials</em>. Place them <strong>after</strong> a draw node, or after a subgraph whose output contains draw results. They require the <code>renderDefinition</code> attribute that draw nodes add, and the editor tells you if it's missing.</p>
+<ul>
+<li>Leave <strong>Property Name</strong> empty to target the shader's main color or texture (<code>_BaseColor</code>/<code>_BaseMap</code>, or <code>_Color</code>/<code>_MainTex</code>). Otherwise type the shader's <em>reference</em> name, not its Inspector label.</li>
+<li>Set Material Float can drive smoothness, metallic or any Float/Range property. Names and types are validated.</li>
+<li>Overrides work in Edit Mode and Play Mode, and procedural prefabs save them.</li>
+<li>Prefab GameObject rows keep their own renderers and materials. Overrides only affect drawn mesh rows.</li>
+</ul>
+<p><strong>Keep batches small.</strong> Identical override combinations share a batch, so a small palette is cheap. Unique values on every instance increase draw calls. For thousands of unique colors, a texture or vertex-color shader is more efficient.</p>
+<p>Overrides don't change shader keywords, transparency or render state. Configure those on the source material. For example, enable its normal-map or emission feature before overriding those textures.</p>
+<h2 id="texture-sampling-details">Texture sampling details</h2>
+<ul>
+<li>CPU sampling accepts <strong>Texture2D</strong> with Read/Write enabled. RenderTextures and cubemaps can be assigned to material properties but can't be sampled on the CPU.</li>
+<li>UVs are normalized, with (0,0) at the bottom left. <strong>Point</strong> and <strong>Bilinear</strong> filters are available.</li>
+<li>Wrap defaults to the texture's settings. Clamp, Repeat, Mirror and Mirror Once can be forced.</li>
+<li>Values are raw by default. Enable <strong>Decode sRGB</strong> only for sRGB color data when later math expects linear values.</li>
+<li>Each distinct texture is copied once per node run, then sampled from that copy. Smaller mip levels mean less work.</li>
+</ul>
+<h2 id="new-parameter-and-attribute-types">New parameter and attribute types</h2>
+<p>Graphs can now expose <strong>Color</strong>, <strong>Texture</strong>, <strong>Texture 2D</strong>, <strong>Gradient</strong> and <strong>Vector2</strong> parameters, with HDR color pickers, texture thumbnails and Unity's gradient editor. The older Core color type is still available as <strong>Color (Core)</strong>, and <strong>Core Color To Color</strong> converts it.</p>
+<p>For C#, the new bindings are <code>ColorValueOrAttribute</code>, <code>TextureValueOrAttribute</code> and <code>Vector2ValueOrAttribute</code> in <code>CuriousTrove.OctoShaper.Core.Data</code>. See <a href="creating-custom-nodes.html">Creating custom nodes</a>.</p>
+<p>The bundled <a href="samples.html">samples</a> include color and palette setups you can study and copy.</p>
+
+          <section class="docs-faq" aria-labelledby="faq">
+            <h2 id="faq">Frequently asked questions</h2>
+            <details class="docs-faq__item"><summary>Why does Sample Texture report an error about my texture?</summary><div>CPU sampling needs a <strong>Texture2D</strong> with <strong>Read/Write enabled</strong> in a format <code>Texture2D.GetPixels</code> supports. Crunched formats are rejected. RGBA32 is a safe choice.</div></details>
+            <details class="docs-faq__item"><summary>Do material overrides create new materials?</summary><div>No. Overrides are applied per instance and the source material asset is never modified. Instances with identical overrides share a batch.</div></details>
+            <details class="docs-faq__item"><summary>Should I use tint or color for my attribute?</summary><div>Use <code>tint</code> for Unity color attributes. <code>color</code> is the mesh vertex-color channel. <strong>Set Vertex Color</strong> converts a <code>tint</code> binding into it before realization.</div></details>
+            <details class="docs-faq__item"><summary>Why is my height map flat or noisy?</summary><div>Import it with <strong>sRGB disabled</strong>, make the mesh subdivided enough to show detail, and check that Project UV From Position covers the 0–1 range. Midlevel sets which value causes no displacement.</div></details>
+          </section></div>
+        <nav class="docs-page-nav" aria-label="Documentation pages"><a class="docs-page-nav__link" href="procedural-meshes.html"><span class="docs-page-nav__label">Previous</span><span class="docs-page-nav__title">Procedural Meshes</span></a><a class="docs-page-nav__link docs-page-nav__link--next" href="assemblies-and-hierarchies.html"><span class="docs-page-nav__label">Next</span><span class="docs-page-nav__title">Assemblies and Placement</span></a></nav>
+        </article>
+
+        <aside class="docs-toc" aria-label="On this page">
+          <p class="docs-toc__title">On this page</p>
+          <nav><a href="#three-ways-to-add-color">Three ways to add color</a><a href="#color-nodes">Color nodes</a><a href="#height-map-to-terrain">Height map to terrain</a><a href="#color-map-across-many-instances">Color map across many instances</a><a href="#material-overrides">Material overrides</a><a href="#texture-sampling-details">Texture sampling details</a><a href="#new-parameter-and-attribute-types">New parameter and attribute types</a><a href="#faq">FAQ</a></nav>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- BEGIN: Footer -->
+<footer class="ct-footer">
+  <div class="ct-footer__inner">
+    <div class="ct-footer__brand">
+      <a class="ct-footer__logo" href="../../index.html">
+        <img src="../../res/logo.svg" alt="" width="44" height="44" loading="lazy"/>
+        <span>Curious Trove</span>
+      </a>
+      <p class="ct-footer__tagline">Friendly tools for game developers. By indies, for indies.</p>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">OctoShaper</p>
+      <ul class="ct-footer__list">
+        <li><a href="../../octoshaper/unity/index.html">For Unity</a></li>
+        <li><a href="../../octoshaper/godot/index.html">For Godot</a></li>
+        <li><a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer">Unity Asset Store</a></li>
+        <li><a href="../../octoshaper/docs/changelog.html">Changelog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Learn</p>
+      <ul class="ct-footer__list">
+        <li><a href="../../octoshaper/docs/index.html">Documentation</a></li>
+        <li><a href="../../octoshaper/docs/installation.html">Installation</a></li>
+        <li><a href="../../octoshaper/docs/nodes.html">Node catalog</a></li>
+        <li><a href="../../blog.html">Devlog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Say hi</p>
+      <ul class="ct-footer__list">
+        <li><a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/></svg>YouTube</a></li>
+        <li><a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/></svg>Instagram</a></li>
+        <li><a href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Community forum</a></li>
+        <li><a href="mailto:contact@curioustrove.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ct-footer__bottom">
+    <span>© 2026 Curious Trove</span>
+    <span class="ct-footer__made">Made with <span class="ct-footer__heart" aria-label="love">♥</span> and a lot of nodes</span>
+  </div>
+  <div class="ct-footer__wordmark" aria-hidden="true">curious trove</div>
+</footer>
+<!-- END: Footer -->
+
+  <script src="../../js/octoshaper-node-catalog-data.js"></script>
+  <script src="../../js/octoshaper-docs-engine.js"></script>
+  <script src="../../js/octoshaper-docs.js"></script>
+  <script src="../../js/octoshaper-explainers.js" defer></script>
+  <script src="../../js/site-motion.js" defer></script>
+</body>
+</html>

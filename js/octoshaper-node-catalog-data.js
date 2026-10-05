@@ -1,7 +1,6 @@
 (function() {
   const body = document.body;
   const basePath = body?.dataset.basePath || '';
-  const versionParamName = 'version';
   const manifestPath = `${basePath}data/octoshaper-docs-versions.json`;
   let versionManifestPromise;
   const catalogPromises = new Map();
@@ -101,21 +100,6 @@
     return Array.from(new Set(values.filter(Boolean))).sort((left, right) => left.localeCompare(right));
   }
 
-  function getVersionFromUrl() {
-    return new URLSearchParams(window.location.search).get(versionParamName) || '';
-  }
-
-  function setVersionInUrl(version) {
-    const url = new URL(window.location.href);
-    if (version) {
-      url.searchParams.set(versionParamName, version);
-    } else {
-      url.searchParams.delete(versionParamName);
-    }
-
-    return url.toString();
-  }
-
   function getVersionManifest() {
     if (!versionManifestPromise) {
       versionManifestPromise = fetch(manifestPath)
@@ -132,12 +116,7 @@
   }
 
   function getActiveVersionEntry() {
-    return getVersionManifest().then(entries => {
-      const requestedVersion = getVersionFromUrl();
-      return entries.find(entry => entry.version === requestedVersion)
-        || entries.find(entry => entry.default)
-        || entries[0];
-    });
+    return getVersionManifest().then(entries => entries.find(entry => entry.default) || entries[0]);
   }
 
   function getCatalog(version) {
@@ -214,11 +193,8 @@
     getCatalog,
     getActiveVersionEntry,
     getVersionManifest,
-    getVersionFromUrl,
-    setVersionInUrl,
     slugify,
     toCssColor,
-    uniqueSorted,
-    versionParamName
+    uniqueSorted
   };
 })();

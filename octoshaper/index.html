@@ -5,25 +5,28 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <meta name="theme-color" content="#f8f6fd" />
+
   <!-- Primary Meta Tags -->
   <title>OctoShaper for Unity - Node-Based Procedural Generation</title>
   <meta name="title" content="OctoShaper for Unity - Node-Based Procedural Generation" />
-  <meta name="description" content="OctoShaper is a node-based procedural generation tool for Unity with realtime editor feedback and runtime graph execution." />
+  <meta name="description" content="OctoShaper is a node-based procedural generation tool for Unity. Generate layouts, buildings, vegetation and meshes from visual graphs, preview changes live, and run the same graph at runtime." />
   <meta name="keywords" content="procedural generation, Unity, Godot, game development, developer tools, octoshaper, game dev tools" />
   <meta name="author" content="Curious Trove" />
   <meta name="robots" content="index, follow" />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Curious Trove" />
   <meta property="og:url" content="https://curioustrove.com/octoshaper/unity/" />
   <meta property="og:title" content="OctoShaper for Unity - Node-Based Procedural Generation" />
   <meta property="og:description" content="Build, preview, and run graph-driven procedural systems directly in Unity with OctoShaper." />
-  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
-  
+  <meta property="og:image" content="https://curioustrove.com/res/octoshaper-graph-window.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Canonical URL -->
   <link rel="canonical" href="https://curioustrove.com/octoshaper/unity/" />
-  
+
   <!-- Icons -->
   <link rel="icon" type="image/svg+xml" href="../res/octoshaper-logo-outline.svg" />
   <link rel="apple-touch-icon" href="../res/octoshaper-logo-outline.svg" />
@@ -31,528 +34,13 @@
   <!-- Agent Discovery -->
   <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <style data-purpose="custom-fonts">
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-    body {
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    :root {
-      --theme-highlight: #8ce2b8;
-      --theme-highlight-dark: #1e5a3c;
-      --theme-highlight-soft: #eafaf1;
-      --theme-highlight-shadow: rgba(140, 226, 184, 0.3);
-    }
-
-    .landing-page {
-      background:
-        radial-gradient(rgba(91, 72, 139, 0.11) 0.7px, transparent 0.8px) 0 0 / 18px 18px,
-        radial-gradient(circle at 8% 20%, rgba(140, 226, 184, 0.11), transparent 22rem),
-        radial-gradient(circle at 92% 45%, rgba(138, 116, 216, 0.1), transparent 26rem),
-        #fbfafc;
-    }
-
-    .section-heading {
-      letter-spacing: -0.045em;
-      line-height: 1.04;
-    }
-
-    .landing-page a {
-      text-decoration: none !important;
-    }
-
-    .section-shell {
-      background: rgba(255, 255, 255, 0.93);
-      border: 1.5px solid rgba(30, 30, 30, 0.18);
-      box-shadow: 7px 8px 0 rgba(91, 72, 139, 0.11), 0 22px 60px rgba(48, 37, 76, 0.07);
-    }
-
-    .showcase-card,
-    .feature-card {
-      transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
-    }
-
-    .showcase-card:hover,
-    .feature-card:hover {
-      border-color: rgba(138, 116, 216, 0.38);
-      box-shadow: 4px 5px 0 rgba(91, 72, 139, 0.14), 0 22px 52px rgba(48, 37, 76, 0.11);
-      transform: translateY(-3px) rotate(0);
-    }
-
-    .showcase-grid .showcase-card:nth-child(1),
-    .feature-grid .feature-card:nth-child(3n + 1) {
-      transform: rotate(-0.35deg);
-    }
-
-    .showcase-grid .showcase-card:nth-child(2),
-    .feature-grid .feature-card:nth-child(3n + 2) {
-      transform: rotate(0.3deg);
-    }
-
-    .showcase-grid .showcase-card:nth-child(3),
-    .feature-grid .feature-card:nth-child(3n) {
-      transform: rotate(-0.18deg);
-    }
-
-    .showcase-grid .showcase-card:hover,
-    .feature-grid .feature-card:hover {
-      transform: translateY(-3px) rotate(0);
-    }
-
-    .showcase-media {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .showcase-media video {
-      transition: transform 600ms cubic-bezier(0.2, 0.75, 0.25, 1);
-    }
-
-    .showcase-card:hover .showcase-media video {
-      transform: scale(1.025);
-    }
-
-    .feature-card {
-      border-width: 1.5px;
-      box-shadow: 5px 6px 0 rgba(91, 72, 139, 0.08);
-      min-height: 260px;
-      position: relative;
-    }
-
-    .feature-card::after {
-      background: linear-gradient(90deg, #8ce2b8, #8a74d8);
-      border-radius: 999px;
-      bottom: 1.25rem;
-      content: '';
-      height: 3px;
-      left: 1.5rem;
-      opacity: 0.35;
-      position: absolute;
-      width: 2.5rem;
-    }
-
-    .docs-carousel-viewport {
-      margin-inline: -0.25rem;
-      overflow-x: auto;
-      padding: 0.25rem 0.25rem 1.2rem;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-    }
-
-    .docs-carousel-viewport::-webkit-scrollbar {
-      display: none;
-    }
-
-    .docs-carousel-track {
-      display: grid;
-      gap: 1.25rem;
-      grid-auto-columns: minmax(300px, calc((100% - 2.5rem) / 3));
-      grid-auto-flow: column;
-    }
-
-    .docs-carousel-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(30, 30, 30, 0.16);
-      box-shadow: 5px 6px 0 rgba(91, 72, 139, 0.09);
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      overflow: hidden;
-      scroll-snap-align: start;
-      transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
-    }
-
-    .docs-carousel-card:hover {
-      border-color: rgba(138, 116, 216, 0.42);
-      box-shadow: 4px 5px 0 rgba(91, 72, 139, 0.14), 0 20px 46px rgba(48, 37, 76, 0.1);
-      transform: translateY(-3px);
-    }
-
-    .docs-carousel-media {
-      aspect-ratio: 16 / 9;
-      background:
-        radial-gradient(circle at 18% 20%, rgba(140, 226, 184, 0.42), transparent 38%),
-        linear-gradient(145deg, #f4f0fa, #ffffff 58%, #eafaf1);
-      border-bottom: 1px solid rgba(30, 30, 30, 0.1);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .docs-carousel-media img,
-    .docs-carousel-media video,
-    .docs-carousel-media iframe {
-      height: 100%;
-      object-fit: cover;
-      width: 100%;
-    }
-
-    .docs-carousel-media iframe {
-      border: 0;
-      pointer-events: none;
-    }
-
-    .docs-carousel-media.is-fallback {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-
-    .docs-carousel-media.is-fallback::after {
-      color: rgba(86, 61, 157, 0.72);
-      content: attr(data-category);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .docs-carousel-control {
-      align-items: center;
-      background: #ffffff;
-      border: 1.5px solid rgba(30, 30, 30, 0.18);
-      box-shadow: 3px 4px 0 rgba(91, 72, 139, 0.11);
-      color: #1e1e1e;
-      display: inline-flex;
-      font-size: 1.25rem;
-      height: 44px;
-      justify-content: center;
-      transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
-      width: 44px;
-    }
-
-    .docs-carousel-control:hover:not(:disabled) {
-      background: #f4f0fa;
-      border-color: rgba(138, 116, 216, 0.5);
-      transform: translateY(-2px);
-    }
-
-    .docs-carousel-control:focus-visible {
-      outline: 3px solid rgba(138, 116, 216, 0.3);
-      outline-offset: 2px;
-    }
-
-    .docs-carousel-control:disabled {
-      cursor: default;
-      opacity: 0.35;
-    }
-
-    .roadmap-shell {
-      background:
-        radial-gradient(rgba(91, 72, 139, 0.12) 0.8px, transparent 0.9px) 0 0 / 16px 16px,
-        radial-gradient(circle at 100% 0%, rgba(140, 226, 184, 0.19), transparent 24rem),
-        linear-gradient(145deg, #f4f0fa, #ffffff 55%, #eefaf4);
-      border-radius: 2rem 1.45rem 2.2rem 1.65rem;
-      position: relative;
-    }
-
-    .roadmap-shell::before {
-      background: rgba(140, 226, 184, 0.82);
-      box-shadow: 0 2px 5px rgba(30, 30, 30, 0.08);
-      content: '';
-      height: 14px;
-      left: 3rem;
-      position: absolute;
-      top: -7px;
-      transform: rotate(-2deg);
-      width: 76px;
-    }
-
-    .roadmap-card {
-      transition: box-shadow 200ms ease, transform 200ms ease;
-    }
-
-    .roadmap-card:hover {
-      box-shadow: 0 18px 38px rgba(48, 37, 76, 0.12);
-      transform: translateY(-3px);
-    }
-
-    .unity-roadmap-card,
-    .godot-roadmap-card {
-      background: linear-gradient(to bottom, #ffffff, var(--theme-highlight-soft));
-      border-color: var(--theme-highlight) !important;
-    }
-
-    .unity-roadmap-icon,
-    .godot-roadmap-icon {
-      background: var(--theme-highlight-dark);
-    }
-
-    .unity-roadmap-badge,
-    .godot-roadmap-badge {
-      background: var(--theme-highlight-soft);
-      border-color: var(--theme-highlight) !important;
-      color: var(--theme-highlight-dark);
-    }
-
-    .unity-roadmap-dot,
-    .godot-roadmap-dot {
-      background: var(--theme-highlight);
-    }
-
-    .unity-roadmap-ring,
-    .godot-roadmap-ring {
-      border-color: var(--theme-highlight-shadow) !important;
-    }
-
-    .final-cta {
-      background:
-        radial-gradient(rgba(255, 255, 255, 0.08) 0.8px, transparent 0.9px) 0 0 / 17px 17px,
-        radial-gradient(circle at 15% 10%, rgba(140, 226, 184, 0.2), transparent 16rem),
-        radial-gradient(circle at 85% 90%, rgba(158, 132, 249, 0.24), transparent 18rem),
-        #1b1822;
-      border: 2px solid rgba(255, 255, 255, 0.13);
-      box-shadow: 9px 10px 0 rgba(138, 116, 216, 0.22), 0 26px 70px rgba(30, 30, 30, 0.2);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .final-cta::after {
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 999px;
-      content: '';
-      height: 280px;
-      position: absolute;
-      right: -120px;
-      top: -160px;
-      width: 280px;
-    }
-
-    .engine-switcher {
-      background: rgba(20, 18, 27, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.17);
-      box-shadow: 4px 5px 0 var(--theme-highlight-shadow), 0 12px 28px rgba(10, 9, 14, 0.22);
-      display: inline-flex;
-      gap: 0.25rem;
-      padding: 0.3rem;
-      transition: box-shadow 180ms ease;
-    }
-
-    .engine-toggle {
-      align-items: center;
-      border: 1px solid transparent;
-      color: rgba(255, 255, 255, 0.68);
-      display: flex;
-      gap: 0.55rem;
-      min-height: 46px;
-      padding: 0.45rem 0.75rem;
-      position: relative;
-      transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
-    }
-
-    .engine-toggle:hover {
-      color: #ffffff;
-    }
-
-    .engine-toggle:is([aria-pressed="true"], [aria-current="page"]) {
-      background: #ffffff;
-      border-color: rgba(30, 30, 30, 0.1);
-      box-shadow: 0 4px 12px rgba(8, 7, 12, 0.2);
-      color: #1e1e1e;
-      transform: translateY(-1px);
-    }
-
-    .engine-toggle:is([aria-pressed="true"], [aria-current="page"]) {
-      box-shadow: inset 0 -3px var(--theme-highlight), 0 4px 12px rgba(8, 7, 12, 0.2);
-    }
-
-    .engine-toggle:focus-visible {
-      box-shadow: 0 0 0 2px var(--theme-highlight);
-    }
-
-    .engine-toggle__icon {
-      align-items: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 0.55rem;
-      display: flex;
-      height: 30px;
-      justify-content: center;
-      width: 30px;
-    }
-
-    .engine-toggle:is([aria-pressed="true"], [aria-current="page"]) .engine-toggle__icon {
-      background: var(--theme-highlight-soft);
-    }
-
-    .engine-toggle__icon--unity,
-    .engine-toggle:is([aria-pressed="true"], [aria-current="page"]) .engine-toggle__icon--unity {
-      background: #111111;
-      color: #ffffff;
-    }
-
-    .engine-toggle__dot {
-      background: var(--theme-highlight);
-      border-radius: 999px;
-      height: 6px;
-      width: 6px;
-    }
-
-    .engine-panel {
-      transition: opacity 160ms ease, transform 160ms ease;
-    }
-
-    .engine-panel.is-changing {
-      opacity: 0;
-      transform: translateY(5px);
-    }
-
-    .engine-perk-dot {
-      background-color: var(--theme-highlight) !important;
-      transition: background-color 180ms ease;
-    }
-
-    .engine-unity-action {
-      border-color: var(--theme-highlight) !important;
-      background: linear-gradient(145deg, var(--theme-highlight-soft), #ffffff 58%, #f4f0fa) !important;
-    }
-
-    .engine-unity-action > p {
-      color: var(--theme-highlight-dark) !important;
-    }
-
-    .engine-godot-action {
-      border-color: var(--theme-highlight) !important;
-      background: linear-gradient(145deg, var(--theme-highlight-soft), #ffffff 62%, #f4f0fa) !important;
-    }
-
-    .engine-godot-action__icon {
-      background: var(--theme-highlight-soft) !important;
-      border-color: var(--theme-highlight) !important;
-    }
-
-    .engine-godot-action__label,
-    .engine-godot-action__link {
-      color: var(--theme-highlight-dark) !important;
-    }
-
-    .engine-godot-action__button {
-      background: var(--theme-highlight) !important;
-      color: var(--theme-highlight-dark) !important;
-    }
-
-    .engine-bottom-godot-action {
-      border-color: var(--theme-highlight) !important;
-    }
-
-    .hero-graph-stage {
-      perspective: 1500px;
-      position: relative;
-    }
-
-    .hero-graph-stage::before {
-      background: radial-gradient(circle, var(--theme-highlight-shadow), transparent 68%);
-      content: '';
-      inset: 8% -4% -8% 8%;
-      opacity: 0.78;
-      pointer-events: none;
-      position: absolute;
-    }
-
-    .hero-graph-window {
-      --hero-tilt-x: 0deg;
-      --hero-tilt-y: 0deg;
-      background: #252529;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 1rem;
-      box-shadow: 12px 16px 0 rgba(10, 9, 14, 0.2), 0 30px 80px rgba(10, 9, 14, 0.42);
-      overflow: hidden;
-      position: relative;
-      transform: rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y)) translateY(0) scale(1);
-      transform-origin: center;
-      transform-style: preserve-3d;
-      transition: transform 420ms cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 420ms ease;
-      will-change: transform;
-    }
-
-    .hero-graph-window img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
-
-    .hero-graph-window img.hidden {
-      display: none;
-    }
-
-    .hero-graph-stage.is-tilting .hero-graph-window {
-      box-shadow: 16px 22px 0 rgba(10, 9, 14, 0.17), 0 38px 90px rgba(10, 9, 14, 0.48);
-      transform: rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y)) translateY(-5px) scale(1.006);
-      transition-duration: 90ms;
-      transition-timing-function: linear;
-    }
-
-    @media (max-width: 767px) {
-      .showcase-grid .showcase-card,
-      .feature-grid .feature-card {
-        transform: none;
-      }
-
-      .engine-switcher {
-        display: flex;
-        width: 100%;
-      }
-
-      .engine-toggle {
-        flex: 1;
-        justify-content: center;
-      }
-
-      .hero-graph-window {
-        border-radius: 0.75rem;
-        box-shadow: 7px 9px 0 rgba(10, 9, 14, 0.18), 0 22px 52px rgba(10, 9, 14, 0.32);
-      }
-
-      .docs-carousel-track {
-        grid-auto-columns: minmax(275px, 84vw);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .engine-toggle,
-      .engine-switcher,
-      .engine-panel,
-      .hero-graph-window,
-      .showcase-card,
-      .feature-card,
-      .docs-carousel-card,
-      .docs-carousel-control,
-      .docs-carousel-viewport,
-      .roadmap-card,
-      .showcase-media video {
-        transition: none;
-      }
-
-      .hero-graph-stage.is-tilting .hero-graph-window {
-        transform: none;
-      }
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              purple: '#8a74d8ff',
-              purpleHover: '#5a358c',
-              purpleLight: '#f4f0fa',
-              green: '#8ce2b8',
-              greenHover: '#76cca1',
-              dark: '#1e1e1e',
-              gray: '#4a4a4a',
-              lightGray: '#f8f9fa',
-              border: '#e5e7eb'
-            }
-          },
-          backgroundImage: {
-            'grid-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h40v40H0V0zm39 39V1H1v38h38z\" fill=\"%23E5E7EB\" fill-opacity=\"0.4\" fill-rule=\"evenodd\"/%3E%3C/svg%3E')"
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Styles: static, no runtime CSS framework -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="../css/site.css" />
+  <link rel="preload" as="image" href="../res/octoshaper-graph-window.png" fetchpriority="high" />
+  <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('ct-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)})();</script>
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -564,7 +52,7 @@
         "@id": "https://curioustrove.com/octoshaper/unity/#product",
         "name": "OctoShaper",
         "description": "Node-based procedural generation for Unity, with realtime editor feedback and runtime graph execution.",
-        "image": "https://curioustrove.com/res/octoshaper-logo.svg",
+        "image": "https://curioustrove.com/res/octoshaper-graph-window.png",
         "brand": {
           "@type": "Brand",
           "name": "Curious Trove"
@@ -572,7 +60,7 @@
         "category": "Unity procedural generation tool",
         "offers": {
           "@type": "Offer",
-          "price": "60",
+          "price": "80",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://u3d.as/3QEQ"
@@ -584,13 +72,12 @@
         "name": "OctoShaper",
         "description": "Node-based procedural generation for Unity, with realtime editor feedback and runtime graph execution.",
         "url": "https://curioustrove.com/octoshaper/unity/",
-        "image": "https://curioustrove.com/res/octoshaper-logo.svg",
+        "image": "https://curioustrove.com/res/octoshaper-graph-window.png",
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "Procedural Generation Tool for Unity",
         "operatingSystem": "Windows, macOS",
-        "softwareVersion": "1.1.0",
         "datePublished": "2026-08-11",
-        "dateModified": "2026-08-27",
+        "dateModified": "2026-10-05",
         "downloadUrl": "https://u3d.as/3QEQ",
         "installUrl": "https://curioustrove.com/octoshaper/docs/installation.html",
         "softwareHelp": {
@@ -605,516 +92,783 @@
         },
         "offers": {
           "@type": "Offer",
-          "price": "59.99",
+          "price": "80",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://u3d.as/3QEQ"
         },
         "featureList": [
-          "Node-based procedural generation",
-          "Works at runtime and in editor",
-          "Real-time feedback",
-          "Integrated into Unity workflows",
-          "Procedural prefab import workflow"
+          "Node-based procedural generation with 200+ nodes",
+          "Live node previews and an element spreadsheet",
+          "Exposed parameters in the Inspector",
+          "Scene view spline handles, preview stage and gizmos",
+          "Reusable subgraphs",
+          "Procedural meshes with colliders",
+          "Colors, textures and per-instance material overrides",
+          "Runs in the editor and at runtime",
+          "C# API and custom nodes",
+          "AI agent skill and graph authoring CLI"
         ]
       }
     ]
   }
   </script>
-  <!-- MailerLite Universal -->
-  <script>
-      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-      ml('account', '2108920');
-  </script>
-  <!-- End MailerLite Universal -->
-  
 </head>
-<body data-base-path="../" data-active-page="octoshaper" data-engine="unity" class="bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+<body data-base-path="../" data-active-page="octoshaper" data-engine="unity" class="ct-page">
   <!-- BEGIN: Header -->
-<header class="relative z-20 w-full border-b border-[#5a358c]/45 bg-[#8a74d8ff] shadow-[0_3px_0_rgba(90,53,140,0.12)]">
-  <div class="w-full px-4 sm:px-6">
-    <input type="checkbox" id="nav-toggle" class="hidden peer/nav"/>
-    <div class="grid min-h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-3">
-      <a href="../index.html" class="justify-self-start flex items-center gap-2 font-semibold text-base sm:text-lg tracking-tight text-white hover:opacity-80 transition-opacity">
-        <img alt="Curious Trove Logo" class="w-8 h-8 rounded-full bg-white/15 p-1" src="../res/logo.svg"/>
-        <span>Curious Trove</span>
-      </a>
+<a class="ct-skip" href="#main">Skip to content</a>
+<header class="ct-nav">
+  <input type="checkbox" id="nav-toggle" class="ct-nav__toggle-input"/>
+  <div class="ct-nav__bar">
+    <a href="../index.html" class="ct-nav__brand">
+      <img alt="" width="36" height="36" src="../res/logo.svg"/>
+      <span>Curious Trove</span>
+    </a>
 
-      <nav id="nav" class="hidden lg:flex items-center justify-center gap-1 justify-self-center">
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../octoshaper/index.html" data-page="octoshaper" aria-current="page">OctoShaper</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../blog.html" data-page="blog">Devlog</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
-      </nav>
+    <nav id="nav" class="ct-nav__links" aria-label="Main">
+      <a class="ct-nav__link is-active" href="../octoshaper/index.html" data-page="octoshaper" aria-current="page">OctoShaper</a>
+      <a class="ct-nav__link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
+      <a class="ct-nav__link" href="../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community <span class="ct-nav__ext" aria-hidden="true">↗</span></a>
+    </nav>
 
-      <label for="nav-toggle" class="justify-self-end lg:hidden cursor-pointer p-2 rounded-full hover:bg-white/10 transition-colors" aria-label="Toggle navigation">
-        <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+    <div class="ct-nav__actions">
+      <button type="button" class="ct-theme-toggle" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="ct-theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ct-theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="ct-btn ct-btn--primary ct-btn--small ct-nav__cta" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar">Get OctoShaper</a>
+      <label for="nav-toggle" class="ct-nav__toggle" aria-label="Toggle navigation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/>
         </svg>
       </label>
     </div>
-    <div class="hidden peer-checked/nav:block lg:hidden border-t border-white/10 pb-3 pt-2">
-      <nav class="flex flex-col gap-1">
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px]  transition-colors nav-link bg-white/20 font-semibold" href="../octoshaper/index.html" data-page="octoshaper" aria-current="page">OctoShaper</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="../blog.html" data-page="blog">Devlog</a>
-        <a class="text-white text-[15px] font-semibold px-3 py-2 rounded-[10px] hover:bg-white/10 transition-colors nav-link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community</a>
-      </nav>
-    </div>
+  </div>
+  <div class="ct-nav__mobile">
+    <nav aria-label="Main (mobile)">
+      <a class="ct-nav__link is-active" href="../octoshaper/index.html" data-page="octoshaper" aria-current="page">OctoShaper</a>
+      <a class="ct-nav__link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
+      <a class="ct-nav__link" href="../blog.html" data-page="blog">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community ↗</a>
+      <a class="ct-btn ct-btn--primary" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar-mobile">Get OctoShaper</a>
+    </nav>
   </div>
 </header>
 <!-- END: Header -->
 
 
-  <!-- BEGIN: Main Content -->
-  <main class="landing-page flex-grow">
-    <!-- BEGIN: Hero Section -->
-    <div class="relative overflow-hidden pb-12">
-      <div class="absolute inset-0 bg-[url('../res/background-banner.png')] bg-cover bg-center blur-sm"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#fcfcfc]"></div>
-    <section class="relative max-w-[1400px] mx-auto px-6 sm:px-12 pt-16 pb-16">
-      <div class="grid grid-cols-1 lg:grid-cols-[minmax(380px,0.85fr)_minmax(0,1.3fr)] items-start gap-10 lg:gap-14">
-        <div>
-          <div class="text-center lg:text-left engine-panel" id="engine-copy-panel" aria-live="polite">
-          <div class="flex items-center gap-3 mb-5 justify-center lg:justify-start">
-            <img alt="OctoShaper Character" class="w-20 h-20 sm:w-18 sm:h-18 md:w-20 md:h-20" src="../res/octoshaper-logo.svg"/>
-            <div class="flex items-center justify-center lg:justify-start">
-              <h1 class="text-5xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight"><span class="text-white">Octo</span><span class="text-[#9e84f9]">Shaper</span></h1>
+  <main id="main">
+    <!-- BEGIN: Hero -->
+    <section class="ct-hero ct-canvas" aria-labelledby="engine-headline">
+      <div class="ct-hero__bg">
+        <svg class="ct-graph-bg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g><path class="wire" d="M192 147H208L484 79H500"/><path class="wire" d="M670 65H686L884 71H900"/><path class="wire" d="M1060 57H1076L1164 141H1180"/><path class="wire" d="M1356 127H1372L1224 431H1240"/><path class="wire" d="M1396 417H1412L1134 691H1150"/><path class="wire" d="M780 749H796L1134 691H1150"/><path class="wire" d="M186 367H202L74 611H90"/><path class="wire" d="M256 597H272L344 719H360"/><path class="wire" d="M516 705H532L604 763H620"/></g><g><path class="pulse" pathLength="100" d="M192 147H208L484 79H500"/><path class="pulse" pathLength="100" d="M670 65H686L884 71H900"/><path class="pulse" pathLength="100" d="M1060 57H1076L1164 141H1180"/><path class="pulse" pathLength="100" d="M1356 127H1372L1224 431H1240"/><path class="pulse" pathLength="100" d="M1396 417H1412L1134 691H1150"/><path class="pulse" pathLength="100" d="M780 749H796L1134 691H1150"/><path class="pulse" pathLength="100" d="M186 367H202L74 611H90"/><path class="pulse" pathLength="100" d="M256 597H272L344 719H360"/><path class="pulse" pathLength="100" d="M516 705H532L604 763H620"/></g><g class="node"><rect class="body" x="36" y="110" width="156" height="116" rx="8"/><path class="head" style="fill:#58a868" d="M36 134V118a8 8 0 0 1 8-8h140a8 8 0 0 1 8 8v16z"/><text class="title" x="48" y="126">Plane Mesh</text><circle class="help" cx="162" cy="122" r="5"/><path class="chev" d="M174 120l4 4 4-4"/><text class="label end" x="182" y="150">Element Set</text><circle class="port el" cx="192" cy="147" r="4.5"/><circle class="port el" cx="36" cy="161" r="4.5"/><text class="label" x="48" y="164">elements</text><circle class="port p-f" cx="36" cy="176" r="3.5"/><text class="label" x="48" y="179">width</text><rect class="chip" x="142" y="171" width="40" height="9" rx="2"/><rect class="field" x="48" y="184" width="134" height="6" rx="3"/><circle class="port p-i" cx="36" cy="204" r="3.5"/><text class="label" x="48" y="207">columns</text><rect class="chip" x="142" y="199" width="40" height="9" rx="2"/><rect class="field" x="48" y="212" width="134" height="6" rx="3"/></g><g class="node"><rect class="body" x="500" y="28" width="170" height="116" rx="8"/><path class="head" style="fill:#3fa7a0" d="M500 52V36a8 8 0 0 1 8-8h154a8 8 0 0 1 8 8v16z"/><text class="title" x="512" y="44">Displace By Texture</text><circle class="help" cx="640" cy="40" r="5"/><path class="chev" d="M652 38l4 4 4-4"/><text class="label end" x="660" y="68">Element Set</text><circle class="port el" cx="670" cy="65" r="4.5"/><circle class="port el" cx="500" cy="79" r="4.5"/><text class="label" x="512" y="82">elements</text><circle class="port p-t" cx="500" cy="94" r="3.5"/><text class="label" x="512" y="97">texture</text><rect class="chip" x="620" y="89" width="40" height="9" rx="2"/><rect class="field" x="512" y="102" width="148" height="6" rx="3"/><circle class="port p-f" cx="500" cy="122" r="3.5"/><text class="label" x="512" y="125">strength</text><rect class="chip" x="620" y="117" width="40" height="9" rx="2"/><rect class="field" x="512" y="130" width="148" height="6" rx="3"/></g><g class="node"><rect class="body" x="90" y="560" width="166" height="116" rx="8"/><path class="head" style="fill:#a86060" d="M90 584V568a8 8 0 0 1 8-8h150a8 8 0 0 1 8 8v16z"/><text class="title" x="102" y="576">Poisson Disc</text><circle class="help" cx="226" cy="572" r="5"/><path class="chev" d="M238 570l4 4 4-4"/><text class="label end" x="246" y="600">Element Set</text><circle class="port el" cx="256" cy="597" r="4.5"/><circle class="port el" cx="90" cy="611" r="4.5"/><text class="label" x="102" y="614">elements</text><circle class="port p-f" cx="90" cy="626" r="3.5"/><text class="label" x="102" y="629">radius</text><rect class="chip" x="206" y="621" width="40" height="9" rx="2"/><rect class="field" x="102" y="634" width="144" height="6" rx="3"/><circle class="port p-i" cx="90" cy="654" r="3.5"/><text class="label" x="102" y="657">seed</text><rect class="chip" x="206" y="649" width="40" height="9" rx="2"/><rect class="field" x="102" y="662" width="144" height="6" rx="3"/></g><g class="node"><rect class="body" x="360" y="668" width="156" height="88" rx="8"/><path class="head" style="fill:#a86060" d="M360 692V676a8 8 0 0 1 8-8h140a8 8 0 0 1 8 8v16z"/><text class="title" x="372" y="684">Jitter Rotation</text><circle class="help" cx="486" cy="680" r="5"/><path class="chev" d="M498 678l4 4 4-4"/><text class="label end" x="506" y="708">Element Set</text><circle class="port el" cx="516" cy="705" r="4.5"/><circle class="port el" cx="360" cy="719" r="4.5"/><text class="label" x="372" y="722">elements</text><circle class="port p-v" cx="360" cy="734" r="3.5"/><text class="label" x="372" y="737">maxEuler</text><rect class="chip" x="466" y="729" width="40" height="9" rx="2"/><rect class="field" x="372" y="742" width="134" height="6" rx="3"/></g><g class="node"><rect class="body" x="620" y="712" width="160" height="88" rx="8"/><path class="head" style="fill:#58a868" d="M620 736V720a8 8 0 0 1 8-8h144a8 8 0 0 1 8 8v16z"/><text class="title" x="632" y="728">Bevel Mesh</text><circle class="help" cx="750" cy="724" r="5"/><path class="chev" d="M762 722l4 4 4-4"/><text class="label end" x="770" y="752">Element Set</text><circle class="port el" cx="780" cy="749" r="4.5"/><circle class="port el" cx="620" cy="763" r="4.5"/><text class="label" x="632" y="766">elements</text><circle class="port p-f" cx="620" cy="778" r="3.5"/><text class="label" x="632" y="781">width</text><rect class="chip" x="730" y="773" width="40" height="9" rx="2"/><rect class="field" x="632" y="786" width="138" height="6" rx="3"/></g><g class="node"><rect class="body" x="1180" y="90" width="176" height="116" rx="8"/><path class="head" style="fill:#e668a7" d="M1180 114V98a8 8 0 0 1 8-8h160a8 8 0 0 1 8 8v16z"/><text class="title" x="1192" y="106">Color Ramp Attribute</text><circle class="help" cx="1326" cy="102" r="5"/><path class="chev" d="M1338 100l4 4 4-4"/><text class="label end" x="1346" y="130">Element Set</text><circle class="port el" cx="1356" cy="127" r="4.5"/><circle class="port el" cx="1180" cy="141" r="4.5"/><text class="label" x="1192" y="144">elements</text><circle class="port p-c" cx="1180" cy="156" r="3.5"/><text class="label" x="1192" y="159">gradient</text><rect class="chip" x="1306" y="151" width="40" height="9" rx="2"/><rect class="field" x="1192" y="164" width="154" height="6" rx="3"/><circle class="port p-f" cx="1180" cy="184" r="3.5"/><text class="label" x="1192" y="187">position</text><rect class="chip" x="1306" y="179" width="40" height="9" rx="2"/><rect class="field" x="1192" y="192" width="154" height="6" rx="3"/></g><g class="node"><rect class="body" x="1240" y="380" width="156" height="62" rx="8"/><path class="head" style="fill:#58a868" d="M1240 404V388a8 8 0 0 1 8-8h140a8 8 0 0 1 8 8v16z"/><text class="title" x="1252" y="396">Realize Meshes</text><circle class="help" cx="1366" cy="392" r="5"/><path class="chev" d="M1378 390l4 4 4-4"/><text class="label end" x="1386" y="420">Element Set</text><circle class="port el" cx="1396" cy="417" r="4.5"/><circle class="port el" cx="1240" cy="431" r="4.5"/><text class="label" x="1252" y="434">elements</text></g><g class="node"><rect class="body" x="1150" y="640" width="166" height="116" rx="8"/><path class="head" style="fill:#6b93d6" d="M1150 664V648a8 8 0 0 1 8-8h150a8 8 0 0 1 8 8v16z"/><text class="title" x="1162" y="656">Draw Instanced</text><circle class="help" cx="1286" cy="652" r="5"/><path class="chev" d="M1298 650l4 4 4-4"/><text class="label end" x="1306" y="680">Element Set</text><circle class="port el" cx="1316" cy="677" r="4.5"/><circle class="port el" cx="1150" cy="691" r="4.5"/><text class="label" x="1162" y="694">elements</text><circle class="port p-m" cx="1150" cy="706" r="3.5"/><text class="label" x="1162" y="709">mesh</text><rect class="chip" x="1266" y="701" width="40" height="9" rx="2"/><rect class="field" x="1162" y="714" width="144" height="6" rx="3"/><circle class="port p-m" cx="1150" cy="734" r="3.5"/><text class="label" x="1162" y="737">material</text><rect class="chip" x="1266" y="729" width="40" height="9" rx="2"/><rect class="field" x="1162" y="742" width="144" height="6" rx="3"/></g><g class="node"><rect class="body" x="900" y="20" width="160" height="88" rx="8"/><path class="head" style="fill:#3fa7a0" d="M900 44V28a8 8 0 0 1 8-8h144a8 8 0 0 1 8 8v16z"/><text class="title" x="912" y="36">Sample Texture Height</text><circle class="help" cx="1030" cy="32" r="5"/><path class="chev" d="M1042 30l4 4 4-4"/><text class="label end" x="1050" y="60">Element Set</text><circle class="port el" cx="1060" cy="57" r="4.5"/><circle class="port el" cx="900" cy="71" r="4.5"/><text class="label" x="912" y="74">elements</text><circle class="port p-t" cx="900" cy="86" r="3.5"/><text class="label" x="912" y="89">texture</text><rect class="chip" x="1010" y="81" width="40" height="9" rx="2"/><rect class="field" x="912" y="94" width="138" height="6" rx="3"/></g><g class="node"><rect class="body" x="40" y="330" width="146" height="48" rx="8"/><path class="head" style="fill:#70737c" d="M40 354V338a8 8 0 0 1 8-8h130a8 8 0 0 1 8 8v16z"/><text class="title" x="52" y="346">Main Input</text><circle class="help" cx="156" cy="342" r="5"/><path class="chev" d="M168 340l4 4 4-4"/><text class="label end" x="176" y="370">Element Set</text><circle class="port el" cx="186" cy="367" r="4.5"/></g></svg>
+      </div>
+
+      <div class="ct-container ct-hero__grid">
+        <div class="ct-hero__copy">
+          <div id="engine-copy-panel" class="engine-panel ct-hero__copy" aria-live="polite">
+            <div class="ct-lockup">
+              <img class="ct-lockup__mascot" src="../res/octoshaper-logo.svg" alt="OctoShaper mascot: a purple octopus inside a gear" width="80" height="80"/>
+              <div>
+                <div class="ct-lockup__name">Octo<span>Shaper</span></div>
+                <span class="ct-lockup__meta">by Curious Trove</span>
+              </div>
+            </div>
+
+            <h1 id="engine-headline" class="ct-display">Node-based procedural generation for Unity</h1>
+
+            <p class="ct-rotator" aria-hidden="true">
+              <span>Generate</span>
+              <span class="ct-rotator__window">
+                <span class="ct-rotator__list">
+                  <span>castle walls</span>
+                  <span>stone bridges</span>
+                  <span>rock fields</span>
+                  <span>whole villages</span>
+                  <span>grassy meadows</span>
+                  <span>castle walls</span>
+                </span>
+              </span>
+              <span>from a graph.</span>
+            </p>
+
+            <p id="engine-intro" class="ct-lede">Connect nodes, adjust parameters and see the result update in your scene. Visual graphs for most jobs, a C# API when you need it.</p>
+
+            <div class="ct-perks">
+              <span class="ct-chip"><span class="ct-chip__dot"></span><span id="engine-perk-one">200+ nodes</span></span>
+              <span class="ct-chip"><span class="ct-chip__dot"></span><span id="engine-perk-two">Editor + runtime</span></span>
+              <span class="ct-chip"><span class="ct-chip__dot"></span><span id="engine-perk-three">No coding needed</span></span>
             </div>
           </div>
 
-          <p id="engine-headline" class="text-2xl sm:text-3xl text-white max-w-3xl font-extrabold leading-tight mx-auto lg:mx-0">
-            Node-based procedural generation for Unity
-          </p>
-          <p id="engine-intro" class="mt-3 text-base sm:text-lg text-white/85 max-w-2xl font-medium leading-relaxed mx-auto lg:mx-0">Build, preview, and run graph-driven systems directly in your Unity project.</p>
-          <div class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 bg-white/20 rounded-lg px-3 py-1.5 mt-4">
-            <span class="inline-flex items-center gap-1.5"><span class="engine-perk-dot w-1.5 h-1.5 rounded-full bg-[#8ce2b8]"></span><span id="engine-perk-one" class="text-sm font-bold text-white">No subscription</span></span>
-            <span class="inline-flex items-center gap-1.5"><span class="engine-perk-dot w-1.5 h-1.5 rounded-full bg-[#8ce2b8]"></span><span id="engine-perk-two" class="text-sm font-bold text-white">One-time purchase</span></span>
-            <span class="inline-flex items-center gap-1.5"><span class="engine-perk-dot w-1.5 h-1.5 rounded-full bg-[#8ce2b8]"></span><span id="engine-perk-three" class="text-sm font-bold text-white">Indie friendly</span></span>
-          </div>
-          </div>
-
-          <div id="engine-action-panel" class="engine-panel mt-6 w-full max-w-md mx-auto lg:mx-0">
-            <a id="engine-unity-action" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="hero" class="engine-unity-action flex items-center gap-3 rounded-2xl border-2 p-3 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all group">
-              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#111111] text-white">
-                <svg class="h-5 w-5" viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg>
+          <div id="engine-action-panel" class="engine-panel ct-hero__actions">
+            <a id="engine-unity-action" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="hero" class="ct-buy">
+              <span class="ct-buy__icon"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+              <span class="ct-buy__text">
+                <span class="ct-buy__kicker">Available now · Unity 2022.3+</span>
+                <span class="ct-buy__title">Get OctoShaper</span>
+                <span class="ct-buy__sub">Unity Asset Store · one-time purchase</span>
               </span>
-              <span class="min-w-0 flex-1 text-left">
-                <span class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#1e5a3c]">Available now</span>
-                <span class="mt-0.5 block text-base font-extrabold text-brand-dark">Get OctoShaper</span>
-                <span class="block text-xs font-semibold text-brand-gray">Unity Asset Store</span>
-              </span>
-              <span class="mr-1 text-xl font-bold text-[#1e5a3c] transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+              <span class="ct-buy__arrow" aria-hidden="true">→</span>
             </a>
-            <div id="engine-godot-action" class="engine-godot-action hidden flex items-center gap-3 rounded-2xl border-2 p-3 shadow-xl transition-all">
-              <div class="engine-godot-action__icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border"><img src="../res/godot-icon.png" alt="" class="h-8 w-8 object-contain"/></div>
-              <div class="min-w-0 flex-1 text-left"><p class="engine-godot-action__label text-[10px] font-extrabold uppercase tracking-[0.18em]">In development</p><p class="mt-0.5 text-sm font-extrabold text-brand-dark sm:text-base">Follow the Godot edition</p></div>
-              <div class="flex shrink-0 gap-2">
-                <a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="Follow Curious Trove on YouTube" class="engine-godot-action__button inline-flex h-10 w-10 items-center justify-center rounded-xl">
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
-                  </svg>
+            <div id="engine-godot-action" class="ct-buy hidden">
+              <span class="ct-buy__icon ct-buy__icon--godot"><img src="../res/godot-icon.png" alt="" width="24" height="24"/></span>
+              <span class="ct-buy__text">
+                <span class="ct-buy__kicker">In development</span>
+                <span class="ct-buy__title">Follow the Godot edition</span>
+              </span>
+              <span class="ct-buy__social">
+                <a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="Follow Curious Trove on YouTube" class="ct-icon-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Follow Curious Trove on Instagram" class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#8ce2b8] bg-white text-[#1e5a3c]">
-                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
-                  </svg>
+                <a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Follow Curious Trove on Instagram" class="ct-icon-btn">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/></svg>
                 </a>
-              </div>
+              </span>
             </div>
+            <a class="ct-link" href="#showcase">See examples <span aria-hidden="true">↓</span></a>
           </div>
         </div>
 
         <div>
-          <div class="mb-4 flex flex-col items-center gap-2 sm:flex-row sm:justify-center lg:justify-end">
-            <span class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-white/65">Pick your engine</span>
-            <div class="engine-switcher rounded-xl" role="group" aria-label="Choose an OctoShaper engine edition">
-              <a href="unity/" class="engine-toggle rounded-lg focus:outline-none" data-engine-choice="unity" aria-current="page">
-                <span class="engine-toggle__icon engine-toggle__icon--unity"><svg class="h-5 w-5" viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
-                <span class="text-left"><span class="block text-sm font-extrabold leading-none">Unity</span><span class="mt-1 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider"><span class="engine-toggle__dot"></span>Available</span></span>
+          <div class="ct-engine">
+            <span class="ct-engine__label">Pick your engine</span>
+            <div class="engine-switcher" role="group" aria-label="Choose an OctoShaper engine edition">
+              <a href="unity/" class="engine-toggle" data-engine-choice="unity" aria-current="page">
+                <span class="engine-toggle__icon engine-toggle__icon--unity"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span>
+                <span><span class="engine-toggle__name">Unity</span><span class="engine-toggle__state"><span class="engine-toggle__dot"></span>Available</span></span>
               </a>
-              <a href="godot/" class="engine-toggle rounded-lg focus:outline-none" data-engine-choice="godot">
-                <span class="engine-toggle__icon"><img src="../res/godot-icon.png" alt="" class="h-5 w-5 object-contain"/></span>
-                <span class="text-left"><span class="block text-sm font-extrabold leading-none">Godot</span><span class="mt-1 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider"><span class="engine-toggle__dot"></span>In development</span></span>
+              <a href="godot/" class="engine-toggle" data-engine-choice="godot">
+                <span class="engine-toggle__icon"><img src="../res/godot-icon.png" alt="" width="18" height="18"/></span>
+                <span><span class="engine-toggle__name">Godot</span><span class="engine-toggle__state"><span class="engine-toggle__dot engine-toggle__dot--soon"></span>In development</span></span>
               </a>
             </div>
           </div>
+
           <div class="hero-graph-stage">
+            <span class="ct-float-node ct-float-node--a" aria-hidden="true"><span class="ct-float-node__port"></span>Poisson Disc</span>
+            <span class="ct-float-node ct-float-node--b" aria-hidden="true"><span class="ct-float-node__port"></span>Convex Hull Mesh</span>
+            <span class="ct-float-node ct-float-node--c" aria-hidden="true"><span class="ct-float-node__port"></span>Draw Instanced</span>
             <div class="hero-graph-window">
-              <img id="engine-unity-graph-preview" src="../res/octoshaper-graph-window.png" alt="The OctoShaper graph window in Unity showing a procedural tower graph, parameters, attributes, node previews, and generated data" width="1510" height="920" loading="eager" fetchpriority="high"/>
-              <img id="engine-godot-graph-preview" class="hidden" src="../res/octoshaper-godot-graph-window.png" alt="The OctoShaper graph window in Godot showing connected procedural nodes, required attributes, parameters, and an output preview" width="1385" height="746" loading="eager"/>
+              <div class="ct-window__bar" aria-hidden="true"><i></i><i></i><i></i><span class="ct-window__title">Forest.asset — OctoShaper Graph</span></div>
+              <img id="engine-unity-graph-preview" src="../res/octoshaper-graph-window.png" alt="The OctoShaper graph window in Unity showing a procedural forest graph with its parameters, node previews and the element spreadsheet" width="1510" height="921" loading="eager" fetchpriority="high"/>
+              <img id="engine-godot-graph-preview" class="hidden" src="../res/octoshaper-godot-graph-window.png" alt="The OctoShaper graph window in Godot showing connected procedural nodes, required attributes, parameters, and an output preview" width="1385" height="746" loading="lazy"/>
             </div>
           </div>
         </div>
       </div>
-
     </section>
+    <!-- END: Hero -->
+
+    <!-- BEGIN: Node ticker -->
+    <div class="ct-container ct-ticker-head">
+      <p class="ct-ticker-label"><strong>200+ nodes</strong> in the box, from scattering to splines, meshes and physics queries.</p>
+      <a data-unity-only class="ct-link" href="docs/nodes.html">Browse the node catalog <span aria-hidden="true">→</span></a>
     </div>
-    <!-- END: Hero Section -->
-
-    <!-- BEGIN: Use Cases Section -->
-    <section class="max-w-[1400px] mx-auto px-6 pt-20 pb-24">
-      <div class="max-w-4xl mb-10">
-        <h2 id="engine-use-cases-title" class="section-heading text-4xl sm:text-5xl font-extrabold">What you can build with Unity</h2>
+    <div class="ct-marquee" role="region" aria-label="A few of OctoShaper's nodes">
+      <div class="ct-marquee__track">
+        <ul class="ct-marquee__list"><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#poisson-disc-poissondisc">Poisson Disc</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#grow-strands-growstrands">Grow Strands</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#jitter-rotation-jitterrotation">Jitter Rotation</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#spawn-prefab-creategameobject">Spawn Prefab</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#distribute-points-on-spline-distributepointsonspline">Distribute Points On Spline</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#raycast-raycast">Raycast</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#pick-weighted-pickweighted">Pick Weighted</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#sample-mesh-surface-samplesurface">Sample Mesh Surface</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#compute-slope-mask-computeslopemask">Compute Slope Mask</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#place-local-assembly-placelocalassembly">Place Local Assembly</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#attract-points-to-position-attractpointsbydistance">Attract Points To Position</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#probabilistic-cull-probabilisticcull">Probabilistic Cull</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#build-spline-from-strands-buildsplinefromstrands">Build Spline From Strands</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#draw-instanced-drawinstanced">Draw Instanced</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#project-positions-projectpositions">Project Positions</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#distribute-points-in-grid-distributepointsingrid">Distribute Points In Grid</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#jitter-scale-jitterscale">Jitter Scale</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#create-assembly-roots-createassemblyroots">Create Assembly Roots</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#snap-to-closest-position-snaptoclosestposition">Snap To Closest Position</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#sample-points-in-sphere-samplepointsinsphere">Sample Points In Sphere</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#bevel-mesh-bevel">Bevel Mesh</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#boolean-meshes-boolean">Boolean Meshes</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#convex-hull-mesh-convexhull">Convex Hull Mesh</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#realize-meshes-realize">Realize Meshes</a></li></ul>
+        <ul class="ct-marquee__list" aria-hidden="true"><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#poisson-disc-poissondisc" tabindex="-1">Poisson Disc</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#grow-strands-growstrands" tabindex="-1">Grow Strands</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#jitter-rotation-jitterrotation" tabindex="-1">Jitter Rotation</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#spawn-prefab-creategameobject" tabindex="-1">Spawn Prefab</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#distribute-points-on-spline-distributepointsonspline" tabindex="-1">Distribute Points On Spline</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#raycast-raycast" tabindex="-1">Raycast</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#pick-weighted-pickweighted" tabindex="-1">Pick Weighted</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#sample-mesh-surface-samplesurface" tabindex="-1">Sample Mesh Surface</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#compute-slope-mask-computeslopemask" tabindex="-1">Compute Slope Mask</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#place-local-assembly-placelocalassembly" tabindex="-1">Place Local Assembly</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#attract-points-to-position-attractpointsbydistance" tabindex="-1">Attract Points To Position</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#probabilistic-cull-probabilisticcull" tabindex="-1">Probabilistic Cull</a></li><li><a class="ct-node-pill ct-node-pill--spline" href="docs/nodes.html#build-spline-from-strands-buildsplinefromstrands" tabindex="-1">Build Spline From Strands</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#draw-instanced-drawinstanced" tabindex="-1">Draw Instanced</a></li><li><a class="ct-node-pill ct-node-pill--physics" href="docs/nodes.html#project-positions-projectpositions" tabindex="-1">Project Positions</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#distribute-points-in-grid-distributepointsingrid" tabindex="-1">Distribute Points In Grid</a></li><li><a class="ct-node-pill ct-node-pill--random" href="docs/nodes.html#jitter-scale-jitterscale" tabindex="-1">Jitter Scale</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#create-assembly-roots-createassemblyroots" tabindex="-1">Create Assembly Roots</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#snap-to-closest-position-snaptoclosestposition" tabindex="-1">Snap To Closest Position</a></li><li><a class="ct-node-pill ct-node-pill--points" href="docs/nodes.html#sample-points-in-sphere-samplepointsinsphere" tabindex="-1">Sample Points In Sphere</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#bevel-mesh-bevel" tabindex="-1">Bevel Mesh</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#boolean-meshes-boolean" tabindex="-1">Boolean Meshes</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#convex-hull-mesh-convexhull" tabindex="-1">Convex Hull Mesh</a></li><li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#realize-meshes-realize" tabindex="-1">Realize Meshes</a></li></ul>
       </div>
+    </div>
+    <!-- END: Node ticker -->
 
-        <article class="showcase-card section-shell rounded-[1.75rem] p-6 sm:p-8">
-          <div class="grid grid-cols-1 md:grid-cols-[0.95fr_1.05fr] gap-6 items-center">
-            <div>
-              <h3 class="text-3xl font-extrabold mb-3">Procedural structures with immediate feedback.</h3>
-              <p class="text-brand-gray font-medium leading-relaxed mb-5">A strong fit for modular buildings, repeatable kits, and graph-controlled variation where designers want to see the structure change as parameters move.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">Environment</span>
-                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">Runtime</span>
-                <span class="bg-[#f8f9fa] border border-brand-border text-sm font-bold px-3 py-2 rounded-lg">High variation</span>
-              </div>
-            </div>
-            <div class="showcase-media bg-gradient-to-br from-[#f4f0fa] via-white to-[#eafaf1] border border-brand-border rounded-2xl p-3 sm:p-4 min-h-[260px] flex flex-col justify-between">
-              <video class="w-full rounded-2xl border-2 border-white/70 shadow-sm" autoplay muted loop playsinline>
-                <source src="../res/demos/buildings-demo-1.mov" type="video/mp4">
-                Your browser does not support the video tag.
+    <!-- BEGIN: How it works -->
+    <section class="ct-section" aria-labelledby="how-title">
+      <div class="ct-container">
+        <div class="ct-section-head" data-reveal>
+          <span class="ct-eyebrow">How it works</span>
+          <h2 id="how-title" class="ct-h2">Generate content <span class="ct-squiggle">from a graph</span>.</h2>
+          <p class="ct-lede">Connect nodes, adjust parameters and see the result update in your scene. Every graph is a regular asset in your project.</p>
+        </div>
+
+        <figure class="ct-flow" data-reveal>
+          <svg class="ct-flow__svg" viewBox="0 0 1200 380" role="img" aria-labelledby="flow-title">
+            <title id="flow-title">Parameters feed a chain of three nodes, Sample Points, Jitter Positions and Draw Instanced, whose result appears as trees in the scene</title>
+            <!-- wires -->
+            <path class="ct-flow__wire" d="M262 190 C300 190 290 150 330 150"/>
+            <path class="ct-flow__wire" d="M500 150 C530 150 520 230 552 230"/>
+            <path class="ct-flow__wire" d="M722 230 C752 230 742 150 774 150"/>
+            <path class="ct-flow__wire" d="M944 150 C960 150 958 190 972 190"/>
+            <path class="ct-flow__pulse" pathLength="100" d="M262 190 C300 190 290 150 330 150"/>
+            <path class="ct-flow__pulse" pathLength="100" style="animation-delay:.6s" d="M500 150 C530 150 520 230 552 230"/>
+            <path class="ct-flow__pulse" pathLength="100" style="animation-delay:1.2s" d="M722 230 C752 230 742 150 774 150"/>
+            <path class="ct-flow__pulse" pathLength="100" style="animation-delay:1.8s" d="M944 150 C960 150 958 190 972 190"/>
+
+            <!-- parameters panel -->
+            <g>
+              <rect class="ct-flow__card" x="20" y="70" width="242" height="240" rx="18"/>
+              <text class="ct-flow__title" x="42" y="108">Parameters</text>
+              <text class="ct-flow__label" x="42" y="146">Tree Count</text>
+              <rect class="ct-flow__track" x="42" y="158" width="198" height="10" rx="5"/>
+              <rect class="ct-flow__fill" x="42" y="158" width="198" height="10" rx="5"/>
+              <circle class="ct-flow__knob" cx="62" cy="163" r="11"/>
+              <text class="ct-flow__label" x="42" y="206">Spacing</text>
+              <rect class="ct-flow__track" x="42" y="218" width="198" height="10" rx="5"/>
+              <circle class="ct-flow__knob ct-flow__knob--static" cx="150" cy="223" r="11"/>
+              <text class="ct-flow__label" x="42" y="266">Seed</text>
+              <rect class="ct-flow__field" x="132" y="248" width="108" height="28" rx="8"/>
+              <text class="ct-flow__value" x="186" y="268" text-anchor="middle">17</text>
+              <circle class="ct-flow__port" cx="262" cy="190" r="6"/>
+            </g>
+
+            <!-- node 1 -->
+            <g>
+              <rect class="ct-flow__card" x="330" y="90" width="170" height="150" rx="16"/>
+              <path class="ct-flow__head" style="fill:#7ed3a4" d="M330 122V106a16 16 0 0 1 16-16h138a16 16 0 0 1 16 16v16z"/>
+              <text class="ct-flow__node" x="346" y="112">Sample Points</text>
+              <rect class="ct-flow__thumb" x="346" y="134" width="138" height="90" rx="10"/>
+              <circle class="ct-art-pt" cx="370" cy="156" r="5" style="animation-delay:0s"/>
+              <circle class="ct-art-pt" cx="404" cy="150" r="5" style="animation-delay:.15s"/>
+              <circle class="ct-art-pt" cx="440" cy="160" r="5" style="animation-delay:.3s"/>
+              <circle class="ct-art-pt" cx="466" cy="150" r="5" style="animation-delay:.45s"/>
+              <circle class="ct-art-pt" cx="382" cy="190" r="5" style="animation-delay:.6s"/>
+              <circle class="ct-art-pt" cx="420" cy="184" r="5" style="animation-delay:.75s"/>
+              <circle class="ct-art-pt" cx="458" cy="196" r="5" style="animation-delay:.9s"/>
+              <circle class="ct-art-pt" cx="398" cy="210" r="5" style="animation-delay:1.05s"/>
+              <circle class="ct-flow__port" cx="330" cy="150" r="6"/><circle class="ct-flow__port" cx="500" cy="150" r="6"/>
+            </g>
+
+            <!-- node 2 -->
+            <g>
+              <rect class="ct-flow__card" x="552" y="170" width="170" height="150" rx="16"/>
+              <path class="ct-flow__head" style="fill:#b9a8f0" d="M552 202V186a16 16 0 0 1 16-16h138a16 16 0 0 1 16 16v16z"/>
+              <text class="ct-flow__node" x="568" y="192">Jitter Positions</text>
+              <rect class="ct-flow__thumb" x="568" y="214" width="138" height="90" rx="10"/>
+              <g><circle cx="596" cy="240" r="5" class="ct-flow__dot"/><line class="ct-art-arrow" x1="596" y1="240" x2="614" y2="240" style="animation-delay:0s"/></g>
+              <g><circle cx="640" cy="234" r="5" class="ct-flow__dot"/><line class="ct-art-arrow" x1="640" y1="234" x2="658" y2="234" style="animation-delay:.4s"/></g>
+              <g><circle cx="680" cy="246" r="5" class="ct-flow__dot"/><line class="ct-art-arrow" x1="680" y1="246" x2="698" y2="246" style="animation-delay:.8s"/></g>
+              <g><circle cx="612" cy="280" r="5" class="ct-flow__dot"/><line class="ct-art-arrow" x1="612" y1="280" x2="630" y2="280" style="animation-delay:1.2s"/></g>
+              <g><circle cx="664" cy="284" r="5" class="ct-flow__dot"/><line class="ct-art-arrow" x1="664" y1="284" x2="682" y2="284" style="animation-delay:1.6s"/></g>
+              <circle class="ct-flow__port" cx="552" cy="230" r="6"/><circle class="ct-flow__port" cx="722" cy="230" r="6"/>
+            </g>
+
+            <!-- node 3 -->
+            <g>
+              <rect class="ct-flow__card" x="774" y="90" width="170" height="150" rx="16"/>
+              <path class="ct-flow__head" style="fill:#8cc3f5" d="M774 122V106a16 16 0 0 1 16-16h138a16 16 0 0 1 16 16v16z"/>
+              <text class="ct-flow__node" x="790" y="112">Draw Instanced</text>
+              <rect class="ct-flow__thumb" x="790" y="134" width="138" height="90" rx="10"/>
+              <polygon class="ct-flow__tree" points="818,206 830,170 842,206"/>
+              <polygon class="ct-flow__tree ct-flow__tree--b" points="848,210 862,162 876,210"/>
+              <polygon class="ct-flow__tree" points="884,206 896,174 908,206"/>
+              <circle class="ct-flow__port" cx="774" cy="150" r="6"/><circle class="ct-flow__port" cx="944" cy="150" r="6"/>
+            </g>
+
+            <!-- scene -->
+            <g>
+              <rect class="ct-flow__scene" x="972" y="50" width="208" height="280" rx="18"/>
+              <text class="ct-flow__title ct-flow__title--scene" x="992" y="86">Scene</text>
+              <polygon class="ct-flow__ground" points="990,250 1076,214 1166,250 1080,290"/>
+              <polygon class="ct-art-inst ct-flow__tree" style="animation-delay:0s" points="1020,250 1032,206 1044,250"/>
+              <polygon class="ct-art-inst ct-flow__tree ct-flow__tree--b" style="animation-delay:.25s" points="1056,236 1072,178 1088,236"/>
+              <polygon class="ct-art-inst ct-flow__tree" style="animation-delay:.5s" points="1100,244 1112,204 1124,244"/>
+              <polygon class="ct-art-inst ct-flow__tree ct-flow__tree--b" style="animation-delay:.75s" points="1062,272 1076,226 1090,272"/>
+              <polygon class="ct-art-inst ct-flow__tree" style="animation-delay:1s" points="1124,262 1136,226 1148,262"/>
+              <circle class="ct-flow__port" cx="972" cy="190" r="6"/>
+            </g>
+          </svg>
+          <figcaption class="ct-flow__steps">
+            <span><b>1</b> Connect nodes</span>
+            <span><b>2</b> Adjust parameters</span>
+            <span><b>3</b> See the result in your scene</span>
+          </figcaption>
+        </figure>
+
+        <p class="ct-aside" data-reveal data-unity-only>New to OctoShaper? The <a class="ct-link" href="docs/getting-started-attributes-and-subgraphs.html">getting-started tutorial</a> builds a reusable graph step by step, with a video companion.</p>
+      </div>
+    </section>
+    <!-- END: How it works -->
+
+    <!-- BEGIN: Examples -->
+    <section id="showcase" class="ct-section" aria-labelledby="engine-use-cases-title">
+      <div class="ct-container">
+        <div class="ct-section-head" data-reveal>
+          <span class="ct-eyebrow">Examples</span>
+          <h2 id="engine-use-cases-title" class="ct-h2">Made with OctoShaper.</h2>
+          <p class="ct-lede">Layouts, buildings, vegetation, splines and meshes, each generated by a graph.</p>
+        </div>
+
+        <div class="ct-examples" data-reveal-stagger>
+          <article class="ct-card ct-example" data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="A procedural castle generated from an OctoShaper graph">
+                <source src="../res/demos/castle-demo.mp4" type="video/mp4">
               </video>
             </div>
-          </div>
-        </article>
-
-
-      <div class="showcase-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-5 mt-6 mb-6">
-        <article class="showcase-card section-shell rounded-[1.5rem] p-5">
-          <div class="showcase-media rounded-xl border border-white shadow-sm mb-5 bg-white">
-            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
-              <source src="../res/demos/castle-demo.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <span class="inline-block bg-white text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Environment</span>
-          <h3 class="text-xl font-extrabold mt-4 mb-3">Large-scale structure</h3>
-          <p class="text-sm font-medium text-brand-gray leading-relaxed">Good for buildings, modular kits, or anything where controlled variation matters more than one-off handcrafting.</p>
-        </article>
-
-        <article class="showcase-card section-shell rounded-[1.5rem] p-5">
-          <div class="showcase-media rounded-xl border border-[#f4f0fa] shadow-sm mb-5 bg-[#f4f0fa]">
-            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
-              <source src="../res/demos/vines-demo.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <span class="inline-block bg-[#f4f0fa] text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Organic</span>
-          <h3 class="text-xl font-extrabold mt-4 mb-3">Growth & branching</h3>
-          <p class="text-sm font-medium text-brand-gray leading-relaxed">Useful for vines, roots, crystals, and other systems where you want growth rules instead of hand-placing every branch.</p>
-        </article>
-
-        <article class="showcase-card section-shell rounded-[1.5rem] p-5">
-          <div class="showcase-media rounded-xl border border-brand-border shadow-sm mb-5 bg-[#fcfcfc]">
-            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
-              <source src="../res/demos/rocks-demo.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <span class="inline-block bg-[#fcfcfc] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Placement</span>
-          <h3 class="text-xl font-extrabold mt-4 mb-3">Scattering & sampling</h3>
-          <p class="text-sm font-medium text-brand-gray leading-relaxed">A practical workflow for terrain dressing, mesh-driven sampling, and dense prop distribution from reusable graph logic.</p>
-        </article>
-
-        <article class="showcase-card section-shell rounded-[1.5rem] p-5">
-          <div class="showcase-media rounded-xl border border-white shadow-sm mb-5 bg-white">
-            <video class="w-full aspect-video object-cover" autoplay muted loop playsinline>
-              <source src="../res/demos/buildings-demo-1.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <span class="inline-block bg-white text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Runtime</span>
-          <h3 class="text-xl font-extrabold mt-4 mb-3">Live variation in-game</h3>
-          <p class="text-sm font-medium text-brand-gray leading-relaxed">Use the same graph logic during play mode when you need spawning, variation, or regeneration to react to runtime state.</p>
-        </article>
+            <div class="ct-card__body"><h3 class="ct-h3">Modular layouts</h3><p class="ct-body">Walls, towers and houses placed by the graph, while you control the overall shape.</p></div>
+          </article>
+          <article class="ct-card ct-example" data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="Modular buildings regenerating as graph parameters change">
+                <source src="../res/demos/buildings-demo-1.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-card__body"><h3 class="ct-h3">Buildings</h3><p class="ct-body">Floors, windows and roofs from your own modular pieces, stacked by the graph.</p></div>
+          </article>
+          <article class="ct-card ct-example" data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="A grass field drawn with GPU instancing">
+                <source src="../res/demos/grass-demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-card__body"><h3 class="ct-h3">Vegetation</h3><p class="ct-body">Grass and small plants over large areas, drawn with GPU instancing.</p></div>
+          </article>
+          <article class="ct-card ct-example" data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="A viaduct rebuilding as its spline handles move">
+                <source src="../res/demos/spline-viaduct-demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-card__body"><h3 class="ct-h3">Along splines</h3><p class="ct-body">Bridges, walls and paths: your meshes placed and instanced along a curve.</p></div>
+          </article>
+          <article class="ct-card ct-example" data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="Rocks scattered and sampled across terrain">
+                <source src="../res/demos/rocks-demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-card__body"><h3 class="ct-h3">Scattering</h3><p class="ct-body">Points sampled on meshes and terrain, culled by slope, with props that sit on the ground.</p></div>
+          </article>
+          <article class="ct-card ct-example" data-unity-only data-reveal>
+            <div class="ct-media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="A procedural arena rebuilding as its parameters change">
+                <source src="../res/demos/golden-arena-demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-card__body"><h3 class="ct-h3">Procedural meshes</h3><p class="ct-body">Landmarks like this arena, generated from a few parameters instead of modelled.</p></div>
+          </article>
+        </div>
       </div>
     </section>
-    <!-- END: Use Cases Section -->
+    <!-- END: Examples -->
 
-    <!-- BEGIN: Roadmap Section -->
-    <section class="max-w-[1400px] mx-auto px-6 pb-24">
-      <div class="roadmap-shell border border-[#8a74d8ff]/20 p-6 sm:p-9 lg:p-11 shadow-xl shadow-[#5a358c]/10">
-        <div class="max-w-4xl mb-10">
-          <h2 class="section-heading text-4xl sm:text-5xl font-extrabold">Roadmap</h2>
+    <!-- BEGIN: Spotlight features -->
+    <section class="ct-section ct-section--panel ct-canvas" aria-labelledby="features-title">
+      <div class="ct-container">
+        <div class="ct-section-head" data-reveal>
+          <span class="ct-eyebrow">Features</span>
+          <h2 id="features-title" class="ct-h2">Build and tweak graphs <span class="ct-squiggle">inside Unity</span>.</h2>
         </div>
 
-        <div class="hidden xl:block" id="roadmap-desktop"></div>
-        <div class="xl:hidden relative pl-10" id="roadmap-mobile"></div>
+        <article id="feature-inspect" class="ct-spot" data-reveal>
+          <div class="ct-spot__media">
+            <img src="../res/docs/elementset-spreadsheet.gif" alt="The ElementSet spreadsheet listing every generated element and its attributes" loading="lazy" width="800" height="450"/>
+          </div>
+          <div class="ct-spot__body">
+            <span class="ct-feature__label">Visual graphs</span>
+            <h3 class="ct-h2 ct-h2--card">Inspect every step.</h3>
+            <ul class="ct-bullets">
+              <li>Each node shows a thumbnail of its result</li>
+              <li>Change a value and the preview updates</li>
+              <li>The spreadsheet lists every element and attribute</li>
+            </ul>
+            <p data-unity-only><a class="ct-link" href="docs/node-graph-basics.html">Node graph basics <span aria-hidden="true">→</span></a></p>
+          </div>
+        </article>
+
+        <article id="feature-parameters" class="ct-spot ct-spot--flip" data-unity-only data-reveal>
+          <div class="ct-spot__media">
+            <video muted loop playsinline preload="none" controls data-autoplay aria-label="Dragging a parameter in the Inspector while the forest rebuilds">
+              <source src="../res/demos/inspector-parameters-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ct-spot__body">
+            <span class="ct-feature__label">Exposed parameters</span>
+            <h3 class="ct-h2 ct-h2--card">Edit parameters in the Inspector.</h3>
+            <ul class="ct-bullets">
+              <li>Numbers, materials, textures and splines</li>
+              <li>The scene rebuilds while you tweak, in edit mode</li>
+              <li>Add one Procedural Graph Executor to any GameObject</li>
+            </ul>
+            <p><a class="ct-link" href="docs/runtime-generation.html">Executors and runtime generation <span aria-hidden="true">→</span></a></p>
+          </div>
+        </article>
+
+        <article id="feature-meshes" class="ct-spot" data-unity-only data-reveal>
+          <div class="ct-spot__media">
+            <video muted loop playsinline preload="none" controls data-autoplay aria-label="Mesh nodes building a shape, with the result in the preview scene">
+              <source src="../res/demos/mesh-nodes-demo.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="ct-spot__body">
+            <span class="ct-feature__label">Procedural meshes</span>
+            <h3 class="ct-h2 ct-h2--card">Generate meshes.</h3>
+            <ul class="ct-bullets">
+              <li>Primitives, bevels, booleans, hulls and revolved profiles</li>
+              <li>Sweep geometry along any spline</li>
+              <li>Box, sphere, capsule and mesh colliders</li>
+            </ul>
+            <ul class="ct-step__nodes ct-list-reset">
+              <li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#bevel-mesh-bevel">Bevel Mesh</a></li>
+              <li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#boolean-meshes-boolean">Boolean Meshes</a></li>
+              <li><a class="ct-node-pill ct-node-pill--spawn" href="docs/nodes.html#convex-hull-mesh-convexhull">Convex Hull Mesh</a></li>
+            </ul>
+            <p><a class="ct-link" href="docs/procedural-meshes.html">Procedural meshes <span aria-hidden="true">→</span></a></p>
+          </div>
+        </article>
+
+        <article id="feature-ai" class="ct-spot ct-spot--flip" data-unity-only data-reveal>
+          <div class="ct-spot__media ct-spot__media--agent">
+            <div class="ct-agent" role="img" aria-label="An AI agent window: the user asks for a stylised rock graph, the agent runs the OctoShaper catalog and iterate commands, saves the graph and shows a rendered preview">
+              <div class="ct-agent__bar"><i></i><i></i><i></i><span>Agent</span><em>octoshaper skill</em></div>
+              <div class="ct-agent__feed">
+                <p class="ct-agent__you">Use the OctoShaper skill to make a stylised rock graph. Expose the seed, point count and roughness.</p>
+                <p class="ct-agent__say">I'll look up the nodes I need, then build and render the graph.</p>
+                <div class="ct-agent__tool"><code>unity command octoshaper --operation <b>catalog</b> --request_json '{"query":"convex hull"}'</code><span>→ Mesh.ConvexHull · Convex Hull Mesh</span></div>
+                <div class="ct-agent__tool"><code>unity command octoshaper --operation <b>iterate</b> --request_file rock.iterate.json</code><span class="ok">✓ saved Assets/Graphs/StylisedRock.asset</span><span class="ok">✓ rendered perspective.png</span></div>
+                <p class="ct-agent__say">Done. <strong>StylisedRock</strong> is saved, with Seed, Point Count and Roughness exposed.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ct-spot__body">
+            <span class="ct-feature__label">AI integration</span>
+            <h3 class="ct-h2 ct-h2--card">Let an agent build the graph.</h3>
+            <ul class="ct-bullets">
+              <li>Bundled agent skill, installed from Tools › OctoShaper › AI Integration</li>
+              <li>Agents search nodes, edit graphs and render previews through the Unity CLI (Unity 6)</li>
+              <li>The result opens in the graph editor like any other graph</li>
+            </ul>
+            <p><a class="ct-link" href="docs/ai-integration.html">AI integration <span aria-hidden="true">→</span></a></p>
+          </div>
+        </article>
       </div>
     </section>
-    <!-- END: Roadmap Section -->
+    <!-- END: Spotlight features -->
 
-    <!-- BEGIN: Feature Details Section -->
-    <section class="border-y border-black/5 bg-white/55 py-24">
-      <div class="max-w-[1400px] mx-auto px-6">
-      <div class="max-w-4xl mb-10">
-        <h2 class="section-heading text-4xl sm:text-5xl font-extrabold">Features</h2>
-      </div>
+    <!-- BEGIN: More tools -->
+    <section class="ct-section" aria-labelledby="tools-title">
+      <div class="ct-container">
+        <div class="ct-section-head" data-reveal>
+          <span class="ct-eyebrow">In the editor</span>
+          <h2 id="tools-title" class="ct-h2">Tools for every step.</h2>
+        </div>
 
-      <div class="feature-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-        <article id="feature-runtime-editor" class="feature-card scroll-mt-24 bg-white border border-[#8ce2b8] rounded-2xl p-6 shadow-sm">
-          <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Runtime + editor</span>
-          <h3 class="text-2xl font-extrabold mt-4 mb-3">One graph model for both contexts.</h3>
-          <p class="text-brand-gray font-medium leading-relaxed">Author and preview systems in the editor, then use the same procedural logic during gameplay when the project calls for runtime generation.</p>
-          <p class="mt-4" data-unity-only><a data-umami-event="Docs Click" data-umami-event-page="runtime-generation" class="inline-flex items-center gap-2 text-sm font-bold text-[#1e5a3c] hover:text-brand-dark" href="docs/runtime-generation.html">Read the runtime generation docs <span aria-hidden="true">&rarr;</span></a></p>
-        </article>
+        <div class="ct-tools" data-reveal-stagger>
+          <article id="feature-scene" class="ct-card ct-feature ct-feature--media" data-reveal>
+            <div class="ct-media ct-feature__media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="Editing a spline parameter with handles in the Scene view">
+                <source src="../res/docs/context-manipulation-spline-handles.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-feature__inner">
+              <span class="ct-feature__label">Scene view tools</span>
+              <h3 class="ct-h3">Edit splines in the Scene view.</h3>
+              <p class="ct-body">Bezier paths live in the graph settings. Drag their handles in the Scene view and the graph follows.</p>
+              <p data-unity-only><a class="ct-link" href="docs/context-manipulation.html">Scene view tools <span aria-hidden="true">→</span></a></p>
+            </div>
+          </article>
 
-        <article id="feature-realtime" class="feature-card scroll-mt-24 bg-white border border-brand-border rounded-2xl p-6 shadow-sm">
-          <span class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Realtime visuals</span>
-          <h3 class="text-2xl font-extrabold mt-4 mb-3">See the result while building.</h3>
-          <p class="text-brand-gray font-medium leading-relaxed">Immediate visual feedback makes graph editing easier to reason about and keeps iteration loops short while shaping content.</p>
-        </article>
+          <article id="feature-preview" class="ct-card ct-feature ct-feature--media" data-unity-only data-reveal>
+            <div class="ct-media ct-feature__media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="Pinning the scene preview and the gizmos to different nodes">
+                <source src="../res/docs/context-manipulation-preview-vs-gizmos.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-feature__inner">
+              <span class="ct-feature__label">Preview Stage</span>
+              <h3 class="ct-h3">Scene preview and gizmos.</h3>
+              <p class="ct-body">Try ideas in an isolated stage without touching your open scene. Pin the preview to any node, and another node's points and edges as gizmos.</p>
+              <p><a class="ct-link" href="docs/preview-stage.html">Preview Stage <span aria-hidden="true">→</span></a></p>
+            </div>
+          </article>
 
-        <article id="feature-dependencies" class="feature-card scroll-mt-24 bg-white border border-brand-border rounded-2xl p-6 shadow-sm">
-          <span id="engine-native-label" class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Unity-native workflow</span>
-          <h3 id="engine-native-title" class="text-2xl font-extrabold mt-4 mb-3">Stay inside Unity.</h3>
-          <p id="engine-native-copy" class="text-brand-gray font-medium leading-relaxed">OctoShaper is designed to be useful inside Unity itself, without asking your day-to-day workflow to revolve around a separate DCC or offline procedural authoring stack.</p>
-        </article>
+          <article id="feature-subgraphs" class="ct-card ct-feature ct-feature--media" data-reveal>
+            <div class="ct-media ct-feature__media">
+              <video muted loop playsinline preload="none" controls data-autoplay aria-label="Four copies of one subgraph with different settings">
+                <source src="../res/demos/subgraph-demo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="ct-feature__inner">
+              <span class="ct-feature__label">Reusable subgraphs</span>
+              <h3 class="ct-h3">Graphs inside graphs.</h3>
+              <p class="ct-body">Drop one graph into another like any node, preview included. Each copy gets its own parameter values.</p>
+              <p data-unity-only><a class="ct-link" href="docs/getting-started-attributes-and-subgraphs.html">Attributes and subgraphs <span aria-hidden="true">→</span></a></p>
+            </div>
+          </article>
 
-        <article id="feature-lightweight" class="feature-card scroll-mt-24 bg-[#f8f9fa] border border-brand-border rounded-2xl p-6 shadow-sm">
-          <span class="bg-white text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Lean setup</span>
-          <h3 class="text-2xl font-extrabold mt-4 mb-3">Small footprint, less friction.</h3>
-          <p class="text-brand-gray font-medium leading-relaxed">The emphasis is on easier adoption and lower process overhead, so small teams can keep the tool in active use instead of treating it like a heavyweight pipeline commitment.</p>
-        </article>
-
-        <article id="feature-fast" class="feature-card scroll-mt-24 bg-white border border-brand-border rounded-2xl p-6 shadow-sm">
-          <span class="bg-[#f8f9fa] text-brand-dark text-xs font-bold px-3 py-1 rounded-md border border-brand-border">Responsive iteration</span>
-          <h3 class="text-2xl font-extrabold mt-4 mb-3">Responsive enough for real iteration.</h3>
-          <p class="text-brand-gray font-medium leading-relaxed">The goal is short iteration loops: change parameters, inspect the result, and keep moving without procedural authoring turning into a long feedback cycle.</p>
-        </article>
-
-        <article id="feature-prefabs" class="feature-card scroll-mt-24 bg-[#f4f0fa] border border-[#8a74d8ff]/20 rounded-2xl p-6 shadow-sm">
-          <span id="engine-reuse-label" class="bg-white text-[#8a74d8ff] text-xs font-bold px-3 py-1 rounded-md border border-[#8a74d8ff]/20">Procedural prefabs</span>
-          <h3 id="engine-reuse-title" class="text-2xl font-extrabold mt-4 mb-3">Package reusable procedural setups.</h3>
-          <p id="engine-reuse-copy" class="text-brand-gray font-medium leading-relaxed">Procedural prefabs make it easier to carry graph-driven assets across scenes and projects without rebuilding the setup each time.</p>
-          <p class="mt-4" data-unity-only><a data-umami-event="Docs Click" data-umami-event-page="procedural-prefab" class="inline-flex items-center gap-2 text-sm font-bold text-[#8a74d8ff] hover:text-brand-dark" href="docs/procedural-prefab.html">Read what procedural prefabs are <span aria-hidden="true">&rarr;</span></a></p>
-        </article>
-
-        <article id="feature-execution" class="feature-card scroll-mt-24 bg-[#eafaf1] border border-[#8ce2b8] rounded-2xl p-6 shadow-sm md:col-span-2 xl:col-span-3 xl:min-h-0">
-          <span class="bg-white text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Async or sync</span>
-          <h3 class="text-2xl font-extrabold mt-4 mb-3">Choose the execution mode that fits the workflow.</h3>
-          <p class="text-brand-gray font-medium leading-relaxed">Some graphs need deterministic immediate execution. Others benefit from asynchronous work to keep the experience responsive. Supporting both gives the tool more room to fit different use cases without forcing one operating model everywhere.</p>
-          <p class="mt-4" data-unity-only><a data-umami-event="Docs Click" data-umami-event-page="sync-vs-async" class="inline-flex items-center gap-2 text-sm font-bold text-[#1e5a3c] hover:text-brand-dark" href="docs/sync-vs-async.html">Read about sync vs async execution <span aria-hidden="true">&rarr;</span></a></p>
-        </article>
-      </div>
+          <article id="feature-custom-nodes" class="ct-card ct-csharp" data-unity-only data-reveal>
+            <div class="ct-csharp__text">
+              <span class="ct-feature__label">For programmers</span>
+              <h3 class="ct-h2 ct-h2--card">C# API.</h3>
+              <ul class="ct-bullets">
+                <li>Turn any static C# method into a node</li>
+                <li>Drive graphs from gameplay with parameter overrides</li>
+                <li>React to spawned prefabs with callbacks</li>
+              </ul>
+              <p><a class="ct-link" href="docs/creating-custom-nodes.html">Creating custom nodes <span aria-hidden="true">→</span></a></p>
+            </div>
+            <div class="ct-csharp__code">
+              <div class="ct-code"><div class="ct-code__bar"><i></i><i></i><i></i><span>Write your own nodes</span></div>
+<pre><code><span class="at">[NodeDefinition</span>(Id = <span class="st">"mygame.jitter"</span>, Name = <span class="st">"Jitter Positions"</span>)<span class="at">]</span>
+<span class="kw">public static void</span> <span class="fn">JitterPositions</span>(<span class="ty">ElementSet</span> elements, <span class="kw">float</span> magnitude = <span class="nu">0.5f</span>)
+{
+    <span class="cm">// Parameters show up as ports in the graph.</span>
+}</code></pre></div>
+              <div class="ct-code"><div class="ct-code__bar"><i></i><i></i><i></i><span>Drive graphs from gameplay</span></div>
+<pre><code><span class="kw">if</span> (executor.<span class="fn">TrySetParameterOverride</span>(<span class="st">"Seed"</span>, seed))
+    executor.<span class="fn">Evaluate</span>();  <span class="cm">// or await EvaluateAsync()</span></code></pre></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
-    <!-- END: Feature Details Section -->
+    <!-- END: More tools -->
 
     <!-- BEGIN: Documentation Carousel -->
-    <section data-unity-only class="max-w-[1400px] mx-auto px-6 py-24">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
-        <div class="max-w-3xl">
-          <p class="text-xs font-extrabold uppercase tracking-[0.2em] text-[#8a74d8ff] mb-3">Learn OctoShaper</p>
-          <h2 class="section-heading text-4xl sm:text-5xl font-extrabold">Explore the documentation</h2>
-          <p class="mt-4 text-brand-gray font-medium leading-relaxed">Practical guides, core concepts, and tutorials for building graph-driven systems in Unity.</p>
+    <section data-unity-only class="ct-section" aria-labelledby="docs-title">
+      <div class="ct-container">
+        <div class="ct-section-head ct-section-head--split" data-reveal>
+          <div>
+            <span class="ct-eyebrow">Learn OctoShaper</span>
+            <h2 id="docs-title" class="ct-h2">Start with a guide.</h2>
+            <p class="ct-lede">Short, practical articles and video tutorials. Install, build your first graph, then pick the topic you need.</p>
+          </div>
+          <div class="ct-controls" aria-label="Documentation carousel controls">
+            <button id="product-docs-previous" type="button" class="docs-carousel-control" aria-label="Previous documentation articles" disabled>&larr;</button>
+            <button id="product-docs-next" type="button" class="docs-carousel-control" aria-label="Next documentation articles" disabled>&rarr;</button>
+          </div>
         </div>
-        <div class="flex items-center gap-3" aria-label="Documentation carousel controls">
-          <button id="product-docs-previous" type="button" class="docs-carousel-control rounded-xl" aria-label="Previous documentation articles" disabled>&larr;</button>
-          <button id="product-docs-next" type="button" class="docs-carousel-control rounded-xl" aria-label="Next documentation articles" disabled>&rarr;</button>
-        </div>
-      </div>
 
-      <div id="product-docs-carousel" class="docs-carousel-viewport" tabindex="0" aria-label="Documentation articles carousel">
-        <div id="product-docs-track" class="docs-carousel-track" aria-live="polite">
-          <!-- DOCS_CAROUSEL_CARDS_START -->
-<a href="docs/installation.html" data-umami-event="Docs Click" data-umami-event-page="installation" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="OctoShaper installation walkthrough"><source src="../res/docs/install-flow.mov" type="video/quicktime"></video></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Setup</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Guide</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Installation</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Import OctoShaper into a Unity project, validate the editor setup, and confirm your first graph can execute cleanly.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+        <div id="product-docs-carousel" class="docs-carousel-viewport" tabindex="0" aria-label="Documentation articles carousel">
+          <div id="product-docs-track" class="docs-carousel-track" aria-live="polite">
+            <!-- DOCS_CAROUSEL_CARDS_START -->
+<a href="docs/upgrading-to-1-2.html" data-umami-event="Docs Click" data-umami-event-page="upgrading-to-1-2" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media is-fallback" data-category="Setup"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Setup</span><span class="ct-tag ct-tag--mint">New in 1.2</span></div>
+              <h3 class="ct-doc-card__title">Upgrading to 1.2</h3>
+              <p class="ct-doc-card__summary">A short checklist for moving a project to 1.2, and what changed for existing graphs and code.</p>
+              <span class="ct-doc-card__time">4 min read</span>
             </div>
           </a>
-<a href="docs/sync-vs-async.html" data-umami-event="Docs Click" data-umami-event-page="sync-vs-async" class="docs-carousel-card group rounded-2xl">
+<a href="docs/procedural-meshes.html" data-umami-event="Docs Click" data-umami-event-page="procedural-meshes" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><img src="../res/docs/1.2/mesh-graph-overview.png" alt="Procedural mesh graph in OctoShaper" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Building';this.remove()"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Building</span><span class="ct-tag ct-tag--mint">New in 1.2</span></div>
+              <h3 class="ct-doc-card__title">Procedural Meshes</h3>
+              <p class="ct-doc-card__summary">Generate, edit and render real meshes in a graph with primitives, bevels, booleans, spline sweeps and Realize Meshes.</p>
+              <span class="ct-doc-card__time">7 min read</span>
+            </div>
+          </a>
+<a href="docs/colors-textures-and-materials.html" data-umami-event="Docs Click" data-umami-event-page="colors-textures-and-materials" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><img src="../res/docs/1.2/height-map-terrain.png" alt="Height-map terrain colored by height" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Building';this.remove()"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Building</span><span class="ct-tag ct-tag--mint">New in 1.2</span></div>
+              <h3 class="ct-doc-card__title">Colors, Textures and Materials</h3>
+              <p class="ct-doc-card__summary">Color ramps, texture sampling, height-map displacement, vertex colors and per-instance material overrides.</p>
+              <span class="ct-doc-card__time">8 min read</span>
+            </div>
+          </a>
+<a href="docs/preview-stage.html" data-umami-event="Docs Click" data-umami-event-page="preview-stage" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><img src="../res/docs/1.2/spreadsheet-pinned.png" alt="Preview Stage with the spreadsheet" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Editor';this.remove()"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Editor</span><span class="ct-tag ct-tag--mint">New in 1.2</span></div>
+              <h3 class="ct-doc-card__title">Preview Stage and Inspection</h3>
+              <p class="ct-doc-card__summary">Preview graphs in an isolated Scene view stage, inspect any node&#039;s table, and keep large graphs responsive.</p>
+              <span class="ct-doc-card__time">5 min read</span>
+            </div>
+          </a>
+<a href="docs/ai-integration.html" data-umami-event="Docs Click" data-umami-event-page="ai-integration" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><img src="../res/docs/1.2/ai-integration-menu.png" alt="OctoShaper AI Integration menu" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Editor';this.remove()"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Editor</span><span class="ct-tag ct-tag--mint">New in 1.2</span></div>
+              <h3 class="ct-doc-card__title">AI Integration and Editor Automation</h3>
+              <p class="ct-doc-card__summary">Let a coding agent build and refine OctoShaper graphs through the Unity 6 CLI and a bundled skill, or script the editor with JSON.</p>
+              <span class="ct-doc-card__time">5 min read</span>
+            </div>
+          </a>
+<a href="docs/installation.html" data-umami-event="Docs Click" data-umami-event-page="installation" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><video class="h-full w-full object-cover" muted loop playsinline preload="none" controls data-autoplay aria-label="OctoShaper installation walkthrough"><source src="../res/docs/install-flow.mp4" type="video/mp4"></video></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Setup</span><span class="ct-tag ct-tag--mint">Guide</span></div>
+              <h3 class="ct-doc-card__title">Installation</h3>
+              <p class="ct-doc-card__summary">Import OctoShaper, let the dependency installer finish, and check your render pipeline for the samples.</p>
+              <span class="ct-doc-card__time">4 min read</span>
+            </div>
+          </a>
+<a href="docs/sync-vs-async.html" data-umami-event="Docs Click" data-umami-event-page="sync-vs-async" class="docs-carousel-card ct-card">
             <div class="docs-carousel-media"><img src="../res/docs/async-vs-sync.gif" alt="Animated side-by-side comparison of synchronous and asynchronous OctoShaper execution" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Concepts';this.remove()"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Concepts</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Concept</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Sync vs Async</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Learn how OctoShaper&#039;s sync and async execution paths differ, and what stays the same between them.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Concepts</span><span class="ct-tag ct-tag--mint">Concept</span></div>
+              <h3 class="ct-doc-card__title">Sync vs Async</h3>
+              <p class="ct-doc-card__summary">What changes when a graph runs asynchronously, in editor previews, on the executor and from code.</p>
+              <span class="ct-doc-card__time">5 min read</span>
             </div>
           </a>
-<a href="docs/procedural-prefab.html" data-umami-event="Docs Click" data-umami-event-page="procedural-prefab" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="OctoShaper procedural prefab import and reimport workflow"><source src="../res/docs/procedural-prefabs.mov" type="video/quicktime"></video></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Concepts</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Workflow</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Procedural Prefab</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Understand how procedural prefabs import reusable GameObject hierarchies from a graph and configuration.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+<a href="docs/assemblies-and-hierarchies.html" data-umami-event="Docs Click" data-umami-event-page="assemblies-and-hierarchies" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><img src="../res/docs/1.2/place-local-assembly.png" alt="Place Local Assembly placing copies of a prop" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Building';this.remove()"></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Building</span><span class="ct-tag ct-tag--mint">Guide</span></div>
+              <h3 class="ct-doc-card__title">Assemblies and Placement</h3>
+              <p class="ct-doc-card__summary">Author a prop once around the origin, then place it at every incoming transform with Local assembly or Place Local Assembly.</p>
+              <span class="ct-doc-card__time">6 min read</span>
             </div>
           </a>
-<a href="docs/elements.html" data-umami-event="Docs Click" data-umami-event-page="elements" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media is-fallback" data-category="Concepts"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Concepts</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Concept</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Elements</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">See how ElementSet data, rows, and attributes form the core data model that flows through OctoShaper graphs.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+<a href="docs/rendering-and-instancing-modes.html" data-umami-event="Docs Click" data-umami-event-page="rendering-and-instancing-modes" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><video class="h-full w-full object-cover" muted loop playsinline preload="none" controls data-autoplay aria-label="Comparison of GameObject, Draw Instanced, and Draw Instanced Indirect realization"><source src="../res/docs/rendering-modes-comparison.mp4" type="video/mp4"></video></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Rendering</span><span class="ct-tag ct-tag--mint">Concept</span></div>
+              <h3 class="ct-doc-card__title">Rendering and Instancing Modes</h3>
+              <p class="ct-doc-card__summary">Choose between real GameObjects, GPU-instanced draws and indirect draws for generated content, and mix them in one graph.</p>
+              <span class="ct-doc-card__time">7 min read</span>
             </div>
           </a>
-<a href="docs/node-graph-basics.html" data-umami-event="Docs Click" data-umami-event-page="node-graph-basics" class="docs-carousel-card group rounded-2xl">
+<a href="docs/node-graph-basics.html" data-umami-event="Docs Click" data-umami-event-page="node-graph-basics" class="docs-carousel-card ct-card">
             <div class="docs-carousel-media"><img src="../res/docs/annotated-graph-window.png" alt="Annotated OctoShaper graph editor with graph settings, nodes, and the ElementSet debug panel" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Editor';this.remove()"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Editor</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Guide</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Node Graph Basics</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Get oriented with ProceduralGraph assets, ports, links, parameters, and the main ElementSet boundary.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Editor</span><span class="ct-tag ct-tag--mint">Guide</span></div>
+              <h3 class="ct-doc-card__title">Node Graph Basics</h3>
+              <p class="ct-doc-card__summary">Create a graph, wire nodes from Main Input to Main Output, expose parameters and read port contracts.</p>
+              <span class="ct-doc-card__time">5 min read</span>
             </div>
           </a>
-<a href="docs/context-manipulation.html" data-umami-event="Docs Click" data-umami-event-page="context-manipulation" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="Spline anchors and Bezier handles displayed through an OctoShaper Scene view manipulator"><source src="../res/docs/context-manipulation-spline-handles.mov" type="video/quicktime"></video></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Editor</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Guide</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Context Manipulation</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Manipulate compatible graph values in Unity&#039;s Scene view and distinguish interactive handles from output gizmos.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+<a href="docs/context-manipulation.html" data-umami-event="Docs Click" data-umami-event-page="context-manipulation" class="docs-carousel-card ct-card">
+            <div class="docs-carousel-media"><video class="h-full w-full object-cover" muted loop playsinline preload="none" controls data-autoplay aria-label="Spline anchors and Bezier handles displayed through an OctoShaper Scene view manipulator"><source src="../res/docs/context-manipulation-spline-handles.mp4" type="video/mp4"></video></div>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Editor</span><span class="ct-tag ct-tag--mint">Guide</span></div>
+              <h3 class="ct-doc-card__title">Context Manipulation</h3>
+              <p class="ct-doc-card__summary">Manipulate compatible graph values in Unity&#039;s Scene view and distinguish interactive handles from output gizmos.</p>
+              <span class="ct-doc-card__time">4 min read</span>
             </div>
           </a>
-<a href="docs/working-with-splines.html" data-umami-event="Docs Click" data-umami-event-page="working-with-splines" class="docs-carousel-card group rounded-2xl">
+<a href="docs/working-with-splines.html" data-umami-event="Docs Click" data-umami-event-page="working-with-splines" class="docs-carousel-card ct-card">
             <div class="docs-carousel-media"><img src="../res/docs/spline-editor-scene-view.png" alt="Spline parameter editor beside Scene view Bezier anchors and handles" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.parentElement.dataset.category='Data Types';this.remove()"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Data Types</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Guide</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Working with Splines</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Author spline values and use sampling, distribution, query, and growth nodes to turn paths into procedural data.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">7 min read</span>
-            </div>
-          </a>
-<a href="docs/rendering-and-instancing-modes.html" data-umami-event="Docs Click" data-umami-event-page="rendering-and-instancing-modes" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="Comparison of GameObject, Draw Instanced, and Draw Instanced Indirect realization"><source src="../res/docs/rendering-modes-comparison.mov" type="video/quicktime"></video></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Rendering</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Concept</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Rendering and Instancing Modes</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Compare GameObject, GPU-instanced, and indirect rendering and choose the OctoShaper nodes that fit each result.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">7 min read</span>
-            </div>
-          </a>
-<a href="docs/creating-custom-nodes.html" data-umami-event="Docs Click" data-umami-event-page="creating-custom-nodes" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><video class="h-full w-full object-cover" autoplay muted loop playsinline preload="metadata" aria-label="Custom Raise Height node visible in an OctoShaper graph"><source src="../res/docs/custom-node-in-graph.mov" type="video/quicktime"></video></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Extending</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Guide</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Creating Custom Nodes</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Turn project-specific static C# methods into reusable OctoShaper nodes for Unity graphs and player builds.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">6 min read</span>
-            </div>
-          </a>
-<a href="docs/gpu-accelerated-grass.html" data-umami-event="Docs Click" data-umami-event-page="gpu-accelerated-grass" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><iframe class="h-full w-full" src="https://www.youtube-nocookie.com/embed/cKNg0Jow9II?autoplay=1&mute=1&loop=1&playlist=cKNg0Jow9II&controls=0&modestbranding=1" title="GPU Accelerated Grass in Unity - OctoShaper Tutorial" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1"></iframe></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Tutorials</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Tutorial</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">GPU-Accelerated Grass</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Build natural billboard grass clusters and render them efficiently in Unity with GPU instanced indirect drawing.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">5 min read</span>
-            </div>
-          </a>
-<a href="docs/getting-started-attributes-and-subgraphs.html" data-umami-event="Docs Click" data-umami-event-page="getting-started-attributes-and-subgraphs" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media"><iframe class="h-full w-full" src="https://www.youtube-nocookie.com/embed/WlGwUR--STk?autoplay=1&mute=1&loop=1&playlist=WlGwUR--STk&controls=0&modestbranding=1" title="Getting started - OctoShaper Tutorial" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1"></iframe></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Tutorials</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Tutorial</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Getting Started with Attributes and Subgraphs</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Build a reusable point-cluster subgraph, pass per-element values into it, and instance varied results along a spline.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">6 min read</span>
-            </div>
-          </a>
-<a href="docs/runtime-generation.html" data-umami-event="Docs Click" data-umami-event-page="runtime-generation" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media is-fallback" data-category="Runtime"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">Runtime</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">Workflow</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Runtime Generation</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Run OctoShaper graphs in play mode, understand the generated executor path, and choose the right runtime surface.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">5 min read</span>
-            </div>
-          </a>
-<a href="docs/gameobject-callbacks.html" data-umami-event="Docs Click" data-umami-event-page="gameobject-callbacks" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media is-fallback" data-category="API"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">API</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">API</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">GameObject Callbacks</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Use IUnityInstanceSpawnReceiver to react to spawned GameObjects and understand the UnityInstanceSpawnContext.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
-            </div>
-          </a>
-<a href="docs/runtime-parameter-api.html" data-umami-event="Docs Click" data-umami-event-page="runtime-parameter-api" class="docs-carousel-card group rounded-2xl">
-            <div class="docs-carousel-media is-fallback" data-category="API"></div>
-            <div class="flex flex-1 flex-col p-5 sm:p-6">
-              <div class="mb-4 flex items-center justify-between gap-3"><span class="text-xs font-extrabold uppercase tracking-[0.16em] text-brand-gray">API</span><span class="rounded-md border border-[#8ce2b8] bg-[#eafaf1] px-2.5 py-1 text-[11px] font-extrabold text-[#1e5a3c]">API</span></div>
-              <h3 class="mb-3 text-xl font-extrabold text-brand-dark transition-colors group-hover:text-[#8a74d8ff]">Runtime Parameters</h3>
-              <p class="mb-5 flex-1 text-sm font-medium leading-relaxed text-brand-gray">Override graph parameters from code using the ProceduralGraphExecutor and ProceduralConfiguration APIs.</p>
-              <span class="text-sm font-extrabold text-[#8a74d8ff]">4 min read</span>
+            <div class="ct-doc-card__body">
+              <div class="ct-doc-card__meta"><span class="ct-doc-card__cat">Data Types</span><span class="ct-tag ct-tag--mint">Guide</span></div>
+              <h3 class="ct-doc-card__title">Working with Splines</h3>
+              <p class="ct-doc-card__summary">Author spline values and use sampling, distribution, query, and growth nodes to turn paths into procedural data.</p>
+              <span class="ct-doc-card__time">7 min read</span>
             </div>
           </a>
               <!-- DOCS_CAROUSEL_CARDS_END -->
+          </div>
         </div>
-      </div>
 
-      <div class="mt-3 flex justify-end">
-        <a href="docs/index.html" data-umami-event="Docs Click" data-umami-event-page="index" class="inline-flex items-center gap-2 text-sm font-extrabold text-[#8a74d8ff] hover:text-brand-dark">Browse all documentation <span aria-hidden="true">&rarr;</span></a>
+        <p class="ct-docs-links"><a href="docs/nodes.html" class="ct-link">Node catalog <span aria-hidden="true">→</span></a><a href="docs/changelog.html" class="ct-link">Changelog <span aria-hidden="true">→</span></a><a href="docs/index.html" data-umami-event="Docs Click" data-umami-event-page="index" class="ct-link">All documentation <span aria-hidden="true">→</span></a></p>
       </div>
     </section>
     <!-- END: Documentation Carousel -->
 
-    <!-- BEGIN: Bottom CTA -->
-    <div class="final-cta w-full px-6 py-14 sm:px-12 sm:py-16">
-      <div class="max-w-[1240px] mx-auto text-center">
-        <div class="relative z-10">
-          <p id="engine-bottom-title" class="section-heading text-3xl sm:text-5xl font-extrabold text-white mb-3">Ready to try it in your Unity project?</p>
-          <p id="engine-bottom-copy" class="text-white/65 font-medium mb-7 max-w-2xl mx-auto">One-time purchase. Lifetime license. No subscription.</p>
-        <a
-          id="engine-bottom-unity-action"
-          href="https://u3d.as/3QEQ"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-umami-event="Asset Store Click"
-          data-umami-event-location="bottom-cta"
-          class="engine-unity-action inline-block max-w-xs rounded-2xl border-2 bg-white p-3 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all group">
-          <p class="text-xs font-extrabold uppercase tracking-[0.24em] text-[#8a74d8ff] mb-3 text-center">Available now</p>
-          <div class="rounded-2xl border border-[#e5e7eb] overflow-hidden">
-            <img src="../res/unity-asset-store.png" alt="Get OctoShaper on the Unity Asset Store" class="w-full h-auto"/>
-          </div>
-        </a>
-        <div id="engine-bottom-godot-action" class="engine-bottom-godot-action hidden inline-flex items-center gap-3 rounded-2xl border-2 bg-white px-5 py-3 shadow">
-          <img src="../res/godot-icon.png" alt="" class="h-10 w-10 object-contain"/>
-          <span class="text-left"><span class="block text-sm font-extrabold text-brand-dark">Follow the Godot edition</span><span class="mt-1 flex gap-3 text-xs font-bold"><a class="engine-godot-action__link" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer">YouTube →</a><a class="engine-godot-action__link" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer">Instagram →</a></span></span>
+    <!-- BEGIN: Roadmap -->
+    <section class="ct-section ct-section--panel" aria-labelledby="roadmap-title">
+      <div class="ct-container">
+        <div class="ct-section-head" data-reveal>
+          <span class="ct-eyebrow">Roadmap</span>
+          <h2 id="roadmap-title" class="ct-h2">What's coming next.</h2>
+          <p class="ct-lede">Dates are targets, not promises. The devlog has the details.</p>
         </div>
+
+        <ol class="ct-roadmap" data-reveal-stagger>
+          <li class="ct-milestone ct-milestone--done" data-reveal>
+            <div class="ct-milestone__top"><span class="ct-milestone__date">Summer 2026</span><span class="ct-milestone__icon" style="background:#111"><svg viewBox="0 0 19 22" fill="none" aria-hidden="true"><path d="M10.3305 3.93605L13.7281 5.94619C13.8503 6.01676 13.8547 6.21254 13.7281 6.28311L9.69098 8.67343C9.56884 8.74627 9.4245 8.74172 9.31124 8.67343L5.27408 6.28311C5.14972 6.21482 5.1475 6.01449 5.27408 5.94619L8.66947 3.93605V0L0 5.13121V15.3936L3.32433 13.4267V9.40646C3.32211 9.26304 3.48644 9.1606 3.60858 9.238L7.64575 11.6283C7.76788 11.7012 7.83672 11.8309 7.83672 11.9652V16.7436C7.83894 16.887 7.67461 16.9894 7.55248 16.912L4.15486 14.9019L0.830529 16.8688L9.5 22L18.1695 16.8688L14.8451 14.9019L11.4475 16.912C11.3276 16.9872 11.1588 16.8893 11.1633 16.7436V11.9652C11.1633 11.8218 11.241 11.6943 11.3543 11.6283L15.3914 9.238C15.5113 9.16287 15.6801 9.25849 15.6757 9.40646V13.4267L19 15.3936V5.13121L10.3305 0V3.93605Z" fill="currentColor"/></svg></span></div>
+            <h3 class="ct-h3">Unity Release</h3>
+            <p class="ct-body">The full Unity package, with a stable set of features and public docs.</p>
+            <span class="ct-tag ct-tag--mint" style="justify-self:start">Shipped</span>
+          </li>
+          <li class="ct-milestone ct-milestone--done" data-reveal>
+            <div class="ct-milestone__top"><span class="ct-milestone__date">October 2026</span><span class="ct-milestone__icon" style="background:#8a74d8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2"/><circle cx="17.5" cy="10.5" r="2"/><circle cx="8.5" cy="7.5" r="2"/><circle cx="6.5" cy="12.5" r="2"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.5-.6 1.5-1.5 0-.4-.1-.7-.3-1-.2-.3-.3-.7-.3-1 0-.8.7-1.5 1.5-1.5H16c3.3 0 6-2.7 6-6 0-5.5-4.5-10-10-10z"/></svg></span></div>
+            <h3 class="ct-h3">Colourful Update</h3>
+            <p class="ct-body">Procedural meshes, colours, textures and per-instance material overrides.</p>
+            <span class="ct-tag ct-tag--mint" style="justify-self:start">Shipped</span>
+          </li>
+          <li class="ct-milestone ct-milestone--next" data-reveal>
+            <div class="ct-milestone__top"><span class="ct-milestone__date">Fall</span><span class="ct-milestone__icon" style="background:#5d45b8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span></div>
+            <h3 class="ct-h3">The Billions Update</h3>
+            <p class="ct-body">Mixed instancing and async GPU rendering, for scenes with a lot more stuff in them.</p>
+            <span class="ct-tag ct-tag--sun" style="justify-self:start">Up next</span>
+          </li>
+          <li class="ct-milestone ct-milestone--godot" data-reveal>
+            <div class="ct-milestone__top"><span class="ct-milestone__date">2027</span><span class="ct-milestone__icon" style="background:#dcecfc"><img src="../res/godot-icon.png" alt="" width="20" height="20"/></span></div>
+            <h3 class="ct-h3">Godot Release</h3>
+            <p class="ct-body">The same node graphs, made for the Godot engine.</p>
+            <span class="ct-tag ct-tag--sky" style="justify-self:start">In development</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <!-- END: Roadmap -->
+
+    <!-- BEGIN: Bottom CTA -->
+    <section class="ct-section ct-section--tight">
+      <div class="ct-container">
+        <div class="ct-cta" data-reveal>
+          <span class="ct-cta__rings" aria-hidden="true"></span>
+          <img class="ct-cta__mascot" src="../res/octoshaper-logo.svg" alt="" width="110" height="110" loading="lazy"/>
+          <div style="display:grid;gap:0.9rem;justify-items:center">
+            <h2 id="engine-bottom-title" class="ct-h2">Try it in your project.</h2>
+            <p id="engine-bottom-copy" class="ct-lede">One-time purchase, no subscription. Unity 2022.3 and newer.</p>
+          </div>
+          <a id="engine-bottom-unity-action" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="bottom-cta" class="ct-store">
+            <img src="../res/unity-asset-store.png" alt="Get OctoShaper on the Unity Asset Store" width="1246" height="319" loading="lazy"/>
+          </a>
+          <div id="engine-bottom-godot-action" class="ct-buy hidden" style="max-width:24rem">
+            <span class="ct-buy__icon ct-buy__icon--godot"><img src="../res/godot-icon.png" alt="" width="24" height="24"/></span>
+            <span class="ct-buy__text">
+              <span class="ct-buy__title" style="font-size:1.1rem">Follow the Godot edition</span>
+              <span class="ct-buy__sub"><a class="ct-link" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer">YouTube →</a> &nbsp; <a class="ct-link" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer">Instagram →</a></span>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- END: Bottom CTA -->
   </main>
-  <!-- END: Main Content -->
+
 
   <!-- BEGIN: Footer -->
-<footer class="bg-[#8a74d8ff] text-white/80 py-4 text-sm mt-auto border-t border-[#5a358c]">
-  <div class="max-w-[1400px] mx-auto px-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-center">
-    <span>© 2026 Curious Trove</span>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/>
-      </svg>
-      <span>Instagram</span>
-    </a>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/>
-      </svg>
-      <span>YouTube</span>
-    </a>
-    <a class="inline-flex items-center gap-2 whitespace-nowrap text-white hover:text-white transition-colors font-medium" href="mailto:contact@curioustrove.com" aria-label="Email">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-      <span>Email</span>
-    </a>
+<footer class="ct-footer">
+  <div class="ct-footer__inner">
+    <div class="ct-footer__brand">
+      <a class="ct-footer__logo" href="../index.html">
+        <img src="../res/logo.svg" alt="" width="44" height="44" loading="lazy"/>
+        <span>Curious Trove</span>
+      </a>
+      <p class="ct-footer__tagline">Friendly tools for game developers. By indies, for indies.</p>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">OctoShaper</p>
+      <ul class="ct-footer__list">
+        <li><a href="../octoshaper/unity/index.html">For Unity</a></li>
+        <li><a href="../octoshaper/godot/index.html">For Godot</a></li>
+        <li><a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer">Unity Asset Store</a></li>
+        <li><a href="../octoshaper/docs/changelog.html">Changelog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Learn</p>
+      <ul class="ct-footer__list">
+        <li><a href="../octoshaper/docs/index.html">Documentation</a></li>
+        <li><a href="../octoshaper/docs/installation.html">Installation</a></li>
+        <li><a href="../octoshaper/docs/nodes.html">Node catalog</a></li>
+        <li><a href="../blog.html">Devlog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Say hi</p>
+      <ul class="ct-footer__list">
+        <li><a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/></svg>YouTube</a></li>
+        <li><a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/></svg>Instagram</a></li>
+        <li><a href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Community forum</a></li>
+        <li><a href="mailto:contact@curioustrove.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email us</a></li>
+      </ul>
+    </div>
   </div>
+
+  <div class="ct-footer__bottom">
+    <span>© 2026 Curious Trove</span>
+    <span class="ct-footer__made">Made with <span class="ct-footer__heart" aria-label="love">♥</span> and a lot of nodes</span>
+  </div>
+  <div class="ct-footer__wordmark" aria-hidden="true">curious trove</div>
 </footer>
 <!-- END: Footer -->
-  <script src="../js/roadmap.js"></script>
-  <script src="../js/octoshaper-docs-carousel.js"></script>
-  <script src="../js/octoshaper-engine-selector.js"></script>
-  <script src="../js/octoshaper-hero-tilt.js"></script>
+  <script src="../js/octoshaper-docs-carousel.js" defer></script>
+  <script src="../js/octoshaper-engine-selector.js" defer></script>
+  <script src="../js/octoshaper-hero-tilt.js" defer></script>
+  <script src="../js/site-motion.js" defer></script>
 </body>
 </html>

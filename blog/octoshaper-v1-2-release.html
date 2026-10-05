@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6f9f2b9b-4c22-45eb-adf7-b4a9e27facfd"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta Tags -->
+  <title>OctoShaper v1.2.0, the Colorful Update, is out</title>
+  <meta name="title" content="OctoShaper v1.2.0, the Colorful Update, is out" />
+  <meta name="description" content="OctoShaper 1.2 adds procedural meshes, colors and textures, per-instance material overrides, a Preview Stage and AI integration to the node-based procedural generation tool for Unity." />
+  <meta name="keywords" content="OctoShaper 1.2, Colorful Update, procedural meshes Unity, procedural generation Unity, material overrides, Unity PCG tool" />
+  <meta name="author" content="Curious Trove" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://curioustrove.com/blog/octoshaper-v1-2-release.html" />
+  <meta property="og:title" content="OctoShaper v1.2.0, the Colorful Update, is out" />
+  <meta property="og:description" content="OctoShaper 1.2 adds procedural meshes, colors and textures, per-instance material overrides, a Preview Stage and AI integration to the node-based procedural generation tool for Unity." />
+  <meta property="og:image" content="https://curioustrove.com/res/docs/1.2/height-map-terrain.png" />
+  <meta property="og:site_name" content="Curious Trove" />
+  <meta property="article:published_time" content="2026-10-05" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OctoShaper v1.2.0, the Colorful Update, is out" />
+  <meta name="twitter:description" content="OctoShaper 1.2 adds procedural meshes, colors and textures, per-instance material overrides, a Preview Stage and AI integration to the node-based procedural generation tool for Unity." />
+  <meta name="twitter:image" content="https://curioustrove.com/res/docs/1.2/height-map-terrain.png" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://curioustrove.com/blog/octoshaper-v1-2-release.html" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="../res/logo.svg" />
+  <link rel="apple-touch-icon" href="../res/logo.svg" />
+
+  <!-- Agent Discovery -->
+  <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
+
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "OctoShaper v1.2.0, the Colorful Update, is out",
+    "description": "OctoShaper 1.2 adds procedural meshes, colors and textures, per-instance material overrides, a Preview Stage and AI integration to the node-based procedural generation tool for Unity.",
+    "image": "https://curioustrove.com/res/docs/1.2/height-map-terrain.png",
+    "mainEntityOfPage": "https://curioustrove.com/blog/octoshaper-v1-2-release.html",
+    "url": "https://curioustrove.com/blog/octoshaper-v1-2-release.html",
+    "datePublished": "2026-10-05",
+    "dateModified": "2026-10-05",
+    "author": {
+      "@type": "Person",
+      "name": "Paul",
+      "url": "https://curioustrove.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Curious Trove",
+      "url": "https://curioustrove.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://curioustrove.com/res/logo.svg"
+      }
+    },
+    "articleSection": "OctoShaper",
+    "keywords": ["OctoShaper", "Unity", "procedural generation", "procedural meshes", "release notes"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="../css/utilities.css" />
+  <link rel="stylesheet" href="../css/site.css" />
+  <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('ct-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.setAttribute('data-theme',t)})();</script>
+</head>
+<body data-base-path="../" data-active-page="blog" class="ct-tw bg-[#fcfcfc] text-brand-dark antialiased min-h-screen flex flex-col">
+  <!-- BEGIN: Header -->
+<a class="ct-skip" href="#main">Skip to content</a>
+<header class="ct-nav">
+  <input type="checkbox" id="nav-toggle" class="ct-nav__toggle-input"/>
+  <div class="ct-nav__bar">
+    <a href="../index.html" class="ct-nav__brand">
+      <img alt="" width="36" height="36" src="../res/logo.svg"/>
+      <span>Curious Trove</span>
+    </a>
+
+    <nav id="nav" class="ct-nav__links" aria-label="Main">
+      <a class="ct-nav__link" href="../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
+      <a class="ct-nav__link is-active" href="../blog.html" data-page="blog" aria-current="page">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community <span class="ct-nav__ext" aria-hidden="true">↗</span></a>
+    </nav>
+
+    <div class="ct-nav__actions">
+      <button type="button" class="ct-theme-toggle" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+        <svg class="ct-theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ct-theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="ct-btn ct-btn--primary ct-btn--small ct-nav__cta" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar">Get OctoShaper</a>
+      <label for="nav-toggle" class="ct-nav__toggle" aria-label="Toggle navigation">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10"/>
+        </svg>
+      </label>
+    </div>
+  </div>
+  <div class="ct-nav__mobile">
+    <nav aria-label="Main (mobile)">
+      <a class="ct-nav__link" href="../octoshaper/index.html" data-page="octoshaper">OctoShaper</a>
+      <a class="ct-nav__link" href="../octoshaper/docs/index.html" data-page="documentation">Documentation</a>
+      <a class="ct-nav__link is-active" href="../blog.html" data-page="blog" aria-current="page">Devlog</a>
+      <a class="ct-nav__link" href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer">Community ↗</a>
+      <a class="ct-btn ct-btn--primary" href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="navbar-mobile">Get OctoShaper</a>
+    </nav>
+  </div>
+</header>
+<!-- END: Header -->
+
+
+  <!-- BEGIN: Main Content -->
+  <main id="main" class="flex-grow bg-grid-pattern pb-16">
+    <section class="max-w-[900px] mx-auto px-6 pt-16 pb-8">
+      <p class="mb-6">
+        <a href="../blog.html" class="inline-flex items-center gap-2 text-sm font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors" aria-label="Back to the Devlog">
+          <span aria-hidden="true">&larr;</span> Back to the Devlog
+        </a>
+      </p>
+      <article class="bg-white border-2 border-[#8ce2b8] rounded-xl p-8 shadow-lg">
+        <div class="flex items-center gap-3 mb-3 flex-wrap">
+          <a href="../octoshaper/index.html" class="bg-[#8ce2b8] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md hover:bg-[#76cca1] transition-colors">OctoShaper</a>
+          <time datetime="2026-10-05" class="text-sm text-brand-gray">October 5, 2026</time>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-6 text-brand-dark tracking-tight">OctoShaper v1.2.0, the Colorful Update, is out</h1>
+        <div class="post-content space-y-5 text-brand-gray leading-relaxed">
+          <p>
+            OctoShaper 1.2 is live on the Unity Asset Store. I call it the Colorful Update: graphs can now build their own meshes, color them, and give every instance its own look. It is a free update for everyone who already owns OctoShaper.
+          </p>
+          <img src="../res/docs/1.2/height-map-terrain.png" alt="A plane mesh displaced by a height map and colored by height, next to its OctoShaper graph" width="2000" height="1222" loading="lazy" class="w-full rounded-2xl border-2 border-[#8a74d8ff]/20 shadow-sm" />
+          <p>
+            <strong>Procedural meshes.</strong> Until now a graph placed meshes you already had. In 1.2 it can make them: primitives, bevels, booleans, convex hulls, revolved profiles and geometry swept along a spline. Realize Meshes turns the result into shared Unity meshes, and new collider nodes add box, sphere, capsule and mesh colliders. <a href="../octoshaper/docs/procedural-meshes.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Procedural meshes guide</a>
+          </p>
+          <p>
+            <strong>Colors, textures and materials.</strong> Color ramps, texture sampling, height-map displacement and vertex colors are all nodes now. After a draw node you can override a material's color, texture or float per instance, without touching the source material. <a href="../octoshaper/docs/colors-textures-and-materials.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Colors, textures and materials guide</a>
+          </p>
+          <img src="../res/docs/1.2/material-overrides.png" alt="A grid of instanced spheres sharing one material, each with its own color and a stripe texture override" width="2000" height="1221" loading="lazy" class="w-full rounded-2xl border-2 border-[#8a74d8ff]/20 shadow-sm" />
+          <p>
+            <strong>A better editor.</strong> Opening a graph now opens a Preview Stage, an isolated Scene view where you can try ideas without touching your open scene. Previews run asynchronously and cancel when you change a value, the toolbar is more compact, and the editor explains why a connection was rejected. Position and spline tools let you drag graph parameters directly in the Scene view. <a href="../octoshaper/docs/preview-stage.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Preview Stage guide</a>
+          </p>
+          <p>
+            <strong>Local assemblies.</strong> Author a prop once around the origin, then place it at every incoming transform with Place Local Assembly or the per-graph Local assembly mode. <a href="../octoshaper/docs/assemblies-and-hierarchies.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Assemblies and placement guide</a>
+          </p>
+          <p>
+            <strong>AI integration.</strong> OctoShaper ships a skill and an optional Unity 6 command so a coding agent can search nodes, edit a graph and render previews, then refine the result render by render. You bring your own agent; OctoShaper does not include a model or a service. <a href="../octoshaper/docs/ai-integration.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">AI integration guide</a>
+          </p>
+          <p>
+            There is more: faster saving and previews, an installer that sets up the Burst, Collections and Mathematics packages for you, and new samples to learn from. A few nodes moved or were replaced, so read the upgrade checklist before updating an existing project.
+          </p>
+          <p>
+            <a href="../octoshaper/docs/upgrading-to-1-2.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Upgrading to 1.2</a>
+            &nbsp;&middot;&nbsp;
+            <a href="../octoshaper/docs/changelog.html" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Full changelog</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" class="font-bold text-[#8a74d8ff] hover:text-[#5a358c] transition-colors">Get OctoShaper on the Unity Asset Store</a>
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+  <!-- END: Main Content -->
+
+  <!-- BEGIN: Footer -->
+<footer class="ct-footer">
+  <div class="ct-footer__inner">
+    <div class="ct-footer__brand">
+      <a class="ct-footer__logo" href="../index.html">
+        <img src="../res/logo.svg" alt="" width="44" height="44" loading="lazy"/>
+        <span>Curious Trove</span>
+      </a>
+      <p class="ct-footer__tagline">Friendly tools for game developers. By indies, for indies.</p>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">OctoShaper</p>
+      <ul class="ct-footer__list">
+        <li><a href="../octoshaper/unity/index.html">For Unity</a></li>
+        <li><a href="../octoshaper/godot/index.html">For Godot</a></li>
+        <li><a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer">Unity Asset Store</a></li>
+        <li><a href="../octoshaper/docs/changelog.html">Changelog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Learn</p>
+      <ul class="ct-footer__list">
+        <li><a href="../octoshaper/docs/index.html">Documentation</a></li>
+        <li><a href="../octoshaper/docs/installation.html">Installation</a></li>
+        <li><a href="../octoshaper/docs/nodes.html">Node catalog</a></li>
+        <li><a href="../blog.html">Devlog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="ct-footer__title">Say hi</p>
+      <ul class="ct-footer__list">
+        <li><a href="https://www.youtube.com/@Curious-Trove" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 7.2a3 3 0 0 0-2.1-2.1C19.5 4.6 12 4.6 12 4.6s-7.5 0-9.4.5A3 3 0 0 0 .5 7.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-4.8zM9.6 15.2V8.8L15.8 12l-6.2 3.2z"/></svg>YouTube</a></li>
+        <li><a href="https://www.instagram.com/curioustrove/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5zM18 5.5a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 18 5.5z"/></svg>Instagram</a></li>
+        <li><a href="https://curioustrove.itch.io/octoshaper/community" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Community forum</a></li>
+        <li><a href="mailto:contact@curioustrove.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Email us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ct-footer__bottom">
+    <span>© 2026 Curious Trove</span>
+    <span class="ct-footer__made">Made with <span class="ct-footer__heart" aria-label="love">♥</span> and a lot of nodes</span>
+  </div>
+  <div class="ct-footer__wordmark" aria-hidden="true">curious trove</div>
+</footer>
+<!-- END: Footer -->
+  <script src="../js/site-motion.js" defer></script>
+</body>
+</html>

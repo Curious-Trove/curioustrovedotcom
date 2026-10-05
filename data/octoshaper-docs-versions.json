@@ -1,20 +1,22 @@
 [
   {
+    "version": "1.2.0",
+    "label": "v1.2.0",
+    "catalogPath": "octoshaper/docs/node-metadata/node-catalog-v1.2.0.json",
+    "default": true,
+    "legacyNodeIds": [
+      "CuriousTrove.OctoShaper.Library.Expanders.GeometryNodes.SampleFromSurface",
+      "CuriousTrove.OctoShaper.Library.Expanders.GeometryNodes.SampleFromSurfaceGrid",
+      "CuriousTrove.OctoShaper.Library.Expanders.GeometryNodes.TriangulatePoints",
+      "CuriousTrove.OctoShaper.Library.Modifiers.GameObjectNodes.AssignParentElement",
+      "CuriousTrove.OctoShaper.Library.Modifiers.GameObjectNodes.CreateParentElement",
+      "CuriousTrove.OctoShaper.Library.Reducers.ElementSetUtilities.MergeElementSets"
+    ]
+  },
+  {
     "version": "1.1.0",
     "label": "v1.1.0",
     "catalogPath": "octoshaper/docs/node-metadata/node-catalog-v1.1.0.json",
-    "default": true
-  },
-  {
-    "version": "1.0.0",
-    "label": "v1.0.0",
-    "catalogPath": "octoshaper/docs/node-metadata/node-catalog-v1.0.0.json",
-    "default": false
-  },
-  {
-    "version": "0.0.1-beta",
-    "label": "v0.0.1-beta",
-    "catalogPath": "octoshaper/docs/node-metadata/node-catalog.json",
     "default": false
   }
 ]
