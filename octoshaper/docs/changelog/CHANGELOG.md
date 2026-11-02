@@ -1,27 +1,30 @@
 # Changelog
 
-## [1.3.0]
+## [1.3.0] - 2026-10-26
 
 The Tools Update.
 
 ### Added
 
-- Draw nodes without a material use a default lit material, and texture-sampling nodes without a texture use a default checker texture, so new graphs show a preview right away.
+- Draw nodes without a material use a default lit material, and texture-sampling nodes and Set Material Texture without a texture use a default checker texture, so new graphs show a preview right away.
 - Scene handles for numeric graph parameters: choose a **Scene handle** for a parameter (the move icon on its card in graph settings): a **Slider** along an axis, a **Box face** (parameters sharing an anchor form one box) or a **Radius** disc. Pick an anchor position parameter, axis, scale, range and whether it is centred, then drag it in the Scene view with the **OctoShaper Handles** tool. Handles follow their anchor parameter when it moves, and can be set through the automation CLI; a negative scale points a handle the other way along its axis.
 - Spline drawing: with the **OctoShaper Spline** tool, the **OctoShaper Spline Drawing** overlay draws a spline parameter by clicking points or dragging a freehand stroke (simplified on release), onto scene geometry or the graph's ground plane, replacing or extending the current spline.
 - **Extrude Spline Mesh** turns a closed spline into a capped solid (concave outlines included), with height, taper and smooth-shading angle; draw the outline with the Spline Drawing overlay to build custom platforms. **Offset Spline** grows or shrinks a spline outline in the XZ plane.
 - Objects drawn with Draw Instanced can be selected by clicking them in the Scene view, which selects their Procedural Graph Executor.
 - Optional result caching: enable **Use Caching** on a Procedural Graph Executor, or **Advanced > Use Caching** in the graph window, to rerun only the nodes affected by a change. Works with interpreted and generated execution after regenerating graph code, and costs memory only while enabled. Scene queries always rerun; custom nodes that read outside state can opt out with `[NodeVolatile]`.
 - Animation curve parameters and constants can be edited in the graph settings panel.
+- OctoShaper is also available as a UPM package on the Asset Store, installed through Package Manager with its dependencies resolved automatically. It behaves exactly like the classic `Assets/OctoShaper` package and uses the same GUIDs, so you can switch by deleting `Assets/OctoShaper` and installing the UPM version.
+- **Desert Mesa** sample: a low-poly mesa island scene built from seven graphs (terraced cliffs, adobe houses, stairways, cacti, boulders and an oasis) that you reshape with scene handles and drawn splines.
 
 ### Changed
 
 - OctoShaper now ships entirely as source, with no precompiled DLLs. Core has its own `CuriousTrove.OctoShaper.Core` assembly definition. Custom node assemblies with an `.asmdef` should reference `CuriousTrove.OctoShaper.Core` instead of listing `CuriousTrove.OctoShaper.Core.dll` under precompiled references. Upgrading over an older version replaces the old DLLs automatically and keeps OctoShaper project settings and procedural prefab imports.
-- Scene gizmos use the OctoShaper theme colours and one shared style: splines and parameter handles (sliders, boxes, radius discs) draw subtly outlined lines with rimmed round points that highlight on hover and drag.
+- Scene gizmos use the OctoShaper theme colours and one shared style: splines and parameter handles (sliders, boxes, radius discs) draw subtly outlined lines with rimmed round points that highlight on hover and drag, and their value labels sit on rounded tags that stay readable on light and busy backgrounds.
 - Refreshed graph settings and inspector UI: compact parameter cards with full-width names and a hover-only remove button, Unity-style parameter rows in the Procedural Graph Executor inspector, a compact Settings/Attributes header, an attribute search that appears only for longer lists, smaller node previews, and an Undo/Redo panel that hides when history is empty.
 - The Preview Stage shows the real generated hierarchy under a Procedural Graph Executor named after the graph. The graph window now evaluates through that executor, so the preview uses the same execution and instancing path as a scene, including colliders and spawn receivers.
-- Spline points in the Scene view can be dragged directly; the full position handle appears only on the point being edited, reducing clutter on long splines.
+- Spline points in the Scene view can be dragged directly, staying on their horizontal plane so outlines keep their height; the full position handle appears only on the point being edited, reducing clutter on long splines.
 - The editor finds node methods through Unity's TypeCache, making editor start-up and script reloads faster.
+- Node search lists nodes whose name matches the query; descriptions are only searched when no node name matches, so typing "realize" no longer buries Realize Meshes under nodes that mention it.
 
 ### Fixed
 
@@ -31,6 +34,10 @@ The Tools Update.
 - Objects in the Preview Stage are read-only, so preview instances can no longer be edited by mistake.
 - Cached nodes no longer flash as if they had just run.
 - The Position tool is available for Vector3 parameters stored as `UnityEngine.Vector3`.
+- Undoing a spline, position or handle edit on a Procedural Graph Executor now restores its output and handles; previously the executor kept showing the edited value.
+- Clicking Draw Instanced objects in the Scene view selects the object under the cursor; the pick ray used the wrong coordinates, so clicks missed or selected other objects, especially on Retina displays.
+- Generated graph code no longer leaks native memory when one node feeds several Merge nodes. Regenerate graph code to apply the fix.
+- The package no longer contains stray macOS metadata (`._`) files.
 
 ### Upgrading
 
@@ -38,6 +45,7 @@ See [Upgrading to 1.3](upgrading-to-1-3.html) for the full checklist.
 
 - Back up your project, import the update, then run **Tools > OctoShaper > Generate Graph Code** and let Unity compile. Generated executors need regenerating to support **Use Caching**.
 - Custom node assemblies that list `CuriousTrove.OctoShaper.Core.dll` under precompiled references must reference the `CuriousTrove.OctoShaper.Core` assembly definition instead.
+- To move to the UPM version, delete `Assets/OctoShaper` first, then install the UPM package. Graphs, prefabs and settings keep working because both versions share the same GUIDs.
 
 ## [1.2.0] - 2026-10-05
 
