@@ -1,5 +1,44 @@
 # Changelog
 
+## [1.3.0]
+
+The Tools Update.
+
+### Added
+
+- Draw nodes without a material use a default lit material, and texture-sampling nodes without a texture use a default checker texture, so new graphs show a preview right away.
+- Scene handles for numeric graph parameters: choose a **Scene handle** for a parameter (the move icon on its card in graph settings): a **Slider** along an axis, a **Box face** (parameters sharing an anchor form one box) or a **Radius** disc. Pick an anchor position parameter, axis, scale, range and whether it is centred, then drag it in the Scene view with the **OctoShaper Handles** tool. Handles follow their anchor parameter when it moves, and can be set through the automation CLI; a negative scale points a handle the other way along its axis.
+- Spline drawing: with the **OctoShaper Spline** tool, the **OctoShaper Spline Drawing** overlay draws a spline parameter by clicking points or dragging a freehand stroke (simplified on release), onto scene geometry or the graph's ground plane, replacing or extending the current spline.
+- **Extrude Spline Mesh** turns a closed spline into a capped solid (concave outlines included), with height, taper and smooth-shading angle; draw the outline with the Spline Drawing overlay to build custom platforms. **Offset Spline** grows or shrinks a spline outline in the XZ plane.
+- Objects drawn with Draw Instanced can be selected by clicking them in the Scene view, which selects their Procedural Graph Executor.
+- Optional result caching: enable **Use Caching** on a Procedural Graph Executor, or **Advanced > Use Caching** in the graph window, to rerun only the nodes affected by a change. Works with interpreted and generated execution after regenerating graph code, and costs memory only while enabled. Scene queries always rerun; custom nodes that read outside state can opt out with `[NodeVolatile]`.
+- Animation curve parameters and constants can be edited in the graph settings panel.
+
+### Changed
+
+- OctoShaper now ships entirely as source, with no precompiled DLLs. Core has its own `CuriousTrove.OctoShaper.Core` assembly definition. Custom node assemblies with an `.asmdef` should reference `CuriousTrove.OctoShaper.Core` instead of listing `CuriousTrove.OctoShaper.Core.dll` under precompiled references. Upgrading over an older version replaces the old DLLs automatically and keeps OctoShaper project settings and procedural prefab imports.
+- Scene gizmos use the OctoShaper theme colours and one shared style: splines and parameter handles (sliders, boxes, radius discs) draw subtly outlined lines with rimmed round points that highlight on hover and drag.
+- Refreshed graph settings and inspector UI: compact parameter cards with full-width names and a hover-only remove button, Unity-style parameter rows in the Procedural Graph Executor inspector, a compact Settings/Attributes header, an attribute search that appears only for longer lists, smaller node previews, and an Undo/Redo panel that hides when history is empty.
+- The Preview Stage shows the real generated hierarchy under a Procedural Graph Executor named after the graph. The graph window now evaluates through that executor, so the preview uses the same execution and instancing path as a scene, including colliders and spawn receivers.
+- Spline points in the Scene view can be dragged directly; the full position handle appears only on the point being edited, reducing clutter on long splines.
+- The editor finds node methods through Unity's TypeCache, making editor start-up and script reloads faster.
+
+### Fixed
+
+- The node selection rectangle no longer jitters when dragging up and to the left.
+- Graph editor undo and redo now use Unity's Undo history: canvas edits appear in Edit > Undo, Ctrl+Z in the graph no longer undoes twice or out of sync with Unity, slider and handle drags undo in one step, history no longer carries over to another graph, and unrelated Unity undos no longer rebuild the graph view.
+- Closing a graph window and discarding unsaved changes no longer crashes Unity or stalls while saving and regenerating code; discarded edits are restored in memory.
+- Objects in the Preview Stage are read-only, so preview instances can no longer be edited by mistake.
+- Cached nodes no longer flash as if they had just run.
+- The Position tool is available for Vector3 parameters stored as `UnityEngine.Vector3`.
+
+### Upgrading
+
+See [Upgrading to 1.3](upgrading-to-1-3.html) for the full checklist.
+
+- Back up your project, import the update, then run **Tools > OctoShaper > Generate Graph Code** and let Unity compile. Generated executors need regenerating to support **Use Caching**.
+- Custom node assemblies that list `CuriousTrove.OctoShaper.Core.dll` under precompiled references must reference the `CuriousTrove.OctoShaper.Core` assembly definition instead.
+
 ## [1.2.0] - 2026-10-05
 
 The Colorful Update.

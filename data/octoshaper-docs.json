@@ -3,7 +3,7 @@
     "slug": "installation",
     "title": "Installation",
     "category": "Setup",
-    "summary": "Import OctoShaper, let the dependency installer finish, and check your render pipeline for the samples.",
+    "summary": "Pick the classic or UPM package, install it, let dependencies resolve, and check your render pipeline for the samples.",
     "status": "Guide",
     "readTime": "4 min read",
     "url": "installation.html",
@@ -14,7 +14,7 @@
       "title": "OctoShaper installation walkthrough"
     },
     "section": "Getting Started",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-26"
   },
   {
     "slug": "samples",
@@ -28,11 +28,22 @@
     "lastmod": "2026-10-05"
   },
   {
+    "slug": "upgrading-to-1-3",
+    "title": "Upgrading to 1.3",
+    "category": "Setup",
+    "summary": "A short checklist for moving a project to 1.3, and what behaves differently afterwards.",
+    "status": "New in 1.3",
+    "readTime": "3 min read",
+    "url": "upgrading-to-1-3.html",
+    "section": "Getting Started",
+    "lastmod": "2026-10-26"
+  },
+  {
     "slug": "upgrading-to-1-2",
     "title": "Upgrading to 1.2",
     "category": "Setup",
     "summary": "A short checklist for moving a project to 1.2, and what changed for existing graphs and code.",
-    "status": "New in 1.2",
+    "status": "Guide",
     "readTime": "4 min read",
     "url": "upgrading-to-1-2.html",
     "section": "Getting Started",
@@ -66,11 +77,27 @@
     "lastmod": "2026-09-30"
   },
   {
+    "slug": "result-caching",
+    "title": "Result Caching",
+    "category": "Concepts",
+    "summary": "Rerun only the nodes a change affects, in the editor and at runtime.",
+    "status": "New in 1.3",
+    "readTime": "3 min read",
+    "url": "result-caching.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.3/use-caching.png",
+      "alt": "Use Caching in the OctoShaper Advanced menu"
+    },
+    "section": "Core Concepts",
+    "lastmod": "2026-10-21"
+  },
+  {
     "slug": "procedural-meshes",
     "title": "Procedural Meshes",
     "category": "Building",
     "summary": "Generate, edit and render real meshes in a graph with primitives, bevels, booleans, spline sweeps and Realize Meshes.",
-    "status": "New in 1.2",
+    "status": "Guide",
     "readTime": "7 min read",
     "url": "procedural-meshes.html",
     "cardMedia": {
@@ -79,14 +106,14 @@
       "alt": "Procedural mesh graph in OctoShaper"
     },
     "section": "Building Content",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "colors-textures-and-materials",
     "title": "Colors, Textures and Materials",
     "category": "Building",
     "summary": "Color ramps, texture sampling, height-map displacement, vertex colors and per-instance material overrides.",
-    "status": "New in 1.2",
+    "status": "Guide",
     "readTime": "8 min read",
     "url": "colors-textures-and-materials.html",
     "cardMedia": {
@@ -128,7 +155,7 @@
       "title": "Comparison of GameObject, Draw Instanced, and Draw Instanced Indirect realization"
     },
     "section": "Building Content",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "node-graph-basics",
@@ -144,14 +171,14 @@
       "alt": "Annotated OctoShaper graph editor with graph settings, nodes, and the ElementSet debug panel"
     },
     "section": "Editor",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "preview-stage",
     "title": "Preview Stage and Inspection",
     "category": "Editor",
     "summary": "Preview graphs in an isolated Scene view stage, inspect any node's table, and keep large graphs responsive.",
-    "status": "New in 1.2",
+    "status": "Guide",
     "readTime": "5 min read",
     "url": "preview-stage.html",
     "cardMedia": {
@@ -160,7 +187,7 @@
       "alt": "Preview Stage with the spreadsheet"
     },
     "section": "Editor",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "context-manipulation",
@@ -177,14 +204,47 @@
       "title": "Spline anchors and Bezier handles displayed through an OctoShaper Scene view manipulator"
     },
     "section": "Editor",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
+  },
+  {
+    "slug": "scene-handles",
+    "title": "Scene Handles",
+    "category": "Editor",
+    "summary": "Give number parameters a slider, box face or radius handle, then drag them in the Scene view.",
+    "status": "New in 1.3",
+    "readTime": "4 min read",
+    "url": "scene-handles.html",
+    "cardMedia": {
+      "type": "video",
+      "src": "../../res/docs/1.3/scene-handles-box.mp4",
+      "mimeType": "video/mp4",
+      "title": "Dragging box and radius scene handles on a procedural island"
+    },
+    "section": "Editor",
+    "lastmod": "2026-10-21"
+  },
+  {
+    "slug": "drawing-splines",
+    "title": "Drawing Splines and Extruding Outlines",
+    "category": "Editor",
+    "summary": "Draw a spline parameter straight onto the scene, then turn closed outlines into solid platforms.",
+    "status": "New in 1.3",
+    "readTime": "4 min read",
+    "url": "drawing-splines.html",
+    "cardMedia": {
+      "type": "image",
+      "src": "../../res/docs/1.3/spline-platform.png",
+      "alt": "A floating island extruded from a drawn spline outline"
+    },
+    "section": "Editor",
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "ai-integration",
     "title": "AI Integration and Editor Automation",
     "category": "Editor",
     "summary": "Let a coding agent build and refine OctoShaper graphs through the Unity 6 CLI and a bundled skill, or script the editor with JSON.",
-    "status": "New in 1.2",
+    "status": "Guide",
     "readTime": "5 min read",
     "url": "ai-integration.html",
     "cardMedia": {
@@ -193,7 +253,7 @@
       "alt": "OctoShaper AI Integration menu"
     },
     "section": "Editor",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "working-with-splines",
@@ -248,7 +308,7 @@
     "readTime": "6 min read",
     "url": "runtime-generation.html",
     "section": "Runtime",
-    "lastmod": "2026-09-30"
+    "lastmod": "2026-10-21"
   },
   {
     "slug": "procedural-prefab",

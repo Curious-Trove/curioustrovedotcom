@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Install OctoShaper for Unity – Requirements and Setup</title>
-  <meta name="description" content="Install OctoShaper, the node-based procedural generation tool for Unity. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems." />
+  <meta name="description" content="Install OctoShaper, the node-based procedural generation tool for Unity, as a classic Asset Store package or a UPM package. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems." />
   <link rel="canonical" href="https://curioustrove.com/octoshaper/docs/installation.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Curious Trove" />
   <meta property="og:title" content="Installation in OctoShaper" />
-  <meta property="og:description" content="Install OctoShaper, the node-based procedural generation tool for Unity. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems." />
+  <meta property="og:description" content="Install OctoShaper, the node-based procedural generation tool for Unity, as a classic Asset Store package or a UPM package. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems." />
   <meta property="og:url" content="https://curioustrove.com/octoshaper/docs/installation.html" />
   <meta property="og:image" content="https://curioustrove.com/res/octoshaper-logo.svg" />
-  <meta property="article:modified_time" content="2026-09-30" />
+  <meta property="article:modified_time" content="2026-10-26" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="../../res/octoshaper-logo-outline.svg" />
   <link rel="stylesheet" href="../../css/octoshaper-docs.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://curioustrove.com/octoshaper/docs/installation.html#article","headline":"Installation","description":"Install OctoShaper, the node-based procedural generation tool for Unity. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems.","url":"https://curioustrove.com/octoshaper/docs/installation.html","mainEntityOfPage":"https://curioustrove.com/octoshaper/docs/installation.html","inLanguage":"en","articleSection":"Getting Started","dateModified":"2026-09-30","keywords":"install OctoShaper, Unity procedural generation asset setup, OctoShaper requirements","author":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/"},"publisher":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/","logo":{"@type":"ImageObject","url":"https://curioustrove.com/res/logo.svg"}},"about":{"@type":"SoftwareApplication","name":"OctoShaper","applicationCategory":"DeveloperApplication","operatingSystem":"Unity 2022.3+","softwareVersion":1.2},"image":"https://curioustrove.com/res/octoshaper-logo.svg"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Docs","item":"https://curioustrove.com/octoshaper/docs/"},{"@type":"ListItem","position":2,"name":"Getting Started","item":"https://curioustrove.com/octoshaper/docs/#getting-started"},{"@type":"ListItem","position":3,"name":"Installation","item":"https://curioustrove.com/octoshaper/docs/installation.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which Unity versions does OctoShaper support?","acceptedAnswer":{"@type":"Answer","text":"Unity 2022.3 or newer, including Unity 6. The optional AI Integration CLI needs Unity 6."}},{"@type":"Question","name":"Do I need URP?","acceptedAnswer":{"@type":"Answer","text":"Not for OctoShaper itself. The bundled samples ship URP materials, so they appear pink in other pipelines until you replace the materials."}},{"@type":"Question","name":"OctoShaper doesn't compile after import. What should I check?","acceptedAnswer":{"@type":"Answer","text":"Wait for Package Manager to finish, then read the first Console error. An older Burst, Collections or Mathematics package is named there with the version to update to. Tools > OctoShaper > Repair Dependencies retries the automatic setup."}}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","@id":"https://curioustrove.com/octoshaper/docs/installation.html#article","headline":"Installation","description":"Install OctoShaper, the node-based procedural generation tool for Unity, as a classic Asset Store package or a UPM package. Requirements, automatic Burst, Collections and Mathematics setup, URP for samples, and fixes for common import problems.","url":"https://curioustrove.com/octoshaper/docs/installation.html","mainEntityOfPage":"https://curioustrove.com/octoshaper/docs/installation.html","inLanguage":"en","articleSection":"Getting Started","dateModified":"2026-10-26","keywords":"install OctoShaper, OctoShaper UPM package, Unity procedural generation asset setup, OctoShaper requirements","author":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/"},"publisher":{"@type":"Organization","name":"Curious Trove","url":"https://curioustrove.com/","logo":{"@type":"ImageObject","url":"https://curioustrove.com/res/logo.svg"}},"about":{"@type":"SoftwareApplication","name":"OctoShaper","applicationCategory":"DeveloperApplication","operatingSystem":"Unity 2022.3+","softwareVersion":1.3},"image":"https://curioustrove.com/res/octoshaper-logo.svg"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Docs","item":"https://curioustrove.com/octoshaper/docs/"},{"@type":"ListItem","position":2,"name":"Getting Started","item":"https://curioustrove.com/octoshaper/docs/#getting-started"},{"@type":"ListItem","position":3,"name":"Installation","item":"https://curioustrove.com/octoshaper/docs/installation.html"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I get the classic package or the UPM package?","acceptedAnswer":{"@type":"Answer","text":"They contain the same tool and behave the same in the editor. The UPM package installs under Packages through Package Manager and keeps your Assets folder clean; the classic package imports into Assets/OctoShaper. Install only one of them."}},{"@type":"Question","name":"Which Unity versions does OctoShaper support?","acceptedAnswer":{"@type":"Answer","text":"Unity 2022.3 or newer, including Unity 6. The optional AI Integration CLI needs Unity 6."}},{"@type":"Question","name":"Do I need URP?","acceptedAnswer":{"@type":"Answer","text":"Not for OctoShaper itself. The bundled samples ship URP materials, so they appear pink in other pipelines until you replace the materials."}},{"@type":"Question","name":"OctoShaper doesn't compile after import. What should I check?","acceptedAnswer":{"@type":"Answer","text":"Wait for Package Manager to finish, then read the first Console error. An older Burst, Collections or Mathematics package is named there with the version to update to. Tools > OctoShaper > Repair Dependencies retries the automatic setup."}}]}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" />
@@ -88,10 +88,10 @@
   </div>
   <nav class="docs-sidebar-nav text-sm font-bold" aria-label="Documentation pages">
     <a href="index.html" data-sidebar-page="index" class="docs-sidebar-home block rounded-xl px-4 py-3 text-brand-dark hover:bg-[#f8f9fa]">Home</a>
-    <details class="docs-sidebar-category" open><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Installation</a></li><li><a href="samples.html" data-sidebar-page="samples" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Samples</a></li><li><a href="upgrading-to-1-2.html" data-sidebar-page="upgrading-to-1-2" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Upgrading to 1.2</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements, ElementSets and Attributes</a></li><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li></ul></details>
+    <details class="docs-sidebar-category" open><summary>Getting Started</summary><ul><li><a href="installation.html" data-sidebar-page="installation" class="block rounded-xl px-4 py-2.5 bg-[#f4f0fa] text-[#8a74d8ff] border border-[#8a74d8ff]/20">Installation</a></li><li><a href="samples.html" data-sidebar-page="samples" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Samples</a></li><li><a href="upgrading-to-1-3.html" data-sidebar-page="upgrading-to-1-3" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Upgrading to 1.3</a></li><li><a href="upgrading-to-1-2.html" data-sidebar-page="upgrading-to-1-2" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Upgrading to 1.2</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Core Concepts</summary><ul><li><a href="elements.html" data-sidebar-page="elements" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Elements, ElementSets and Attributes</a></li><li><a href="sync-vs-async.html" data-sidebar-page="sync-vs-async" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Sync vs Async</a></li><li><a href="result-caching.html" data-sidebar-page="result-caching" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Result Caching</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Building Content</summary><ul><li><a href="procedural-meshes.html" data-sidebar-page="procedural-meshes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Meshes</a></li><li><a href="colors-textures-and-materials.html" data-sidebar-page="colors-textures-and-materials" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Colors, Textures and Materials</a></li><li><a href="assemblies-and-hierarchies.html" data-sidebar-page="assemblies-and-hierarchies" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Assemblies and Placement</a></li><li><a href="rendering-and-instancing-modes.html" data-sidebar-page="rendering-and-instancing-modes" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Rendering and Instancing Modes</a></li></ul></details>
-<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="preview-stage.html" data-sidebar-page="preview-stage" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Preview Stage and Inspection</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li><li><a href="ai-integration.html" data-sidebar-page="ai-integration" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">AI Integration and Editor Automation</a></li></ul></details>
+<details class="docs-sidebar-category"><summary>Editor</summary><ul><li><a href="node-graph-basics.html" data-sidebar-page="node-graph-basics" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Node Graph Basics</a></li><li><a href="preview-stage.html" data-sidebar-page="preview-stage" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Preview Stage and Inspection</a></li><li><a href="context-manipulation.html" data-sidebar-page="context-manipulation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Context Manipulation</a></li><li><a href="scene-handles.html" data-sidebar-page="scene-handles" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Scene Handles</a></li><li><a href="drawing-splines.html" data-sidebar-page="drawing-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Drawing Splines and Extruding Outlines</a></li><li><a href="ai-integration.html" data-sidebar-page="ai-integration" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">AI Integration and Editor Automation</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Data Types</summary><ul><li><a href="working-with-splines.html" data-sidebar-page="working-with-splines" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Splines</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Tutorials</summary><ul><li><a href="getting-started-attributes-and-subgraphs.html" data-sidebar-page="getting-started-attributes-and-subgraphs" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Getting Started with Attributes and Subgraphs</a></li><li><a href="gpu-accelerated-grass.html" data-sidebar-page="gpu-accelerated-grass" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">GPU-Accelerated Grass</a></li></ul></details>
 <details class="docs-sidebar-category"><summary>Runtime</summary><ul><li><a href="runtime-generation.html" data-sidebar-page="runtime-generation" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Runtime Generation</a></li><li><a href="procedural-prefab.html" data-sidebar-page="procedural-prefab" class="block rounded-xl px-4 py-2.5 text-brand-dark hover:bg-[#f8f9fa]">Procedural Prefabs</a></li></ul></details>
@@ -107,27 +107,69 @@
           <div class="flex items-center gap-3 flex-wrap mb-5">
             <span class="bg-[#eafaf1] text-[#1e5a3c] text-xs font-bold px-3 py-1 rounded-md border border-[#8ce2b8]">Setup Guide</span>
             <span class="text-sm font-medium text-brand-gray">Setup</span>
-            <span class="docs-article__version" title="Written for this OctoShaper version">OctoShaper 1.2</span><span class="docs-article__updated">Updated <time datetime="2026-09-30">30 September 2026</time></span>
+            <span class="docs-article__version" title="Written for this OctoShaper version">OctoShaper 1.3</span><span class="docs-article__updated">Updated <time datetime="2026-10-26">26 October 2026</time></span>
           </div>
           <h1 class="text-4xl font-extrabold tracking-tight text-[#8a74d8ff] mb-4">Installation</h1>
-          <p class="text-lg text-brand-gray leading-relaxed mb-8">Import the package, let Unity finish compiling, and open the Getting Started window. OctoShaper installs its own missing dependencies, so for most projects that&#039;s all there is to it.</p>
+          <p class="text-lg text-brand-gray leading-relaxed mb-8">Choose the classic package or the UPM package, let Unity finish compiling, and open the Getting Started window. Both formats set up their dependencies for you, so for most projects that&#039;s all there is to it.</p>
           <div class="docs-markdown"><h2 id="requirements">Requirements</h2>
 <ul>
 <li><strong>Unity 2022.3</strong> or newer, including Unity 6</li>
-<li><strong>OctoShaper</strong> from the <a href="https://u3d.as/3QEQ">Unity Asset Store</a></li>
+<li><strong>OctoShaper</strong> from the Unity Asset Store, as the <a href="https://u3d.as/3QEQ">classic package</a> or the <a href="https://assetstore.unity.com/packages/package/3313585">UPM package</a></li>
 <li>For the samples: the <strong>Universal Render Pipeline (URP)</strong></li>
 </ul>
 <p>Burst, Collections and Mathematics are installed for you (see below).</p>
 <figure class="ct-shot"><video src="../../res/docs/install-flow.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Importing OctoShaper from the Asset Store and opening the Getting Started window in Unity"></video><figcaption>Import, compile, open Getting Started.</figcaption></figure>
+<h2 id="classic-or-upm-package">Classic or UPM package?</h2>
+<p>Since 1.3, OctoShaper is available in two formats on the Asset Store. They contain the same tool, the same samples and behave identically in the editor. Pick one per project:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="https://u3d.as/3QEQ">Classic package</a></th>
+<th><a href="https://assetstore.unity.com/packages/package/3313585">UPM package</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installed to</td>
+<td><code>Assets/OctoShaper</code></td>
+<td><code>Packages/com.curioustrove.octoshaper</code> (read-only)</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>Added by OctoShaper's own installer</td>
+<td>Resolved by Package Manager</td>
+</tr>
+<tr>
+<td>Updates</td>
+<td>Re-import over the existing folder</td>
+<td>Update in Package Manager</td>
+</tr>
+<tr>
+<td>Good for</td>
+<td>Projects that keep everything under Assets, or that need to edit OctoShaper's source</td>
+<td>Keeping your Assets folder clean and managing versions like any other package</td>
+</tr>
+</tbody>
+</table>
+<p>Both ship entirely as C# source, with no precompiled DLLs.</p>
 <h2 id="install">Install</h2>
 <ol>
-<li>Buy OctoShaper and import it from the Asset Store through <strong>Window &gt; Package Manager &gt; My Assets</strong>. Keep the package under <code>Assets/OctoShaper</code>.</li>
+<li>Buy OctoShaper, then open <strong>Window &gt; Package Manager &gt; My Assets</strong> and find it.</li>
+<li><strong>UPM package</strong>: click <strong>Install</strong>. OctoShaper appears under <strong>Packages</strong> as <code>com.curioustrove.octoshaper</code>. <strong>Classic package</strong>: click <strong>Import</strong> and keep the package under <code>Assets/OctoShaper</code>.</li>
 <li>Wait for Package Manager and script compilation to finish. The first import may trigger a second compilation.</li>
 <li>Open <strong>Tools &gt; OctoShaper &gt; Getting Started</strong>.</li>
 </ol>
 <p>That's it. Continue with <a href="node-graph-basics.html">Node graph basics</a>, or import a <a href="samples.html">sample</a> first.</p>
+<h2 id="switching-between-the-two">Switching between the two</h2>
+<p>Never install both at once: they share assembly names, so Unity can't compile them side by side. Both use the same asset GUIDs, so your graphs, prefabs and settings keep working when you switch.</p>
+<ul>
+<li><strong>Classic to UPM</strong>: delete <code>Assets/OctoShaper</code>, then install the UPM package. Samples you already imported under <code>Assets/Samples</code> stay where they are.</li>
+<li><strong>UPM to classic</strong>: remove the package in Package Manager, then import the classic package.</li>
+</ul>
 <h2 id="dependencies-are-automatic">Dependencies are automatic</h2>
-<p>After an Asset Store or <code>.unitypackage</code> import, a small separate installer adds any missing <strong>Burst</strong>, <strong>Collections</strong> and <strong>Mathematics</strong> packages, at the versions Unity recommends for your editor.</p>
+<p>With the <strong>UPM package</strong>, Package Manager installs <strong>Burst</strong>, <strong>Collections</strong> and <strong>Mathematics</strong> as regular package dependencies, like any other UPM package.</p>
+<p>With the <strong>classic package</strong>, a small separate installer adds any missing Burst, Collections and Mathematics packages after import, at the versions Unity recommends for your editor.</p>
 <ul>
 <li>It <strong>never changes packages you already have</strong>, including ones installed through another package.</li>
 <li>If an installed package is older than OctoShaper supports (Burst 1.8.0, Collections 2.4.3, Mathematics 1.3.3), OctoShaper doesn't compile and the Console names the package to update in <strong>Window &gt; Package Manager</strong>.</li>
@@ -151,6 +193,10 @@
 </thead>
 <tbody>
 <tr>
+<td>Duplicate assembly errors after switching formats</td>
+<td>Both the classic and the UPM package are installed. Delete <code>Assets/OctoShaper</code> or remove the package in Package Manager.</td>
+</tr>
+<tr>
 <td>Missing OctoShaper menus or compile errors</td>
 <td>Wait for imports to finish. Check the Unity version and the first Console error. An unresolved <code>Unity.Mathematics</code> reference means Mathematics must be installed, even if Collections is.</td>
 </tr>
@@ -168,10 +214,11 @@
 </tr>
 </tbody>
 </table>
-<p>Upgrading an existing project? Read <a href="upgrading-to-1-2.html">Upgrading to 1.2</a> first.</p>
+<p>Upgrading an existing project? Read <a href="upgrading-to-1-3.html">Upgrading to 1.3</a> first.</p>
 
           <section class="docs-faq" aria-labelledby="faq">
             <h2 id="faq">Frequently asked questions</h2>
+            <details class="docs-faq__item"><summary>Should I get the classic package or the UPM package?</summary><div>They contain the same tool and behave the same in the editor. The UPM package installs under Packages through Package Manager and keeps your Assets folder clean; the classic package imports into Assets/OctoShaper. Install only one of them.</div></details>
             <details class="docs-faq__item"><summary>Which Unity versions does OctoShaper support?</summary><div>Unity 2022.3 or newer, including Unity 6. The optional AI Integration CLI needs Unity 6.</div></details>
             <details class="docs-faq__item"><summary>Do I need URP?</summary><div>Not for OctoShaper itself. The bundled samples ship URP materials, so they appear pink in other pipelines until you replace the materials.</div></details>
             <details class="docs-faq__item"><summary>OctoShaper doesn&#039;t compile after import. What should I check?</summary><div>Wait for Package Manager to finish, then read the first Console error. An older Burst, Collections or Mathematics package is named there with the version to update to. Tools &gt; OctoShaper &gt; Repair Dependencies retries the automatic setup.</div></details>
@@ -181,7 +228,7 @@
 
         <aside class="docs-toc" aria-label="On this page">
           <p class="docs-toc__title">On this page</p>
-          <nav><a href="#requirements">Requirements</a><a href="#install">Install</a><a href="#dependencies-are-automatic">Dependencies are automatic</a><a href="#samples-and-render-pipelines">Samples and render pipelines</a><a href="#troubleshooting">Troubleshooting</a><a href="#faq">FAQ</a></nav>
+          <nav><a href="#requirements">Requirements</a><a href="#classic-or-upm-package">Classic or UPM package?</a><a href="#install">Install</a><a href="#switching-between-the-two">Switching between the two</a><a href="#dependencies-are-automatic">Dependencies are automatic</a><a href="#samples-and-render-pipelines">Samples and render pipelines</a><a href="#troubleshooting">Troubleshooting</a><a href="#faq">FAQ</a></nav>
         </aside>
       </div>
     </section>
@@ -204,6 +251,7 @@
         <li><a href="../../octoshaper/unity/index.html">For Unity</a></li>
         <li><a href="../../octoshaper/godot/index.html">For Godot</a></li>
         <li><a href="https://u3d.as/3QEQ" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer">Unity Asset Store</a></li>
+        <li><a href="https://assetstore.unity.com/packages/package/3313585" target="_blank" rel="noopener noreferrer" data-umami-event="Asset Store Click" data-umami-event-location="footer-upm">Unity Asset Store (UPM)</a></li>
         <li><a href="../../octoshaper/docs/changelog.html">Changelog</a></li>
       </ul>
     </div>
