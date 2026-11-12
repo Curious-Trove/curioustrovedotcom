@@ -1,0 +1,41 @@
+// A forest: pines and boulders scattered on a meadow. Each pine is a small graph
+// of its own (a trunk and tiers of needles), copied onto every point; the
+// boulders are boxes rounded and dented, and the meadow is a noise image.
+
+param trees = 70 in 10..300
+param rocks = 25 in 0..100
+param seed = 4 in 1..50
+
+// the meadow: patches of lighter and darker grass, running on across the ground
+patches = noise(as: smooth, scale: 4, detail: 4, seed: seed)
+turf = colorize(patches, ramp: [#55803d, #7fa858])
+meadow = box(w: 50, h: 0.4, d: 50)
+grass = color(meadow, texture: turf, map: world, scale: 25)
+
+// one pine, built at the origin: three tiers of needles that flare at the bottom
+trunk = box(w: 0.5, h: 2.4, d: 0.5)
+bark = shape(trunk, as: cylinder, sides: 7, top: 0.6)
+brown = color(bark, color: #6b4a33)
+needles = box(w: 3, h: 6, d: 3, y: 1.4)
+tiers = split(needles, axis: y, count: 3)
+narrowing = scale(tiers, x: 1 - t * 0.45, z: 1 - t * 0.45)
+taller = scale(narrowing, y: 1.6)
+cones = shape(taller, as: cone, sides: 9, flare: 0.8)
+green = color(cones, color: #2f6b3a, vary: 0.35)
+tree = merge(brown, green)
+
+// where the trees go (never two on one spot), and how tall each one is
+spots = scatter(meadow, count: trees, size: 1, gap: 1.8, seed: seed)
+tall = size(spots, h: rand(5, 11))
+sized = size(tall, w: h * 0.36, d: h * 0.36)
+turned = jitter(sized, move: 0.3, turn: 180, scale: 0, seed: seed)
+forest = copy(turned, tree, fit: stretch)
+
+// boulders: boxes rounded off, dented by noise, with moss in their hollows
+stones = scatter(meadow, count: rocks, size: rand(0.6, 2), gap: 1, seed: seed + 1)
+lumps = size(stones, h: h * 0.6)
+round = smooth(lumps, steps: 2, sharp: 0.1)
+dented = displace(round, by: noise(x * 2, y * 2, z * 2 + i % 8) * 0.25 - 0.1, detail: 0.5)
+grey = color(dented, color: #7f8186, vary: 0.3)
+mossy = wear(grey, edges: 0.3, cavity: 0.8, dirt_color: #4f6b3a)
+out = output(grass, forest, mossy)

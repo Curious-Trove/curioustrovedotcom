@@ -1,0 +1,112 @@
+// A small square with custom geometry: every shape here starts as a 2D outline.
+// The house is a plan drawn point by point with a courtyard cut out of it, the
+// fountain is a profile turned around its axis, the street is a section swept
+// along a curve, the planters morph from a square to a star, the tower is lofted
+// from a rounded square to a circle with a twist, and the garden is a smooth
+// drawn shape with a pond fused from two circles.
+// The tools put handles in the 3D view: drag the plan's corners, the fountain's
+// profile (it moves upright, facing you), the street and the garden's edge.
+// Each line has Draw (draw its points again) and Flat (look straight at it) on its row
+// in the 3D view's Params; Add tool ▸ Draw an outline makes a new one.
+
+param plan = [-36 0 -12, -20 0 -12, -20 0 -2, -26 0 -2, -26 0 10, -36 0 10]
+param profile = [0 0 0, 3.2 0 0, 3.2 0.7 0, 2.8 0.7 0, 2.8 0.3 0, 0.7 0.3 0, 0.5 1.8 0, 1.6 2 0, 1.5 2.2 0, 0.3 2.2 0, 0.2 3 0, 0 3 0]
+param street = [-38 0 16, -16 0 13, 6 0 17, 38 0 14]
+param garden = [12 0 -6, 22 0 -9, 34 0 -5, 36 0 6, 26 0 11, 14 0 8]
+param twist = 90 in 0..360
+param trees = 14 in 0..60
+
+tool walls_plan = spline(plan, curve: straight, closed: closed, snap: 0.5)
+tool fountain_profile = spline(profile, curve: straight, plane: front, snap: 0.1)
+tool street_path = spline(street)
+tool garden_edge = spline(garden, closed: closed)
+
+// the house: a drawn plan, a courtyard cut out, walls pulled up
+floor = outline(path: plan, round: 0.4)
+court = outline(as: ngon, sides: 8, w: 6, d: 6)
+court_at = move(court, x: -31, z: 3)
+plot = cut(floor, court_at)
+house = extrude(plot, height: 4)
+plaster = color(house, color: #efe6d6)
+// a flat roof that overhangs: the top face, grown outwards
+top = face(house, side: top, depth: 0.3)
+roof = inset(top, by: -0.4)
+roof_grey = color(roof, color: #5d5a6e)
+// windows on every wall: the side faces, cut into panes
+sides = face(house, side: sides, depth: 0.08)
+panes = split(sides, axis: x, every: 2.5)
+glass = inset(panes, by: 0.6)
+blue = color(glass, color: #7fb2e5, rough: 0.15, metal: 0.3)
+
+// the square: a rounded slab, a stone border, strips of paving around the fountain
+square = outline(as: rect, w: 18, d: 18, round: 2.5)
+inner = inset(square, by: 0.8)
+border = cut(square, inner)
+kerb = extrude(border, height: 0.3)
+stone = color(kerb, color: #b8ad98)
+strips = split(inner, axis: x, count: 7)
+slabs = inset(strips, by: 0.06)
+basin_hole = outline(as: disc, w: 7, d: 7)
+paving = cut(slabs, basin_hole)
+paved = extrude(paving, height: 0.2)
+tiles = color(paved, color: #ddd2bd, vary: 0.2)
+
+// the fountain: a profile drawn upright, turned around the y axis
+fountain = revolve(path: profile, sides: 48, curve: straight)
+marble = color(fountain, color: #e9e4f2, rough: 0.4)
+pool = outline(as: disc, w: 5.6, d: 5.6)
+water_top = extrude(pool, height: 0.55)
+water = color(water_top, color: #5aa9e6, rough: 0.1)
+
+// the planters: squares that turn into stars along the row
+row = line(count: 6, length: 15, w: 2.2, h: 1, d: 2.2)
+row_at = move(row, z: -12.5)
+squares = outline(row_at)
+stars = outline(row_at, as: star, sides: 5, inner: 0.55)
+planters = morph(squares, stars, t: t)
+pots = extrude(planters, height: 0.9)
+terracotta = color(pots, color: #c2703d)
+earth_line = inset(planters, by: 0.15)
+earth = extrude(earth_line, height: 0.95)
+soil = color(earth, color: #4a3527)
+
+// the tower: lofted from a rounded square to a circle, twisting as it rises
+foot = outline(as: ngon, sides: 4, w: 7, d: 7, round: 0.8)
+foot_at = move(foot, x: 24, z: -18)
+crown = outline(as: disc, w: 3.5, d: 3.5)
+tower = loft(foot_at, crown, height: 16, rings: 16, twist: twist)
+violet = color(tower, color: #8a74d8, rough: 0.5)
+
+// the street: a road with kerbs, drawn as a section and swept along a curve
+section = outline(path: [-4 0 0, 4 0 0, 4 0.35 0, 3.3 0.35 0, 3.3 0.12 0, -3.3 0.12 0, -3.3 0.35 0, -4 0.35 0])
+road = sweep(section, path: street)
+asphalt = color(road, color: #5d5a6e, rough: 0.95)
+
+// the garden: a smooth shape, with a pond fused from two circles and a deck where a strip meets it
+lawn_line = outline(path: garden, curve: smooth)
+pond_a = outline(as: disc, w: 7, d: 5)
+pond_b = outline(as: disc, w: 5, d: 5)
+pond_a_at = move(pond_a, x: 22, z: 1)
+pond_b_at = move(pond_b, x: 26.5, z: 3)
+pond = fuse(pond_a_at, pond_b_at)
+lawn_cut = cut(lawn_line, pond)
+lawn = extrude(lawn_cut, height: 0.15)
+grass = color(lawn, color: #7fa35a, vary: 0.1)
+pond_water = extrude(pond, height: 0.05)
+pond_blue = color(pond_water, color: #4d8fd1, rough: 0.1)
+strip = outline(as: rect, w: 14, d: 1.4)
+strip_at = move(strip, x: 24, z: 2)
+deck_line = overlap(strip_at, pond)
+deck = extrude(deck_line, height: 0.3)
+wood = color(deck, color: #9b6b43)
+// trees only inside the lawn
+spots = scatter(lawn, count: trees, size: 1, seed: 3)
+trunk_box = size(spots, w: 0.35, h: 2, d: 0.35)
+trunk = shape(trunk_box, as: cylinder)
+bark = color(trunk, color: #6b4a33)
+crown_box = size(spots, w: 2.4, h: 2.6, d: 2.4)
+lifted = move(crown_box, y: 1.6)
+leaves = shape(lifted, as: sphere)
+green = color(leaves, color: #3f7d45, vary: 0.3)
+
+out = output(plaster, roof_grey, blue, stone, tiles, marble, water, terracotta, soil, violet, asphalt, grass, pond_blue, wood, bark, green)

@@ -1,0 +1,50 @@
+// A street along a curve, a plaza beside it, a tower on the plaza and a fountain.
+// Drag the road's points in the 3D view (or the small handle between two to add
+// one), the plaza's sides, the top of the tower, the fountain's arrows and the
+// edge of its pool. The plaza is a bounds param, a box with a handle on each
+// side; the tower stands on its middle and its handle sits on the plaza's top.
+
+param road = [-34 0 -6, -14 0 6, 8 0 -4, 30 0 6]
+param plaza = bounds [-8 0 12, 8 0.4 26] in -40..40
+param tower = 16 in 4..40
+param fountain = -4 0.4 22.5 in -40..40
+param pool = 1.5 in 0.5..5
+
+tool street = spline(road, curve: round)
+tool top = drag(tower, at: plaza)
+tool spray = radius(pool, at: fountain)
+
+// the road: asphalt between kerbs, swept along the curve, with lamps on one side
+asphalt_strip = outline(as: rect, w: 6, d: 0.3)
+roadway = sweep(asphalt_strip, path: road, curve: round)
+asphalt = color(roadway, color: #5d5a6e, rough: 0.95)
+lamps = along(path: road, count: 14, curve: round, w: 0.3, h: 4, d: 0.3)
+kerb = move(lamps, z: 3.4, space: local)
+poles = shape(kerb, as: cylinder, sides: 8, top: 0.6)
+posts = color(poles, color: #2b2840, metal: 0.6)
+heads = face(kerb, side: top, depth: 0.5)
+lights = color(heads, color: #ffd27a, emit: 1.5)
+
+// the plaza: paving stones laid in a pattern, as wide and deep as the bounds
+stones = pattern(as: bricks, rows: 6, cols: 3, gap: 0.08, vary: 0.4)
+paving = colorize(stones, ramp: [#b8ab92, #e3d8c0])
+square = box(w: plaza.w, h: plaza.h, d: plaza.d, x: plaza.x, y: plaza.y0, z: plaza.z)
+stone = color(square, texture: paving, map: world, scale: 4)
+
+// the tower on the middle of the plaza, with rows of windows, and its roof on top
+panes = pattern(as: grid, rows: 4, cols: 2, gap: 0.45)
+facade = colorize(panes, ramp: [#8a74d8, #3b2f6e])
+base = box(w: 4, h: tower, d: 4, x: plaza.x, y: plaza.y1, z: plaza.z)
+tower_body = color(base, texture: facade, scale: 4)
+cap = box(w: 4.6, h: 3, d: 4.6, x: plaza.x, y: plaza.y1 + tower, z: plaza.z)
+roof = shape(cap, as: pyramid)
+roof_red = color(roof, color: #b5523b)
+
+// the fountain: a stone rim and water inside it
+basin = box(w: pool * 2, h: 0.6, d: pool * 2, x: fountain.x, y: fountain.y, z: fountain.z)
+rim = shape(basin, as: tube, thickness: 0.2, sides: 24)
+rim_stone = color(rim, color: #cfc4ae)
+pond = size(basin, h: 0.45)
+round_pond = shape(pond, as: cylinder, sides: 24)
+water = color(round_pond, color: #5aa9e6, material: water)
+out = output(asphalt, posts, lights, stone, tower_body, roof_red, rim_stone, water)

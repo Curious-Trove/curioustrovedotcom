@@ -1,0 +1,45 @@
+// A stone keep: images made in the graph and laid on with no unwrapping,
+// a curve for its profile, kinds picked by a formula, windows that glow.
+param floors = 6 in 2..12
+param width = 7 in 4..14
+param profile = curve [0 1, 0.3 0.86, 0.8 0.8, 1 0.95]
+param lit = 0.35 in 0..1
+
+// images: grey patterns and noise, blended, then given colours
+blocks = pattern(as: bricks, rows: 6, cols: 3, gap: 0.07, vary: 0.5)
+stains = noise(as: smooth, scale: 3, detail: 4)
+worn = blend(blocks, stains, mode: multiply, amount: 0.5)
+stone = colorize(worn, ramp: [#3d3a40, #8b8580, #c9c0b0])
+tiles = pattern(as: zigzag, rows: 8, cols: 4, gap: 0.2)
+slate = colorize(tiles, ramp: [#2b2440, #5a4f86])
+blades = pixels(value: 1 - y * 0.5, alpha: abs(x - 0.5) * 2 < (1 - y) * (0.3 + 0.2 * sin(x * 60)), size: 64)
+grass = colorize(blades, ramp: [#1f4a2a, #4f8a35])
+meadow = colorize(stains, ramp: [#5f8a45, #8fb060])
+
+// the keep: floors that follow the profile curve, the last one a roof
+base = box(w: width, h: floors * 3, d: width)
+levels = split(base, axis: y, count: floors + 1)
+shaped = scale(levels, x: profile(t), z: profile(t))
+body = shape(shaped, as: if(i == n - 1, cone, cylinder), sides: 10)
+walls = keep(body, chance: i < n - 1)
+roof = keep(body, chance: i == n - 1)
+stone_walls = color(walls, texture: stone, bump: worn, map: cylinder, scale: 3, shading: flat)
+slate_roof = color(roof, texture: slate, map: cylinder, scale: 2)
+
+// windows around each floor: some are lit
+ring = circle(count: 6, radius: width * 0.4, w: 0.7, h: 1.2, d: 0.5)
+rows = repeat(ring, count: floors - 1, axis: y, gap: 1.8)
+high = move(rows, y: 3.9)
+panes = color(high, color: #2b2440, material: glass)
+some = keep(high, chance: lit)
+proud = scale(some, by: 1.05)
+lamps = color(proud, color: #ffd27a, emit: 2)
+
+// ground and grass cards
+ground = box(w: width * 5, h: 0.4, d: width * 5, y: -0.4)
+earth = color(ground, texture: meadow, map: world, scale: 9)
+tufts = scatter(ground, count: 220, size: 1.6, seed: 4)
+cards = shape(tufts, as: card, cross: 2)
+lawn = color(cards, texture: grass, material: foliage, alpha: cut, map: face)
+
+out = output(stone_walls, slate_roof, panes, lamps, earth, lawn)

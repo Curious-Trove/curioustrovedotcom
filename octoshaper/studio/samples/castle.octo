@@ -1,0 +1,53 @@
+// A castle: round towers on a ring, a curtain wall that runs between them with
+// battlements along its top, and a keep in the middle. The wall is an outline:
+// a polygon with a corner at each tower, the inside cut out of it, then raised.
+
+param towers = 6 in 3..12
+param radius = 20 in 10..34
+
+// images: stone courses for the walls, and a grassy ground
+courses = pattern(as: bricks, rows: 8, cols: 3, gap: 0.08, vary: 0.4)
+stains = noise(as: smooth, scale: 3, detail: 4)
+worn = blend(courses, stains, mode: multiply, amount: 0.45)
+stone = colorize(worn, ramp: [#7d766a, #b9b2a3, #d2cbbb])
+patches = noise(as: smooth, scale: 4, detail: 3, seed: 2)
+turf = colorize(patches, ramp: [#677d43, #8ea15c])
+
+ground = box(w: radius * 2.8, h: 1, d: radius * 2.8)
+lawn = color(ground, texture: turf, map: world, scale: 30)
+
+// towers on the ring, each with a conical roof
+ring0 = circle(count: towers, radius: radius, w: 7, h: 16, d: 7)
+ring = move(ring0, y: 1)
+round = shape(ring, as: cylinder, sides: 16)
+tower_stone = color(round, texture: stone, map: cylinder, scale: 4)
+tops = face(ring, side: top, depth: 6)
+spires = shape(tops, as: cone, sides: 16)
+red = color(spires, color: #a8473a, vary: 0.1)
+
+// the curtain wall: the polygon through the towers, less its inside, raised
+outer = outline(as: ngon, sides: towers, w: radius * 2 + 2.5, d: radius * 2 + 2.5)
+inner = outline(as: ngon, sides: towers, w: radius * 2 - 2.5, d: radius * 2 - 2.5)
+band = cut(outer, inner)
+wall = extrude(band, height: 9)
+raised = move(wall, y: 1)
+wall_stone = color(raised, texture: stone, scale: 4)
+
+// battlements: the top of the wall cut into a chequer of teeth, every other one
+// kept by where it is, so the gaps run along a wall whichever way it faces
+crest = face(raised, side: top, depth: 1.4)
+parapet = inset(crest, by: 0.7)
+strips = split(parapet, axis: x, every: 1.2)
+teeth = split(strips, axis: z, every: 1.2)
+merlons = keep(teeth, chance: (floor(x / 1.2 + 100) + floor(z / 1.2 + 100)) % 2)
+merlon_stone = color(merlons, texture: stone, scale: 4)
+
+// the keep, and the castle weathered at its edges
+keep_block = box(w: 12, h: 24, d: 12, y: 1)
+keep_stone = color(keep_block, texture: stone, scale: 4)
+keep_top = box(w: 13, h: 7, d: 13, y: 25)
+keep_roof = shape(keep_top, as: roof)
+keep_red = color(keep_roof, color: #8f3b31)
+built = merge(tower_stone, wall_stone, merlon_stone, keep_stone)
+weathered = wear(built, edges: 0.5, cavity: 0.3, dirt_color: #5a5446)
+out = output(lawn, weathered, red, keep_red)

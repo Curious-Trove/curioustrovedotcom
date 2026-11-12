@@ -578,6 +578,64 @@ body.ct-page .ct-nav {
   opacity: 0.55;
 }
 
+.ct-nav__new {
+  background: var(--ct-coral-bg);
+  border-radius: 999px;
+  color: var(--ct-coral-ink);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  margin-left: 0.2rem;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}
+
+/* the OctoShaper web studio callout (home page and the OctoShaper page) */
+.ct-studio {
+  align-items: center;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.ct-studio__media img {
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ct-studio__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.ct-studio__note {
+  color: var(--ct-text-mute, inherit);
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+}
+
+@media (min-width: 860px) {
+  .ct-studio { grid-template-columns: 1.1fr 1fr; }
+}
+
+.ct-studio { padding: clamp(1.25rem, 3vw, 2rem); }
+.ct-nav__link { white-space: nowrap; }
+
+/* five links and the button: tighter until there is room */
+@media (min-width: 960px) and (max-width: 1120px) {
+  .ct-nav__link { padding: 0.55rem 0.6rem; font-size: 0.94rem; }
+  .ct-nav__brand span { display: none; }
+}
+
 .ct-nav__actions {
   align-items: center;
   display: flex;

@@ -1,0 +1,41 @@
+// A village on a grid of lots: plastered houses of random heights under tiled
+// gable roofs, worn at the edges, and the lots left empty kept as gardens with
+// a tree or two. The plaster and the tiles are images made in the graph.
+
+param lots = 6 in 2..12
+param lot = 8 in 5..14
+param seed = 3 in 1..50
+
+// images: rough plaster, and rows of roof tiles
+grain = noise(as: smooth, scale: 6, detail: 4, seed: seed)
+plaster = colorize(grain, ramp: [#d8c29a, #f6ead0])
+courses = pattern(as: bricks, rows: 10, cols: 5, gap: 0.14, vary: 0.5)
+tiles = colorize(courses, ramp: [#6e2c22, #b5523b])
+
+// the lots: most are built on, the others are gardens. Both read the same noise
+// at each lot, so every lot is one or the other
+ground = grid(nx: lots, nz: lots, cell: lot, h: 0.3)
+plots = inset(ground, by: 0.9)
+built = keep(plots, chance: noise(x * 0.31, z * 0.31 + seed) > 0.45)
+gardens = keep(plots, chance: noise(x * 0.31, z * 0.31 + seed) <= 0.45)
+
+// houses, worn at the edges and dirty where they meet the ground
+houses = extrude(built, height: rand(2.5, 6))
+walls = color(houses, texture: plaster, scale: 3)
+aged = wear(walls, edges: 0.4, cavity: 0.6, width: 0.2)
+tops = face(houses, side: top, depth: 2)
+roofs = shape(tops, as: roof)
+roof_tiles = color(roofs, texture: tiles, scale: 2.5, vary: 0.2)
+
+// gardens: a lawn, and trees never too close together
+lawns = color(gardens, color: #6f9a4d, vary: 0.2)
+spots = scatter(gardens, count: 2, size: 1, gap: 2.5, seed: seed)
+trunks = size(spots, w: 0.4, h: 2.2, d: 0.4)
+bark = color(trunks, color: #6b4a33)
+crowns = size(spots, w: rand(2.2, 3.2), h: rand(2.6, 3.6), d: w)
+raised = move(crowns, y: 1.6)
+puffs = shape(raised, as: sphere, sides: 10, rings: 6)
+leaves = color(puffs, color: #4f8a3c, vary: 0.4, material: foliage)
+
+grass = color(ground, color: #7fa35a, vary: 0.15)
+out = output(grass, aged, roof_tiles, lawns, bark, leaves)

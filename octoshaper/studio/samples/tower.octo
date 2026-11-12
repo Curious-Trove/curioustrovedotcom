@@ -1,0 +1,36 @@
+// A twisting glass tower: floor slabs, a glass core and fins on every facade,
+// a lit crown, on a paved plinth.
+
+param floors = 14 in 3..40
+param width = 12 in 6..24
+param twist = 3 in 0..10
+
+core = box(w: width, h: floors * 3.2, d: width)
+levels = split(core, axis: y, every: 3.2)
+turned = rotate(levels, y: i * twist)
+
+// thin concrete slab at the bottom of each level
+slabs = size(turned, h: 0.4)
+concrete = color(slabs, color: #d8d4cc)
+edges = wear(concrete, edges: 0.3, cavity: 0.5)
+
+// the glass sits inside the slab's edge
+glass = inset(turned, by: 0.7)
+tinted = color(glass, color: #6fa8cf, vary: 0.15, material: glass)
+
+// fins: the four facades cut into thin strips that stick out
+walls = face(glass, side: sides, depth: 0.05)
+strips = split(walls, axis: x, every: 1.5)
+thin = size(strips, w: 0.14)
+fins = extrude(thin, height: 0.5)
+steel = color(fins, color: #2b3240, metal: 0.8, rough: 0.35)
+
+// the crown, lit from inside, and the plinth
+top_level = keep(glass, chance: i == n - 1)
+crown = face(top_level, side: top, depth: 1.2)
+cap = color(crown, color: #f0a35e, emit: 0.6)
+setts = pattern(as: grid, rows: 12, cols: 12, gap: 0.06, vary: 0.3)
+paving = colorize(setts, ramp: [#9d968a, #cfc8bb])
+plinth = box(w: width * 2.6, h: 0.4, d: width * 2.6, y: -0.4)
+plaza = color(plinth, texture: paving, map: world, scale: 8)
+out = output(edges, tinted, steel, cap, plaza)

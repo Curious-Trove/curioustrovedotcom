@@ -1,0 +1,67 @@
+// A diorama built by hand, the way Crocotile does it. The blocks are cells: press Stamp
+// on the build tool's row (Params, in the 3D view), then click the ground or a side of a
+// block to add one, and Shift-click to take one away. Keys 1 to 3 choose what a new cell
+// is: 1 earth, 2 stone, 3 water. The tiles are painted by hand too: select sheet and open
+// the Image tab (View, Image).
+
+param ground = cells [-4 0 -3, -4 0 -2, -4 0 -1, -4 0 0, -4 0 1, -4 0 2, -4 0 3, -4 1 -3, -4 1 -2, -4 1 0, -4 2 -2 : 2, -4 3 -2 : 2, -4 4 -2 : 2, -3 0 -3, -3 0 -2, -3 0 -1, -3 0 0, -3 0 1, -3 0 2, -3 0 3, -3 1 -3, -3 1 -2 : 2, -3 1 -1, -3 1 0, -3 2 -3 : 2, -3 2 -2 : 2, -3 2 -1 : 2, -3 3 -3 : 2, -3 3 -2 : 2, -3 3 -1 : 2, -2 0 -3, -2 0 -2, -2 0 -1, -2 0 0, -2 0 1, -2 0 2, -2 0 3, -2 1 -2, -2 1 -1, -2 1 0, -2 2 -2 : 2, -2 3 -2 : 2, -1 0 -3, -1 0 -2, -1 0 -1, -1 0 0, -1 0 1, -1 0 2, -1 0 3, 0 0 -3, 0 0 -2, 0 0 -1 : 3, 0 0 0 : 3, 0 0 1 : 3, 0 0 2 : 3, 0 0 3, 1 0 -3, 1 0 -2, 1 0 -1 : 3, 1 0 0 : 3, 1 0 1 : 3, 1 0 2 : 3, 1 0 3, 2 0 -3, 2 0 -2, 2 0 -1 : 3, 2 0 0 : 3, 2 0 1 : 3, 2 0 2 : 3, 2 0 3, 3 0 -3, 3 0 -2, 3 0 -1, 3 0 0, 3 0 1, 3 0 2, 3 0 3, 3 1 -3 : 2, 4 0 -3, 4 0 -2, 4 0 -1, 4 0 0, 4 0 1, 4 0 2, 4 0 3]
+tool build = stamp(ground)
+
+// sixteen tiles of 8 pixels, painted in the Image tab; the pixels are at the end of the file
+sheet = paint(palette: [#2a3b24, #4f7a3a, #86b35a, #5b4630, #84643f, #b08d57, #5c6168, #8b9198, #b9bec2, #2f5d78, #4f93ad, #d8c36a, #7a3b2e, #1d1a22], size: 32)
+tiles = tileset(sheet, cell: 8)
+
+// one block a cell; only the faces with nothing against them are kept
+blocks = cells(cells: ground, size: 1)
+tops = face(blocks, side: top, depth: 0.02)
+open_tops = keep(tops, chance: 1 - has(0, 1, 0))
+walls = face(blocks, side: sides, depth: 0.02)
+open_walls = keep(walls, chance: 1 - if(side == 2, has(0, 0, 1), if(side == 3, has(1, 0, 0), if(side == 4, has(0, 0, -1), has(-1, 0, 0)))))
+
+// which tile a face shows: value says what the cell is, has() what is around it
+top_look = color(open_tops, texture: tiles, map: tile, tile: if(value == 2, 4, if(value == 3, 5, 0)), filter: pixel, rough: 0.9)
+wall_look = color(open_walls, texture: tiles, map: tile, tile: if(value == 2, if(has(0, 1, 0), 3, 6), if(has(0, 1, 0), 2, 1)), filter: pixel, rough: 0.9)
+
+// reeds on the grass: crossed cards showing one tile, cut out where it is clear
+grass = keep(open_tops, chance: value == 1)
+spots = scatter(grass, count: 2, size: 0.7, seed: 3)
+some = keep(spots, chance: 0.45)
+cards = shape(some, as: card, cross: 2)
+reeds = color(cards, texture: tiles, map: tile, tile: 7, alpha: cut, filter: pixel, material: foliage)
+
+out = output(top_look, wall_look, reeds)
+
+paint sheet {
+  10120021112111123444434378787786
+  21112122111111114435444477778776
+  12112221313513314444444478877876
+  11111101533444443353444366666666
+  20111111354354454444444477867877
+  01110122444444444444333477767877
+  11011111443544443444443487867777
+  22110111434443443454543466666666
+  66666666aa99999911117711....b...
+  677867879999999911111116....b.b.
+  687768779999999977177171....2.b.
+  68776777a999999a66661661....1.2.
+  666666669999999977717717.1..121.
+  677767779999999987767778.22.2.1.
+  67776888999999aa7716777121..1.2.
+  677868779999999966661666.1..1.1.
+  77777786544344433444435344435444
+  77877776444344434444454434544343
+  77dddd76554344434444455444454345
+  66dbbd66444344434544454443554444
+  88dbbd77444344434434434344544544
+  78dddd77544344435443444444344443
+  78dddd77545344434344434343544455
+  66666666444344434444443444444444
+  43444445454534445344434334335444
+  44534444445444454434444355445444
+  45444445454534344334344443444453
+  44435434344443453434445354343444
+  44444345444444334444444343344445
+  44434343433444344444444434444444
+  43434454444445444444535544444444
+  43443444435443454354454434334534
+}

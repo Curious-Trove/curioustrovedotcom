@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="octo-root" content="./">
+<meta name="octo-version" content="2.0.0-experimental.1">
+<meta name="octo-build" content="d1069f8, 2026-11-12">
+<meta name="octo-umami" content="6f9f2b9b-4c22-45eb-adf7-b4a9e27facfd">
+<meta name="octo-umami-domains" content="curioustrove.com">
+<title>OctoShaper Studio</title>
+<meta name="description" content="OctoShaper Studio: build procedural 3D models as a node graph or as code, in your browser. Free, no account, export to glTF.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="style.css?v=e2bbaab254">
+<script>try { const t = localStorage.getItem('octo.theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<script src="boot.js?v=e2bbaab254"></script>
+</head>
+<body>
+<div id="backdrop" aria-hidden="true"></div>
+<div id="boot" class="boot" role="status" aria-live="polite">
+  <img class="boot-logo" src="logo.svg" alt="">
+  <p class="boot-text">Starting OctoShaper Studio…</p>
+  <noscript><p class="boot-text">OctoShaper runs in your browser and needs JavaScript. Turn it on for this site and reload the page.</p></noscript>
+</div>
+
+<header class="top">
+  <div class="brand">
+    <img class="logo" src="logo.svg" alt="">
+    <span class="word">Octo<b>Shaper</b></span>
+    <button id="channel" class="channel" hidden title="This is an early version: what to expect">Experimental</button>
+  </div>
+  <nav class="menubar" id="menubar" aria-label="Menu"></nav>
+  <div class="tools">
+    <span class="undo-group" role="group" aria-label="Undo">
+      <button id="undo" class="small" title="Undo (Cmd/Ctrl+Z)" disabled>Undo</button>
+      <button id="redo" class="small" title="Redo (Shift+Cmd/Ctrl+Z)" disabled>Redo</button>
+    </span>
+    <button id="agent" class="agent" hidden title=""><i></i><span>AI</span></button>
+    <button id="export-btn" class="primary" title="Export as glTF, a picture or code">Export</button>
+    <button id="theme" class="icon" title="Light or dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </div>
+</header>
+
+<main class="studio">
+  <div class="dock" id="dock"></div>
+</main>
+
+<div class="toast-global" id="toast" role="status" aria-live="polite"></div>
+<div class="drop-hint" aria-hidden="true"><span>Drop .octo files to open them</span></div>
+
+<script type="module" src="app.js?v=e2bbaab254" onerror="window.octoBoot &amp;&amp; octoBoot.fail('A file of the studio did not load (app.js).')"></script>
+</body>
+</html>

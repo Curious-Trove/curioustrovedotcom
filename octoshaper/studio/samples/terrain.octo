@@ -1,0 +1,31 @@
+// Terrain from noise: one grid, each column as tall as the noise at its centre.
+// Columns are sorted into bands by height (sand, meadow, rock, snow), the sea is
+// water, and a few meadow columns grow pines.
+
+param size = 36 in 10..60
+param height = 12 in 2..30
+param seed = 3 in 1..50
+
+land = grid(nx: size, nz: size, cell: 2, h: 0.5 + noise(x * 0.07 + seed * 10, z * 0.07) * noise(x * 0.03, z * 0.03 + seed) * height * 1.6)
+
+// bands by height, each with its own look
+beach = keep(land, chance: h < 3)
+sand = color(beach, color: #d9c58f, vary: 0.1, rough: 1)
+meadow = keep(land, chance: (h >= 3) * (h < 7))
+grass = color(meadow, color: #6e9a48, vary: 0.2)
+high = keep(land, chance: (h >= 7) * (h < height * 0.9))
+rock = color(high, color: #8a8580, vary: 0.25)
+peaks = keep(land, chance: h >= height * 0.9)
+snow = color(peaks, color: #f2f0ea, vary: 0.05)
+
+// the sea: a sheet of water over the low ground
+water = box(w: size * 2, h: 2.2, d: size * 2)
+sea = color(water, color: #3f7fb0, material: water)
+
+// pines on one meadow column in eight: a trunk and a cone that flares at its foot
+groves = keep(meadow, chance: 0.12, seed: seed)
+spots = scatter(groves, count: 1, size: 1, seed: seed)
+pines = size(spots, w: 1.4, h: rand(2.5, 4.5), d: 1.4)
+cones = shape(pines, as: cone, sides: 8, flare: 0.7)
+forest = color(cones, color: #2d5e35, vary: 0.3)
+out = output(sand, grass, rock, snow, sea, forest)

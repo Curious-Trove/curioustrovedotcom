@@ -1,0 +1,12 @@
+// The smallest graph. A box, cut into floors, each floor turned a little more
+// than the one below it. Try changing a number in a node, or here.
+
+param floors = 6 in 1..20
+param twist = 8 in 0..30
+
+block = box(w: 8, h: floors * 2, d: 8)
+levels = split(block, axis: y, count: floors)
+turned = rotate(levels, y: i * twist)
+slabs = inset(turned, by: 0.4)
+painted = color(slabs, color: #8f7cff, vary: 0.5)
+out = output(painted)

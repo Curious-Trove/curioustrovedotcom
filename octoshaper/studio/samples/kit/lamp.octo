@@ -1,0 +1,16 @@
+// A street lamp, kept in its own file: use(spots, "kit/lamp.octo", tall: 4)
+param tall = 4 in 2..8
+
+post = box(w: 0.18, h: tall, d: 0.18)
+pole = shape(post, as: cylinder, sides: 8)
+iron = color(pole, color: #2b2440, metal: 1)
+foot = box(w: 0.5, h: 0.3, d: 0.5)
+base = shape(foot, as: cylinder, sides: 8, top: 0.6)
+iron2 = color(base, color: #2b2440, metal: 1)
+head = box(w: 0.55, h: 0.6, d: 0.55, y: tall)
+lantern = shape(head, as: box, top: 1.4)
+light = color(lantern, color: #ffd27a, emit: 2.5)
+cap = box(w: 0.9, h: 0.25, d: 0.9, y: tall + 0.6)
+hat = shape(cap, as: pyramid)
+iron3 = color(hat, color: #2b2440, metal: 1)
+out = output(iron, iron2, light, iron3)

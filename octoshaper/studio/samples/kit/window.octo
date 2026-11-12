@@ -1,0 +1,19 @@
+// A window, kept in its own file. Another file uses it as a node:
+//   use(bays, "kit/window.octo", width: 1.4, lit: rand() > 0.5)
+// Its params are that node's settings.
+param width = 1.4 in 0.6..3
+param height = 1.7 in 0.8..3
+param sill = 0.8 in 0..2
+param forward = 0 in 0..10
+param lit = 0 in 0..1
+
+frame = box(w: width + 0.3, h: height + 0.3, d: 0.3, y: sill - 0.15, z: forward)
+white = color(frame, color: #f4efe6)
+pane = box(w: width, h: height, d: 0.36, y: sill, z: forward)
+dark = color(pane, color: #2b3a55, material: glass)
+glow = keep(pane, chance: lit)
+proud = scale(glow, by: 1.02)
+warm = color(proud, color: #ffd27a, emit: 1.6)
+ledge = box(w: width + 0.5, h: 0.12, d: 0.5, y: sill - 0.25, z: forward + 0.1)
+stone = color(ledge, color: #c9c0b0)
+out = output(white, dark, warm, stone)

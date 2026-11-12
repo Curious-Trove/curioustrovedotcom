@@ -1,0 +1,60 @@
+// An island drawn by images. One grey image says where the land is high: it
+// shapes the seabed, picks the tiles of each terrace and says where trees grow.
+// The paving is a picture of shapes (raster), cut down to a few colours.
+param seed = 4 in 1..40
+param size = 40 in 20..60
+param step = 1.2 in 0.5..3
+
+// the map: a round blob broken up by noise. Light is high
+blob = gradient(as: round, ramp: [#ffffff, #000000])
+rough = noise(scale: 3, seed: seed)
+shore = blend(blob, rough, mode: multiply, amount: 0.5)
+raised = adjust(shore, contrast: 2.2, bright: 0.25)
+heights = blur(raised, radius: 0.02)
+
+// the seabed swells where the map is light
+slab = box(w: size, h: 0.4, d: size, y: -1.6)
+sand = color(slab, color: #d9c58f)
+bed = displace(sand, map: heights, by: 2.4 * max(up, 0), detail: 1)
+water = box(w: size, h: 1.5, d: size, y: -1.6)
+sea = color(water, color: #3f8fb8, material: water)
+
+// paving: stones as shapes, drawn from above into an image
+plate = box(w: 4, h: 1, d: 4)
+rows = split(plate, axis: z, count: 4)
+slabs = split(rows, axis: x, count: 3)
+gaps = inset(slabs, by: 0.08)
+stones = size(gaps, h: rand(0.5, 1))
+relief = raster(stones, view: top, as: height, size: 64)
+lit = shade(relief, as: bevel, width: 0.04, depth: 1.5)
+tinted = colorize(lit, ramp: [#3c4a2a, #6e9a48, #a9c46a])
+paving = palette(tinted, count: 5, dither: ordered)
+
+// three terraces: the tiles where the map is lighter than a level
+lots = grid(nx: size, nz: size, cell: 1, h: step)
+level1 = pixels(heights, value: src > 0.35)
+level2 = pixels(heights, value: src > 0.55)
+level3 = pixels(heights, value: src > 0.75)
+tiles1 = keep(lots, map: level1, chance: 1)
+tiles2 = keep(lots, map: level2, chance: 1)
+tiles3 = keep(lots, map: level3, chance: 1)
+up2 = move(tiles2, y: step)
+up3 = move(tiles3, y: step * 2)
+land = merge(tiles1, up2, up3)
+ground = color(land, texture: paving, map: world, scale: 4, filter: pixel, vary: 0.15)
+
+// trees on the middle terrace, thicker where the map is lighter
+spots = scatter(up2, map: heights, count: 2, size: 0.4, seed: seed)
+trunks = size(spots, w: 0.5, h: rand(1.2, 2.4), d: 0.5)
+cones = shape(trunks, as: cone)
+trees = color(cones, color: #2d5e35, vary: 0.3)
+
+// a beacon on the top, with bands that glow
+post = box(w: 1.4, h: 5, d: 1.4, y: step * 3)
+tower = shape(post, as: cylinder)
+bands = pattern(as: stripes, rows: 5)
+lights = pixels(bands, value: 1 - src)
+paint = colorize(lights, ramp: [#4a4560, #ffd27a])
+beacon = color(tower, texture: paint, glow_map: lights, emit: 1.5, scale: 5, map: cylinder)
+
+out = output(bed, sea, ground, trees, beacon)

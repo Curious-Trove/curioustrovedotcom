@@ -1,0 +1,39 @@
+// A terrace of houses: windows and lamps kept in their own files and used as
+// nodes, fronts cut by a pattern, a choice of pieces for the chimneys, lamps
+// placed by hand with a brush, and one house edited by hand in the 3D view.
+param houses = 5 in 2..9
+param floors = 3 in 1..5
+param lit = 0.5 in 0..1
+param lamps = [-11 0 5.5, 0 0 6.5, 11 0 5.5]
+tool place = brush(lamps, spacing: 3)
+
+// the houses: click one in the 3D view to move, scale or recolour it alone
+lots = line(count: houses, length: houses * 6, w: 5.7, h: floors * 3, d: 7)
+walls = color(lots, color: #e2cdb0, vary: 0.3)
+row = tweak(walls, edits: [@c28fef65 scale 1 1.33 1, @c28fef65 color 0.78 0.5 0.42, @27c01cdb move 0 0 -0.8])
+
+// each front: storeys, then a pier, a window, a pier, twice
+storeys = split(row, axis: y, count: floors)
+bays = split(storeys, axis: x, count: 2, pattern: [1, 2, 1])
+openings = keep(bays, chance: level == 1)
+windows = use(openings, "kit/window.octo", width: w - 0.5, forward: d / 2, lit: rand() < lit)
+
+// roofs, and chimneys with one of two pots
+tops = face(row, side: top, depth: 2.2)
+roofs = shape(tops, as: roof)
+slate = color(roofs, color: #4a4266)
+stacks = scatter(tops, count: 1, size: 0.9, seed: 3)
+stack = box(w: 1, h: 2.6, d: 1)
+brick = color(stack, color: #9a5a44)
+unit = box(w: 1, h: 3.2, d: 1)
+pot = shape(unit, as: cylinder, top: 0.7)
+clay = color(pot, color: #c9744f)
+chimneys = copy(stacks, brick, clay, fit: none, pick: rand(0, 2))
+
+// the street, and lamps where the brush put them
+road = box(w: houses * 6 + 8, h: 0.2, d: 16, y: -0.2, z: 3)
+paving = color(road, color: #8b8580)
+spots = along(path: lamps, mode: each, w: 0.5, h: 0.5, d: 0.5)
+posts = use(spots, "kit/lamp.octo")
+
+out = output(row, windows, slate, chimneys, paving, posts)

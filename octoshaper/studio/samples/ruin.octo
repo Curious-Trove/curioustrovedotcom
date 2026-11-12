@@ -1,0 +1,40 @@
+// A ruined wall: detail in the mesh itself. Blocks chipped at their edges (six
+// different ones shared by the whole wall, so it still instances), worn edges
+// and dirt painted on the vertices, a leaning post, boulders, rough ground.
+param length = 7 in 3..12
+param courses = 4 in 1..7
+param ruin = 0.3 in 0..0.9
+param lean = 14 in -40..40
+
+// the wall: courses of blocks, more of them missing towards the top
+base = box(w: length * 2.1, h: courses * 1.1, d: 1.3)
+rows = split(base, axis: y, count: courses)
+cells = split(rows, axis: x, count: length)
+standing = keep(cells, chance: 1 - ruin * (y / (courses * 1.1)) * 1.6)
+blocks = inset(standing, by: 0.03)
+stone = color(blocks, color: #b3ab9b, vary: 0.25)
+chipped = chip(stone, amount: 0.55, size: 0.28, seed: i % 6)
+
+// fallen blocks around it, and boulders rounded from boxes
+ground = box(w: length * 2.1 + 10, h: 0.5, d: 14, y: -0.5)
+spots = scatter(ground, count: 9, size: 1.2, seed: 4)
+lumps = size(spots, w: rand(1, 2.2), h: rand(0.7, 1.3), d: rand(1, 1.8))
+turned = jitter(lumps, turn: 180)
+round = smooth(turned, steps: 2, sharp: 0.15)
+boulders = displace(round, by: noise(x * 2.5, y * 2.5, z * 2.5) * 0.3 - 0.12, detail: 0.5)
+rock = color(boulders, color: #8f8b86, vary: 0.2)
+
+// a post that leans, thinner at the top
+pole = box(w: 0.5, h: 6, d: 0.5, x: length * 1.05 + 1.6, z: 0.4)
+post = bend(pole, angle: lean, taper: 0.55, twist: 25)
+wood = color(post, color: #7a5a3c)
+
+// the ground swells, the same pattern right across it
+earth = color(ground, color: #7f8a5e)
+soil = displace(earth, by: noise(x * 0.25, 0, z * 0.25) * 0.45 * max(up, 0), detail: 1)
+
+// worn edges, and dirt where things stand on each other
+built = merge(chipped, rock, wood)
+worn = wear(built, edges: 0.8, cavity: 0.7, width: 0.3, edge_color: #e6dfd0, dirt_color: #4a4338)
+
+out = output(soil, worn)

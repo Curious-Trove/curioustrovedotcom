@@ -1,0 +1,26 @@
+// A tree that grows: every branch splits into smaller branches, tapering as they
+// go, and the thin ones carry clumps of leaves, covered in leaf cards.
+
+param levels = 4 in 1..6
+param spread = 34 in 5..70
+param seed = 2 in 1..50
+
+// a leaf: a pointed oval, lighter towards its tip
+leaf = pixels(value: 0.55 + 0.45 * y, alpha: (x - 0.5) * (x - 0.5) * 4 + (y - 0.5) * (y - 0.5) * 1.2 < 0.25, size: 32)
+
+trunk = box(w: 1.3, h: 7, d: 1.3)
+log = shape(trunk, as: cylinder, top: 0.75)
+limbs = branch(trunk, levels: levels, count: 3, angle: spread, shrink: 0.7, seed: seed)
+tapered = shape(limbs, as: cylinder, sides: 8, top: 0.7)
+wood = merge(log, tapered)
+bark = color(wood, color: #6e4d36, vary: 0.2)
+
+// leaves: a clump at the end of each twig, covered in cards
+twigs = keep(limbs, chance: w < 0.5)
+ends = face(twigs, side: top, depth: 0.1)
+clumps = size(ends, w: 2.4, h: 2, d: 2.4)
+puffs = shape(clumps, as: sphere, sides: 8, rings: 5)
+inside = color(puffs, color: #2f5a2a)
+cards = cover(puffs, density: 1.5, size: 0.9, seed: seed)
+leaves = color(cards, texture: leaf, color: #5c9e46, vary: 0.4, alpha: cut, map: face, material: foliage)
+out = output(bark, inside, leaves)

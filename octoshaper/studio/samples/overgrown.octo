@@ -1,0 +1,39 @@
+// An overgrown concrete frame: growth on every side. Moss on the decks, evenly
+// spaced; ivy that creeps from its roots over floors and walls and hangs off
+// the edges; a warning sign stuck on each cross wall.
+param floors = 3 in 2..6
+param growth = 9 in 2..18
+param seed = 5 in 1..40
+
+// the frame: a deck under each level, and cross walls
+block = box(w: 18, h: floors * 3, d: 9)
+levels = split(block, axis: y, every: 3)
+decks = size(levels, h: 0.4)
+bays = split(block, axis: x, count: 3)
+walls = size(bays, w: 0.5)
+frame = merge(decks, walls)
+concrete = color(frame, color: #a8a39a, vary: 0.12)
+yard = box(w: 30, h: 0.3, d: 20, y: -0.3)
+soil = color(yard, color: #6f6a58)
+
+// moss: flat pads on the decks, never closer than a gap
+pads = scatter(decks, count: 16, size: rand(0.5, 1.1), gap: 1.2, seed: seed)
+flat = size(pads, h: 0.07)
+round = shape(flat, as: cylinder, sides: 7)
+moss = color(round, color: #6c8f3d, vary: 0.4, rough: 1)
+
+// ivy: the same growth twice, once for its stems and once for its leaves
+ground = merge(frame, yard)
+roots = scatter(decks, count: 3, size: 0.2, seed: seed)
+stems = grow(ground, roots, length: growth, gravity: 0.4, show: stems, seed: seed)
+bark = color(stems, color: #5b4a32)
+fronds = grow(ground, roots, length: growth, gravity: 0.4, show: leaves, seed: seed)
+blade = pixels(value: 0.55 + 0.45 * y, alpha: (x - 0.5) * (x - 0.5) * 3.2 + (y - 0.5) * (y - 0.5) < 0.22, size: 32)
+leaves = color(fronds, texture: blade, color: #5b8a3c, vary: 0.35, alpha: cut, map: face, material: foliage)
+
+// a sign on the walls: stripes, turned a little as if stuck by hand
+bars = pattern(as: stripes, rows: 4, turn: 45, size: 64)
+hazard = colorize(bars, ramp: [#26241f, #f2c200])
+signs = decal(walls, hazard, size: 1.3, side: sides, count: 1, turn: rand(-8, 8), seed: seed)
+
+out = output(soil, concrete, moss, bark, leaves, signs)
